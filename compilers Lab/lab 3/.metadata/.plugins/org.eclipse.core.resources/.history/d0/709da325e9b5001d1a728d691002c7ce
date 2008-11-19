@@ -9,8 +9,8 @@ import visitor.*;
 public class Typecheck {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
-			Node root = new MiniJavaParser(new FileInputStream("testing.java"))
-					.Goal();
+			Node root = new MiniJavaParser(new FileInputStream(
+					"testing.java")).Goal();
 			System.out.println("Program parsed successfully");
 			SymbolTable sym = new SymbolTable();
 			root.accept(new GJNoArguDepthFirst(sym));

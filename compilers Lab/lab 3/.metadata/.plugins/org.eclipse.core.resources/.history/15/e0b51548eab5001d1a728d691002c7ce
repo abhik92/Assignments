@@ -135,6 +135,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			String name = ((ClassExtendsDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
 			if (!symt.hasId(name)) {
+				System.out.println(name + symt.hasId(name));
 				symt.setID(name, SymbolTable.CIDCounter);
 				SymbolTable.CIDCounter++;
 			}
@@ -143,9 +144,12 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 
 			String extendedName = ((ClassExtendsDeclaration) n.f0.choice).f3.f0.tokenImage;
 			if (!symt.hasId(extendedName)) {
+				System.out.println(extendedName);
 				symt.setID(extendedName, SymbolTable.CIDCounter);
 				SymbolTable.CIDCounter++;
 			}
+			System.out.println(symt.getID(name) + " extends "
+					+ symt.getID(extendedName));
 			SymbolTable.graph[symt.getID(name)][symt.getID(extendedName)] = 1;
 			SymbolTable.needsTransitive = true;
 		}

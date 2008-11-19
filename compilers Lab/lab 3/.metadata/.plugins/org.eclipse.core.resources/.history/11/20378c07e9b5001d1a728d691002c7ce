@@ -26,16 +26,16 @@ public class SymbolTable {
 	// classes present in the file
 
 	public void push(String key, Object value) {
-		SymbolTable.mainTable.put(key, value);
+		this.mainTable.put(key, value);
 	}
 
 	public void setID(String className, int id) {
-		SymbolTable.ClassID.put(id, className);
-		SymbolTable.RClassID.put(className, id);
+		this.ClassID.put(id, className);
+		this.RClassID.put(className, id);
 	}
 
 	public int getID(String className) {
-		return SymbolTable.RClassID.get(className);
+		return this.RClassID.get(className);
 	}
 
 	public void FloyddWarshall() {
@@ -87,7 +87,7 @@ public class SymbolTable {
 					String classi = SymbolTable.ClassID.get(i);
 					String classj = SymbolTable.ClassID.get(j);
 
-					if (!Alias.containsKey(classj)) {
+					if (!Alias.containsKey(classi)) {
 						ArrayList<String> temp = new ArrayList<String>();
 						temp.add(classi);
 						Alias.put(classj, temp);
@@ -163,12 +163,12 @@ public class SymbolTable {
 	}
 
 	public boolean hasId(String className) {
-		return SymbolTable.RClassID.containsKey(className);
+		return this.ClassID.containsKey(className);
 	}
 
 	public Object query(String key) {
-		if (SymbolTable.mainTable.containsKey(key)) {
-			return SymbolTable.mainTable.get(key);
+		if (this.mainTable.containsKey(key)) {
+			return this.mainTable.get(key);
 		}
 		return null;
 	}
