@@ -10,14 +10,14 @@ public class Typecheck {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			Node root = new MiniJavaParser(new FileInputStream(
-					"LinkedList.java")).Goal();
+					"testing.java")).Goal();
 			System.out.println("Program parsed successfully");
 			SymbolTable sym = new SymbolTable();
 			root.accept(new GJNoArguDepthFirst(sym));
-			
-			  if (SymbolTable.needsTransitive) { new
-			  SymbolTable().findTransitiveClosure(); }
-			 
+			System.out.println(sym.mainTable.size());
+			if (SymbolTable.needsTransitive) {
+				new SymbolTable().findTransitiveClosure();
+			}
 
 			root.accept(new GJNoArguDepthFirst_Parse2(sym));
 			System.out.println(sym.mainTable.size());

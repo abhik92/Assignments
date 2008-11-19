@@ -145,7 +145,8 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 				symt.setID(extendedName, SymbolTable.CIDCounter);
 				SymbolTable.CIDCounter++;
 			}
-			symt.graph[symt.getID(name)][symt.getID(extendedName)] = 1;
+
+			SymbolTable.graph[symt.getID(name)][symt.getID(extendedName)] = 1;
 			SymbolTable.needsTransitive = true;
 		}
 		n.f0.accept(this);

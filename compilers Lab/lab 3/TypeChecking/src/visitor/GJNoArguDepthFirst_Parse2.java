@@ -47,7 +47,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 					SymbolTable.currentClass, SymbolTable.currentFunction);
 
 			VariableClass V;
-			if (symt.mainTable.containsKey(hashString)) {
+			if (SymbolTable.mainTable.containsKey(hashString)) {
 				V = (VariableClass) symt.query(hashString);
 				return (R) V.type;
 			}
@@ -55,7 +55,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			hashString = symt.hashString("variable", (String) var,
 					SymbolTable.currentClass, null);
 
-			if (symt.mainTable.containsKey(hashString)) {
+			if (SymbolTable.mainTable.containsKey(hashString)) {
 				V = (VariableClass) symt.query(hashString);
 				return (R) V.type;
 			}
@@ -64,7 +64,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 					SymbolTable.currentClass, SymbolTable.currentFunction);
 
 			FunctionClass F;
-			if (symt.mainTable.containsKey(hashString)) {
+			if (SymbolTable.mainTable.containsKey(hashString)) {
 				F = (FunctionClass) symt.query(hashString);
 				return (R) F.retType;
 			}
@@ -73,7 +73,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 					(String) ClassName(var), null);
 
 			Class C;
-			if (symt.mainTable.containsKey(hashString)) {
+			if (SymbolTable.mainTable.containsKey(hashString)) {
 				C = (Class) symt.query(hashString);
 				return (R) C.name;
 			}
@@ -84,21 +84,27 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 	public R ClassName(R var) {
 
+		String currentClass = SymbolTable.currentClass;
+		ArrayList<String> listOfAlias = new ArrayList<String>();
+
+		listOfAlias = SymbolTable.Alias.get(currentClass);
+
 		String hashString = symt.hashString("variable", (String) var,
-				symt.currentClass, symt.currentFunction);
+				SymbolTable.currentClass, SymbolTable.currentFunction);
 		VariableClass V;
-		if (symt.mainTable.containsKey(hashString)) {
+		if (SymbolTable.mainTable.containsKey(hashString)) {
 			V = (VariableClass) symt.query(hashString);
 			return (R) V.type;
 		}
 
 		hashString = symt.hashString("variable", (String) var,
-				symt.currentClass, null);
-
-		if (symt.mainTable.containsKey(hashString)) {
+				SymbolTable.currentClass, null);
+		if (SymbolTable.mainTable.containsKey(hashString)) {
 			V = (VariableClass) symt.query(hashString);
+
 			return (R) V.type;
 		}
+
 		return var;
 	}
 
@@ -278,8 +284,16 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		R ret2Type = IType(ret2);
 
 		if (ret1Type != ret2Type) {
-			System.out.println("Return Type Mismatch");
-			Exit();
+			boolean checkFail = false;
+			if (symt.Alias.containsKey(ret2Type)) {
+				if (symt.Alias.get(ret2Type).contains(ret1Type))
+					checkFail = true;
+			}
+
+			if (checkFail) {
+				System.out.println("Return Type Mismatch");
+				Exit();
+			}
 		}
 
 		return _ret;
@@ -397,8 +411,17 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		R ret2Type = IType(ret2);
 
 		if (ret1Type != ret2Type) {
-			System.out.println("LHS != RHS while assigning");
-			Exit();
+
+			boolean checkFail = false;
+			if (symt.Alias.containsKey(ret2Type)) {
+				if (symt.Alias.get(ret2Type).contains(ret1Type))
+					checkFail = true;
+			}
+
+			if (checkFail) {
+				System.out.println("LHS != RHS while assigning");
+				Exit();
+			}
 		}
 		return _ret;
 	}
@@ -604,6 +627,9 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 		n.f3.accept(this);
+		k++;
+		ArrayList<String> par = new ArrayList<String>();
+		paraStack.add(k, par);
 		n.f4.accept(this);
 		n.f5.accept(this);
 
@@ -628,9 +654,20 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 					if (params.get(i) == null)
 						Exit();
 					if (!(params.get(i).equals(F.formalParamList.get(i).type))) {
-						System.out
-								.println("Actual Param doesnt match Formal Param");
-						Exit();
+						boolean checkFail = false;
+						String ret1Type = F.formalParamList.get(i).type;
+						String ret2Type = params.get(i);
+						if (symt.Alias.containsKey(ret2Type)) {
+							if (symt.Alias.get(ret2Type).contains(ret1Type))
+								checkFail = true;
+						}
+
+						if (checkFail) {
+
+							System.out
+									.println("Actual Param doesnt match Formal Param");
+							Exit();
+						}
 					}
 				}
 				params.clear();
@@ -638,6 +675,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			}
 			return (R) F.retType;
 		} else {
+			System.out.println(hashString);
 			System.out.println("Class function call");
 			Exit();
 		}
@@ -650,11 +688,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	public R visit(ExpressionList n) {
 		R _ret = null;
 		R ret1 = n.f0.accept(this);
-
-		ArrayList<String> params = new ArrayList<String>();
-		params.add((String) IType(ret1));
-		k++;
-		paraStack.add(k, params);
+		paraStack.get(k).add((String) IType(ret1));
 
 		n.f1.accept(this);
 		return _ret;

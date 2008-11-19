@@ -17,8 +17,8 @@
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
 <fullyQualifiedTypeName name="MainPackage.Class"/>
-<fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
 <fullyQualifiedTypeName name="MainPackage.FunctionClass"/>
 <fullyQualifiedTypeName name="visitor.GJNoArguDepthFirst_Parse2"/>
 <fullyQualifiedTypeName name="MainPackage.VariableClass"/>
+<fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
 </qualifiedTypeNameHistroy>
