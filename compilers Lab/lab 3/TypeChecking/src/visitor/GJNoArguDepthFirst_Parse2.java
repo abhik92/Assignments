@@ -7,6 +7,7 @@ package visitor;
 import syntaxtree.*;
 
 import java.util.*;
+import java.util.logging.Logger;
 
 import MainPackage.FunctionClass;
 import MainPackage.SymbolTable;
@@ -33,8 +34,9 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		SymbolTable.currentFunction = null;
 	}
 
-	public static void Exit() {
-		System.out.println("No");
+	public static void Exit(String error) {
+		//System.out.println(error);
+		System.out.println("Type error");
 		System.exit(1);
 	}
 
@@ -282,17 +284,15 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 		R ret1Type = IType(ret1);
 		R ret2Type = IType(ret2);
-
 		if (ret1Type != ret2Type) {
 			boolean checkFail = false;
-			if (symt.Alias.containsKey(ret2Type)) {
-				if (symt.Alias.get(ret2Type).contains(ret1Type))
+			if (SymbolTable.Alias.containsKey(ret1Type)) {
+				if (SymbolTable.Alias.get(ret1Type).contains(ret2Type))
 					checkFail = true;
 			}
 
-			if (checkFail) {
-				System.out.println("Return Type Mismatch");
-				Exit();
+			if (!checkFail) {
+				Exit("Return Type Mismatch");
 			}
 		}
 
@@ -413,14 +413,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		if (ret1Type != ret2Type) {
 
 			boolean checkFail = false;
-			if (symt.Alias.containsKey(ret2Type)) {
-				if (symt.Alias.get(ret2Type).contains(ret1Type))
+			if (SymbolTable.Alias.containsKey(ret1Type)) {
+				if (SymbolTable.Alias.get(ret1Type).contains(ret2Type))
 					checkFail = true;
 			}
 
-			if (checkFail) {
-				System.out.println("LHS != RHS while assigning");
-				Exit();
+			if (!checkFail) {
+				Exit("LHS != RHS while assigning");
 			}
 		}
 		return _ret;
@@ -481,8 +480,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		_ret = n.f2.accept(this);
 		if (IType(_ret) != "int") {
-			System.out.println("Print statement doesnt have an int");
-			Exit();
+			Exit("Print statement doesnt have an int");
 		}
 		n.f3.accept(this);
 		n.f4.accept(this);
@@ -511,8 +509,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		R ret2 = n.f2.accept(this);
 		if (!(IType(ret1) == IType(ret2) && (IType(ret1) == "boolean"))) {
 			{
-				System.out.println("& - Type mismatch");
-				Exit();
+				Exit("& - Type mismatch");
 			}
 		}
 		return IType(ret1);
@@ -529,8 +526,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int")) {
-			System.out.println("< - Type mismatch");
-			Exit();
+			Exit("< - Type mismatch");
 		}
 		return (R) "boolean";
 	}
@@ -543,8 +539,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int")) {
-			System.out.println("+ - Type mismatch");
-			Exit();
+			Exit("+ - Type mismatch");
 		}
 		return (R) "int";
 	}
@@ -557,8 +552,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int")) {
-			System.out.println("- - Type mismatch");
-			Exit();
+			Exit("- - Type mismatch");
 		}
 		return (R) "int";
 	}
@@ -571,8 +565,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int")) {
-			System.out.println("* - Type mismatch");
-			Exit();
+			Exit("* - Type mismatch");
 		}
 		return (R) "int";
 	}
@@ -588,14 +581,12 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 		if (IType(ret1) != "int[]") {
 
-			System.out.println("Array Lookup 1");
-			Exit();
+			Exit("Array Lookup 1");
 
 		}
 		if (IType(ret2) != "int") {
 
-			System.out.println("Array Lookup 2");
-			Exit();
+			Exit("Array Lookup 2");
 
 		}
 		return (R) "int";
@@ -611,8 +602,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f2.accept(this);
 
 		if (IType(_ret) != "int[]") {
-			System.out.println("Array Length");
-			Exit();
+			Exit("Array Length");
 		}
 		return (R) "int";
 	}
@@ -636,7 +626,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		String hashString = symt.hashString("function", (String) ret2,
 				(String) ClassName(ret1), (String) ret2);
 
-		if (symt.mainTable.containsKey(hashString)) {
+		if (SymbolTable.mainTable.containsKey(hashString)) {
 			FunctionClass F = (FunctionClass) symt.query(hashString);
 			int i;
 
@@ -646,27 +636,24 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 				if (params.size() != F.formalParamList.size()) {
 
-					System.out.println("Number of params doesnt match");
-
-					Exit();
+					Exit("Number of params doesnt match");
 				}
 				for (i = 0; i < params.size(); i++) {
 					if (params.get(i) == null)
-						Exit();
+						Exit("Null Parameter");
 					if (!(params.get(i).equals(F.formalParamList.get(i).type))) {
 						boolean checkFail = false;
 						String ret1Type = F.formalParamList.get(i).type;
 						String ret2Type = params.get(i);
-						if (symt.Alias.containsKey(ret2Type)) {
-							if (symt.Alias.get(ret2Type).contains(ret1Type))
+						if (SymbolTable.Alias.containsKey(ret2Type)) {
+							if (SymbolTable.Alias.get(ret2Type).contains(
+									ret1Type))
 								checkFail = true;
 						}
 
 						if (checkFail) {
 
-							System.out
-									.println("Actual Param doesnt match Formal Param");
-							Exit();
+							Exit("Actual Param doesnt match Formal Param");
 						}
 					}
 				}
@@ -675,9 +662,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			}
 			return (R) F.retType;
 		} else {
-			System.out.println(hashString);
-			System.out.println("Class function call");
-			Exit();
+			Exit("Class function call");
 		}
 		return _ret;
 	}
@@ -722,7 +707,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> <INTEGER_LITERAL>
 	 */
 	public R visit(IntegerLiteral n) {
-		R _ret = null;
 		n.f0.accept(this);
 		return (R) "int";
 	}
@@ -731,7 +715,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> "true"
 	 */
 	public R visit(TrueLiteral n) {
-		R _ret = null;
 		n.f0.accept(this);
 		return (R) "boolean";
 	}
@@ -740,7 +723,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> "false"
 	 */
 	public R visit(FalseLiteral n) {
-		R _ret = null;
 		n.f0.accept(this);
 		return (R) "boolean";
 	}
@@ -749,7 +731,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> <IDENTIFIER>
 	 */
 	public R visit(Identifier n) {
-		R _ret = null;
 		n.f0.accept(this);
 
 		return (R) n.f0.tokenImage;
@@ -775,8 +756,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f2.accept(this);
 		_ret = n.f3.accept(this);
 		if (IType(_ret) != "int") {
-			System.out.println("Integer inside a array bound");
-			Exit();
+			Exit("Integer inside a array bound");
 		}
 		n.f4.accept(this);
 		return (R) "int[]";
@@ -791,9 +771,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		_ret = n.f1.accept(this);
 		String hashString = symt.hashString("class", (String) _ret,
 				(String) _ret, null);
-		if (!symt.mainTable.containsKey(hashString)) {
-			System.out.println("new Identifier()");
-			Exit();
+		if (!SymbolTable.mainTable.containsKey(hashString)) {
+			Exit("new Identifier()");
 		}
 
 		n.f2.accept(this);
@@ -809,8 +788,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 		R ret = n.f1.accept(this);
 		if (IType(ret) != "boolean") {
-			System.out.println("!Expression()");
-			Exit();
+			Exit("!Expression()");
 		}
 
 		return (R) "boolean";

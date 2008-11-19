@@ -104,6 +104,7 @@ public class SymbolTable {
 					for (Entry<String, Object> s : allElements) {
 						String key = s.getKey();
 						String values[] = key.split("\\s+");
+						// System.out.println(values[2]);
 						if (values[2].equals(classj)) {
 							present = true;
 							String hashString = hashString(values[0],
@@ -122,9 +123,8 @@ public class SymbolTable {
 									FunctionClass F2 = (FunctionClass) oldClassObj;
 
 									if (!functionEqual(F1, F2)) {
-										System.out
-												.println("Function overloading");
-										GJNoArguDepthFirst_Parse2.Exit();
+										GJNoArguDepthFirst_Parse2
+												.Exit("Function overloading");
 									}
 									tempMap.put(hashString, F1);
 								}
@@ -135,8 +135,8 @@ public class SymbolTable {
 
 									if (!variableEqual(F1, F2)) {
 
-										System.out.println("Overloading");
-										GJNoArguDepthFirst_Parse2.Exit();
+										GJNoArguDepthFirst_Parse2
+												.Exit("Overloading of variables");
 									}
 
 									tempMap.put(hashString, F1);
@@ -148,8 +148,7 @@ public class SymbolTable {
 						}
 					}
 					if (!present) {
-						System.out.println("Class not declared");
-						GJNoArguDepthFirst_Parse2.Exit();
+						GJNoArguDepthFirst_Parse2.Exit("Class not declared");
 					}
 
 					Set<Entry<String, Object>> tempElement = tempMap.entrySet();

@@ -56,9 +56,10 @@ class C
     }
     public int btoc(boolean a, boolean b)
     {
-    		boolean c;
-    		c = a;
-    		return 4;
+    		A aaaa;
+    		C cccc;
+    		cccc = aaaa;
+    		return 2;
     }
     public A abhiram2(int a)
     {

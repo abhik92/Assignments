@@ -9,20 +9,20 @@ import visitor.*;
 public class Typecheck {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
-			Node root = new MiniJavaParser(new FileInputStream("testing.java"))
-					.Goal();
-			System.out.println("Program parsed successfully");
+			/*
+			 * Node root = new MiniJavaParser(new
+			 * FileInputStream("LinearSearch-error.java")) .Goal();
+			 */
+			Node root = new MiniJavaParser(System.in).Goal();
 			SymbolTable sym = new SymbolTable();
 			root.accept(new GJNoArguDepthFirst(sym));
-			System.out.println(sym.mainTable.size());
 			if (SymbolTable.needsTransitive) {
 				new SymbolTable().findTransitiveClosure();
 			}
-
 			root.accept(new GJNoArguDepthFirst_Parse2(sym));
-			System.out.println(sym.mainTable.size());
+			System.out.println("Program type checked successfully");
 		} catch (ParseException e) {
-			System.out.println(e.toString());
+			System.out.println("Type error");
 		}
 	}
 }
