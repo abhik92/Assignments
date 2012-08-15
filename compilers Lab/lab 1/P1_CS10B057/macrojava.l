@@ -1,8 +1,7 @@
 /*
     Author: Karthik Abinav
-    Roll: CS10B057
+    Roll : CS10B057
 */
-
 %{
     #include "macrojava.tab.h"
     #include<stdlib.h>
