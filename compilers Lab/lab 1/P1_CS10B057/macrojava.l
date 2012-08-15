@@ -1,13 +1,14 @@
 /*
     Author: Karthik Abinav
-    Roll : CS10B057
+    Roll: CS10B057
 */
+
 %{
     #include "macrojava.tab.h"
     #include<stdlib.h>
 %}
 
-KEYWORD ("int"|"boolean"|"public"|"class"|"define"|"if"|"this"|"static"|"void"|"new"|"else"|"while"|"return"|"for"|"do"|"abstract"|"continue"|"break"|"switch"|"assert"|"default"|"case"|"goto"|"package"|"long"|"const"|"super"|"throw"|"throws"|"final"|"finally"|"extends"|"interface"|"try"|"catch"|"enum"|"private"|"protected"|"implements"|"float"|"double"|"byte"|"do"|"goto")
+KEYWORD ("abstract"|"assert"|"boolean"|"break"|"byte"|"case"|"catch"|"char"|"class"|"const"|"continue"|"default"|"do"|"double"|"define"|"else"|"enum"|"extends"|"final"|"finally"|"float"|"for"|"goto"|"if"|"implements"|"import"|"instanceof"|"int"|"interface"|"long"|"native"|"new"|"package"|"private"|"protected"|"public"|"return"|"short"|"static"|"strictfp"|"super"|"switch"|"synchronized"|"this"|"throw"|"throws"|"transient"|"try"|"void"|"volatile"|"while"|"null")
 IDENTIFIER [a-zA-Z][a-z0-9A-Z_$]*
 DIGIT [0-9]*
 BOOLEAN ("false"|"true")
