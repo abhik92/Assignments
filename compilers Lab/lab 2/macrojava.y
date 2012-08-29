@@ -41,7 +41,7 @@ extern int yyparse();
 %left '+' '-'
 %left '*' '/' '%'
 
-
+%expect-rr 100
 %% 
 
 Goal: MacroDefinition MainClass TypeDeclaration {printf("Success");} ;
