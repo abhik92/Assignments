@@ -1,0 +1,71 @@
+\documentclass[addpoints,12pt]{exam}
+\printanswers
+\usepackage{amsmath,amssymb,complexity,amsthm}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{definition}[theorem]{Definition}
+
+\begin{document}
+\hrule
+\vspace{3mm}
+\noindent
+{\sf IITM-CS6014 : Advanced Theory of Computation  \hfill Given on: Aug 28, 8am}
+\vspace{3mm}\\
+\noindent
+{\sf Problem Set \#2 \hfill Due on : Sep 11, 5pm}
+\vspace{3mm}
+\hrule
+{\small
+\begin{itemize}
+\item The instructions remain the same as last problem set. Answers need not be written in \LaTeX. However, from Problem Set 3 onwards, this will be compulsory. No PDFs will be accepted unless it is produced from a \LaTeX file.
+\end{itemize}}
+\hrule
+
+\begin{questions}
+\question
+Consider the following three problems. Formulate the problems as languages and
+argue whether they are decidable or undecidable. (You can apply Rice's theorems wherever possible.)
+\begin{parts}
+\part An \emph{unused state} of a Turing machine is a state that is never
+entered on any input string. The problem is to determine whether a Turing
+machine has any useless states.
+\part Given a Turing machine $M$ on input $x$, does the machine ever move its head left at any point during its computation on $w$.
+\part Given two Turing machines, $M_1$ and $M_2$, check if they accept complimentary languages.
+\part Given a Turing machine, test whether there exist a string on which the machine runs for ever.
+\part Given a Turing machine, test whether it accepts at least one palindrome string.
+\part Given a Turing machine, test whether it accepts only palindromes.
+\part Given two Turing machines, $M_1$ and $M_2$, check if they accept a common string.
+\end{parts}
+
+\question
+Kozen 104-110, 115.
+
+\question
+Over a singleton alphabet, describe:
+\begin{parts}
+\part a language which is not regular, but is decidable.
+\part a language which is semi-decidable but not decidable.
+\part a language which is in $\Sigma_2$ but not in $\Sigma_1$.
+\end{parts}
+
+\question
+\begin{parts}
+\part View $\le_m$ and $\le_T$ as relation defined over the set of languages.
+Argue whether they are reflexive, symmetric and transitive.
+\part Show that $L$ is decidable if and only if $L \le_m 1^*0^*$.
+\end{parts}
+
+\question
+Show that $FIN \le_T REG$. Suppose you are given an oracle which will
+always answer questions of the form, "Is $L(M)$ a regular set?" truthfully.
+Show how to use such an oracle to decide questions of the form, 
+"Is $L(M)$ finite?"
+
+\end{questions}
+\end{document}
