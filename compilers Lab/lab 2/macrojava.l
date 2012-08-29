@@ -13,6 +13,7 @@ new	return NEW;
 return 	return RETURN;
 class	return CLASS;
 define	return DEFINE;
+length return length;
 public	return PUBLIC;
 static	return STATIC;
 void	return VOID;
@@ -27,5 +28,6 @@ String	return STRING;
 [a-zA-Z_][a-zA-Z0-9_]* yylval.id = strdup(yytext); return IDENTIFIER;
 [#;{}\(\)\[\]\.]  return yytext[0];
 [%-\/<=!\+\*\&] yylval.op = strdup(yytext); return yylval.op[0];
-([+-]?[1-9][0-9]*|0) yylval.ival = atoi(yytext); return INTVAL;
+[1-9][0-9]*|0 yylval.ival = atoi(yytext); return INTVAL;
+<<EOF>> return EndOfFile;
 %%
