@@ -2,7 +2,105 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
+
 extern FILE* yyin;
+
+char symbol[100][100];
+char expansion[100][100];
+char parameters[100][100][10];//Allowing 10 parameters utmost in the macro
+int numOfParams[100];
+int numberOfMacros = 0;
+
+void initialize(){
+    int i;
+    for(i=0;i<100;i++)
+        numOfParams[i] = 0;
+}
+
+int isPresent(char key[])
+{
+    int i;
+    for(i=0;i<numberOfMacros;i++)
+    {
+        if(strcmp(key,symbol[i]) == 0)
+            return 1;
+
+    }
+
+    return 0;
+
+}
+
+
+char* findAndReplace(char key[],char params[100][10])
+{
+    int i; 
+    for(i=0;i<numberOfMacros;i++)
+    {
+        if(strcmp(key,symbol[i]) == 0)
+        {
+            
+            int k;
+            char *retVal= (char*)malloc(sizeof(char)*100);
+            retVal[0] = '\0';
+            int retvalC = 0;
+
+            if(numOfParams[i] == 0)
+                strcpy(retVal,expansion[i]);
+            
+            for(k=0;k<numOfParams[i];k++)
+            {
+                int rr;
+                for(rr=0;rr<strlen(expansion[i]);rr++)
+                {
+                    int temp = 0;
+                    char tempString[100];
+                    
+                    int prevR = rr;
+                    while(expansion[i][rr] == parameters[i][k][temp])
+                    {
+                        tempString[temp] = expansion[i][rr];
+                        temp++;
+                        rr++;
+
+                    }
+                    tempString[temp] = '\0';
+                    if(strcmp(parameters[i][k],tempString) == 0)
+                    {
+                        strcat(retVal,params[k]);
+                        retvalC += strlen(params[k]);
+                        rr--;
+                    }
+                    else
+                    {
+                        rr = prevR;
+                        retVal[retvalC++] = expansion[i][rr];
+
+
+                    }
+
+                }
+            }
+            if(numOfParams[i]!=0)
+            retVal[retvalC] = '\0';
+            return retVal;
+        }
+
+    }
+    return '\0';
+}
+void push(char key[] , char value[] , char parameter[100][10])
+{
+    strcpy(symbol[numberOfMacros] , key);
+    strcpy(expansion[numberOfMacros] , value);
+    int i;
+    for(i=0;i<numOfParams[numberOfMacros];i++)
+    {
+        strcpy(parameters[numberOfMacros][i] , parameter[i]);
+    }
+    numberOfMacros++; 
+}
+
 
 extern int yyparse();
 %}
@@ -65,12 +163,13 @@ extern int yyparse();
 
 Goal: MacroDefinition MainClass TypeDeclaration EndOfFile {
                                         
-                                        $$ = (char*) malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+1));
+                                        $$ = (char*) malloc(sizeof(char)*(strlen($2)+strlen($3)+1));
                                         $$[0] = '\0';
-                                        strcat($$,$1);
+                                        
                                         strcat($$,$2);
                                         strcat($$,$3);
-                                        printf("%s",$$);
+                                        printf("%s\n",$$);
+                                        
                                         exit(0);
                                         
                                 } ;
@@ -213,7 +312,7 @@ Type :	INT '[' ']' {
      
      }
      |  BOOLEAN {
-        $1="bool";
+        $1="boolean";
 
         $$ = (char*)malloc(sizeof(char)*(strlen($1)+1));
         $$[0] = '\0';
@@ -365,12 +464,39 @@ Statement : '{' recursiveStatement '}' {
                $$ = (char*)malloc(sizeof(char)*(strlen($1)+1+strlen($3)+strlen($4)+2+1));
             
               $$[0] = '\0';
-              strcat($$,$1);
-              strcat($$,"(");
-              strcat($$,$3);
-              strcat($$,$4);
-              strcat($$,")");
-              strcat($$,";");
+             if(isPresent($1) == 0){
+                  strcat($$,$1);
+                  strcat($$,"(");
+                  strcat($$,$3);
+                  strcat($$,$4);
+                  strcat($$,")");
+                  strcat($$,";");
+              }
+              else
+              {
+                      char paramsConcat[100][10];
+                      int i;
+                      strcpy(paramsConcat[0], $3);
+                      int temp = 1;
+                      int r =0;
+                      for(i=0;i<=strlen($4);i++)
+                      {
+                        if($4[i] == ',' || $4[i] == '\0')
+                        {
+                            paramsConcat[temp][r++] = '\0';
+                            temp++;
+                            r=0;
+                        }
+                        else
+                        {
+                            paramsConcat[temp][r++] = $4[i]; 
+
+                        }
+
+                       }
+                    
+                      strcat($$,findAndReplace($1,paramsConcat));
+            }
 
           
           
@@ -379,10 +505,22 @@ Statement : '{' recursiveStatement '}' {
                $$ = (char*)malloc(sizeof(char)*(strlen($1)+3+1));
             
               $$[0] = '\0';
-              strcat($$,$1);
-              strcat($$,"(");
-              strcat($$,")");
-              strcat($$,";");
+
+              if(isPresent($1) == 0){
+                strcat($$,$1);
+                strcat($$,"(");
+                strcat($$,")");
+                strcat($$,";");
+              }
+
+              else
+              {
+                   char tt[100][10];
+                   strcat($$,"(");
+                   strcat($$,findAndReplace($1,tt));
+                   strcat($$,");");
+
+               }
                        
           }
           | IDENTIFIER DOT {
@@ -397,70 +535,70 @@ Statement : '{' recursiveStatement '}' {
 
 MacroDefExpression  : '#' DEFINE IDENTIFIER '(' IDENTIFIER ComIden ')' '(' Expression ')' {
                           
-                          $2="define";
-
+                          char tt[100][10];
+                          strcpy(tt[0],$5);
                           
-                          $$ = (char*)malloc(sizeof(char)*(1+strlen($2)+strlen($3)+1+strlen($5)+strlen($6)+2+strlen($9)+1+1));
-                          $$[0] = '\0';
-                          strcat($$,"#");
-                          strcat($$,$2);
-                          strcat($$,$3);
-                          strcat($$,"(");
-                          strcat($$,$5);
-                          strcat($$,$6);
-                          strcat($$,")");
-                          strcat($$,"(");
-                          strcat($$,$9);
-                          strcat($$,")");
+                          int temp = 1;
+                          int i,r=0;
+                          for(i=0;i<=strlen($6);i++)
+                          {     
+                                if($6[i] == ',' || $6[i] =='\0')
+                                {
+                                    tt[temp][r++] = '\0';;
+                                    temp++;
+                                    r = 0;
+                                    numOfParams[numberOfMacros]++;
+
+                                }
+                                else
+                                {
+                                    tt[temp][r++] = $6[i];
+                                }
+
+                            }
+                          
+                          push($3,$9,tt);
        
                       }
                     | '#' DEFINE IDENTIFIER '(' ')' '(' Expression ')' {
                           
-                          $2="define";
-                          $$ = (char*)malloc(sizeof(char)*(1+strlen($2)+strlen($3)+2+strlen($7)+1+1));
-                          $$[0] = '\0';
-                          strcat($$,"#");
-                          strcat($$,$2);
-                          strcat($$,$3);
-                          strcat($$,"(");
-                          strcat($$,")");
-                          strcat($$,"(");
-                          strcat($$,$7);
-                          strcat($$,")");
-                          
+                          numOfParams[numberOfMacros] = 0;
+                          char tt[100][10];
+                          push($3,$7,tt);
+
                        }
                     ;
 
 MacroDefStatement :	'#' DEFINE IDENTIFIER '(' IDENTIFIER ComIden ')' '{' recursiveStatement '}' {
-                        
-                        $2="define";
-                        $$ = (char*)malloc(sizeof(char)*(1+strlen($2)+strlen($3)+1+strlen($5)+strlen($6)+2+strlen($9)+1+1));
-                        $$[0] = '\0';
-                          strcat($$,"#");
-                          strcat($$,$2);
-                          strcat($$,$3);
-                          strcat($$,"(");
-                          strcat($$,$5);
-                          strcat($$,$6);
-                          strcat($$,")");
-                          strcat($$,"{");
-                          strcat($$,$9);
-                          strcat($$,"}");
+                          char tt[100][10];
+                          strcpy(tt[0],$5);
+                          int temp = 1;
+                          int i,r=0;
+                          for(i=0;i<=strlen($6);i++)
+                          {     
+                                if($6[i] == ',' || $6[i] =='\0')
+                                {
+                                    tt[temp][r++] = '\0';;
+                                    temp++;
+                                    r = 0;
+                                    numOfParams[numberOfMacros]++;
+
+                                }
+                                else
+                                {
+                                    tt[temp][r++] = $6[i];
+                                }
+
+                            }
+
+                          push($3,$9,tt);
 
                   }
                   |	'#' DEFINE IDENTIFIER '(' ')' '{' recursiveStatement '}' {
-                        
-                        $2="define";
-                        $$ = (char*)malloc(sizeof(char)*(1+strlen($2)+strlen($3)+3+strlen($7)+1+1));
-                          $$[0] = '\0';
-                          strcat($$,"#");
-                          strcat($$,$2);
-                          strcat($$,$3);
-                          strcat($$,"(");
-                          strcat($$,")");
-                          strcat($$,"{");
-                          strcat($$,$7);
-                          strcat($$,"}");
+                          numOfParams[numberOfMacros] = 0;
+                          char tt[100][10];
+                          push($3,$7,tt);
+ 
                   }
                   ;
 
@@ -496,23 +634,13 @@ ComIden : ComIden ';' IDENTIFIER {
         ;
 
 MacroDefinition : MacroDefinition MacroDefExpression {
-                    $$ = (char*)malloc(sizeof(char)*(strlen($1)+strlen($2)+1));
-                    $$[0] = '\0';
-                    strcat($$,$1);
-                    strcat($$,$2);
-                
+                                    
                 }
                 | MacroDefinition MacroDefStatement {
-                    $$ = (char*)malloc(sizeof(char)*(strlen($1)+strlen($2)+1));
-                    $$[0] = '\0';
-                    strcat($$,$1);
-                    strcat($$,$2);
-                
+                                    
                 }
                 | /*epsilon*/ {
-                    $$ = (char*)malloc(sizeof(char)*1);
-                    $$[0] = '\0';
-                
+                                    
                 }
                 ;
 
@@ -657,20 +785,58 @@ Expression  :	PrimaryExpression '&' PrimaryExpression {
             |	IDENTIFIER '(' Expression ComExp ')'  {
                 $$ = (char*)malloc(sizeof(char)*(strlen($1)+1+strlen($3)+strlen($4)+1+1));
                 $$[0] = '\0';
-                strcat($$,$1);
-                strcat($$,"(");
-                strcat($$,$3);
-                strcat($$,$4);
-                strcat($$,")");
+                
+                if(!isPresent($1)){
+                    strcat($$,$1);
+                    strcat($$,"(");
+                    strcat($$,$3);
+                    strcat($$,$4);
+                    strcat($$,")");
+                }
+                else
+                {   
+                      char paramsConcat[100][10];
+                      int i;
+                      strcpy(paramsConcat[0], $3);
+                      int temp = 1;
+                      int r =0;
+                      for(i=0;i<=strlen($4);i++)
+                      {
+                        if($4[i] == ',' || $4[i] == '\0')
+                        {
+                            paramsConcat[temp][r++] = '\0';
+                            temp++;
+                            r=0;
+                        }
+                        else
+                        {
+                            paramsConcat[temp][r++] = $4[i]; 
 
-            
+                        }
+
+                       }
+                        
+                      strcat($$,findAndReplace($1,paramsConcat));
+            }
+
+
             }
             |	IDENTIFIER '(' ')' {
                 $$ = (char*)malloc(sizeof(char)*(strlen($1)+2+1));
                 $$[0] = '\0';
-                strcat($$,$1);
-                strcat($$,"(");
-                strcat($$,")");
+                if(!isPresent($1)){
+                    strcat($$,$1);
+                    strcat($$,"(");
+                    strcat($$,")");
+                }
+                else
+                {
+                    char tt[100][10];
+                    strcat($$,"(");
+                    strcat($$,findAndReplace($1,tt));
+                    strcat($$,")");
+
+                }
             
             }
             |   PrimaryExpression {
@@ -755,6 +921,7 @@ PrimaryExpression   :	INTVAL {
 
 %%
 main(){
+    initialize();
 	// parse through the input until there is no more.
 	do {
 		yyparse();
@@ -762,7 +929,7 @@ main(){
 }
 
 void yyerror(const char *s){
-	printf ("Parse error: %s\n" , s);
+	printf ("// Failed to parse macrojava code.");
     exit(0);
     
 }

@@ -72,7 +72,7 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 10 "macrojava.y"
+#line 108 "macrojava.y"
 
 	int ival; // integers
 	char *bval;// true and false
