@@ -6,6 +6,6 @@ class Test{
 }
 class A {
     public int run(){
-        return ZERO();
+        return ZERO() ;
     }
 }

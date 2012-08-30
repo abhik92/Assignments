@@ -516,9 +516,8 @@ Statement : '{' recursiveStatement '}' {
               else
               {
                    char tt[100][10];
-                   strcat($$,"(");
                    strcat($$,findAndReplace($1,tt));
-                   strcat($$,");");
+                   strcat($$,";");
 
                }
                        
@@ -832,10 +831,7 @@ Expression  :	PrimaryExpression '&' PrimaryExpression {
                 else
                 {
                     char tt[100][10];
-                    strcat($$,"(");
                     strcat($$,findAndReplace($1,tt));
-                    strcat($$,")");
-
                 }
             
             }
