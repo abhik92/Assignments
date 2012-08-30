@@ -69,14 +69,15 @@
 #line 1 "macrojava.y"
 
 #include<stdio.h>
-
+#include<stdlib.h>
+#include <string.h>
 extern FILE* yyin;
 
 extern int yyparse();
 
 
 /* Line 268 of yacc.c  */
-#line 80 "macrojava.tab.c"
+#line 81 "macrojava.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -138,7 +139,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 9 "macrojava.y"
+#line 10 "macrojava.y"
 
 	int ival; // integers
 	char *bval;// true and false
@@ -149,7 +150,7 @@ typedef union YYSTYPE
 
 
 /* Line 293 of yacc.c  */
-#line 153 "macrojava.tab.c"
+#line 154 "macrojava.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -161,7 +162,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 165 "macrojava.tab.c"
+#line 166 "macrojava.tab.c"
 
 #ifdef short
 # undef short
@@ -380,16 +381,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  3
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   210
+#define YYLAST   226
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  48
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  18
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  64
+#define YYNRULES  63
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  184
+#define YYNSTATES  185
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -437,29 +438,29 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint16 yyprhs[] =
 {
-       0,     0,     3,     7,    25,    33,    43,    44,    61,    75,
-      76,    80,    82,    84,    86,    90,    98,    99,   100,   103,
-     104,   108,   113,   121,   127,   135,   141,   148,   153,   156,
-     167,   176,   187,   196,   200,   201,   205,   206,   209,   212,
-     213,   218,   219,   224,   225,   229,   233,   237,   241,   245,
-     249,   254,   258,   266,   272,   278,   282,   284,   286,   288,
-     290,   292,   298,   303,   306
+       0,     0,     3,     8,    26,    34,    44,    45,    62,    76,
+      77,    81,    83,    85,    87,    91,    99,   100,   101,   104,
+     108,   113,   121,   127,   135,   141,   148,   153,   156,   167,
+     176,   187,   196,   200,   201,   205,   206,   209,   212,   213,
+     218,   219,   224,   225,   229,   233,   237,   241,   245,   249,
+     254,   258,   266,   272,   278,   282,   284,   286,   288,   290,
+     292,   298,   303,   306
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      49,     0,    -1,    61,    50,    51,    -1,    11,     7,    36,
-      13,    14,    15,     7,    37,    23,    38,    39,     7,    40,
-      36,    55,    41,    41,    -1,    51,    11,     7,    36,    62,
-      52,    41,    -1,    51,    11,     7,    21,     7,    36,    62,
-      52,    41,    -1,    -1,    52,    13,    53,     7,    37,    53,
-       7,    63,    40,    36,    62,    55,    10,    64,    42,    41,
-      -1,    52,    13,    53,     7,    37,    40,    36,    62,    55,
-      10,    64,    42,    41,    -1,    -1,    16,    38,    39,    -1,
-      17,    -1,    16,    -1,     7,    -1,    54,    43,     7,    -1,
-      54,    43,     7,    37,    64,    40,    42,    -1,    -1,    -1,
-      56,    55,    -1,    -1,    36,    55,    41,    -1,     7,    27,
+      49,     0,    -1,    61,    50,    51,    22,    -1,    11,     7,
+      36,    13,    14,    15,     7,    37,    23,    38,    39,     7,
+      40,    36,    55,    41,    41,    -1,    51,    11,     7,    36,
+      62,    52,    41,    -1,    51,    11,     7,    21,     7,    36,
+      62,    52,    41,    -1,    -1,    52,    13,    53,     7,    37,
+      53,     7,    63,    40,    36,    62,    55,    10,    64,    42,
+      41,    -1,    52,    13,    53,     7,    37,    40,    36,    62,
+      55,    10,    64,    42,    41,    -1,    -1,    16,    38,    39,
+      -1,    17,    -1,    16,    -1,     7,    -1,    54,    43,     7,
+      -1,    54,    43,     7,    37,    64,    40,    42,    -1,    -1,
+      -1,    56,    55,    -1,    36,    55,    41,    -1,     7,    27,
       64,    42,    -1,     7,    38,    64,    39,    27,    64,    42,
       -1,    18,    37,    64,    40,    56,    -1,    18,    37,    64,
       40,    56,    19,    56,    -1,    20,    37,    64,    40,    56,
@@ -483,15 +484,15 @@ static const yytype_int8 yyrhs[] =
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
-static const yytype_uint8 yyrline[] =
+static const yytype_uint16 yyrline[] =
 {
-       0,    47,    47,    49,    51,    52,    53,    56,    57,    58,
-      61,    62,    63,    64,    67,    68,    69,    72,    73,    77,
-      78,    79,    80,    81,    82,    83,    84,    85,    86,    89,
-      90,    93,    94,    97,    98,   101,   102,   105,   106,   107,
-     110,   111,   114,   115,   119,   120,   121,   122,   123,   124,
-     125,   126,   127,   128,   129,   130,   131,   134,   135,   136,
-     137,   138,   139,   140,   141
+       0,    66,    66,    79,   109,   125,   142,   149,   174,   196,
+     204,   215,   223,   232,   240,   249,   261,   269,   275,   284,
+     293,   303,   315,   329,   348,   364,   378,   388,   398,   417,
+     434,   451,   467,   475,   482,   490,   498,   505,   512,   519,
+     529,   537,   547,   555,   562,   572,   582,   591,   601,   612,
+     622,   633,   647,   657,   668,   676,   685,   691,   698,   704,
+     712,   728,   739,   747
 };
 #endif
 
@@ -531,23 +532,23 @@ static const yytype_uint8 yyr1[] =
 {
        0,    48,    49,    50,    51,    51,    51,    52,    52,    52,
       53,    53,    53,    53,    54,    54,    54,    55,    55,    56,
-      56,    56,    56,    56,    56,    56,    56,    56,    56,    57,
-      57,    58,    58,    59,    59,    60,    60,    61,    61,    61,
-      62,    62,    63,    63,    64,    64,    64,    64,    64,    64,
-      64,    64,    64,    64,    64,    64,    64,    65,    65,    65,
-      65,    65,    65,    65,    65
+      56,    56,    56,    56,    56,    56,    56,    56,    57,    57,
+      58,    58,    59,    59,    60,    60,    61,    61,    61,    62,
+      62,    63,    63,    64,    64,    64,    64,    64,    64,    64,
+      64,    64,    64,    64,    64,    64,    65,    65,    65,    65,
+      65,    65,    65,    65
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     3,    17,     7,     9,     0,    16,    13,     0,
-       3,     1,     1,     1,     3,     7,     0,     0,     2,     0,
-       3,     4,     7,     5,     7,     5,     6,     4,     2,    10,
-       8,    10,     8,     3,     0,     3,     0,     2,     2,     0,
-       4,     0,     4,     0,     3,     3,     3,     3,     3,     3,
-       4,     3,     7,     5,     5,     3,     1,     1,     1,     1,
-       1,     5,     4,     2,     3
+       0,     2,     4,    17,     7,     9,     0,    16,    13,     0,
+       3,     1,     1,     1,     3,     7,     0,     0,     2,     3,
+       4,     7,     5,     7,     5,     6,     4,     2,    10,     8,
+      10,     8,     3,     0,     3,     0,     2,     2,     0,     4,
+       0,     4,     0,     3,     3,     3,     3,     3,     3,     4,
+       3,     7,     5,     5,     3,     1,     1,     1,     1,     1,
+       5,     4,     2,     3
 };
 
 /* YYDEFACT[STATE-NAME] -- Default reduction number in state STATE-NUM.
@@ -555,65 +556,65 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-      39,     0,     0,     1,     0,     0,     6,    37,    38,     0,
-       0,     2,     0,     0,     0,     0,     0,     0,     0,    36,
-       0,     0,    41,     0,     0,    17,     0,     0,     9,     0,
-       0,     0,    16,     0,     0,    17,     0,    17,    57,    58,
-      59,    60,     0,     0,     0,     0,    56,    41,    13,    12,
-      11,     0,     0,     0,    17,     0,    35,     0,     0,     0,
-      28,     0,     0,     0,    32,    18,     0,     0,     0,     0,
-      63,    30,     0,     0,     0,     0,     0,     0,     0,     0,
-       9,     0,     0,     4,     0,     0,     0,     0,     0,     0,
-      34,     0,     0,     0,     0,    20,    55,    34,     0,     0,
-      64,    59,    45,    46,    47,    48,    49,     0,     0,    51,
-      44,     0,    10,     0,    40,     0,    31,    29,    21,    27,
-       0,     0,    14,    19,    19,     0,    62,     0,    50,     0,
-       5,     0,     0,     0,     0,     0,     0,    23,    25,    54,
-      61,    53,    34,     0,     0,    26,    33,     0,     0,    19,
-       0,     0,     0,     0,    22,     0,    24,    52,    41,    43,
-      17,    15,    17,     0,     0,    16,     0,     0,     0,     0,
-       0,    41,     0,     3,     0,    17,    42,     0,     0,     8,
-       0,     0,     0,     7
+      38,     0,     0,     1,     0,     0,     6,    36,    37,     0,
+       0,     0,     0,     0,     0,     2,     0,     0,     0,     0,
+      35,     0,     0,    40,     0,     0,    17,     0,     0,     9,
+       0,     0,     0,    16,     0,     0,    17,     0,    17,    56,
+      57,    58,    59,     0,     0,     0,     0,    55,    40,    13,
+      12,    11,     0,     0,     0,    17,     0,    34,     0,     0,
+       0,    27,     0,     0,     0,    31,    18,     0,     0,     0,
+       0,    62,    29,     0,     0,     0,     0,     0,     0,     0,
+       0,     9,     0,     0,     4,     0,     0,     0,     0,     0,
+       0,    33,     0,     0,     0,     0,    19,    54,    33,     0,
+       0,    63,    58,    44,    45,    46,    47,    48,     0,     0,
+      50,    43,     0,    10,     0,    39,     0,    30,    28,    20,
+      26,     0,     0,    14,     0,     0,     0,    61,     0,    49,
+       0,     5,     0,     0,     0,     0,     0,     0,    22,    24,
+      53,    60,    52,    33,     0,     0,    25,    32,     0,     0,
+       0,     0,     0,     0,     0,    21,     0,    23,    51,    40,
+      42,    17,    15,    17,     0,     0,    16,     0,     0,     0,
+       0,     0,    40,     0,     3,     0,    17,    41,     0,     0,
+       8,     0,     0,     0,     7
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int16 yydefgoto[] =
 {
-      -1,     1,     6,    11,    51,    52,    60,    36,    37,     7,
-       8,   120,    24,     2,    28,   163,    45,    46
+      -1,     1,     6,    11,    52,    53,    61,    37,    38,     7,
+       8,   121,    25,     2,    29,   164,    46,    47
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -109
+#define YYPACT_NINF -110
 static const yytype_int16 yypact[] =
 {
-    -109,    37,    17,  -109,    10,    11,  -109,  -109,  -109,    43,
-      46,    62,    75,    68,   102,    99,    29,    72,   109,  -109,
-     -26,   112,  -109,   123,    70,    96,    40,    95,    65,   107,
-      86,   134,    80,   108,   111,    96,   105,    96,  -109,  -109,
-     120,  -109,    67,    40,    40,   119,   104,  -109,  -109,   122,
-    -109,    -8,   142,   138,    96,    40,  -109,    40,     5,    40,
-     121,    40,    40,   124,  -109,  -109,    23,   125,   128,   127,
-    -109,  -109,    47,    47,    47,    47,    47,    47,    52,    47,
-      65,   129,    65,  -109,   130,   131,   132,   135,   136,   137,
-    -109,   141,   156,   143,   144,  -109,  -109,  -109,   145,    40,
-    -109,  -109,  -109,  -109,  -109,  -109,  -109,   147,   133,  -109,
-    -109,    45,  -109,   164,  -109,   148,  -109,  -109,  -109,  -109,
-      35,   149,   140,    96,    96,    66,  -109,   150,  -109,    31,
-    -109,   151,   167,   139,    40,    40,    40,   163,  -109,  -109,
-    -109,  -109,  -109,    50,   152,  -109,  -109,   153,   154,    96,
-      81,   155,   183,   157,  -109,   158,  -109,  -109,  -109,  -109,
-      96,  -109,    84,    94,   160,    58,   186,   161,    65,   162,
-      40,  -109,   191,  -109,   165,    84,  -109,   168,   189,  -109,
-      40,   166,   169,  -109
+    -110,    37,    17,  -110,    10,    11,  -110,  -110,  -110,    70,
+      46,    61,    68,    51,   106,  -110,   109,    29,    72,   111,
+    -110,   -26,   127,  -110,   132,    69,    96,    40,   108,   105,
+     112,    94,   134,    80,   120,   122,    96,   107,    96,  -110,
+    -110,   123,  -110,    66,    40,    40,   121,   104,  -110,  -110,
+     124,  -110,    -8,   138,   140,    96,    40,  -110,    40,     5,
+      40,   103,    40,    40,   125,  -110,  -110,    23,   128,   126,
+     129,  -110,  -110,    47,    47,    47,    47,    47,    47,    52,
+      47,   105,   131,   105,  -110,   130,   133,   135,   137,   136,
+     139,  -110,   141,   160,   142,   143,  -110,  -110,  -110,   144,
+      40,  -110,  -110,  -110,  -110,  -110,  -110,  -110,   146,   149,
+    -110,  -110,    45,  -110,   161,  -110,   148,  -110,  -110,  -110,
+    -110,    34,   147,   151,    96,    96,    35,  -110,   150,  -110,
+      31,  -110,   153,   166,   152,    40,    40,    40,   156,  -110,
+    -110,  -110,  -110,  -110,    50,   155,  -110,  -110,   154,   157,
+      96,    65,   162,   172,   163,  -110,   158,  -110,  -110,  -110,
+    -110,    96,  -110,    84,    79,   164,    58,   181,   165,   105,
+     167,    40,  -110,   185,  -110,   168,    84,  -110,   170,   183,
+    -110,    40,   171,   173,  -110
 };
 
 /* YYPGOTO[NTERM-NUM].  */
-static const yytype_int8 yypgoto[] =
+static const yytype_int16 yypgoto[] =
 {
-    -109,  -109,  -109,  -109,   126,   -79,  -109,   -35,  -108,  -109,
-    -109,   -96,  -109,  -109,   -43,  -109,   -37,    79
+    -110,  -110,  -110,  -110,   145,   -80,  -110,   -36,  -109,  -110,
+    -110,   -97,  -110,  -110,   -44,  -110,   -38,    78
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -622,60 +623,62 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -14
 static const yytype_int16 yytable[] =
 {
-      63,   125,    65,   113,    80,    82,    69,    70,    38,    39,
-      25,    26,    40,    41,    42,   137,   138,     9,    87,    86,
-      88,    90,    91,    10,    93,    94,    38,    39,     4,    97,
-      40,    41,    42,    83,    38,    39,    19,     3,    40,    41,
-      42,   156,    43,    38,    39,    89,   150,    40,    41,    42,
-      38,    39,    44,    13,   101,    41,    42,    48,    82,   108,
-      43,     5,   127,    96,   152,   -13,    49,    50,    43,    20,
-      44,   141,    48,    14,    67,   133,   109,    43,    44,    12,
-     134,    49,    50,    68,    43,    57,   130,    44,    15,   172,
-     151,   165,   142,    21,    44,    58,    59,   146,   147,   148,
-      49,    50,    33,    32,    34,    16,   139,    57,    22,    17,
-      30,   134,    31,    18,    33,   162,    34,    58,    59,    27,
-      35,   157,    54,    55,    23,   164,   134,   166,   175,    72,
-      29,    47,    35,   174,   167,    73,    74,    75,    76,   168,
-     178,    56,    77,   181,    53,    61,    64,    78,    62,    84,
-      79,   102,   103,   104,   105,   106,   107,    66,   110,    71,
-      81,    85,    98,   122,    92,    95,    99,   100,   112,   115,
-     129,   131,   114,   116,   144,   117,   135,   136,   118,   119,
-     121,   145,   149,   123,   124,   126,   128,   132,   143,   140,
-     159,   158,   153,   160,   155,   154,   170,   171,   176,   180,
-     161,   169,     0,   173,     0,     0,   111,   177,   182,   179,
-     183
+      64,   126,    66,   114,    81,    83,    70,    71,    39,    40,
+      26,    27,    41,    42,    43,   138,   139,     9,    88,    87,
+      89,    91,    92,    10,    94,    95,    39,    40,     4,    98,
+      41,    42,    43,    84,    39,    40,    20,     3,    41,    42,
+      43,   157,    44,    39,    40,    90,   151,    41,    42,    43,
+      39,    40,    45,    13,   102,    42,    43,    49,    83,   109,
+      44,     5,   128,    97,   153,   -13,    50,    51,    44,    21,
+      45,   142,    14,    68,   134,   140,   110,    44,    45,   135,
+     135,    16,    69,    15,    44,    58,   131,    45,    17,   173,
+     152,   166,   143,    22,    45,    59,    60,   147,   148,   149,
+      50,    51,    34,    33,    35,   158,    12,    58,    23,    31,
+     135,    32,    49,    18,    34,   163,    35,    59,    60,   168,
+      36,    50,    51,    19,   169,   165,    24,   167,   176,    73,
+      55,    56,    36,   175,    28,    74,    75,    76,    77,    30,
+     179,    57,    78,   182,    48,    85,    93,    79,    65,    54,
+      80,   103,   104,   105,   106,   107,   108,    62,   111,    63,
+      67,    72,    82,    86,   100,    99,    96,   123,   132,   101,
+     113,   116,   115,   145,   136,   150,   117,   118,   119,   160,
+     122,   120,   124,   125,   127,   129,   130,   133,   137,   141,
+     144,   171,   177,   181,   146,   154,   155,   156,   159,   161,
+     162,   172,     0,     0,     0,   170,     0,     0,   174,     0,
+     178,   180,     0,   183,   184,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,   112
 };
 
 #define yypact_value_is_default(yystate) \
-  ((yystate) == (-109))
+  ((yystate) == (-110))
 
 #define yytable_value_is_error(yytable_value) \
   YYID (0)
 
 static const yytype_int16 yycheck[] =
 {
-      35,    97,    37,    82,    47,    13,    43,    44,     3,     4,
-      36,    37,     7,     8,     9,   123,   124,     7,    55,    54,
-      57,    58,    59,    12,    61,    62,     3,     4,    11,    66,
+      36,    98,    38,    83,    48,    13,    44,    45,     3,     4,
+      36,    37,     7,     8,     9,   124,   125,     7,    56,    55,
+      58,    59,    60,    12,    62,    63,     3,     4,    11,    67,
        7,     8,     9,    41,     3,     4,     7,     0,     7,     8,
-       9,   149,    37,     3,     4,    40,   142,     7,     8,     9,
+       9,   150,    37,     3,     4,    40,   143,     7,     8,     9,
        3,     4,    47,     7,     7,     8,     9,     7,    13,     7,
-      37,    44,    99,    40,   143,     7,    16,    17,    37,    40,
-      47,    40,     7,    11,     7,    40,    24,    37,    47,    36,
-      45,    16,    17,    16,    37,    27,    41,    47,    13,   168,
-      40,     7,   129,    21,    47,    37,    38,   134,   135,   136,
-      16,    17,    18,     7,    20,    37,    40,    27,    36,     7,
-      40,    45,    42,    14,    18,   158,    20,    37,    38,     7,
-      36,    40,    36,    37,    15,   160,    45,   162,   171,    25,
-       7,    36,    36,   170,    40,    31,    32,    33,    34,    45,
-     175,     7,    38,   180,    37,    37,    41,    43,    37,     7,
-      46,    72,    73,    74,    75,    76,    77,    37,    79,    40,
-      38,    23,    37,     7,    43,    41,    38,    40,    39,    38,
-      37,     7,    42,    41,     7,    40,    27,    37,    42,    42,
-      39,    42,    19,    40,    40,    40,    39,    39,    37,    39,
-       7,    36,    40,    36,    40,    42,    10,    36,     7,    10,
-      42,    41,    -1,    41,    -1,    -1,    80,    42,    42,    41,
-      41
+      37,    44,   100,    40,   144,     7,    16,    17,    37,    40,
+      47,    40,    11,     7,    40,    40,    24,    37,    47,    45,
+      45,    13,    16,    22,    37,    27,    41,    47,    37,   169,
+      40,     7,   130,    21,    47,    37,    38,   135,   136,   137,
+      16,    17,    18,     7,    20,    40,    36,    27,    36,    40,
+      45,    42,     7,     7,    18,   159,    20,    37,    38,    40,
+      36,    16,    17,    14,    45,   161,    15,   163,   172,    25,
+      36,    37,    36,   171,     7,    31,    32,    33,    34,     7,
+     176,     7,    38,   181,    36,     7,    43,    43,    41,    37,
+      46,    73,    74,    75,    76,    77,    78,    37,    80,    37,
+      37,    40,    38,    23,    38,    37,    41,     7,     7,    40,
+      39,    38,    42,     7,    27,    19,    41,    40,    42,     7,
+      39,    42,    40,    40,    40,    39,    37,    39,    37,    39,
+      37,    10,     7,    10,    42,    40,    42,    40,    36,    36,
+      42,    36,    -1,    -1,    -1,    41,    -1,    -1,    41,    -1,
+      42,    41,    -1,    42,    41,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    81
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -683,24 +686,24 @@ static const yytype_int16 yycheck[] =
 static const yytype_uint8 yystos[] =
 {
        0,    49,    61,     0,    11,    44,    50,    57,    58,     7,
-      12,    51,    36,     7,    11,    13,    37,     7,    14,     7,
-      40,    21,    36,    15,    60,    36,    37,     7,    62,     7,
-      40,    42,     7,    18,    20,    36,    55,    56,     3,     4,
-       7,     8,     9,    37,    47,    64,    65,    36,     7,    16,
-      17,    52,    53,    37,    36,    37,     7,    27,    37,    38,
-      54,    37,    37,    55,    41,    55,    37,     7,    16,    64,
-      64,    40,    25,    31,    32,    33,    34,    38,    43,    46,
-      62,    38,    13,    41,     7,    23,    55,    64,    64,    40,
-      64,    64,    43,    64,    64,    41,    40,    64,    37,    38,
-      40,     7,    65,    65,    65,    65,    65,    65,     7,    24,
-      65,    52,    39,    53,    42,    38,    41,    40,    42,    42,
-      59,    39,     7,    40,    40,    59,    40,    64,    39,    37,
-      41,     7,    39,    40,    45,    27,    37,    56,    56,    40,
-      39,    40,    64,    37,     7,    42,    64,    64,    64,    19,
-      59,    40,    53,    40,    42,    40,    56,    40,    36,     7,
-      36,    42,    62,    63,    55,     7,    55,    40,    45,    41,
-      10,    36,    53,    41,    64,    62,     7,    42,    55,    41,
-      10,    64,    42,    41
+      12,    51,    36,     7,    11,    22,    13,    37,     7,    14,
+       7,    40,    21,    36,    15,    60,    36,    37,     7,    62,
+       7,    40,    42,     7,    18,    20,    36,    55,    56,     3,
+       4,     7,     8,     9,    37,    47,    64,    65,    36,     7,
+      16,    17,    52,    53,    37,    36,    37,     7,    27,    37,
+      38,    54,    37,    37,    55,    41,    55,    37,     7,    16,
+      64,    64,    40,    25,    31,    32,    33,    34,    38,    43,
+      46,    62,    38,    13,    41,     7,    23,    55,    64,    64,
+      40,    64,    64,    43,    64,    64,    41,    40,    64,    37,
+      38,    40,     7,    65,    65,    65,    65,    65,    65,     7,
+      24,    65,    52,    39,    53,    42,    38,    41,    40,    42,
+      42,    59,    39,     7,    40,    40,    59,    40,    64,    39,
+      37,    41,     7,    39,    40,    45,    27,    37,    56,    56,
+      40,    39,    40,    64,    37,     7,    42,    64,    64,    64,
+      19,    59,    40,    53,    40,    42,    40,    56,    40,    36,
+       7,    36,    42,    62,    63,    55,     7,    55,    40,    45,
+      41,    10,    36,    53,    41,    64,    62,     7,    42,    55,
+      41,    10,    64,    42,    41
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1537,371 +1540,1035 @@ yyreduce:
         case 2:
 
 /* Line 1806 of yacc.c  */
-#line 47 "macrojava.y"
-    {printf("Success");}
+#line 66 "macrojava.y"
+    {
+                                        
+                                        (yyval.id) = (char*) malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+strlen((yyvsp[(2) - (4)].id))+strlen((yyvsp[(3) - (4)].id))+1));
+                                        (yyval.id)[0] = '\0';
+                                        strcat((yyval.id),(yyvsp[(1) - (4)].id));
+                                        strcat((yyval.id),(yyvsp[(2) - (4)].id));
+                                        strcat((yyval.id),(yyvsp[(3) - (4)].id));
+                                        printf("%s",(yyval.id));
+                                        exit(0);
+                                        
+                                }
     break;
 
   case 3:
 
 /* Line 1806 of yacc.c  */
-#line 49 "macrojava.y"
-    {}
+#line 79 "macrojava.y"
+    {
+                (yyvsp[(1) - (17)].id)="class";
+                (yyvsp[(4) - (17)].id)="public";
+                (yyvsp[(5) - (17)].id)="static";
+                (yyvsp[(6) - (17)].id)="void";
+                (yyvsp[(9) - (17)].id)="string";
+                
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (17)].id)) + strlen((yyvsp[(2) - (17)].id))+ 1+ strlen((yyvsp[(4) - (17)].id))+ strlen((yyvsp[(5) - (17)].id))+ strlen((yyvsp[(6) - (17)].id))+ strlen((yyvsp[(7) - (17)].id))+ 1+ strlen((yyvsp[(9) - (17)].id))+ 1+ 1+ strlen((yyvsp[(12) - (17)].id))+ 1+ 1+ strlen((yyvsp[(15) - (17)].id))+ 1+ 1+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (17)].id));
+                strcat((yyval.id),(yyvsp[(2) - (17)].id));
+                strcat((yyval.id),"{");
+                strcat((yyval.id),(yyvsp[(4) - (17)].id));
+                strcat((yyval.id),(yyvsp[(5) - (17)].id));
+                strcat((yyval.id),(yyvsp[(6) - (17)].id));
+                strcat((yyval.id),(yyvsp[(7) - (17)].id));
+                strcat((yyval.id),"(");
+                strcat((yyval.id),(yyvsp[(9) - (17)].id));
+                strcat((yyval.id),"[");
+                strcat((yyval.id),"]");
+                strcat((yyval.id),(yyvsp[(12) - (17)].id));
+                strcat((yyval.id),")");
+                strcat((yyval.id),"{");
+                strcat((yyval.id),(yyvsp[(15) - (17)].id));
+                strcat((yyval.id),"}");
+                strcat((yyval.id),"}");
+
+          
+          }
     break;
 
   case 4:
 
 /* Line 1806 of yacc.c  */
-#line 51 "macrojava.y"
-    {}
+#line 109 "macrojava.y"
+    {
+                    
+                    (yyvsp[(2) - (7)].id)="class";
+
+                    (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+strlen((yyvsp[(2) - (7)].id))+strlen((yyvsp[(3) - (7)].id))+1+strlen((yyvsp[(5) - (7)].id))+strlen((yyvsp[(6) - (7)].id))+1+1));
+                    (yyval.id)[0] = '\0';
+                    strcat((yyval.id),(yyvsp[(1) - (7)].id));
+                    strcat((yyval.id),(yyvsp[(2) - (7)].id));
+                    strcat((yyval.id),(yyvsp[(3) - (7)].id));
+                    strcat((yyval.id),"{");
+                    strcat((yyval.id),(yyvsp[(5) - (7)].id));
+                    strcat((yyval.id),(yyvsp[(6) - (7)].id));
+                    strcat((yyval.id),"}");
+                
+                
+                }
     break;
 
   case 5:
 
 /* Line 1806 of yacc.c  */
-#line 52 "macrojava.y"
-    {}
+#line 125 "macrojava.y"
+    {
+                    (yyvsp[(2) - (9)].id)="class";
+                    (yyvsp[(4) - (9)].id)="extends";
+                    (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (9)].id))+strlen((yyvsp[(2) - (9)].id))+strlen((yyvsp[(3) - (9)].id))+strlen((yyvsp[(4) - (9)].id))+strlen((yyvsp[(5) - (9)].id))+1+strlen((yyvsp[(7) - (9)].id))+strlen((yyvsp[(8) - (9)].id))+1+1));
+                    (yyval.id)[0] = '\0';
+                    strcat((yyval.id),(yyvsp[(1) - (9)].id));
+                    strcat((yyval.id),(yyvsp[(2) - (9)].id));
+                    strcat((yyval.id),(yyvsp[(3) - (9)].id));
+                    strcat((yyval.id),(yyvsp[(4) - (9)].id));
+                    strcat((yyval.id),(yyvsp[(5) - (9)].id));
+                    strcat((yyval.id),"{");
+                    strcat((yyval.id),(yyvsp[(7) - (9)].id));
+                    strcat((yyval.id),(yyvsp[(8) - (9)].id));
+                    strcat((yyval.id),"}");
+                
+                
+                }
+    break;
+
+  case 6:
+
+/* Line 1806 of yacc.c  */
+#line 142 "macrojava.y"
+    {
+                    (yyval.id) = (char*)malloc(sizeof(char)*1);
+                    (yyval.id)[0] = '\0';
+                
+                }
     break;
 
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 56 "macrojava.y"
-    {}
+#line 149 "macrojava.y"
+    {
+                    
+                    (yyvsp[(2) - (16)].id)="public";
+                    (yyvsp[(13) - (16)].id)="return";
+
+                    (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (16)].id)) + strlen((yyvsp[(2) - (16)].id)) + strlen((yyvsp[(3) - (16)].id))+ strlen((yyvsp[(4) - (16)].id))+ 1+ strlen((yyvsp[(6) - (16)].id))+ strlen((yyvsp[(7) - (16)].id))+ strlen((yyvsp[(8) - (16)].id))+ 1+ 1+ strlen((yyvsp[(11) - (16)].id))+ strlen((yyvsp[(12) - (16)].id))+ strlen((yyvsp[(13) - (16)].id))+ strlen((yyvsp[(14) - (16)].id))+ 1+ 1+1));
+                    (yyval.id)[0] = '\0';
+                    strcat((yyval.id),(yyvsp[(1) - (16)].id));
+                    strcat((yyval.id),(yyvsp[(2) - (16)].id));
+                    strcat((yyval.id),(yyvsp[(3) - (16)].id));
+                    strcat((yyval.id),(yyvsp[(4) - (16)].id));
+                    strcat((yyval.id),"(");
+                    strcat((yyval.id),(yyvsp[(6) - (16)].id));
+                    strcat((yyval.id),(yyvsp[(7) - (16)].id));
+                    strcat((yyval.id),(yyvsp[(8) - (16)].id));
+                    strcat((yyval.id),")");
+                    strcat((yyval.id),"{");
+                    strcat((yyval.id),(yyvsp[(11) - (16)].id));
+                    strcat((yyval.id),(yyvsp[(12) - (16)].id));
+                    strcat((yyval.id),(yyvsp[(13) - (16)].id));
+                    strcat((yyval.id),(yyvsp[(14) - (16)].id));
+                    strcat((yyval.id),";");
+                    strcat((yyval.id),"}");
+                  
+                  }
     break;
 
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 57 "macrojava.y"
-    {}
+#line 174 "macrojava.y"
+    {
+                        
+                        (yyvsp[(2) - (13)].id)="public";
+                        (yyvsp[(10) - (13)].id)="return";
+                        
+                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (13)].id)) + strlen((yyvsp[(3) - (13)].id))+ strlen((yyvsp[(4) - (13)].id))+ 3+ strlen((yyvsp[(8) - (13)].id))+ strlen((yyvsp[(9) - (13)].id))+ strlen((yyvsp[(10) - (13)].id))+ strlen((yyvsp[(11) - (13)].id))+ 2+1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),(yyvsp[(1) - (13)].id));
+                        strcat((yyval.id),(yyvsp[(2) - (13)].id));
+                        strcat((yyval.id),(yyvsp[(3) - (13)].id));
+                        strcat((yyval.id),(yyvsp[(4) - (13)].id));
+                        strcat((yyval.id),"(");
+                        strcat((yyval.id),")");
+                        strcat((yyval.id),"{");
+                        strcat((yyval.id),(yyvsp[(8) - (13)].id));
+                        strcat((yyval.id),(yyvsp[(9) - (13)].id));
+                        strcat((yyval.id),(yyvsp[(10) - (13)].id));
+                        strcat((yyval.id),(yyvsp[(11) - (13)].id));
+                        strcat((yyval.id),";");
+                        strcat((yyval.id),"}");
+                  
+                  }
+    break;
+
+  case 9:
+
+/* Line 1806 of yacc.c  */
+#line 196 "macrojava.y"
+    {
+                    (yyval.id) = (char*)malloc(sizeof(char)*1);
+                    (yyval.id)[0] = '\0';
+
+                  
+                  }
     break;
 
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 61 "macrojava.y"
-    {}
+#line 204 "macrojava.y"
+    {
+            
+            (yyvsp[(1) - (3)].id) = "int";
+            (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+2+1));
+            (yyval.id)[0] = '\0';
+            
+            strcat((yyval.id),(yyvsp[(1) - (3)].id));
+            strcat((yyval.id),"[");
+            strcat((yyval.id),"]");
+     
+     }
     break;
 
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 62 "macrojava.y"
-    {}
+#line 215 "macrojava.y"
+    {
+        (yyvsp[(1) - (1)].id)="bool";
+
+        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
+        (yyval.id)[0] = '\0';
+        strcat((yyval.id),(yyvsp[(1) - (1)].id));
+     
+     }
     break;
 
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 63 "macrojava.y"
-    {}
+#line 223 "macrojava.y"
+    {
+        (yyvsp[(1) - (1)].id)="int";
+
+        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
+        (yyval.id)[0] = '\0';
+        strcat((yyval.id),(yyvsp[(1) - (1)].id));
+
+     
+     }
     break;
 
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 64 "macrojava.y"
-    {}
+#line 232 "macrojava.y"
+    {
+        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
+        (yyval.id)[0] = '\0';
+        strcat((yyval.id),(yyvsp[(1) - (1)].id));
+     
+     }
     break;
 
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 67 "macrojava.y"
-    {}
+#line 240 "macrojava.y"
+    {
+        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+        (yyval.id)[0] = '\0';
+        strcat((yyval.id),(yyvsp[(1) - (3)].id));
+        strcat((yyval.id),".");
+        strcat((yyval.id),(yyvsp[(3) - (3)].id));
+    
+    
+    }
     break;
 
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 68 "macrojava.y"
-    {}
+#line 249 "macrojava.y"
+    {
+        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+1+strlen((yyvsp[(3) - (7)].id))+1+strlen((yyvsp[(5) - (7)].id))+1+1+1));
+        (yyval.id)[0] = '\0';
+        strcat((yyval.id),(yyvsp[(1) - (7)].id));
+        strcat((yyval.id),".");
+        strcat((yyval.id),(yyvsp[(3) - (7)].id));
+        strcat((yyval.id),"(");
+        strcat((yyval.id),(yyvsp[(5) - (7)].id));
+        strcat((yyval.id),")");
+        strcat((yyval.id),";");
+    
+    }
+    break;
+
+  case 16:
+
+/* Line 1806 of yacc.c  */
+#line 261 "macrojava.y"
+    {
+        (yyval.id) = (char*)malloc(sizeof(char)*1);
+        (yyval.id)[0] = '\0';
+
+    
+    }
+    break;
+
+  case 17:
+
+/* Line 1806 of yacc.c  */
+#line 269 "macrojava.y"
+    {
+                    (yyval.id) = (char*)malloc(sizeof(char)*1);
+                    (yyval.id)[0] = '\0';
+
+                    
+                  }
+    break;
+
+  case 18:
+
+/* Line 1806 of yacc.c  */
+#line 275 "macrojava.y"
+    {
+                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (2)].id))+strlen((yyvsp[(2) - (2)].id))+1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),(yyvsp[(1) - (2)].id));
+                        strcat((yyval.id),(yyvsp[(2) - (2)].id));
+                  
+                  }
+    break;
+
+  case 19:
+
+/* Line 1806 of yacc.c  */
+#line 284 "macrojava.y"
+    {
+              (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (3)].id))+1+1));
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),"{");
+              strcat((yyval.id),(yyvsp[(2) - (3)].id));
+              strcat((yyval.id),"}");
+
+          
+          }
     break;
 
   case 20:
 
 /* Line 1806 of yacc.c  */
-#line 78 "macrojava.y"
-    {}
+#line 293 "macrojava.y"
+    {
+              (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+1+strlen((yyvsp[(3) - (4)].id))+1+1));
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),(yyvsp[(1) - (4)].id));
+              strcat((yyval.id),"=");
+              strcat((yyval.id),(yyvsp[(3) - (4)].id));
+              strcat((yyval.id),";");
+ 
+          
+          }
     break;
 
   case 21:
 
 /* Line 1806 of yacc.c  */
-#line 79 "macrojava.y"
-    {}
+#line 303 "macrojava.y"
+    {
+              (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+1+strlen((yyvsp[(3) - (7)].id))+1+1+strlen((yyvsp[(6) - (7)].id))+1+1));
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),(yyvsp[(1) - (7)].id));
+              strcat((yyval.id),"[");
+              strcat((yyval.id),(yyvsp[(3) - (7)].id));
+              strcat((yyval.id),"]");
+              strcat((yyval.id),"=");
+              strcat((yyval.id),(yyvsp[(6) - (7)].id));
+              strcat((yyval.id),";");
+
+          }
     break;
 
   case 22:
 
 /* Line 1806 of yacc.c  */
-#line 80 "macrojava.y"
-    {}
+#line 315 "macrojava.y"
+    {
+              
+              (yyvsp[(1) - (5)].id)="if";
+              (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+1+strlen((yyvsp[(3) - (5)].id))+1+strlen((yyvsp[(5) - (5)].id))+1));
+            
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),(yyvsp[(1) - (5)].id));
+              strcat((yyval.id),"(");
+              strcat((yyval.id),(yyvsp[(3) - (5)].id));
+              strcat((yyval.id),")");
+              strcat((yyval.id),(yyvsp[(5) - (5)].id));
+
+          
+          }
     break;
 
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 81 "macrojava.y"
-    {}
+#line 329 "macrojava.y"
+    {
+              
+              (yyvsp[(1) - (7)].id)="if";
+              (yyvsp[(6) - (7)].id)="else";
+
+              (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+1+strlen((yyvsp[(3) - (7)].id))+1+strlen((yyvsp[(5) - (7)].id))+strlen((yyvsp[(6) - (7)].id))+strlen((yyvsp[(7) - (7)].id))+1));
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),(yyvsp[(1) - (7)].id));
+              strcat((yyval.id),"(");
+              strcat((yyval.id),(yyvsp[(3) - (7)].id));
+              strcat((yyval.id),")");
+              strcat((yyval.id),(yyvsp[(5) - (7)].id));
+              strcat((yyval.id),(yyvsp[(6) - (7)].id));
+              strcat((yyval.id),(yyvsp[(7) - (7)].id));
+
+          
+          
+          
+          }
     break;
 
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 82 "macrojava.y"
-    {}
+#line 348 "macrojava.y"
+    {
+              (yyvsp[(1) - (5)].id)="while";
+              
+              (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+1+strlen((yyvsp[(3) - (5)].id))+1+strlen((yyvsp[(5) - (5)].id))+1));
+            
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),(yyvsp[(1) - (5)].id));
+              strcat((yyval.id),"(");
+              strcat((yyval.id),(yyvsp[(3) - (5)].id));
+              strcat((yyval.id),")");
+              strcat((yyval.id),(yyvsp[(5) - (5)].id));
+
+          
+          
+          
+          }
     break;
 
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 83 "macrojava.y"
-    {}
+#line 364 "macrojava.y"
+    {
+               (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (6)].id))+1+strlen((yyvsp[(3) - (6)].id))+strlen((yyvsp[(4) - (6)].id))+2+1));
+            
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),(yyvsp[(1) - (6)].id));
+              strcat((yyval.id),"(");
+              strcat((yyval.id),(yyvsp[(3) - (6)].id));
+              strcat((yyval.id),(yyvsp[(4) - (6)].id));
+              strcat((yyval.id),")");
+              strcat((yyval.id),";");
+
+          
+          
+          }
     break;
 
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 84 "macrojava.y"
-    {}
+#line 378 "macrojava.y"
+    {
+               (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+3+1));
+            
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),(yyvsp[(1) - (4)].id));
+              strcat((yyval.id),"(");
+              strcat((yyval.id),")");
+              strcat((yyval.id),";");
+                       
+          }
     break;
 
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 85 "macrojava.y"
-    {}
+#line 388 "macrojava.y"
+    {
+             (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (2)].id))+strlen((yyvsp[(2) - (2)].id))+1));
+            
+              (yyval.id)[0] = '\0';
+              strcat((yyval.id),(yyvsp[(1) - (2)].id));
+              strcat((yyval.id),(yyvsp[(2) - (2)].id));
+          
+          }
     break;
 
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 86 "macrojava.y"
-    {}
+#line 398 "macrojava.y"
+    {
+                          
+                          (yyvsp[(2) - (10)].id)="define";
+
+                          
+                          (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (10)].id))+strlen((yyvsp[(3) - (10)].id))+1+strlen((yyvsp[(5) - (10)].id))+strlen((yyvsp[(6) - (10)].id))+2+strlen((yyvsp[(9) - (10)].id))+1+1));
+                          (yyval.id)[0] = '\0';
+                          strcat((yyval.id),"#");
+                          strcat((yyval.id),(yyvsp[(2) - (10)].id));
+                          strcat((yyval.id),(yyvsp[(3) - (10)].id));
+                          strcat((yyval.id),"(");
+                          strcat((yyval.id),(yyvsp[(5) - (10)].id));
+                          strcat((yyval.id),(yyvsp[(6) - (10)].id));
+                          strcat((yyval.id),")");
+                          strcat((yyval.id),"(");
+                          strcat((yyval.id),(yyvsp[(9) - (10)].id));
+                          strcat((yyval.id),")");
+       
+                      }
     break;
 
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 89 "macrojava.y"
-    {}
+#line 417 "macrojava.y"
+    {
+                          
+                          (yyvsp[(2) - (8)].id)="define";
+                          (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (8)].id))+strlen((yyvsp[(3) - (8)].id))+2+strlen((yyvsp[(7) - (8)].id))+1+1));
+                          (yyval.id)[0] = '\0';
+                          strcat((yyval.id),"#");
+                          strcat((yyval.id),(yyvsp[(2) - (8)].id));
+                          strcat((yyval.id),(yyvsp[(3) - (8)].id));
+                          strcat((yyval.id),"(");
+                          strcat((yyval.id),")");
+                          strcat((yyval.id),"(");
+                          strcat((yyval.id),(yyvsp[(7) - (8)].id));
+                          strcat((yyval.id),")");
+                          
+                       }
     break;
 
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 90 "macrojava.y"
-    {}
+#line 434 "macrojava.y"
+    {
+                        
+                        (yyvsp[(2) - (10)].id)="define";
+                        (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (10)].id))+strlen((yyvsp[(3) - (10)].id))+1+strlen((yyvsp[(5) - (10)].id))+strlen((yyvsp[(6) - (10)].id))+2+strlen((yyvsp[(9) - (10)].id))+1+1));
+                        (yyval.id)[0] = '\0';
+                          strcat((yyval.id),"#");
+                          strcat((yyval.id),(yyvsp[(2) - (10)].id));
+                          strcat((yyval.id),(yyvsp[(3) - (10)].id));
+                          strcat((yyval.id),"(");
+                          strcat((yyval.id),(yyvsp[(5) - (10)].id));
+                          strcat((yyval.id),(yyvsp[(6) - (10)].id));
+                          strcat((yyval.id),")");
+                          strcat((yyval.id),"{");
+                          strcat((yyval.id),(yyvsp[(9) - (10)].id));
+                          strcat((yyval.id),"}");
+
+                  }
     break;
 
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 93 "macrojava.y"
-    {}
+#line 451 "macrojava.y"
+    {
+                        
+                        (yyvsp[(2) - (8)].id)="define";
+                        (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (8)].id))+strlen((yyvsp[(3) - (8)].id))+3+strlen((yyvsp[(7) - (8)].id))+1+1));
+                          (yyval.id)[0] = '\0';
+                          strcat((yyval.id),"#");
+                          strcat((yyval.id),(yyvsp[(2) - (8)].id));
+                          strcat((yyval.id),(yyvsp[(3) - (8)].id));
+                          strcat((yyval.id),"(");
+                          strcat((yyval.id),")");
+                          strcat((yyval.id),"{");
+                          strcat((yyval.id),(yyvsp[(7) - (8)].id));
+                          strcat((yyval.id),"}");
+                  }
     break;
 
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 94 "macrojava.y"
-    {}
+#line 467 "macrojava.y"
+    {
+            (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+            (yyval.id)[0] = '\0';
+            strcat((yyval.id),(yyvsp[(1) - (3)].id));
+            strcat((yyval.id),",");
+            strcat((yyval.id),(yyvsp[(3) - (3)].id));
+       
+       }
     break;
 
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 97 "macrojava.y"
-    {}
+#line 475 "macrojava.y"
+    {
+            (yyval.id) = (char*)malloc(sizeof(char)*1);
+            (yyval.id)[0] = '\0';
+       
+       }
+    break;
+
+  case 34:
+
+/* Line 1806 of yacc.c  */
+#line 482 "macrojava.y"
+    {
+            (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+            (yyval.id)[0] = '\0';
+            strcat((yyval.id),(yyvsp[(1) - (3)].id));
+            strcat((yyval.id),";");
+            strcat((yyval.id),(yyvsp[(3) - (3)].id));
+        
+        }
     break;
 
   case 35:
 
 /* Line 1806 of yacc.c  */
-#line 101 "macrojava.y"
-    {}
+#line 490 "macrojava.y"
+    {
+            (yyval.id) = (char*)malloc(sizeof(char)*1);
+            (yyval.id)[0] = '\0';
+
+        
+        }
+    break;
+
+  case 36:
+
+/* Line 1806 of yacc.c  */
+#line 498 "macrojava.y"
+    {
+                    (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (2)].id))+strlen((yyvsp[(2) - (2)].id))+1));
+                    (yyval.id)[0] = '\0';
+                    strcat((yyval.id),(yyvsp[(1) - (2)].id));
+                    strcat((yyval.id),(yyvsp[(2) - (2)].id));
+                
+                }
     break;
 
   case 37:
 
 /* Line 1806 of yacc.c  */
-#line 105 "macrojava.y"
-    {}
+#line 505 "macrojava.y"
+    {
+                    (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (2)].id))+strlen((yyvsp[(2) - (2)].id))+1));
+                    (yyval.id)[0] = '\0';
+                    strcat((yyval.id),(yyvsp[(1) - (2)].id));
+                    strcat((yyval.id),(yyvsp[(2) - (2)].id));
+                
+                }
     break;
 
   case 38:
 
 /* Line 1806 of yacc.c  */
-#line 106 "macrojava.y"
-    {}
+#line 512 "macrojava.y"
+    {
+                    (yyval.id) = (char*)malloc(sizeof(char)*1);
+                    (yyval.id)[0] = '\0';
+                
+                }
+    break;
+
+  case 39:
+
+/* Line 1806 of yacc.c  */
+#line 519 "macrojava.y"
+    {
+            (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+strlen((yyvsp[(2) - (4)].id))+strlen((yyvsp[(3) - (4)].id))+1+1));
+            (yyval.id)[0] = '\0';
+            strcat((yyval.id),(yyvsp[(1) - (4)].id));
+            strcat((yyval.id),(yyvsp[(2) - (4)].id));
+            strcat((yyval.id),(yyvsp[(3) - (4)].id));
+            strcat((yyval.id),";");
+ 
+        
+        }
     break;
 
   case 40:
 
 /* Line 1806 of yacc.c  */
-#line 110 "macrojava.y"
-    {}
+#line 529 "macrojava.y"
+    {
+            (yyval.id) = (char*)malloc(sizeof(char)*1);
+            (yyval.id)[0] = '\0';
+
+        
+        }
+    break;
+
+  case 41:
+
+/* Line 1806 of yacc.c  */
+#line 537 "macrojava.y"
+    {
+            (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+1+strlen((yyvsp[(3) - (4)].id))+strlen((yyvsp[(4) - (4)].id))+1));
+            (yyval.id)[0] = '\0';
+            strcat((yyval.id),(yyvsp[(1) - (4)].id));
+            strcat((yyval.id),",");
+            strcat((yyval.id),(yyvsp[(3) - (4)].id));
+            strcat((yyval.id),(yyvsp[(4) - (4)].id));
+
+     
+     }
     break;
 
   case 42:
 
 /* Line 1806 of yacc.c  */
-#line 114 "macrojava.y"
-    {}
+#line 547 "macrojava.y"
+    {
+        (yyval.id) = (char*)malloc(sizeof(char)*1);
+        (yyval.id)[0] = '\0';
+
+     }
+    break;
+
+  case 43:
+
+/* Line 1806 of yacc.c  */
+#line 555 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (3)].id));
+                strcat((yyval.id),"&");
+                strcat((yyval.id),(yyvsp[(3) - (3)].id));
+            }
     break;
 
   case 44:
 
 /* Line 1806 of yacc.c  */
-#line 119 "macrojava.y"
-    {}
+#line 562 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (3)].id));
+                strcat((yyval.id),"<");
+                strcat((yyval.id),(yyvsp[(3) - (3)].id));
+
+            
+            
+            }
     break;
 
   case 45:
 
 /* Line 1806 of yacc.c  */
-#line 120 "macrojava.y"
-    {}
+#line 572 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (3)].id));
+                strcat((yyval.id),"+");
+                strcat((yyval.id),(yyvsp[(3) - (3)].id));
+
+            
+            
+            }
     break;
 
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 121 "macrojava.y"
-    {}
+#line 582 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (3)].id));
+                strcat((yyval.id),"-");
+                strcat((yyval.id),(yyvsp[(3) - (3)].id));
+
+            
+            }
     break;
 
   case 47:
 
 /* Line 1806 of yacc.c  */
-#line 122 "macrojava.y"
-    {}
+#line 591 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (3)].id));
+                strcat((yyval.id),"*");
+                strcat((yyval.id),(yyvsp[(3) - (3)].id));
+
+            
+            
+            }
     break;
 
   case 48:
 
 /* Line 1806 of yacc.c  */
-#line 123 "macrojava.y"
-    {}
+#line 601 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (3)].id));
+                strcat((yyval.id),"/");
+                strcat((yyval.id),(yyvsp[(3) - (3)].id));
+
+            
+            
+            
+            }
     break;
 
   case 49:
 
 /* Line 1806 of yacc.c  */
-#line 124 "macrojava.y"
-    {}
+#line 612 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+1+strlen((yyvsp[(3) - (4)].id))+1+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (4)].id));
+                strcat((yyval.id),"[");
+                strcat((yyval.id),(yyvsp[(3) - (4)].id));
+                strcat((yyval.id),"]");
+
+            
+            }
     break;
 
   case 50:
 
 /* Line 1806 of yacc.c  */
-#line 125 "macrojava.y"
-    {}
+#line 622 "macrojava.y"
+    {
+                (yyvsp[(3) - (3)].id)="length";
+                
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (3)].id));
+                strcat((yyval.id),".");
+                strcat((yyval.id),(yyvsp[(3) - (3)].id));
+
+            
+            }
     break;
 
   case 51:
 
 /* Line 1806 of yacc.c  */
-#line 126 "macrojava.y"
-    {}
+#line 633 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+1+strlen((yyvsp[(3) - (7)].id))+1+strlen((yyvsp[(5) - (7)].id))+strlen((yyvsp[(6) - (7)].id))+1+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (7)].id));
+                strcat((yyval.id),".");
+                strcat((yyval.id),(yyvsp[(3) - (7)].id));
+                strcat((yyval.id),"(");
+                strcat((yyval.id),(yyvsp[(5) - (7)].id));
+                strcat((yyval.id),(yyvsp[(6) - (7)].id));
+                strcat((yyval.id),")");
+
+            
+            
+            }
     break;
 
   case 52:
 
 /* Line 1806 of yacc.c  */
-#line 127 "macrojava.y"
-    {}
+#line 647 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+1+strlen((yyvsp[(3) - (5)].id))+2+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (5)].id));
+                strcat((yyval.id),".");
+                strcat((yyval.id),(yyvsp[(3) - (5)].id));
+                strcat((yyval.id),"(");
+                strcat((yyval.id),")");
+            
+            }
     break;
 
   case 53:
 
 /* Line 1806 of yacc.c  */
-#line 128 "macrojava.y"
-    {}
+#line 657 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+1+strlen((yyvsp[(3) - (5)].id))+strlen((yyvsp[(4) - (5)].id))+1+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (5)].id));
+                strcat((yyval.id),"(");
+                strcat((yyval.id),(yyvsp[(3) - (5)].id));
+                strcat((yyval.id),(yyvsp[(4) - (5)].id));
+                strcat((yyval.id),")");
+
+            
+            }
     break;
 
   case 54:
 
 /* Line 1806 of yacc.c  */
-#line 129 "macrojava.y"
-    {}
+#line 668 "macrojava.y"
+    {
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+2+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (3)].id));
+                strcat((yyval.id),"(");
+                strcat((yyval.id),")");
+            
+            }
     break;
 
   case 55:
 
 /* Line 1806 of yacc.c  */
-#line 130 "macrojava.y"
-    {}
+#line 676 "macrojava.y"
+    {
+            
+                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
+                (yyval.id)[0] = '\0';
+                strcat((yyval.id),(yyvsp[(1) - (1)].id));
+            
+            }
     break;
 
   case 56:
 
 /* Line 1806 of yacc.c  */
-#line 131 "macrojava.y"
-    {}
+#line 685 "macrojava.y"
+    {
+                        (yyval.id) = (char*)malloc(sizeof(char)*(18));
+                        sprintf((yyval.id),"%d",(yyvsp[(1) - (1)].ival));
+
+                    
+                    }
     break;
 
   case 57:
 
 /* Line 1806 of yacc.c  */
-#line 134 "macrojava.y"
-    {}
+#line 691 "macrojava.y"
+    {
+                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].bval)) + 1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),(yyvsp[(1) - (1)].bval));
+
+                    
+                    }
     break;
 
   case 58:
 
 /* Line 1806 of yacc.c  */
-#line 135 "macrojava.y"
-    {}
+#line 698 "macrojava.y"
+    {
+                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),(yyvsp[(1) - (1)].id));
+                    
+                    }
     break;
 
   case 59:
 
 /* Line 1806 of yacc.c  */
-#line 136 "macrojava.y"
-    {}
+#line 704 "macrojava.y"
+    {
+                        (yyvsp[(1) - (1)].id) = "this";
+                        
+                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),(yyvsp[(1) - (1)].id));
+ 
+                    }
     break;
 
   case 60:
 
 /* Line 1806 of yacc.c  */
-#line 137 "macrojava.y"
-    {}
+#line 712 "macrojava.y"
+    {
+                        
+                        (yyvsp[(1) - (5)].id)="new";
+                        (yyvsp[(2) - (5)].id)="int";
+                        
+                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+strlen((yyvsp[(2) - (5)].id))+1+strlen((yyvsp[(4) - (5)].id))+1+1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),(yyvsp[(1) - (5)].id));
+                        strcat((yyval.id),(yyvsp[(2) - (5)].id));
+                        strcat((yyval.id),"[");
+                        strcat((yyval.id),(yyvsp[(4) - (5)].id));
+                        strcat((yyval.id),"]");
+
+                    
+                    
+                    }
     break;
 
   case 61:
 
 /* Line 1806 of yacc.c  */
-#line 138 "macrojava.y"
-    {}
+#line 728 "macrojava.y"
+    {
+                        
+                        (yyvsp[(1) - (4)].id) = "new";    
+                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+strlen((yyvsp[(2) - (4)].id))+2+1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),(yyvsp[(1) - (4)].id));
+                        strcat((yyval.id),(yyvsp[(2) - (4)].id));
+                        strcat((yyval.id),"(");
+                        strcat((yyval.id),")");
+                    
+                    }
     break;
 
   case 62:
 
 /* Line 1806 of yacc.c  */
-#line 139 "macrojava.y"
-    {}
+#line 739 "macrojava.y"
+    {
+                        (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (2)].id))+1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),"!");
+                        strcat((yyval.id),(yyvsp[(2) - (2)].id));
+ 
+                    
+                    }
     break;
 
   case 63:
 
 /* Line 1806 of yacc.c  */
-#line 140 "macrojava.y"
-    {}
+#line 747 "macrojava.y"
+    {
+                        (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (3)].id))+1+1));
+                        (yyval.id)[0] = '\0';
+                        strcat((yyval.id),"(");
+                        strcat((yyval.id),(yyvsp[(2) - (3)].id));
+                        strcat((yyval.id),")");
+                    }
     break;
 
-  case 64:
-
-/* Line 1806 of yacc.c  */
-#line 141 "macrojava.y"
-    {}
-    break;
-
 
 
 /* Line 1806 of yacc.c  */
-#line 1905 "macrojava.tab.c"
+#line 2572 "macrojava.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2132,7 +2799,7 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 144 "macrojava.y"
+#line 756 "macrojava.y"
 
 main(){
 	// parse through the input until there is no more.
@@ -2142,7 +2809,8 @@ main(){
 }
 
 void yyerror(const char *s){
-	printf ("Parse error: %s\n" , s)	;
+	printf ("Parse error: %s\n" , s);
+    exit(0);
     
 }
 
