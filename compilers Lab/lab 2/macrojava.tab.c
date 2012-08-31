@@ -68,6 +68,10 @@
 /* Line 268 of yacc.c  */
 #line 1 "macrojava.y"
 
+/*
+    Author : Karthik Abinav S
+    Roll : CS10B057
+*/
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
@@ -80,12 +84,14 @@ char parameters[100][100][10];//Allowing 10 parameters utmost in the macro
 int numOfParams[100];
 int numberOfMacros = 0;
 
+//Initialise all the number of paramters for each macro to 0
 void initialize(){
     int i;
     for(i=0;i<100;i++)
         numOfParams[i] = 0;
 }
 
+// To check if a particular identifier is present as a macr0
 int isPresent(char key[])
 {
     int i;
@@ -100,7 +106,7 @@ int isPresent(char key[])
 
 }
 
-
+//Replace a particular macro with its macro statement
 char* findAndReplace(char key[],char params[100][10])
 {
     int i; 
@@ -158,6 +164,8 @@ char* findAndReplace(char key[],char params[100][10])
     }
     return '\0';
 }
+
+//Push a new macro in to the symbol table
 void push(char key[] , char value[] , char parameter[100][10])
 {
     strcpy(symbol[numberOfMacros] , key);
@@ -175,7 +183,7 @@ extern int yyparse();
 
 
 /* Line 268 of yacc.c  */
-#line 179 "macrojava.tab.c"
+#line 187 "macrojava.tab.c"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -237,7 +245,7 @@ typedef union YYSTYPE
 {
 
 /* Line 293 of yacc.c  */
-#line 108 "macrojava.y"
+#line 116 "macrojava.y"
 
 	int ival; // integers
 	char *bval;// true and false
@@ -248,7 +256,7 @@ typedef union YYSTYPE
 
 
 /* Line 293 of yacc.c  */
-#line 252 "macrojava.tab.c"
+#line 260 "macrojava.tab.c"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -260,7 +268,7 @@ typedef union YYSTYPE
 
 
 /* Line 343 of yacc.c  */
-#line 264 "macrojava.tab.c"
+#line 272 "macrojava.tab.c"
 
 #ifdef short
 # undef short
@@ -584,13 +592,13 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   164,   164,   178,   208,   224,   241,   248,   273,   295,
-     303,   314,   322,   331,   339,   348,   360,   368,   374,   383,
-     392,   402,   414,   428,   447,   463,   504,   525,   535,   562,
-     571,   596,   604,   612,   619,   627,   635,   638,   641,   646,
-     656,   664,   674,   682,   689,   699,   709,   718,   728,   739,
-     749,   760,   774,   784,   823,   839,   848,   854,   861,   867,
-     875,   891,   902,   910
+       0,   172,   172,   187,   217,   233,   250,   257,   282,   304,
+     312,   323,   331,   340,   348,   357,   369,   377,   383,   392,
+     401,   411,   423,   437,   456,   472,   513,   534,   544,   571,
+     580,   605,   613,   621,   628,   636,   644,   647,   650,   655,
+     665,   673,   683,   691,   698,   708,   718,   727,   737,   748,
+     758,   769,   783,   793,   832,   847,   856,   863,   870,   876,
+     884,   900,   911,   919
 };
 #endif
 
@@ -1638,12 +1646,13 @@ yyreduce:
         case 2:
 
 /* Line 1806 of yacc.c  */
-#line 164 "macrojava.y"
+#line 172 "macrojava.y"
     {
                                         
                                         (yyval.id) = (char*) malloc(sizeof(char)*(strlen((yyvsp[(2) - (4)].id))+strlen((yyvsp[(3) - (4)].id))+1));
                                         (yyval.id)[0] = '\0';
                                         
+                                        printf("// Macrojava code parsed and minijava code generated successfully.\n");
                                         strcat((yyval.id),(yyvsp[(2) - (4)].id));
                                         strcat((yyval.id),(yyvsp[(3) - (4)].id));
                                         printf("%s\n",(yyval.id));
@@ -1656,7 +1665,7 @@ yyreduce:
   case 3:
 
 /* Line 1806 of yacc.c  */
-#line 178 "macrojava.y"
+#line 187 "macrojava.y"
     {
                 (yyvsp[(1) - (17)].id)="class";
                 (yyvsp[(4) - (17)].id)="public";
@@ -1691,7 +1700,7 @@ yyreduce:
   case 4:
 
 /* Line 1806 of yacc.c  */
-#line 208 "macrojava.y"
+#line 217 "macrojava.y"
     {
                     
                     (yyvsp[(2) - (7)].id)="class";
@@ -1713,7 +1722,7 @@ yyreduce:
   case 5:
 
 /* Line 1806 of yacc.c  */
-#line 224 "macrojava.y"
+#line 233 "macrojava.y"
     {
                     (yyvsp[(2) - (9)].id)="class";
                     (yyvsp[(4) - (9)].id)="extends";
@@ -1736,7 +1745,7 @@ yyreduce:
   case 6:
 
 /* Line 1806 of yacc.c  */
-#line 241 "macrojava.y"
+#line 250 "macrojava.y"
     {
                     (yyval.id) = (char*)malloc(sizeof(char)*1);
                     (yyval.id)[0] = '\0';
@@ -1747,7 +1756,7 @@ yyreduce:
   case 7:
 
 /* Line 1806 of yacc.c  */
-#line 248 "macrojava.y"
+#line 257 "macrojava.y"
     {
                     
                     (yyvsp[(2) - (16)].id)="public";
@@ -1778,13 +1787,13 @@ yyreduce:
   case 8:
 
 /* Line 1806 of yacc.c  */
-#line 273 "macrojava.y"
+#line 282 "macrojava.y"
     {
                         
                         (yyvsp[(2) - (13)].id)="public";
                         (yyvsp[(10) - (13)].id)="return";
                         
-                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (13)].id)) + strlen((yyvsp[(3) - (13)].id))+ strlen((yyvsp[(4) - (13)].id))+ 3+ strlen((yyvsp[(8) - (13)].id))+ strlen((yyvsp[(9) - (13)].id))+ strlen((yyvsp[(10) - (13)].id))+ strlen((yyvsp[(11) - (13)].id))+ 2+1));
+                        (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (13)].id)) + strlen((yyvsp[(2) - (13)].id)) + strlen((yyvsp[(3) - (13)].id))+ strlen((yyvsp[(4) - (13)].id))+ 3+ strlen((yyvsp[(8) - (13)].id))+ strlen((yyvsp[(9) - (13)].id))+ strlen((yyvsp[(10) - (13)].id))+ strlen((yyvsp[(11) - (13)].id))+ 2+1));
                         (yyval.id)[0] = '\0';
                         strcat((yyval.id),(yyvsp[(1) - (13)].id));
                         strcat((yyval.id),(yyvsp[(2) - (13)].id));
@@ -1806,7 +1815,7 @@ yyreduce:
   case 9:
 
 /* Line 1806 of yacc.c  */
-#line 295 "macrojava.y"
+#line 304 "macrojava.y"
     {
                     (yyval.id) = (char*)malloc(sizeof(char)*1);
                     (yyval.id)[0] = '\0';
@@ -1818,7 +1827,7 @@ yyreduce:
   case 10:
 
 /* Line 1806 of yacc.c  */
-#line 303 "macrojava.y"
+#line 312 "macrojava.y"
     {
             
             (yyvsp[(1) - (3)].id) = "int";
@@ -1835,7 +1844,7 @@ yyreduce:
   case 11:
 
 /* Line 1806 of yacc.c  */
-#line 314 "macrojava.y"
+#line 323 "macrojava.y"
     {
         (yyvsp[(1) - (1)].id)="boolean";
 
@@ -1849,7 +1858,7 @@ yyreduce:
   case 12:
 
 /* Line 1806 of yacc.c  */
-#line 322 "macrojava.y"
+#line 331 "macrojava.y"
     {
         (yyvsp[(1) - (1)].id)="int";
 
@@ -1864,7 +1873,7 @@ yyreduce:
   case 13:
 
 /* Line 1806 of yacc.c  */
-#line 331 "macrojava.y"
+#line 340 "macrojava.y"
     {
         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
         (yyval.id)[0] = '\0';
@@ -1876,7 +1885,7 @@ yyreduce:
   case 14:
 
 /* Line 1806 of yacc.c  */
-#line 339 "macrojava.y"
+#line 348 "macrojava.y"
     {
         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
         (yyval.id)[0] = '\0';
@@ -1891,7 +1900,7 @@ yyreduce:
   case 15:
 
 /* Line 1806 of yacc.c  */
-#line 348 "macrojava.y"
+#line 357 "macrojava.y"
     {
         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+1+strlen((yyvsp[(3) - (7)].id))+1+strlen((yyvsp[(5) - (7)].id))+1+1+1));
         (yyval.id)[0] = '\0';
@@ -1909,7 +1918,7 @@ yyreduce:
   case 16:
 
 /* Line 1806 of yacc.c  */
-#line 360 "macrojava.y"
+#line 369 "macrojava.y"
     {
         (yyval.id) = (char*)malloc(sizeof(char)*1);
         (yyval.id)[0] = '\0';
@@ -1921,7 +1930,7 @@ yyreduce:
   case 17:
 
 /* Line 1806 of yacc.c  */
-#line 368 "macrojava.y"
+#line 377 "macrojava.y"
     {
                     (yyval.id) = (char*)malloc(sizeof(char)*1);
                     (yyval.id)[0] = '\0';
@@ -1933,7 +1942,7 @@ yyreduce:
   case 18:
 
 /* Line 1806 of yacc.c  */
-#line 374 "macrojava.y"
+#line 383 "macrojava.y"
     {
                         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (2)].id))+strlen((yyvsp[(2) - (2)].id))+1));
                         (yyval.id)[0] = '\0';
@@ -1946,7 +1955,7 @@ yyreduce:
   case 19:
 
 /* Line 1806 of yacc.c  */
-#line 383 "macrojava.y"
+#line 392 "macrojava.y"
     {
               (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (3)].id))+1+1));
               (yyval.id)[0] = '\0';
@@ -1961,7 +1970,7 @@ yyreduce:
   case 20:
 
 /* Line 1806 of yacc.c  */
-#line 392 "macrojava.y"
+#line 401 "macrojava.y"
     {
               (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+1+strlen((yyvsp[(3) - (4)].id))+1+1));
               (yyval.id)[0] = '\0';
@@ -1977,7 +1986,7 @@ yyreduce:
   case 21:
 
 /* Line 1806 of yacc.c  */
-#line 402 "macrojava.y"
+#line 411 "macrojava.y"
     {
               (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+1+strlen((yyvsp[(3) - (7)].id))+1+1+strlen((yyvsp[(6) - (7)].id))+1+1));
               (yyval.id)[0] = '\0';
@@ -1995,7 +2004,7 @@ yyreduce:
   case 22:
 
 /* Line 1806 of yacc.c  */
-#line 414 "macrojava.y"
+#line 423 "macrojava.y"
     {
               
               (yyvsp[(1) - (5)].id)="if";
@@ -2015,7 +2024,7 @@ yyreduce:
   case 23:
 
 /* Line 1806 of yacc.c  */
-#line 428 "macrojava.y"
+#line 437 "macrojava.y"
     {
               
               (yyvsp[(1) - (7)].id)="if";
@@ -2040,7 +2049,7 @@ yyreduce:
   case 24:
 
 /* Line 1806 of yacc.c  */
-#line 447 "macrojava.y"
+#line 456 "macrojava.y"
     {
               (yyvsp[(1) - (5)].id)="while";
               
@@ -2062,7 +2071,7 @@ yyreduce:
   case 25:
 
 /* Line 1806 of yacc.c  */
-#line 463 "macrojava.y"
+#line 472 "macrojava.y"
     {
                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (6)].id))+1+strlen((yyvsp[(3) - (6)].id))+strlen((yyvsp[(4) - (6)].id))+2+1));
             
@@ -2109,7 +2118,7 @@ yyreduce:
   case 26:
 
 /* Line 1806 of yacc.c  */
-#line 504 "macrojava.y"
+#line 513 "macrojava.y"
     {
                (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+3+1));
             
@@ -2136,7 +2145,7 @@ yyreduce:
   case 27:
 
 /* Line 1806 of yacc.c  */
-#line 525 "macrojava.y"
+#line 534 "macrojava.y"
     {
              (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (2)].id))+strlen((yyvsp[(2) - (2)].id))+1));
             
@@ -2150,7 +2159,7 @@ yyreduce:
   case 28:
 
 /* Line 1806 of yacc.c  */
-#line 535 "macrojava.y"
+#line 544 "macrojava.y"
     {
                           
                           char tt[100][10];
@@ -2183,7 +2192,7 @@ yyreduce:
   case 29:
 
 /* Line 1806 of yacc.c  */
-#line 562 "macrojava.y"
+#line 571 "macrojava.y"
     {
                           
                           numOfParams[numberOfMacros] = 0;
@@ -2196,7 +2205,7 @@ yyreduce:
   case 30:
 
 /* Line 1806 of yacc.c  */
-#line 571 "macrojava.y"
+#line 580 "macrojava.y"
     {
                           char tt[100][10];
                           strcpy(tt[0],(yyvsp[(5) - (10)].id));
@@ -2227,7 +2236,7 @@ yyreduce:
   case 31:
 
 /* Line 1806 of yacc.c  */
-#line 596 "macrojava.y"
+#line 605 "macrojava.y"
     {
                           numOfParams[numberOfMacros] = 0;
                           char tt[100][10];
@@ -2239,7 +2248,7 @@ yyreduce:
   case 32:
 
 /* Line 1806 of yacc.c  */
-#line 604 "macrojava.y"
+#line 613 "macrojava.y"
     {
             (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
             (yyval.id)[0] = '\0';
@@ -2253,7 +2262,7 @@ yyreduce:
   case 33:
 
 /* Line 1806 of yacc.c  */
-#line 612 "macrojava.y"
+#line 621 "macrojava.y"
     {
             (yyval.id) = (char*)malloc(sizeof(char)*1);
             (yyval.id)[0] = '\0';
@@ -2264,7 +2273,7 @@ yyreduce:
   case 34:
 
 /* Line 1806 of yacc.c  */
-#line 619 "macrojava.y"
+#line 628 "macrojava.y"
     {
             (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
             (yyval.id)[0] = '\0';
@@ -2278,7 +2287,7 @@ yyreduce:
   case 35:
 
 /* Line 1806 of yacc.c  */
-#line 627 "macrojava.y"
+#line 636 "macrojava.y"
     {
             (yyval.id) = (char*)malloc(sizeof(char)*1);
             (yyval.id)[0] = '\0';
@@ -2290,7 +2299,7 @@ yyreduce:
   case 36:
 
 /* Line 1806 of yacc.c  */
-#line 635 "macrojava.y"
+#line 644 "macrojava.y"
     {
                                     
                 }
@@ -2299,7 +2308,7 @@ yyreduce:
   case 37:
 
 /* Line 1806 of yacc.c  */
-#line 638 "macrojava.y"
+#line 647 "macrojava.y"
     {
                                     
                 }
@@ -2308,7 +2317,7 @@ yyreduce:
   case 38:
 
 /* Line 1806 of yacc.c  */
-#line 641 "macrojava.y"
+#line 650 "macrojava.y"
     {
                                     
                 }
@@ -2317,7 +2326,7 @@ yyreduce:
   case 39:
 
 /* Line 1806 of yacc.c  */
-#line 646 "macrojava.y"
+#line 655 "macrojava.y"
     {
             (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+strlen((yyvsp[(2) - (4)].id))+strlen((yyvsp[(3) - (4)].id))+1+1));
             (yyval.id)[0] = '\0';
@@ -2333,7 +2342,7 @@ yyreduce:
   case 40:
 
 /* Line 1806 of yacc.c  */
-#line 656 "macrojava.y"
+#line 665 "macrojava.y"
     {
             (yyval.id) = (char*)malloc(sizeof(char)*1);
             (yyval.id)[0] = '\0';
@@ -2345,7 +2354,7 @@ yyreduce:
   case 41:
 
 /* Line 1806 of yacc.c  */
-#line 664 "macrojava.y"
+#line 673 "macrojava.y"
     {
             (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+1+strlen((yyvsp[(3) - (4)].id))+strlen((yyvsp[(4) - (4)].id))+1));
             (yyval.id)[0] = '\0';
@@ -2361,7 +2370,7 @@ yyreduce:
   case 42:
 
 /* Line 1806 of yacc.c  */
-#line 674 "macrojava.y"
+#line 683 "macrojava.y"
     {
         (yyval.id) = (char*)malloc(sizeof(char)*1);
         (yyval.id)[0] = '\0';
@@ -2372,7 +2381,7 @@ yyreduce:
   case 43:
 
 /* Line 1806 of yacc.c  */
-#line 682 "macrojava.y"
+#line 691 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
                 (yyval.id)[0] = '\0';
@@ -2385,7 +2394,7 @@ yyreduce:
   case 44:
 
 /* Line 1806 of yacc.c  */
-#line 689 "macrojava.y"
+#line 698 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
                 (yyval.id)[0] = '\0';
@@ -2401,7 +2410,7 @@ yyreduce:
   case 45:
 
 /* Line 1806 of yacc.c  */
-#line 699 "macrojava.y"
+#line 708 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
                 (yyval.id)[0] = '\0';
@@ -2417,7 +2426,7 @@ yyreduce:
   case 46:
 
 /* Line 1806 of yacc.c  */
-#line 709 "macrojava.y"
+#line 718 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
                 (yyval.id)[0] = '\0';
@@ -2432,7 +2441,7 @@ yyreduce:
   case 47:
 
 /* Line 1806 of yacc.c  */
-#line 718 "macrojava.y"
+#line 727 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
                 (yyval.id)[0] = '\0';
@@ -2448,7 +2457,7 @@ yyreduce:
   case 48:
 
 /* Line 1806 of yacc.c  */
-#line 728 "macrojava.y"
+#line 737 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
                 (yyval.id)[0] = '\0';
@@ -2465,7 +2474,7 @@ yyreduce:
   case 49:
 
 /* Line 1806 of yacc.c  */
-#line 739 "macrojava.y"
+#line 748 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+1+strlen((yyvsp[(3) - (4)].id))+1+1));
                 (yyval.id)[0] = '\0';
@@ -2481,7 +2490,7 @@ yyreduce:
   case 50:
 
 /* Line 1806 of yacc.c  */
-#line 749 "macrojava.y"
+#line 758 "macrojava.y"
     {
                 (yyvsp[(3) - (3)].id)="length";
                 
@@ -2498,7 +2507,7 @@ yyreduce:
   case 51:
 
 /* Line 1806 of yacc.c  */
-#line 760 "macrojava.y"
+#line 769 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+1+strlen((yyvsp[(3) - (7)].id))+1+strlen((yyvsp[(5) - (7)].id))+strlen((yyvsp[(6) - (7)].id))+1+1));
                 (yyval.id)[0] = '\0';
@@ -2518,7 +2527,7 @@ yyreduce:
   case 52:
 
 /* Line 1806 of yacc.c  */
-#line 774 "macrojava.y"
+#line 783 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+1+strlen((yyvsp[(3) - (5)].id))+2+1));
                 (yyval.id)[0] = '\0';
@@ -2534,7 +2543,7 @@ yyreduce:
   case 53:
 
 /* Line 1806 of yacc.c  */
-#line 784 "macrojava.y"
+#line 793 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+1+strlen((yyvsp[(3) - (5)].id))+strlen((yyvsp[(4) - (5)].id))+1+1));
                 (yyval.id)[0] = '\0';
@@ -2579,7 +2588,7 @@ yyreduce:
   case 54:
 
 /* Line 1806 of yacc.c  */
-#line 823 "macrojava.y"
+#line 832 "macrojava.y"
     {
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+2+1));
                 (yyval.id)[0] = '\0';
@@ -2592,7 +2601,6 @@ yyreduce:
                 {
                     char tt[100][10];
                     strcat((yyval.id),findAndReplace((yyvsp[(1) - (3)].id),tt));
-                    printf("here??");
                 }
             
             }
@@ -2601,7 +2609,7 @@ yyreduce:
   case 55:
 
 /* Line 1806 of yacc.c  */
-#line 839 "macrojava.y"
+#line 847 "macrojava.y"
     {
             
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
@@ -2614,9 +2622,10 @@ yyreduce:
   case 56:
 
 /* Line 1806 of yacc.c  */
-#line 848 "macrojava.y"
+#line 856 "macrojava.y"
     {
                         (yyval.id) = (char*)malloc(sizeof(char)*(18));
+                        (yyval.id)[0] = '\0';
                         sprintf((yyval.id),"%d",(yyvsp[(1) - (1)].ival));
 
                     
@@ -2626,7 +2635,7 @@ yyreduce:
   case 57:
 
 /* Line 1806 of yacc.c  */
-#line 854 "macrojava.y"
+#line 863 "macrojava.y"
     {
                         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].bval)) + 1));
                         (yyval.id)[0] = '\0';
@@ -2639,7 +2648,7 @@ yyreduce:
   case 58:
 
 /* Line 1806 of yacc.c  */
-#line 861 "macrojava.y"
+#line 870 "macrojava.y"
     {
                         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
                         (yyval.id)[0] = '\0';
@@ -2651,7 +2660,7 @@ yyreduce:
   case 59:
 
 /* Line 1806 of yacc.c  */
-#line 867 "macrojava.y"
+#line 876 "macrojava.y"
     {
                         (yyvsp[(1) - (1)].id) = "this";
                         
@@ -2665,7 +2674,7 @@ yyreduce:
   case 60:
 
 /* Line 1806 of yacc.c  */
-#line 875 "macrojava.y"
+#line 884 "macrojava.y"
     {
                         
                         (yyvsp[(1) - (5)].id)="new";
@@ -2687,7 +2696,7 @@ yyreduce:
   case 61:
 
 /* Line 1806 of yacc.c  */
-#line 891 "macrojava.y"
+#line 900 "macrojava.y"
     {
                         
                         (yyvsp[(1) - (4)].id) = "new";    
@@ -2704,7 +2713,7 @@ yyreduce:
   case 62:
 
 /* Line 1806 of yacc.c  */
-#line 902 "macrojava.y"
+#line 911 "macrojava.y"
     {
                         (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (2)].id))+1));
                         (yyval.id)[0] = '\0';
@@ -2718,7 +2727,7 @@ yyreduce:
   case 63:
 
 /* Line 1806 of yacc.c  */
-#line 910 "macrojava.y"
+#line 919 "macrojava.y"
     {
                         (yyval.id) = (char*)malloc(sizeof(char)*(1+strlen((yyvsp[(2) - (3)].id))+1+1));
                         (yyval.id)[0] = '\0';
@@ -2731,7 +2740,7 @@ yyreduce:
 
 
 /* Line 1806 of yacc.c  */
-#line 2735 "macrojava.tab.c"
+#line 2744 "macrojava.tab.c"
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2962,11 +2971,12 @@ yyreturn:
 
 
 /* Line 2067 of yacc.c  */
-#line 919 "macrojava.y"
+#line 928 "macrojava.y"
 
 main(){
     initialize();
-	// parse through the input until there is no more.
+	
+    // parse through the input until there is no more.
 	do {
 		yyparse();
 	} while (!feof(yyin));

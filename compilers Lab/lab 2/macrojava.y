@@ -1,4 +1,8 @@
 %{
+/*
+    Author : Karthik Abinav S
+    Roll : CS10B057
+*/
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
@@ -11,12 +15,14 @@ char parameters[100][100][10];//Allowing 10 parameters utmost in the macro
 int numOfParams[100];
 int numberOfMacros = 0;
 
+//Initialise all the number of paramters for each macro to 0
 void initialize(){
     int i;
     for(i=0;i<100;i++)
         numOfParams[i] = 0;
 }
 
+// To check if a particular identifier is present as a macr0
 int isPresent(char key[])
 {
     int i;
@@ -31,7 +37,7 @@ int isPresent(char key[])
 
 }
 
-
+//Replace a particular macro with its macro statement
 char* findAndReplace(char key[],char params[100][10])
 {
     int i; 
@@ -89,6 +95,8 @@ char* findAndReplace(char key[],char params[100][10])
     }
     return '\0';
 }
+
+//Push a new macro in to the symbol table
 void push(char key[] , char value[] , char parameter[100][10])
 {
     strcpy(symbol[numberOfMacros] , key);
@@ -166,6 +174,7 @@ Goal: MacroDefinition MainClass TypeDeclaration EndOfFile {
                                         $$ = (char*) malloc(sizeof(char)*(strlen($2)+strlen($3)+1));
                                         $$[0] = '\0';
                                         
+                                        printf("// Macrojava code parsed and minijava code generated successfully.\n");
                                         strcat($$,$2);
                                         strcat($$,$3);
                                         printf("%s\n",$$);
@@ -275,7 +284,7 @@ MethodDeclaration : MethodDeclaration PUBLIC Type IDENTIFIER '(' Type IDENTIFIER
                         $2="public";
                         $10="return";
                         
-                        $$ = (char*)malloc(sizeof(char)*(strlen($1) + strlen($3)+ strlen($4)+ 3+ strlen($8)+ strlen($9)+ strlen($10)+ strlen($11)+ 2+1));
+                        $$ = (char*)malloc(sizeof(char)*(strlen($1) + strlen($2) + strlen($3)+ strlen($4)+ 3+ strlen($8)+ strlen($9)+ strlen($10)+ strlen($11)+ 2+1));
                         $$[0] = '\0';
                         strcat($$,$1);
                         strcat($$,$2);
@@ -846,6 +855,7 @@ Expression  :	PrimaryExpression '&' PrimaryExpression {
 
 PrimaryExpression   :	INTVAL {
                         $$ = (char*)malloc(sizeof(char)*(18));
+                        $$[0] = '\0';
                         sprintf($$,"%d",$1);
 
                     
@@ -918,7 +928,8 @@ PrimaryExpression   :	INTVAL {
 %%
 main(){
     initialize();
-	// parse through the input until there is no more.
+	
+    // parse through the input until there is no more.
 	do {
 		yyparse();
 	} while (!feof(yyin));
