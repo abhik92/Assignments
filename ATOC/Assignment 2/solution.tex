@@ -209,12 +209,43 @@ Consider two machines $M1$ and $M2$ which does the following:
  
  %Question 3
  \question
+ \begin{parts}
+  % Part (a)
+  \part
+  $L = \{a^p~:~p~is~a~prime~number\}$ \newline 
+  This language is not regular but is decidable.
+  %Part (b)
+  \part
+  For a given turing machine $M$,\newline
+  $L = \{1^n~:~M~halts~on~input~1^n\}$ \newline 
+  Since, its a fixed machine $M$ , the transitions of $M$ can be hardwired in the transitions of the machine $K$ simulating it. And hence the set of tape alphabets is
+  singleton. 
+  %Part (c)
+  \part
+  $ FIN = \{M~:~L(M)~is~finite\}$,\newline 
+  Generally, we represent the encoding of $M$ using the bits 0's and 1's. However, this can be viewed as the nth lexicographic permutation of 0's and 1's.
+  Hence, encoding $M$ as $a^n$ , where n represents the nth lexicographic permutation of 0's and 1's. Hence every machine can be encoded over a singleton alphabet.
+  
+ \end{parts}
+
  
  %Question 4
  \question
  \begin{parts}
   %Part (a)
   \part
+  $\leq_{m}$ is reflexive and transitive,but not symmetric.\newline
+  \underline{Reflexive}: A $\leq_{m}$ A via the identity function $\sigma (x) = x$ \newline
+  \underline{Transitive}: If A $\leq_{m}$ B via a map $\sigma$ and B $\leq_{m}$ C via the map $\tau$ , then A $\leq_{m}$ C via the map $\tau\circ\sigma$ \newline
+  \underline{Symmetric}: $\leq_{m}$ is not symmetric because the function $\sigma$ is not invertible. \newline \newline
+  
+  $\leq_{T}$ is reflexive and transitive,but not symmetric.\newline
+  \underline{Reflexive}: A $\leq_{T}$ A .Given a A as an oracle, the OTM just has to return the value of its query to the oracle to accept/reject A.   \newline
+  \underline{Transitive}: If A $\leq_{T}$ B , then given B as an oracle, A is totally computable. Similarly B $\leq_{T}$ C implies given C as an oracle , B is totally computable.
+                          Now, an OTM with C as an oracle, can compute A totally as follows. Using C as the oracle, compute and store intermidiate value of B. Now this value can serve
+                          as an answer from an oracle and hence A can be calculated. Calculation of B doesnt cause looping (B $\leq_{T}$ C). Hence, calculation of A doesnt cause looping.
+                          Hence A $\leq_{T}$ C. \newline
+  \underline{Symmetric}: $\leq_{T}$ is not symmetric.Example : $FIN \leq_{T} REG $ , but $REG \nleq_{T} FIN $. \newline
   
   %Part (b)
   \part

@@ -2,6 +2,7 @@
 \printanswers
 \usepackage{amsmath,amssymb,complexity,amsthm}
 \usepackage{graphicx}
+\usepackage{textcomp}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -167,7 +168,7 @@ $L$ is undecidable. If $L$ was decidable we can use the total turing machine $K$
 Consider two machines $M1$ and $M2$ which does the following:
 \begin{itemize}
  \item 
-  Both machines simulate $M$ on $x$ . If $M$ halts on $x$ then both machines $M1$ and $M2$ accepts their inputs $y1$,$y2$.
+  Both machines simulate $M$ on $x$ . If $M$ halts on $x$ then both machines $M1$ and $M2$ accepts their inputs $y1$,$y2$ respectively.
   
 \end{itemize}
   So the language of machine $M1$ can be described as : 
@@ -188,7 +189,15 @@ Consider two machines $M1$ and $M2$ which does the following:
      \varnothing & \quad \text{if $M$ does not halt on $x$}\\
   \end{array} \right.
 \]
-
+  And the Language $L(M1)\bigcap L(M2)$ can be described as : 
+  \[
+   L(M1)\bigcap L(M2)  = \left\{ 
+  \begin{array}{l l}
+     \Sigma^\ast & \quad \text{if $M$ halts on $x$}\\
+     \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+  
   Giving machines ($M1$ , $M2$) as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
   
   
@@ -197,6 +206,89 @@ Consider two machines $M1$ and $M2$ which does the following:
 
  %Question 2
  \question
+ 
+ %Question 3
+ \question
+ \begin{parts}
+  % Part (a)
+  \part
+  $L = \{a^p~:~p~is~a~prime~number\}$ \newline 
+  This language is not regular but is decidable.
+  %Part (b)
+  \part
+  For a given turing machine $M$,\newline
+  $L = \{1^n~:~M~halts~on~input~1^n\}$ \newline 
+  Since, its a fixed machine $M$ , the transitions of $M$ can be hardwired in the transitions of the machine $K$ simulating it. And hence the set of tape alphabets is
+  singleton. 
+  %Part (c)
+  \part
+  $ FIN = \{M~:~L(M)~is~finite\},\newline 
+  
+  
+ \end{parts}
+
+ 
+ %Question 4
+ \question
+ \begin{parts}
+  %Part (a)
+  \part
+  $\leq_{m}$ is reflexive and transitive,but not symmetric.\newline
+  \underline{Reflexive}: A $\leq_{m}$ A via the identity function $\sigma (x) = x$ \newline
+  \underline{Transitive}: If A $\leq_{m}$ B via a map $\sigma$ and B $\leq_{m}$ C via the map $\tau$ , then A $\leq_{m}$ C via the map $\tau\circ\sigma$ \newline
+  \underline{Symmetric}: $\leq_{m}$ is not symmetric because the function $\sigma$ is not invertible. \newline \newline
+  
+  $\leq_{T}$ is reflexive and transitive,but not symmetric.\newline
+  \underline{Reflexive}: A $\leq_{T}$ A .Given a A as an oracle, the OTM just has to return the value of its query to the oracle to accept/reject A.   \newline
+  \underline{Transitive}: If A $\leq_{T}$ B , then given B as an oracle, A is totally computable. Similarly B $\leq_{T}$ C implies given C as an oracle , B is totally computable.
+                          Now, an OTM with C as an oracle, can compute A totally as follows. Using C as the oracle, compute and store intermidiate value of B. Now this value can serve
+                          as an answer from an oracle and hence A can be calculated. Calculation of B doesnt cause looping (B $\leq_{T}$ C). Hence, calculation of A doesnt cause looping.
+                          Hence A $\leq_{T}$ C. \newline
+  \underline{Symmetric}: $\leq_{T}$ is not symmetric.Example : $FIN \leq_{T} REG $ , but $REG \nleq_{T} FIN $. \newline
+  
+  %Part (b)
+  \part
+  L is decidable $=>$ L $\leq_{m}$ $1^\ast0^\ast$ \newline
+  
+  To show this we have to find a $\sigma : \Sigma^\ast$ \textrightarrow $\Sigma^\ast$ :
+  \begin{itemize}
+   \item 
+   $\sigma$ is totally computable
+   \item
+   $\forall x, x\in L <=> \sigma(x)\in1^\ast0^\ast$ 
+  \end{itemize}
+  
+  Since, L is decidable , there exists a total turing machine $K$ such that, $L(K)=L$ .
+  Let $\sigma$ be defined as follows :
+  
+   \[
+    \sigma(x) = \left\{ 
+  \begin{array}{l l}
+     10 & \quad \text{if $K$ accepts $x$}\\
+     01 & \quad \text{if $K$ rejects $x$}\\
+  \end{array} \right.
+  \]
+  
+  $\sigma$ is totally computable since $K$ is total. \newline
+  $x\in L <=> K~accepts~x <=>( \sigma(x) = 10 \in 1^\ast0^\ast $) \newline
+  
+  Therefore, L $\leq_{m}$ $1^\ast0^\ast$ \newline
+  
+  L is decidable $<=$ L $\leq_{m}$ $1^\ast0^\ast$ \newline
+   
+    RHS implies there exists a totally computable $\sigma$ such that $\forall x, x\in L <=> \sigma(x)\in1^\ast0^\ast$ . \newline
+    For any input $x$ , calculating $\sigma(x)\in1^\ast0^\ast$ , can be done by a total turing machine.(Keep 4 states. when on state 1 implies seeing 1's. First time a 0 is seen,
+    move to state 2. Or if end of input is seen, move to state 3 and accept. In state 2 ,if end of input is reached go to state 3 and accept. If a 1 is seen, move to state 4 and reject).
+    Hence, $x\in L$ can be totally computed . Therefore , $L$ is decidable.
+   
+ \end{parts}
+
+ 
+ 
+ %Question 5
+ \question
+ 
+ 
  
  \end{questions}
 \end{document}

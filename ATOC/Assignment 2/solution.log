@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  9 SEP 2012 10:52
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  9 SEP 2012 23:30
 entering extended mode
  %&-line parsing enabled.
 **solution.tex
@@ -338,35 +338,50 @@ Overfull \hbox (31.86986pt too wide) detected at line 108
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 242--244
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+Underfull \hbox (badness 10000) in paragraph at lines 242--249
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
+Underfull \hbox (badness 10000) in paragraph at lines 273--275
 
  []
 
-[3] [4]
-This exam contains 5 questions with 9 parts, 0 subparts, and 0 subsubparts.
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
+
+ []
+
+[4]
+This exam contains 5 questions with 12 parts, 0 subparts, and 0 subsubparts.
 This exam has a total of 0 points.
 This exam has a total of 0 bonus points.
 (./solution.aux) ) 
 Here is how much of TeX's memory you used:
- 3618 strings out of 495061
- 43274 string characters out of 1182622
- 106128 words of memory out of 3000000
- 6778 multiletter control sequences out of 15000+50000
+ 3627 strings out of 495061
+ 43397 string characters out of 1182622
+ 106171 words of memory out of 3000000
+ 6787 multiletter control sequences out of 15000+50000
  9574 words of font info for 37 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  28i,12n,24p,265b,411s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -379,7 +394,7 @@ exlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts
 ic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 /cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msb
 m10.pfb>
-Output written on solution.pdf (4 pages, 92618 bytes).
+Output written on solution.pdf (4 pages, 99468 bytes).
 PDF statistics:
  53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
