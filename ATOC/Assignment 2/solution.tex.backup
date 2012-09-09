@@ -1,0 +1,204 @@
+\documentclass[addpoints,12pt]{exam}
+\printanswers
+\usepackage{amsmath,amssymb,complexity,amsthm}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{definition}[theorem]{Definition}
+
+\begin{document}
+\hrule
+\vspace{3mm}
+\noindent
+{\sf CS6014: Advanced Theory of Computation  \hfill Author: Karthik Abinav - CS10B057}
+\vspace{3mm}\\
+\noindent
+{\sf Problem Set \#2 }
+\vspace{3mm}
+\hrule
+
+\begin{questions}
+%Question 1
+\question
+\begin{parts}
+%Part (a)
+\part
+$L$ = \{$M$ : $M$ has an useless state $q$ \} \newline
+Language $L$ is undecidable. Suppose $L$ was decidable then we can use that as a sub routine to solve $\overline{HP}$ as follows:
+\begin{itemize}
+ \item 
+ Consider a new machine $\grave{M}$ which has two states - start and accept state. It writes its input $y$ on a seperate tape.
+ \item
+ It then runs $M$ on input $x$ . If $M$ halts on $x$ it accepts its input $y$.
+\end{itemize}
+
+  The machine $\grave{M}$ can be described as : \newline
+  \[
+    \grave{M} = \left\{ 
+  \begin{array}{l l}
+     \grave{M}~has~no~useless~state~ & \quad \text{if $M$ halts on $x$}\\
+     \grave{M}~has~an~useless~accept~state~ & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+
+Since our assumption is that $L$ is decidable implies there exists a total turing machine $K$ which accpets $L$ . Giving $\grave{M}$ 
+as input to $K$ , we can totally compute if $M$ halts on $x$ . But we know there is no such total turing machine. Hence, language $L$ is not decidable.
+
+%Part (b)
+\part
+
+%Part (c)
+\part
+$L$ = \{($M1$,$M2$): $L(M1)$ = $\overline{L(M2)}$\} \newline
+$L$ is undecidable. If $L$ was decidable we can use the total turing machine $K$ accepting $L$ as a sub routine to solve $HP$ as follows: \newline
+Consider two machines $M1$ and $M2$ which does the following:
+\begin{itemize}
+ \item 
+  Both machines simulate $M$ on $x$ . If $M$ halts on $x$ then machine $M1$ accepts its input $y$ , while machine $M2$ rejects input $y$.
+  
+\end{itemize}
+  So the language of machine $M1$ can be described as : 
+  
+  \[
+    L(M1) = \left\{ 
+  \begin{array}{l l}
+     \Sigma^\ast & \quad \text{if $M$ halts on $x$}\\
+     \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+
+  Similarly the language accpeted by machine $M2$ can be described as:
+  \[
+    L(M2) = \left\{ 
+  \begin{array}{l l}
+     \varnothing & \quad \text{if $M$ halts on $x$}\\
+     \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+
+  Giving machines ($M1$ , $M2$) as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
+  
+ % Part (d)
+ \part
+ $L$ = \{$M$ : $\exists x\in\Sigma^\ast$ s.t. $M$ runs forever on input $x$\} \newline
+ This language is undecidable . If this language was decidable by a total turing machine $K$ , then we can use it as a sub routine to solve $\overline{HP}$ as follows: \newline
+ Consider machine $\grave{M}$ which does the following:
+ 
+ \begin{itemize}
+  \item 
+  $\grave{M}$ writes its input $y$ on a seperate track.
+  \item
+  It runs machine $M$ on input $x$. If $M$ halts on $x$ , then it accepts its input $y$.
+  
+ \end{itemize}
+ 
+ The machine $\grave{M}$ can be described as follows:
+   \[
+    \grave{M} = \left\{ 
+  \begin{array}{l l}
+     For~all~inputs~\grave{M}~doesnt~run~forever & \quad \text{if $M$ halts on $x$}\\
+     There~exists~an~input~for~which~\grave{M}~runs~forever & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+  Giving $\grave{M}$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total machine, hence no such total turing machine $K$ exists. 
+ 
+ %Part (e)
+ \part
+ 
+ $L$ = \{$M$: $M$ accepts atleast one plaindromic string\} \newline
+$L$ is undecidable. If $L$ was decidable we can use the total turing machine $K$ accepting $L$ as a sub routine to solve $HP$ as follows: \newline
+Consider machine $\grave{M}$ which does the following:
+\begin{itemize}
+ \item 
+  Machine $\grave{M}$ simulates $M$ on input $x$.
+  \item
+  If $M$ halts on $x$, then $\grave{M}$ accepts its input $y$
+  
+\end{itemize}
+  So the language of machine $M$ can be described as : 
+  
+  \[
+    L(M) = \left\{ 
+  \begin{array}{l l}
+     \Sigma^\ast & \quad \text{if $M$ halts on $x$}\\
+     \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+
+  Since, $\Sigma^\ast$ contains atleast one palindromic string,
+  Giving machine $M$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
+  
+ %Part (f)
+ \part
+  
+ $L$ = \{$M$: $M$ accepts only plaindromic strings\} \newline
+$L$ is undecidable. If $L$ was decidable we can use the total turing machine $K$ accepting $L$ as a sub routine to solve $HP$ as follows: \newline
+Consider machine $\grave{M}$ which does the following:
+\begin{itemize}
+ \item 
+  Machine $\grave{M}$ simulates $M$ on input $x$.
+  \item
+  If $M$ halts on $x$, then $\grave{M}$ checks if its input $y$ is a plaindrome. If yes, it accepts $y$ , else rejects $y$.
+  
+\end{itemize}
+  So the language of machine $M$ can be described as : 
+  
+  \[
+    L(M) = \left\{ 
+  \begin{array}{l l}
+     P & \quad \text{if $M$ halts on $x$}\\
+     \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+  
+  Where $P$ is the set of all palindromes.\newline
+  Giving machine $M$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
+  
+  
+  %Part (g)
+  \part
+  $L$ = \{($M1$,$M2$): $L(M1)\bigcap L(M2) \neq \varnothing $ \} \newline
+$L$ is undecidable. If $L$ was decidable we can use the total turing machine $K$ accepting $L$ as a sub routine to solve $HP$ as follows: \newline
+Consider two machines $M1$ and $M2$ which does the following:
+\begin{itemize}
+ \item 
+  Both machines simulate $M$ on $x$ . If $M$ halts on $x$ then both machines $M1$ and $M2$ accepts their inputs $y1$,$y2$.
+  
+\end{itemize}
+  So the language of machine $M1$ can be described as : 
+  
+  \[
+    L(M1) = \left\{ 
+  \begin{array}{l l}
+     \Sigma^\ast & \quad \text{if $M$ halts on $x$}\\
+     \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+
+  Similarly the language accpeted by machine $M2$ can be described as:
+  \[
+    L(M2) = \left\{ 
+  \begin{array}{l l}
+     \Sigma^\ast & \quad \text{if $M$ halts on $x$}\\
+     \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+
+  Giving machines ($M1$ , $M2$) as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
+  
+  
+  
+ \end{parts}
+
+ %Question 2
+ \question
+ 
+ \end{questions}
+\end{document}
+
+
