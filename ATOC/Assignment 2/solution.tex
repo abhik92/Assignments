@@ -1,16 +1,7 @@
 \documentclass[addpoints,12pt]{exam}
 \printanswers
-\usepackage{amsmath,amssymb,complexity,amsthm}
-\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{textcomp}
-
-\newtheorem{theorem}{Theorem}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{observation}[theorem]{Observation}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{claim}[theorem]{Claim}
-\newtheorem{definition}[theorem]{Definition}
 
 \begin{document}
 \hrule
@@ -52,6 +43,10 @@ as input to $K$ , we can totally compute if $M$ halts on $x$ . But we know there
 
 %Part (b)
 \part
+$L$ = \{$(M,w)$: M moves its head left during computation of w \} \newline
+This language is decidable. Suppose, during computation of w, the head moves left once, we are done nad can accept $(M,w)$ . \newline
+If it deosnt not move left till it reaches the first blank symbol - Let $q_1$ be the state at which it first reads the blank symbol. Let $N$ be the number of states of machine $M$. Simulate the machine for a further $N+1$ steps. If the head moved left during this time then accept $(M,w)$ . Else reject. Because : \newline
+$\delta(q_1,blank) = q_j~\forall j\in[1,N]$ . By pigeon hole principle, it should return to a previously visited state after $N+1$ steps.   
 
 %Part (c)
 \part
@@ -144,7 +139,7 @@ Consider machine $\grave{M}$ which does the following:
  \item 
   Machine $\grave{M}$ simulates $M$ on input $x$.
   \item
-  If $M$ halts on $x$, then $\grave{M}$ checks if its input $y$ is a plaindrome. If yes, it accepts $y$ , else rejects $y$.
+  If $M$ halts on $x$, then $\grave{M}$ checks if its input $y$ is a palindrome. If yes, it accepts $y$ , else rejects $y$.
   
 \end{itemize}
   So the language of machine $M$ can be described as : 
@@ -159,7 +154,6 @@ Consider machine $\grave{M}$ which does the following:
   
   Where $P$ is the set of all palindromes.\newline
   Giving machine $M$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
-  
   
   %Part (g)
   \part
@@ -199,14 +193,54 @@ Consider two machines $M1$ and $M2$ which does the following:
 \]
   
   Giving machines ($M1$ , $M2$) as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
-  
-  
-  
- \end{parts}
+ 
+\end{parts}
 
  %Question 2
  \question
- 
+	\begin{parts}
+	%Part 1
+	\part
+	(107) $L$ = \{$M$ : $L(M)~=~rev~L(M)$\} \newline	
+		This language is undecidable. \newline
+		If $L$ was decidable we can use the total turing machine $K$ accepting $L$ as a sub routine to solve $HP$ as follows: 		\newline
+Consider machine $\grave{M}$ which does the following:
+\begin{itemize}
+ \item 
+  Machine $\grave{M}$ simulates $M$ on input $x$.
+  \item
+  If $M$ halts on $x$, then $\grave{M}$ checks if its input $y$ is a palindrome. If yes, it accepts $y$ , else rejects $y$.
+  
+\end{itemize}
+  So the language of machine $M$ can be described as : 
+  
+  \[
+    L(M) = \left\{ 
+  \begin{array}{l l}
+     P & \quad \text{if $M$ halts on $x$}\\
+     \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+  \end{array} \right.
+\]
+  
+  Where $P$ is the set of all palindromes.\newline
+  Giving machine $M$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists. 
+	%Part 2
+	\part	
+	
+	%Part 3
+	\part
+
+	%Part 4
+	\part	
+	
+	%Part 5
+	\part
+	
+	%Part 6
+	\part
+	
+	
+	\end{parts}	 
  %Question 3
  \question
  \begin{parts}
