@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.27)  10 SEP 2012 01:38
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  11 SEP 2012 19:17
 entering extended mode
  %&-line parsing enabled.
 **solution.tex
@@ -288,66 +288,132 @@ Overfull \hbox (31.86986pt too wide) detected at line 103
 [] \OT1/cmr/m/n/12 = []
  []
 
-[2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 271--275
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 243--247
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--275
+Underfull \hbox (badness 10000) in paragraph at lines 248--250
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--283
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
  []
 
 [4]
+Underfull \hbox (badness 10000) in paragraph at lines 272--275
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--279
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--282
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--302
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--306
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 307--309
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 310--311
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 312--313
-
- []
-
 [5]
-This exam contains 5 questions with 18 parts, 0 subparts, and 0 subsubparts.
+Underfull \hbox (badness 10000) in paragraph at lines 320--322
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 323--327
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--333
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--365
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--365
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--373
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 397--399
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
+
+ []
+
+[7]
+This exam contains 5 questions with 12 parts, 0 subparts, and 0 subsubparts.
 This exam has a total of 0 points.
 This exam has a total of 0 bonus points.
 (./solution.aux) ) 
 Here is how much of TeX's memory you used:
- 2541 strings out of 495061
- 32016 string characters out of 1182621
+ 2524 strings out of 495061
+ 31781 string characters out of 1182622
  89431 words of memory out of 3000000
- 5733 multiletter control sequences out of 15000+50000
+ 5716 multiletter control sequences out of 15000+50000
  9574 words of font info for 37 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  28i,12n,24p,337b,349s stack positions out of 5000i,500n,10000p,200000b,50000s
- </home/kabinav/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm12
-00.600pk></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive
-/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1
-/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
-nts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy
-10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
+ </home/karthikabinav/.texmf-var/fonts/pk/ljfour/jknappen/ec/
+tcrm1200.600pk></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr
 /share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on solution.pdf (5 pages, 110503 bytes).
+Output written on solution.pdf (7 pages, 128516 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
+ 72 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

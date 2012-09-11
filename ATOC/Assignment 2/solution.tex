@@ -44,7 +44,7 @@ as input to $K$ , we can totally compute if $M$ halts on $x$ . But we know there
 %Part (b)
 \part
 $L$ = \{$(M,w)$: M moves its head left during computation of w \} \newline
-This language is decidable. Suppose, during computation of w, the head moves left once, we are done nad can accept $(M,w)$ . \newline
+This language is decidable. Suppose, during computation of w, the head moves left once, we are done and can accept $(M,w)$ . \newline
 If it deosnt not move left till it reaches the first blank symbol - Let $q_1$ be the state at which it first reads the blank symbol. Let $N$ be the number of states of machine $M$. Simulate the machine for a further $N+1$ steps. If the head moved left during this time then accept $(M,w)$ . Else reject. Because : \newline
 $\delta(q_1,blank) = q_j~\forall j\in[1,N]$ . By pigeon hole principle, it should return to a previously visited state after $N+1$ steps.   
 
@@ -198,12 +198,10 @@ Consider two machines $M1$ and $M2$ which does the following:
 
  %Question 2
  \question
-	\begin{parts}
-	%Part 1
-	\part
-	(107) $L$ = \{$M$ : $L(M)~=~rev~L(M)$\} \newline	
+	(107) \quad $L$ = \{$M$ : $L(M)~=~rev~L(M)$\} \newline	
 		This language is undecidable. \newline
 		If $L$ was decidable we can use the total turing machine $K$ accepting $L$ as a sub routine to solve $HP$ as follows: 		\newline
+		
 Consider machine $\grave{M}$ which does the following:
 \begin{itemize}
  \item 
@@ -224,23 +222,115 @@ Consider machine $\grave{M}$ which does the following:
   
   Where $P$ is the set of all palindromes.\newline
   Giving machine $M$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists. 
-	%Part 2
-	\part	
 	
-	%Part 3
-	\part
+	(109)(a) \quad
+	$L$ =\{$(M,N):M~takes~fewer~steps~than~N~on~\epsilon$\} \newline
+	This language is recursively enumerable. Simulate machine $M$ and $N$ on $\epsilon$ . If, $M$ halts before $N$ , then accept. If $N$ halts before $M$ , then reject .
+	
+	(109)(b) \quad
+	$L$ = \{$M:M~takes~fewer~than~481^{481}~steps~on~some~input $\} \newline
+		This language is recursively enumerable. 
+		On input $y$ simulate the machine $M$. If it doesnt accept or reject in $481^{481}$ steps of the input , accept. Else, reject and go to the next input. Enumerate the input $y$ in lexicographic ordering.
+	
+	(109)(c) \quad	
+	$L$ = \{$M:M~takes~fewer~than~481^{481}~steps~on~atleast~481^{481}~inputs$ \} \newline
+	This language is r.e. Simulate the machine on input $y$ . If after $481^{481}$ steps, if the machine doesnt accept or reject, then increment a counter and move to next input. Else, reject and go to next input. If the counter becomes $481^{481}$ , accept and halt. Enumerate the string $y$ in lexicographic order. 
+	
+	(109)(d) \quad	
+	$L$ = \{$M:M~takes~fewer~than~481^{481}~steps~on~all~inputs$ \} \newline
+		This language is r.e. Simulate machine $M$ on inputs $y$. If it takes more than $481^{481}$ steps on a particular input , then reject and halt. Else , go to the next input. Enumerate $y$ inputs in lexicograhic order till the size of $y$ exceeds $481^{481}$. Then accept and halt.
+	
+	(110) \quad	
+	$L$ = \{$M:M~accepts~at~least~481~strings$\}  \newline
+	This language is in SD . Simulate machine $M$ on input $y$. If it accepts $y$, increment the counter and move to the next input. If at any point 
+	counter reaches 481, accept and halt. $y$ is enumerated in lexicographic ordering. \newline
+	
+	This language is not in co-SD. Because , if this language was in co-SD then, then it would be decidable. We can show that this language is not decidable by reducing this problem to $HP$.
+	\newline
+	 
+	 Let $L$ be decidable. Then it implies there is a total turing machine $K$ accepting $L$. \newline
+	 Consider machine $M1$ which does the following:
+	\begin{itemize}
+	\item 
+	It simulates $M$ on $x$ . If $M$ halts on $x$ then machine $M1$ accepts its input $y$.
+  
+	\end{itemize}
+	So the language of machine $M1$ can be described as : 
+  
+	\[
+	  L(M1) = \left\{ 
+	\begin{array}{l l}
+	  \Sigma^\ast & \quad \text{if $M$ halts on $x$}\\
+	  \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+	\end{array} \right.
+      \]
 
-	%Part 4
-	\part	
+      Giving machines $M1$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
+	 
+      (111) \quad $L1$ = \{$M:L(M)\geqslant481$\} - This language is semidecidable.(From ($110$)) \newline
+      
+      $L2$ = \{$M:L(M)\leqslant481$\} -This language in is co-SD. This can be shown by considering $\overline{L2}$ = \{$M:L(M)\geqslant480$\} \newline
+      From argument in ($110$), this language is SD but not decidable. Therefore $L2$ is in co-SD.
+      \newline
+      
+      (112) \quad $L$ = \{$M:M~halts~on~inputs~of~length~less~than~481$\} \newline
+      This language is semidecidable. Consider a machine $K$ , which simulates inputs $y$ of length less than 481, listed in lexograhical order in a time sharing manner. If it accepts
+      all the inputs then accept. \newline
+      
+      To show that this language is not co-SD, it suffices to show this language is not decidable. This can be shown by reducing this language to $HP$.
+      \newline
+      
+      Let $L$ be decidable. Then it implies there is a total turing machine $K$ accepting $L$. \newline
+	 Consider machine $M1$ which does the following:
+	\begin{itemize}
+	\item 
+	It simulates $M$ on $x$ . If $M$ halts on $x$ then machine $M1$ accepts its input $y$.
+  
+	\end{itemize}
+	So the language of machine $M1$ can be described as : 
+  
+	\[
+	  L(M1) = \left\{ 
+	\begin{array}{l l}
+	  \Sigma^\ast & \quad \text{if $M$ halts on $x$}\\
+	  \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+	\end{array} \right.
+      \]
+
+      Giving machines $M1$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
+      \newline
+      
+      (115)(a) \quad $L$ = \{A given $TM$ runs for atleast fixed number of n steps on a given input\} \newline
+      This language is decidable. Construct a total turing machine $K$, which simulates the $TM$ for n steps. If it halts before this, then reject. Else accept.
+      \newline
+      
+      (b) \quad $L$= \{$M$:$M$ reenters the start state on some input\} \newline
+      This is semidecidable. To show that this language is not decidable we can reduce this to $HP$ as follows : \newline
 	
-	%Part 5
-	\part
+	 Let $L$ be decidable. Then it implies there is a total turing machine $K$ accepting $L$. \newline
+	 Consider machine $M1$ which does the following:
+	\begin{itemize}
+	\item 
+	It simulates $M$ on $x$ . If $M$ halts on $x$ then machine $M1$ goes to a new state say $\grave{q}$ , writes a special character $\grave{a}$ on the tape
+	and returns to start state. And on seeing $\grave{a}$ in start state, the machine goes to accept state.
+  
+	\end{itemize}
+	So the machine $M1$ renters its start state if $M$ halts on $x$. It doesnt if $M$ doesnt halt on $x$.
+
+      Giving machines $M1$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
+      \newline
+      
+      (c) \quad $L$ = \{$M$ : If$M$ moves its head left more than 10 times on input $a^{481}$ \} \newline
+	This language is decidable. The argument is similar to question $(1)(b)$. If it ever moves its head left once after reaching the end of input, then
+	by the same argument, it will move its head left for more than ten times also. Hence, accept it. Else,reject it.
+	\newline
 	
-	%Part 6
-	\part
-	
-	
-	\end{parts}	 
+      (d) \quad $L$ = \{$M$:$M$ prints more than $481$ non-blank symbols on the tape \} \newline
+      This language is decidable. The total number of configurations ($q$,$x$) of machine $M$ is finite. Hence, after (\textbar $q$ \textbar $\times$ \textbar $\Gamma$ \textbar) $+~1$, the machine
+      will come back to the same (state,tapeAlphabet) pair. In this time, if it ever wrote a non-blank symbol on the tape it implies after finite time, it will write more than $481$ non blank symbols on the tape.
+      Hence, accept. Else reject.
+      \newline
+      
  %Question 3
  \question
  \begin{parts}
@@ -283,14 +373,14 @@ Consider machine $\grave{M}$ which does the following:
   
   %Part (b)
   \part
-  L is decidable $=>$ L $\leq_{m}$ $1^\ast0^\ast$ \newline
+  L is decidable $\Longrightarrow$ L $\leq_{m}$ $1^\ast0^\ast$ \newline
   
   To show this we have to find a $\sigma : \Sigma^\ast$ \textrightarrow $\Sigma^\ast$ :
   \begin{itemize}
    \item 
    $\sigma$ is totally computable
    \item
-   $\forall x, x\in L <=> \sigma(x)\in1^\ast0^\ast$ 
+   $\forall x, x\in L \Longleftrightarrow \sigma(x)\in1^\ast0^\ast$ 
   \end{itemize}
   
   Since, L is decidable , there exists a total turing machine $K$ such that, $L(K)=L$ .
@@ -305,13 +395,13 @@ Consider machine $\grave{M}$ which does the following:
   \]
   
   $\sigma$ is totally computable since $K$ is total. \newline
-  $x\in L <=> K~accepts~x <=>( \sigma(x) = 10 \in 1^\ast0^\ast $) \newline
+  $x\in L \Longleftrightarrow K~accepts~x \Longleftrightarrow( \sigma(x) = 10 \in 1^\ast0^\ast $) \newline
   
   Therefore, L $\leq_{m}$ $1^\ast0^\ast$ \newline
   
-  L is decidable $<=$ L $\leq_{m}$ $1^\ast0^\ast$ \newline
+  L is decidable $\Longleftarrow$ L $\leq_{m}$ $1^\ast0^\ast$ \newline
    
-    RHS implies there exists a totally computable $\sigma$ such that $\forall x, x\in L <=> \sigma(x)\in1^\ast0^\ast$ . \newline
+    RHS implies there exists a totally computable $\sigma$ such that $\forall x, x\in L \Longleftrightarrow \sigma(x)\in1^\ast0^\ast$ . \newline
     For any input $x$ , calculating $\sigma(x)\in1^\ast0^\ast$ , can be done by a total turing machine.(Keep 4 states. when on state 1 implies seeing 1's. First time a 0 is seen,
     move to state 2. Or if end of input is seen, move to state 3 and accept. In state 2 ,if end of input is reached go to state 3 and accept. If a 1 is seen, move to state 4 and reject).
     Hence, $x\in L$ can be totally computed . Therefore , $L$ is decidable.
@@ -323,7 +413,7 @@ Consider machine $\grave{M}$ which does the following:
  %Question 5
  \question
  
- 
+ $FIN\leq_{T}REG$
  
  \end{questions}
 \end{document}
