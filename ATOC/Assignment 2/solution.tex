@@ -320,9 +320,9 @@ Consider machine $\grave{M}$ which does the following:
       Giving machines $M1$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
       \newline
       
-      (c) \quad $L$ = \{$M$ : If$M$ moves its head left more than 10 times on input $a^{481}$ \} \newline
-	This language is decidable. The argument is similar to question $(1)(b)$. If it ever moves its head left once after reaching the end of input, then
-	by the same argument, it will move its head left for more than ten times also. Hence, accept it. Else,reject it.
+      (c) \quad $L$ = \{$M$ : If $M$ moves its head left more than 10 times on input $a^{481}$ \} \newline
+	This language is decidable. The argument is similar to question $(1)(b)$. If it ever moves its head left ten times after $10~\times $ ($q + N + 1$) steps (where $N$ is length of input), then
+	by the same argument accept it. Else,reject it.
 	\newline
 	
       (d) \quad $L$ = \{$M$:$M$ prints more than $481$ non-blank symbols on the tape \} \newline
