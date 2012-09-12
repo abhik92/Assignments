@@ -326,9 +326,9 @@ Consider machine $\grave{M}$ which does the following:
 	\newline
 	
       (d) \quad $L$ = \{$M$:$M$ prints more than $481$ non-blank symbols on the tape \} \newline
-      This language is decidable. The total number of configurations ($q$,$x$) of machine $M$ is finite. Hence, after (\textbar $q$ \textbar $\times$ \textbar $\Gamma$ \textbar) $+~1$, the machine
-      will come back to the same (state,tapeAlphabet) pair. In this time, if it ever wrote a non-blank symbol on the tape it implies after finite time, it will write more than $481$ non blank symbols on the tape.
-      Hence, accept. Else reject.
+      This language is decidable. The total number of configurations ($q$,$x$) of machine $M$ is finite. Hence, after \textbar $\Gamma$ \textbar $^{\text{\textbar} q \text{\textbar}}~+~1$, the machine
+      will come back to a already enlisted (state,tapeAlphabet) pair. In this time, if it ever wrote a non-blank symbol on the tape it implies after $481~\times~$\textbar $\Gamma$ \textbar $^{\text{\textbar} q \text{\textbar}}~+~1$ steps, it will write more than $481$ non blank symbols on the tape.
+      Hence,simulate the machine $M$ for so many steps. If it wrote more than $481$ blank symbols, accept. Else reject.
       \newline
       
  %Question 3
@@ -413,7 +413,10 @@ Consider machine $\grave{M}$ which does the following:
  %Question 5
  \question
  
- $FIN\leq_{T}REG$
+ $FIN\leq_{T}REG$ \newline
+ 
+ $FIN$ is $\Sigma_{2}$-complete, while $REG$ is $\Sigma_{3}$-complete . Hence, every language $L$ in $\Sigma_{3}$ can be $L\leqslant_{T}REG$ . Since,
+ $\Sigma_{2}\subset\Sigma_{3}$ therefore , every language $K$ in $\Sigma_{2}$ can be $K\leqslant_{T}REG$. In particular, $FIN\leq_{T}REG$.
  
  \end{questions}
 \end{document}
