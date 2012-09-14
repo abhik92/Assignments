@@ -10,7 +10,7 @@
 {\sf CS6014: Advanced Theory of Computation  \hfill Author: Karthik Abinav - CS10B057}
 \vspace{3mm}\\
 \noindent
-{\sf Problem Set \#2 }
+{\sf Problem Set \#2 \hfill Colloborated on question 5 with Saikrishna,Akshay,Siddhartha}
 \vspace{3mm}
 \hrule
 
@@ -415,9 +415,42 @@ Consider machine $\grave{M}$ which does the following:
  
  $FIN\leq_{T}REG$ \newline
  
- $FIN$ is $\Sigma_{2}$-complete, while $REG$ is $\Sigma_{3}$-complete . Hence, every language $L$ in $\Sigma_{3}$ can be $L\leqslant_{T}REG$ . Since,
- $\Sigma_{2}\subset\Sigma_{3}$ therefore , every language $K$ in $\Sigma_{2}$ can be $K\leqslant_{T}REG$. In particular, $FIN\leq_{T}REG$.
- 
+  If we can show $MP_{2}\leq_{T}REG$ , we are done. Because, we know that $FIN\in\Sigma_{2}$ and $MP_{2}$ is $\Sigma_{2}$ complete.
+  To show the reduction $MP_{2}\leq_{T}REG$ , we will show $MP_{2}\leq_{m}REG$. \newline
+    
+  Given $(M,x)$ and a input $y$
+  Construct a machine $\grave M$ which writes input $y$ on a seperate track.Then runs $M$ on $x$ and when query to $MP$ is needed, makes a corresponding query to $REG$. If $M$ halts on $x$, it processes its input $y$ and checks if
+  $y$ is on the form $a^{n}b^{n}$ . If yes, it accepts. \newline
+  
+  So the language of machine $\grave M$ can be described as : 
+  
+	\[
+	  L(\grave M) = \left\{ 
+	\begin{array}{l l}
+	  a^{n}b^{n} & \quad \text{if $M$ halts on $x$}\\
+	  \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+	\end{array} \right.
+      \]
+  
+    Hence, $\grave M$ totally reduces $MP_{2}$ to $REG$. The above will work if $MP\leq_{m}REG$. \newline
+    
+    To show $MP\leq_{m}REG$ \newline
+      The reduction is similar to above, except that there is no oracle tape in this new machine which carries the reduction. \newline
+      
+    Given $(M,x)$ and a input $y$
+    Construct a machine $M'$ which writes input $y$ on a seperate track.Then runs $M$ on $x$. If $M$ halts on $x$, it processes its input $y$ and checks if
+  $y$ is on the form $a^{n}b^{n}$ . If yes, it accepts. \newline
+  
+  So the language of machine $M'$ can be described as : 
+  
+	\[
+	  L(M') = \left\{ 
+	\begin{array}{l l}
+	  a^{n}b^{n} & \quad \text{if $M$ halts on $x$}\\
+	  \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+	\end{array} \right.
+      \]
+    Hence $M'$ does the reduction of $MP$ to $REG$.
  \end{questions}
 \end{document}
 

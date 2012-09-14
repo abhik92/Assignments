@@ -320,12 +320,16 @@ Consider machine $\grave{M}$ which does the following:
       Giving machines $M1$ as input to machine $K$ can help in totally computing if machine $M$ halts on input $x$. Since, there is no such total turing machine, hence no such total turing machine $K$ exists.
       \newline
       
-      (c) \quad $L$ = \{$M$ : If$M$ moves its head left more than 10 times on input $a^{481}$ \} \newline
-	This language is decidable. The argument is similar to question $(1)(b)$. If it ever moves its head left once after reaching the end of input, then
-	by the same argument, it will move its head left for more than ten times also. Hence, accept it. Else,reject it.
+      (c) \quad $L$ = \{$M$ : If $M$ moves its head left more than 10 times on input $a^{481}$ \} \newline
+	This language is decidable. The argument is similar to question $(1)(b)$. If it ever moves its head left ten times after $10~\times $ ($q + N + 1$) steps (where $N$ is length of input), then
+	by the same argument accept it. Else,reject it.
 	\newline
+	
       (d) \quad $L$ = \{$M$:$M$ prints more than $481$ non-blank symbols on the tape \} \newline
-      
+      This language is decidable. The total number of configurations ($q$,$x$) of machine $M$ is finite. Hence, after \textbar $\Gamma$ \textbar $^{\text{\textbar} q \text{\textbar}}~+~1$, the machine
+      will come back to a already enlisted (state,tapeAlphabet) pair. In this time, if it ever wrote a non-blank symbol on the tape it implies after $481~\times~$\textbar $\Gamma$ \textbar $^{\text{\textbar} q \text{\textbar}}~+~1$ steps, it will write more than $481$ non blank symbols on the tape.
+      Hence,simulate the machine $M$ for so many steps. If it wrote more than $481$ blank symbols, accept. Else reject.
+      \newline
       
  %Question 3
  \question
@@ -409,8 +413,26 @@ Consider machine $\grave{M}$ which does the following:
  %Question 5
  \question
  
+ $FIN\leq_{T}REG$ \newline
  
- 
+  If we can show $MP_{2}\leq_{T}REG$ , we are done. Because, we know that $FIN\in\Sigma_{2}$ and $MP_{2}$ is $\Sigma_{2}$ complete.
+  To show the reduction $MP_{2}\leq{T}REG$ , we will show $MP_{2}\leq{m}REG$. \newline
+  
+  Given $(M,x)$ and a input $y$
+  Construct a machine $\grave M$ which writes input $y$ on a seperate track.Then runs $M$ on $x$. If $M$ halts on $x$, it runs $\grave M$ on input $y$ and checks if
+  $y$ is on the form $a^{n}b^{n}$ . If yes, it accepts. \newline
+  
+  So the language of machine $\grave M$ can be described as : 
+  
+	\[
+	  L(M) = \left\{ 
+	\begin{array}{l l}
+	  a^{n}b^{n} & \quad \text{if $M$ halts on $x$}\\
+	  \varnothing & \quad \text{if $M$ does not halt on $x$}\\
+	\end{array} \right.
+      \]
+  
+    Hence, $\grave M$ totally reduces $MP_{2}$ to $REG$.
  \end{questions}
 \end{document}
 
