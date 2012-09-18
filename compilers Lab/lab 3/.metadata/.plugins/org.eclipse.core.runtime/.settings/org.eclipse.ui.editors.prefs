@@ -1,4 +1,4 @@
-#Tue Sep 18 05:11:54 IST 2012
+#Wed Sep 19 02:36:01 IST 2012
 htmlTagPairOccurrenceIndicationHighlighting=false
 xmlTagPairOccurrenceIndicationColor=94,94,94
 rubyBlockPairOccurrenceIndication=true
@@ -14,6 +14,7 @@ rubyBlockPairOccurrenceIndicationHighlighting=false
 xmlTagPairOccurrenceIndicationTextStyle=BOX
 xmlTagPairOccurrenceIndicationHighlighting=false
 searchResultIndicationColor=94,101,105
+OccurrenceIndicationColor=94,101,105
 pydevOccurrenceHighlighting=false
 rubyBlockPairOccurrenceIndicationTextStyle=BOX
 xmlTagPairOccurrenceIndication=true
