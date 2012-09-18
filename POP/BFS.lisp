@@ -9,7 +9,7 @@
 ;   while(!bfs.empty())
 ;   {
 ;       node front = bfs.front();
-;
+;       
 ;
 ;
 ;
