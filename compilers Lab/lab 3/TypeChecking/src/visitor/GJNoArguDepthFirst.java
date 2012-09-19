@@ -7,6 +7,7 @@ package visitor;
 import syntaxtree.*;
 import java.util.*;
 
+import MainPackage.Class;
 import MainPackage.FunctionClass;
 import MainPackage.SymbolTable;
 import MainPackage.VariableClass;
@@ -121,8 +122,12 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R _ret = null;
 		if (n.f0.which == 0) {
 			String name = ((ClassDeclaration) n.f0.choice).f1.f0.tokenImage;
-			symt.currentClass = name;
+			SymbolTable.currentClass = name;
 
+			String hashString = symt.hashString("class", name,
+					SymbolTable.currentClass, SymbolTable.currentFunction);
+
+			symt.push(hashString, new Class(name));
 		}
 		if (n.f0.which == 1) {
 			// TODO: Inheritance of the class
@@ -190,9 +195,14 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		}
 		name = n.f1.f0.tokenImage;
 
-		String hashString = symt.hashString(type, name, symt.currentClass,
-				symt.currentFunction);
-		symt.push(hashString, new VariableClass(type, name));
+		String hashString = symt.hashString(type, name,
+				SymbolTable.currentClass, SymbolTable.currentFunction);
+		if (!symt.mainTable.containsKey(hashString))
+			symt.push(hashString, new VariableClass(type, name));
+		else {
+			System.out.println("No");
+			System.exit(1);
+		}
 
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -229,10 +239,10 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			retType = ((Identifier) (n.f1.f0.choice)).f0.tokenImage;
 		}
 		name = n.f2.f0.tokenImage;
-		symt.currentFunction = name;
+		SymbolTable.currentFunction = name;
 
 		String hashString = symt.hashString("function", name,
-				symt.currentClass, symt.currentFunction);
+				SymbolTable.currentClass, SymbolTable.currentFunction);
 
 		symt.push(hashString, new FunctionClass(retType));
 		n.f0.accept(this);
@@ -256,7 +266,6 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(FormalParameterList n) {
 		R _ret = null;
-		ArrayList<VariableClass> params = new ArrayList<VariableClass>();
 		n.f0.accept(this);
 		n.f1.accept(this);
 
@@ -269,8 +278,9 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(FormalParameter n) {
 		R _ret = null;
 
-		String hashString = symt.hashString("function", symt.currentFunction,
-				symt.currentClass, symt.currentFunction);
+		String hashString = symt.hashString("function",
+				SymbolTable.currentFunction, SymbolTable.currentClass,
+				SymbolTable.currentFunction);
 		FunctionClass F = (FunctionClass) symt.mainTable.get(hashString);
 
 		String type = "";
@@ -293,7 +303,16 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			type = ((Identifier) (n.f0.f0.choice)).f0.tokenImage;
 		}
 		name = n.f1.f0.tokenImage;
-
+		if (!symt.mainTable.containsKey(symt.hashString(type, name,
+				SymbolTable.currentClass, SymbolTable.currentFunction)))
+			symt
+					.push(symt.hashString(type, name, SymbolTable.currentClass,
+							SymbolTable.currentFunction), new VariableClass(
+							type, name));
+		else {
+			System.out.println("No");
+			System.exit(1);
+		}
 		F.formalParamList.add(new VariableClass(type, name));
 		symt.push(hashString, F);
 
