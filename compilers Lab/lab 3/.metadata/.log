@@ -586,3 +586,1168 @@ java.io.IOException: Server returned HTTP response code: 407 for URL: http://jav
 	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
 	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2012-09-19 22:18:13.040 -----------------------------------------------
+eclipse.buildId=M20100211-1343
+java.version=1.6.0_18
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.jface 2 0 2012-09-19 22:18:20.482
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-09-19 22:18:20.482
+!MESSAGE A conflict occurred for CTRL+SHIFT+U:
+Binding(CTRL+SHIFT+U,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.occurrences.in.file.quickMenu,Show Occurrences in File Quick Menu,
+		Shows the Occurrences in File quick menu,
+		Category(org.eclipse.search.ui.category.search,Search,Search command category,true),
+		ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.actions.OccurrencesSearchMenuAction),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+U,
+	ParameterizedCommand(Command(com.aptana.ide.syncing.ui.commands.upload,Upload...,
+		,
+		Category(com.aptana.ide.syncing.ui.commands.category,File Transfer,File Transfer Commands,true),
+		com.aptana.ide.syncing.ui.handlers.UploadHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-09-19 22:18:20.482
+!MESSAGE A conflict occurred for CTRL+SHIFT+D:
+Binding(CTRL+SHIFT+D,
+	ParameterizedCommand(Command(org.eclipse.jdt.debug.ui.commands.Display,Display,
+		Display result of evaluating selected text,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.debug.ui.actions.PopupDisplayAction),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(CTRL+SHIFT+D,
+	ParameterizedCommand(Command(com.aptana.ide.syncing.ui.commands.download,Download...,
+		,
+		Category(com.aptana.ide.syncing.ui.commands.category,File Transfer,File Transfer Commands,true),
+		com.aptana.ide.syncing.ui.handlers.DownloadHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+D,
+	ParameterizedCommand(Command(org.radrails.rails.ui.command.debug.server,Debug Server,
+		,
+		Category(org.radrails.rails.ui.category,Rails,null,true),
+		org.radrails.rails.internal.ui.commands.DebugServerHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 22:18:24.955
+!MESSAGE System property http.proxyHost is not set but should be hproxy.iitm.ac.in.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 22:18:24.956
+!MESSAGE System property http.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 22:18:24.958
+!MESSAGE System property https.proxyHost is not set but should be hproxy.iitm.ac.in.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 22:18:24.959
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 22:18:24.963
+!MESSAGE System property https.proxyHost is not set but should be hproxy.iitm.ac.in.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 22:18:24.964
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+!SESSION 2012-09-19 23:04:50.894 -----------------------------------------------
+eclipse.buildId=M20100211-1343
+java.version=1.6.0_18
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.jface 2 0 2012-09-19 23:04:58.487
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-09-19 23:04:58.487
+!MESSAGE A conflict occurred for CTRL+SHIFT+U:
+Binding(CTRL+SHIFT+U,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.occurrences.in.file.quickMenu,Show Occurrences in File Quick Menu,
+		Shows the Occurrences in File quick menu,
+		Category(org.eclipse.search.ui.category.search,Search,Search command category,true),
+		ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.ui.actions.OccurrencesSearchMenuAction),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+U,
+	ParameterizedCommand(Command(com.aptana.ide.syncing.ui.commands.upload,Upload...,
+		,
+		Category(com.aptana.ide.syncing.ui.commands.category,File Transfer,File Transfer Commands,true),
+		com.aptana.ide.syncing.ui.handlers.UploadHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2012-09-19 23:04:58.487
+!MESSAGE A conflict occurred for CTRL+SHIFT+D:
+Binding(CTRL+SHIFT+D,
+	ParameterizedCommand(Command(org.eclipse.jdt.debug.ui.commands.Display,Display,
+		Display result of evaluating selected text,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		ActionDelegateHandlerProxy(null,org.eclipse.jdt.internal.debug.ui.actions.PopupDisplayAction),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.dialogAndWindow,,,system)
+Binding(CTRL+SHIFT+D,
+	ParameterizedCommand(Command(com.aptana.ide.syncing.ui.commands.download,Download...,
+		,
+		Category(com.aptana.ide.syncing.ui.commands.category,File Transfer,File Transfer Commands,true),
+		com.aptana.ide.syncing.ui.handlers.DownloadHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+D,
+	ParameterizedCommand(Command(org.radrails.rails.ui.command.debug.server,Debug Server,
+		,
+		Category(org.radrails.rails.ui.category,Rails,null,true),
+		org.radrails.rails.internal.ui.commands.DebugServerHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 23:05:03.757
+!MESSAGE System property http.proxyHost is not set but should be hproxy.iitm.ac.in.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 23:05:03.758
+!MESSAGE System property http.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 23:05:03.760
+!MESSAGE System property https.proxyHost is not set but should be hproxy.iitm.ac.in.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 23:05:03.761
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 23:05:03.765
+!MESSAGE System property https.proxyHost is not set but should be hproxy.iitm.ac.in.
+
+!ENTRY org.eclipse.core.net 1 0 2012-09-19 23:05:03.766
+!MESSAGE System property https.proxyPort is not set but should be 3128.
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:17:07.611
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:17:07.612
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:17:08.819
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:17:08.820
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:17:13.579
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:17:13.579
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:39:20.461
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryType.getAttachedJavadoc(BinaryType.java:994)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryType.getAttachedJavadoc(BinaryType.java:994)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:39:20.462
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryType.getAttachedJavadoc(BinaryType.java:994)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:39:21.011
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:39:21.011
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:40:56.383
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:40:56.383
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:40:56.896
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:40:56.896
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:40:57.366
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:40:57.366
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:41:35.339
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:555)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:512)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:495)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:129)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:82)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 9 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:555)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:512)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:495)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:129)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:82)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:41:35.339
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:555)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:512)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:495)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:129)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:82)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-19 23:42:46.171
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/System.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryField.getAttachedJavadoc(BinaryField.java:121)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:555)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:512)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:495)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:129)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:82)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/System.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 9 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/System.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryField.getAttachedJavadoc(BinaryField.java:121)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:555)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:512)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:495)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:129)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:82)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-19 23:42:46.171
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/System.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/System.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryField.getAttachedJavadoc(BinaryField.java:121)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo(JavadocHover.java:555)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.internalGetHoverInfo(JavadocHover.java:512)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavadocHover.getHoverInfo2(JavadocHover.java:495)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:129)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:82)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:05:25.477
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:05:25.478
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:05:26.568
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:05:26.568
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:08:25.178
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryType.getAttachedJavadoc(BinaryType.java:994)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryType.getAttachedJavadoc(BinaryType.java:994)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:08:25.178
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/String.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryType.getAttachedJavadoc(BinaryType.java:994)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:10:05.039
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:10:05.039
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:10:06.651
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/util/HashMap.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/util/HashMap.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/util/HashMap.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:10:06.651
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/util/HashMap.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/util/HashMap.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:10:19.716
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:10:19.717
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/io/PrintStream.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:10:52.325
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:10:52.326
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:10:54.585
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:10:54.585
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:10:55.068
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:10:55.069
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:10:55.569
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:10:55.569
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2012-09-20 00:10:55.971
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:798)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	... 10 more
+Caused by: java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.jdt.core 4 985 2012-09-20 00:10:55.971
+!MESSAGE Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+!STACK 0
+java.io.IOException: Server returned HTTP response code: 407 for URL: http://java.sun.com/javase/6/docs/api/java/lang/Object.html
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1403)
+	at org.eclipse.jdt.internal.core.JavaElement.getURLContents(JavaElement.java:752)
+	at org.eclipse.jdt.internal.core.BinaryType.getJavadocContents(BinaryType.java:1036)
+	at org.eclipse.jdt.internal.core.BinaryMethod.getAttachedJavadoc(BinaryMethod.java:558)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:462)
+	at org.eclipse.jdt.internal.ui.text.javadoc.JavadocContentAccess2.getHTMLContent(JavadocContentAccess2.java:442)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.extractJavadoc(ProposalInfo.java:96)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.computeInfo(ProposalInfo.java:76)
+	at org.eclipse.jdt.internal.ui.text.java.ProposalInfo.getInfo(ProposalInfo.java:59)
+	at org.eclipse.jdt.internal.ui.text.java.AbstractJavaCompletionProposal.getAdditionalProposalInfo(AbstractJavaCompletionProposal.java:548)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

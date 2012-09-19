@@ -124,9 +124,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			String name = ((ClassDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
 
-			String hashString = symt.hashString("class", name,
-					SymbolTable.currentClass, null);
-
+			String hashString = symt.hashString("class", name, name, null);
 			symt.push(hashString, new Class(name));
 		}
 		if (n.f0.which == 1) {
