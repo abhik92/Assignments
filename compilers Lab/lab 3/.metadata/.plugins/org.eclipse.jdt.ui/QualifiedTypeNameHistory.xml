@@ -4,10 +4,13 @@
 <fullyQualifiedTypeName name="MainPackage.Class"/>
 <fullyQualifiedTypeName name="syntaxtree.Identifier"/>
 <fullyQualifiedTypeName name="syntaxtree.IntegerLiteral"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="visitor.GJNoArguDepthFirst_Parse2"/>
 <fullyQualifiedTypeName name="MainPackage.VariableClass"/>
-<fullyQualifiedTypeName name="MainPackage.FunctionClass"/>
 <fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
+<fullyQualifiedTypeName name="MainPackage.FunctionClass"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="javax.swing.text.StyleContext.SmallAttributeSet"/>
 </qualifiedTypeNameHistroy>
