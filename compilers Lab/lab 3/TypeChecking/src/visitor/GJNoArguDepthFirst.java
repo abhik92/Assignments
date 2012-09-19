@@ -7,6 +7,8 @@ package visitor;
 import syntaxtree.*;
 import java.util.*;
 
+import javax.swing.text.StyleContext.SmallAttributeSet;
+
 import MainPackage.Class;
 import MainPackage.FunctionClass;
 import MainPackage.SymbolTable;
@@ -124,11 +126,26 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			String name = ((ClassDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
 
+			symt.setID(name, SymbolTable.CIDCounter);
+			SymbolTable.CIDCounter++;
 			String hashString = symt.hashString("class", name, name, null);
 			symt.push(hashString, new Class(name));
 		}
 		if (n.f0.which == 1) {
-			// TODO: Inheritance of the class
+			String name = ((ClassExtendsDeclaration) n.f0.choice).f1.f0.tokenImage;
+			SymbolTable.currentClass = name;
+
+			symt.setID(name, SymbolTable.CIDCounter);
+			SymbolTable.CIDCounter++;
+			String hashString = symt.hashString("class", name, name, null);
+			symt.push(hashString, new Class(name));
+
+			String extendedName = ((ClassExtendsDeclaration) n.f0.choice).f3.f0.tokenImage;
+			if (!symt.hasId(extendedName)) {
+				symt.setID(extendedName, SymbolTable.CIDCounter);
+				SymbolTable.CIDCounter++;
+			}
+			symt.graph[symt.getID(name)][symt.getID(extendedName)] = 1;
 		}
 		n.f0.accept(this);
 
