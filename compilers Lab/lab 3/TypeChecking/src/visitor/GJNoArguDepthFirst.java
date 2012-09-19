@@ -125,7 +125,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			SymbolTable.currentClass = name;
 
 			String hashString = symt.hashString("class", name,
-					SymbolTable.currentClass, SymbolTable.currentFunction);
+					SymbolTable.currentClass, null);
 
 			symt.push(hashString, new Class(name));
 		}
