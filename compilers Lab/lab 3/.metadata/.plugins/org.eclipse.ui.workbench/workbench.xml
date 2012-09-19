@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="17" version="2.0">
+<workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
 <window height="718" maximized="true" width="1024" x="0" y="25">
 <fastViewData fastViewLocation="1024"/>
@@ -26,7 +26,7 @@
 </coolbarLayout>
 <page aggregateWorkingSetId="Aggregate for window 1347924790383" focus="true" label="Workspace - Java">
 <editors>
-<editorArea activeWorkbook="DefaultEditorWorkbook">
+<editorArea activeWorkbook="org.eclipse.ui.internal.EditorStack@719775">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -34,25 +34,51 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.internal.EditorStack@719775" ratio="0.47602004" ratioLeft="665" ratioRight="732" relationship="2" relative="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst.java" partName="GJNoArguDepthFirst.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/visitor/GJNoArguDepthFirst.java" title="GJNoArguDepthFirst.java" tooltip="TypeChecking/src/visitor/GJNoArguDepthFirst.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TypeChecking/src/visitor/GJNoArguDepthFirst.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2710" selectionTopPixel="1664"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="13919" selectionTopPixel="11001"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Typecheck.java" partName="Typecheck.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/MainPackage/Typecheck.java" title="Typecheck.java" tooltip="TypeChecking/src/MainPackage/Typecheck.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TypeChecking/src/MainPackage/Typecheck.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="44" selectionOffset="492" selectionTopPixel="170"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="560" selectionTopPixel="48"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Class.java" partName="Class.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/MainPackage/Class.java" title="Class.java" tooltip="TypeChecking/src/MainPackage/Class.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TypeChecking/src/MainPackage/Class.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="113" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst_Parse2.java" partName="GJNoArguDepthFirst_Parse2.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java" title="GJNoArguDepthFirst_Parse2.java" tooltip="TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java" workbook="DefaultEditorWorkbook">
+<editor focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst_Parse2.java" partName="GJNoArguDepthFirst_Parse2.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java" title="GJNoArguDepthFirst_Parse2.java" tooltip="TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9034" selectionTopPixel="6899"/>
+<editorState selectionHorizontalPixel="0" selectionLength="27" selectionOffset="7099" selectionTopPixel="5525"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FunctionClass.java" partName="FunctionClass.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/MainPackage/FunctionClass.java" title="FunctionClass.java" tooltip="TypeChecking/src/MainPackage/FunctionClass.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TypeChecking/src/MainPackage/FunctionClass.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VariableClass.java" partName="VariableClass.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/MainPackage/VariableClass.java" title="VariableClass.java" tooltip="TypeChecking/src/MainPackage/VariableClass.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TypeChecking/src/MainPackage/VariableClass.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SymbolTable.java" partName="SymbolTable.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/MainPackage/SymbolTable.java" title="SymbolTable.java" tooltip="TypeChecking/src/MainPackage/SymbolTable.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TypeChecking/src/MainPackage/SymbolTable.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="595" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst_Parse2.java" partName="GJNoArguDepthFirst_Parse2.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 3/TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java" title="GJNoArguDepthFirst_Parse2.java" tooltip="TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java" workbook="org.eclipse.ui.internal.EditorStack@719775">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="38" selectionOffset="476" selectionTopPixel="102"/>
 </editor>
 </editors>
 <views>
@@ -64,10 +90,10 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors"/>
 <category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="73" org.eclipse.ui.ide.markerType="403" org.eclipse.ui.ide.pathField="143" org.eclipse.ui.ide.resourceField="108" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
+<columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -174,26 +200,28 @@
 <perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
 <perspective_action id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.jdt.ui.PackageExplorer"/>
-<view id="org.eclipse.jdt.ui.TypeHierarchy"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.jdt.ui.JavadocView"/>
 <view id="org.eclipse.jdt.ui.SourceView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
-<fastViewBars/>
+<fastViewBars>
+<fastViewBar fastViewLocation="16384" id="left" orientation="512" selectedTabId="org.eclipse.jdt.ui.PackageExplorer" style="0">
+<fastViews>
+<view id="org.eclipse.jdt.ui.PackageExplorer" ratio="0.3"/>
+<view id="org.eclipse.jdt.ui.TypeHierarchy" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="left">
-<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
-<page content="org.eclipse.jdt.ui.TypeHierarchy" label="Hierarchy"/>
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.jdt.ui.PackageExplorer" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.junit.ResultView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@18590c5" ratio="0.7495049" ratioLeft="757" ratioRight="253" relationship="2" relative="left">
@@ -205,7 +233,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.24950495" ratioLeft="252" ratioRight="758" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.94463086" ratioLeft="563" ratioRight="33" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.7568681" ratioLeft="551" ratioRight="177" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -283,60 +311,44 @@
 <view id="com.aptana.js.debug.ui.scriptsView"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.PackageExplorer" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1017" ratioRight="339" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1017" ratioRight="339" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.74958265" ratioLeft="449" ratioRight="150" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.74958265" ratioLeft="449" ratioRight="150" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
 <page content="com.aptana.ruby.debug.ui.DisplayView" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.debug.ui.DisplayView" label="LabelNotFound"/>
 <page content="org.eclipse.search.SearchResultView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44988865" ratioLeft="202" ratioRight="247" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
-<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.75" ratioLeft="1017" ratioRight="339" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.75" ratioLeft="1017" ratioRight="339" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="678" ratioRight="678" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
-<folder activePageID="org.eclipse.debug.ui.BreakpointView" appearance="2" expanded="2">
-<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="678" ratioRight="678" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.BreakpointView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
 <page content="com.aptana.js.debug.ui.scriptsView" label="Loaded Scripts"/>
 <page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 </presentation>
@@ -349,160 +361,163 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TypeChecking/src/visitor/GJNoArguDepthFirst.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TypeChecking/src/visitor/GJNoArguDepthFirst.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TypeChecking/src/MainPackage/Typecheck.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TypeChecking/src/MainPackage/Class.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TypeChecking/src/MainPackage/FunctionClass.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TypeChecking/src/MainPackage/VariableClass.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/TypeChecking/src/MainPackage/SymbolTable.java"/>
 </editors>
-<item historyLabel="Typecheck.java" index="2">
-<position info="not_deleted" x="328" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="3351" y="0"/>
-</item>
-<item historyLabel="Class.java" index="3">
-<position info="not_deleted" x="113" y="0"/>
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
+<position info="not_deleted" x="5377" y="0"/>
 </item>
 <item historyLabel="Typecheck.java" index="2">
-<position info="not_deleted" x="601" y="0"/>
+<position info="not_deleted" x="492" y="44"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="3351" y="0"/>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="709" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
+<position info="not_deleted" x="6979" y="0"/>
 </item>
 <item historyLabel="Typecheck.java" index="2">
-<position info="not_deleted" x="601" y="0"/>
+<position info="not_deleted" x="12" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="3351" y="0"/>
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
+<position info="not_deleted" x="6979" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="4800" y="0"/>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="709" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
 <position/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="4705" y="0"/>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="5127" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="4716" y="0"/>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="9963" y="0"/>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="4346" y="0"/>
 </item>
-<item historyLabel="Typecheck.java" index="2">
-<position info="not_deleted" x="601" y="0"/>
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
+<position info="not_deleted" x="6979" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="0">
-<position info="not_deleted" x="13581" y="0"/>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="4963" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
+<position info="not_deleted" x="6151" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="4963" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
 <position info="not_deleted" x="3" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11178" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11707" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11726" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11905" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="0">
-<position info="not_deleted" x="13581" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11905" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="0">
-<position info="not_deleted" x="13581" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11905" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11347" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11369" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="0">
-<position info="not_deleted" x="2710" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11369" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11375" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11333" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="0">
-<position info="not_deleted" x="2710" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11333" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11422" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11478" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11474" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11472" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11008" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11064" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11058" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="10711" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="10316" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="9558" y="0"/>
-</item>
-<item historyLabel="Typecheck.java" index="2">
-<position info="not_deleted" x="492" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="0">
-<position info="not_deleted" x="2710" y="0"/>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="8573" y="0"/>
 </item>
 <item historyLabel="Class.java" index="3">
 <position info="not_deleted" x="113" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="9558" y="0"/>
+<item historyLabel="Typecheck.java" index="2">
+<position info="not_deleted" x="12" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="10593" y="0"/>
+<item historyLabel="FunctionClass.java" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11097" y="0"/>
+<item historyLabel="VariableClass.java" index="5">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="11105" y="0"/>
+<item historyLabel="FunctionClass.java" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="GJNoArguDepthFirst_Parse2.java" index="1">
-<position info="not_deleted" x="9046" y="0"/>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="8573" y="0"/>
+</item>
+<item historyLabel="Class.java" index="3">
+<position info="not_deleted" x="113" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="6">
+<position info="not_deleted" x="595" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
+<position info="not_deleted" x="13919" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="4578" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1568" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="854" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1366" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1282" y="13"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="5074" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="7197" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="7192" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="13689" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="10738" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="8527" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="6">
+<position info="not_deleted" x="595" y="0"/>
+</item>
+<item historyLabel="Typecheck.java" index="2">
+<position info="not_deleted" x="560" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1145" y="0"/>
+</item>
+<item active="true" historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="518" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -510,6 +525,12 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="left"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -517,10 +538,20 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SymbolTable.java" tooltip="TypeChecking/src/MainPackage/SymbolTable.java">
+<persistable path="/TypeChecking/src/MainPackage/SymbolTable.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VariableClass.java" tooltip="TypeChecking/src/MainPackage/VariableClass.java">
+<persistable path="/TypeChecking/src/MainPackage/VariableClass.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FunctionClass.java" tooltip="TypeChecking/src/MainPackage/FunctionClass.java">
+<persistable path="/TypeChecking/src/MainPackage/FunctionClass.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst_Parse2.java" tooltip="TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java">
 <persistable path="/TypeChecking/src/visitor/GJNoArguDepthFirst_Parse2.java"/>
 </file>
