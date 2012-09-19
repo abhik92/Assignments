@@ -141,6 +141,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(ClassDeclaration n) {
 		R _ret = null;
+
 		n.f0.accept(this);
 		n.f1.accept(this);
 		n.f2.accept(this);
@@ -258,6 +259,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f10.accept(this);
 		n.f11.accept(this);
 		n.f12.accept(this);
+		symt.currentFunction = null;
 		return _ret;
 	}
 
