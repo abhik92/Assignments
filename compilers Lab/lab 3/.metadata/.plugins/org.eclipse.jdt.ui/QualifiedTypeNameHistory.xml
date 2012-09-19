@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
+<fullyQualifiedTypeName name="MainPackage.Class"/>
+<fullyQualifiedTypeName name="visitor.GJNoArguDepthFirst_Parse2"/>
+<fullyQualifiedTypeName name="syntaxtree.Identifier"/>
+<fullyQualifiedTypeName name="syntaxtree.IntegerLiteral"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

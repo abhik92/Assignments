@@ -195,13 +195,12 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		}
 		name = n.f1.f0.tokenImage;
 
-		String hashString = symt.hashString(type, name,
+		String hashString = symt.hashString("variable", name,
 				SymbolTable.currentClass, SymbolTable.currentFunction);
 		if (!symt.mainTable.containsKey(hashString))
 			symt.push(hashString, new VariableClass(type, name));
 		else {
-			System.out.println("No");
-			System.exit(1);
+			GJNoArguDepthFirst_Parse2.Exit();
 		}
 
 		n.f0.accept(this);
@@ -243,8 +242,11 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 
 		String hashString = symt.hashString("function", name,
 				SymbolTable.currentClass, SymbolTable.currentFunction);
-
-		symt.push(hashString, new FunctionClass(retType));
+		if (!symt.mainTable.containsKey(hashString)) {
+			symt.push(hashString, new FunctionClass(retType));
+		} else {
+			GJNoArguDepthFirst_Parse2.Exit();
+		}
 		n.f0.accept(this);
 		n.f1.accept(this);
 		n.f2.accept(this);
@@ -303,15 +305,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			type = ((Identifier) (n.f0.f0.choice)).f0.tokenImage;
 		}
 		name = n.f1.f0.tokenImage;
-		if (!symt.mainTable.containsKey(symt.hashString(type, name,
+		if (!symt.mainTable.containsKey(symt.hashString("variable", name,
 				SymbolTable.currentClass, SymbolTable.currentFunction)))
-			symt
-					.push(symt.hashString(type, name, SymbolTable.currentClass,
-							SymbolTable.currentFunction), new VariableClass(
-							type, name));
+			symt.push(symt.hashString("variable", name,
+					SymbolTable.currentClass, SymbolTable.currentFunction),
+					new VariableClass(type, name));
 		else {
-			System.out.println("No");
-			System.exit(1);
+			GJNoArguDepthFirst_Parse2.Exit();
 		}
 		F.formalParamList.add(new VariableClass(type, name));
 		symt.push(hashString, F);
