@@ -1,0 +1,24 @@
+package MainPackage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import syntaxtree.*;
+import visitor.*;
+
+public class Typecheck {
+	public static void main(String[] args) throws FileNotFoundException {
+		try {
+			Node root = new MiniJavaParser(new FileInputStream(
+					"BinarySearchMini.java")).Goal();
+
+			System.out.println("Program parsed successfully");
+			SymbolTable sym = new SymbolTable();
+			root.accept(new GJNoArguDepthFirst(sym)); // Your assignment part is
+			System.out.println(sym.mainTable);
+			// invoked here.
+		} catch (ParseException e) {
+			System.out.println(e.toString());
+		}
+	}
+}

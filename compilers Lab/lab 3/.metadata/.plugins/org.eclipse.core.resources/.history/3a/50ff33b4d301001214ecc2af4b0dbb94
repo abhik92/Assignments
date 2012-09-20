@@ -1,0 +1,6 @@
+import java.util.HashMap;
+
+public class SymbolTable {
+
+	public HashMap<String, Object> mainTable;
+}

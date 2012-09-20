@@ -1,0 +1,11 @@
+package MainPackage;
+
+public class VariableClass {
+	public String type;
+	public String name;
+
+	public VariableClass(String type, String name) {
+		this.type = type;
+		this.name = name;
+	}
+}

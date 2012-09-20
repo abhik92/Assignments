@@ -1,0 +1,9 @@
+public class VariableClass {
+	public String type;
+	public String name;
+	
+	public VariableClass(String type,String name)
+	{
+		
+	}
+}

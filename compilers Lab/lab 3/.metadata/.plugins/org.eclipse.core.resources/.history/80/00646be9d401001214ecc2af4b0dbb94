@@ -1,0 +1,23 @@
+import java.util.HashMap;
+
+public class SymbolTable {
+
+	public HashMap<String, Object> mainTable;
+
+	public void push(String key, Object value) {
+		this.mainTable.put(key, value);
+	}
+
+	public Object query(String key) {
+		if (this.mainTable.containsKey(key)) {
+			return this.mainTable.get(key);
+		}
+		return null;
+	}
+
+	public String hashString(String type, String name, String classScope,
+			String functionScope) {
+
+		return type + "#" + name + "#" + classScope + "#" + functionScope;
+	}
+}

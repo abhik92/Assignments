@@ -1,0 +1,6 @@
+
+public class VariableClass {
+	public String type;
+	public String name;
+	
+}
