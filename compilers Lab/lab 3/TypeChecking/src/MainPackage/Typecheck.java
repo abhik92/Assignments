@@ -14,10 +14,10 @@ public class Typecheck {
 			System.out.println("Program parsed successfully");
 			SymbolTable sym = new SymbolTable();
 			root.accept(new GJNoArguDepthFirst(sym));
-			/*
-			 * if (SymbolTable.needsTransitive) { new
-			 * SymbolTable().findTransitiveClosure(); }
-			 */
+			
+			  if (SymbolTable.needsTransitive) { new
+			  SymbolTable().findTransitiveClosure(); }
+			 
 
 			root.accept(new GJNoArguDepthFirst_Parse2(sym));
 			System.out.println(sym.mainTable.size());
