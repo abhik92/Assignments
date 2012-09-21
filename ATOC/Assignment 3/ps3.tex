@@ -1,0 +1,63 @@
+\documentclass[addpoints,12pt]{exam}
+\printanswers
+\usepackage{amsmath,amssymb,complexity,amsthm}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{definition}[theorem]{Definition}
+
+\renewcommand{\W}{\mathcal{W}}
+
+\begin{document}
+\hrule
+\vspace{3mm}
+\noindent
+{\sf IITM-CS6014 : Advanced Theory of Computation  \hfill Given on: Sep 20, 5pm}
+\vspace{3mm}\\
+\noindent
+{\sf Problem Set \#3 \hfill Due on : Oct 3, 5pm}
+\vspace{3mm}
+\hrule
+{\small
+\begin{itemize}
+\item Rules of the game remain the same. Submissions must be single file in \LaTeX format at the upload link set up in cse moodle page of the course. Note that we do not accept any other format (no pdfs !).
+\end{itemize}}
+\hrule
+
+\begin{questions}
+\question[10] The set $\mathcal{W}_n$ :
+\begin{parts}
+\part Fix a number $n$. Show that the set $$\mathcal{W}_n = \{ y \mid M_n \textrm{ accepts } y \}$$ is complete for the class of semi-decidable languages.
+\part For every function $f$ that can be computed by a total Turing machine, prove that there exists an $n$ such that $\mathcal{W}_n = \mathcal{W}_{f(n)}$
+\end{parts}
+
+\question[10] A set $P$ is \textit{partially productive} if there is a partial recursive function(i.e. computed by a Turing machine $N$ - which need not be total) $\psi$ called the {\em productive function} such that:
+\[ \forall x ~~\left( \mathcal{W}_x \subseteq P \implies N \textrm{ halts on $x$ } 
+\&~~\psi(x) \in P \setminus \mathcal{W}_x \right) \]
+Show that any productive set $P$ has an injective recursive productive function. \\ (Hint : First prove that it can be made recursive and then attempt on making it injective).
+
+\question[5]
+Prove that there must exist a recursive function such that $\{ \W_{f(n)} \}_{n \in \mathbb{N}}$ consists of precisely decidable sets.
+
+\question[5]
+A simple set is {\em effectively simple} if there is a recursive function $f$ such that:
+\[ \forall n\in \mathbb{N} : \W_n \subseteq \overline{A} \implies |\W_n| \le f(n) \]
+Show that Post's simple set is effectively simple. \\[2mm]
+(Extra Credit) If a set $A$ is effectively simple, argue that $K \le_T A$. This justifies why Friedberg-Muchnik had to do a different construction. 
+(Hint: Normal homework rules does not apply to this question. You can look up anywhere, but cite your sources. !).
+
+\question[10]
+Consider the following computational problems :
+\begin{parts}
+\part Given a Turing machine $M$, test if $M$ is Productive.
+\part Given a Turing machine $M$, test if $M$ is Simple.
+\end{parts}
+Are they decidable? semi-decidable? \\[2mm]
+(Extra Credit) Place them in the arithmetic hierarchy.
+\end{questions}
+\end{document}
