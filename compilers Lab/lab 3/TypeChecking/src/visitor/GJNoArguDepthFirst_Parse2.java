@@ -18,7 +18,8 @@ import MainPackage.Class;
  * Provides default methods which visit each node in the tree in depth-first
  * order. Your visitors may extend this class.
  */
-public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
+public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R>
+{
 	//
 	// Auto class visitors--probably don't need to be overridden.
 	//
@@ -28,28 +29,34 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	public int k = -1;
 	public Vector<ArrayList<String>> paraStack = new Vector<ArrayList<String>>();
 
-	public GJNoArguDepthFirst_Parse2(SymbolTable sym) {
+	public GJNoArguDepthFirst_Parse2(SymbolTable sym)
+	{
 		this.symt = sym;
 		SymbolTable.currentClass = null;
 		SymbolTable.currentFunction = null;
 	}
 
-	public static void Exit(String error) {
-		//System.out.println(error);
-		System.out.println("Type error");
+	public static void Exit(String error)
+	{
+		// System.out.println(error);
+		System.out.print("Type error");
 		System.exit(1);
 	}
 
-	public R IType(R var) {
-		if (var == "int" || var == "int[]" || var == "boolean") {
+	public R IType(R var)
+	{
+		if (var == "int" || var == "int[]" || var == "boolean")
+		{
 			return var;
 
-		} else {
+		} else
+		{
 			String hashString = symt.hashString("variable", (String) var,
 					SymbolTable.currentClass, SymbolTable.currentFunction);
 
 			VariableClass V;
-			if (SymbolTable.mainTable.containsKey(hashString)) {
+			if (SymbolTable.mainTable.containsKey(hashString))
+			{
 				V = (VariableClass) symt.query(hashString);
 				return (R) V.type;
 			}
@@ -57,7 +64,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			hashString = symt.hashString("variable", (String) var,
 					SymbolTable.currentClass, null);
 
-			if (SymbolTable.mainTable.containsKey(hashString)) {
+			if (SymbolTable.mainTable.containsKey(hashString))
+			{
 				V = (VariableClass) symt.query(hashString);
 				return (R) V.type;
 			}
@@ -66,7 +74,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 					SymbolTable.currentClass, SymbolTable.currentFunction);
 
 			FunctionClass F;
-			if (SymbolTable.mainTable.containsKey(hashString)) {
+			if (SymbolTable.mainTable.containsKey(hashString))
+			{
 				F = (FunctionClass) symt.query(hashString);
 				return (R) F.retType;
 			}
@@ -75,7 +84,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 					(String) ClassName(var), null);
 
 			Class C;
-			if (SymbolTable.mainTable.containsKey(hashString)) {
+			if (SymbolTable.mainTable.containsKey(hashString))
+			{
 				C = (Class) symt.query(hashString);
 				return (R) C.name;
 			}
@@ -84,7 +94,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		return null;
 	}
 
-	public R ClassName(R var) {
+	public R ClassName(R var)
+	{
 
 		String currentClass = SymbolTable.currentClass;
 		ArrayList<String> listOfAlias = new ArrayList<String>();
@@ -94,14 +105,16 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		String hashString = symt.hashString("variable", (String) var,
 				SymbolTable.currentClass, SymbolTable.currentFunction);
 		VariableClass V;
-		if (SymbolTable.mainTable.containsKey(hashString)) {
+		if (SymbolTable.mainTable.containsKey(hashString))
+		{
 			V = (VariableClass) symt.query(hashString);
 			return (R) V.type;
 		}
 
 		hashString = symt.hashString("variable", (String) var,
 				SymbolTable.currentClass, null);
-		if (SymbolTable.mainTable.containsKey(hashString)) {
+		if (SymbolTable.mainTable.containsKey(hashString))
+		{
 			V = (VariableClass) symt.query(hashString);
 
 			return (R) V.type;
@@ -110,21 +123,26 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		return var;
 	}
 
-	public R visit(NodeList n) {
+	public R visit(NodeList n)
+	{
 		R _ret = null;
 		int _count = 0;
-		for (Enumeration<Node> e = n.elements(); e.hasMoreElements();) {
+		for (Enumeration<Node> e = n.elements(); e.hasMoreElements();)
+		{
 			e.nextElement().accept(this);
 			_count++;
 		}
 		return _ret;
 	}
 
-	public R visit(NodeListOptional n) {
-		if (n.present()) {
+	public R visit(NodeListOptional n)
+	{
+		if (n.present())
+		{
 			R _ret = null;
 			int _count = 0;
-			for (Enumeration<Node> e = n.elements(); e.hasMoreElements();) {
+			for (Enumeration<Node> e = n.elements(); e.hasMoreElements();)
+			{
 				e.nextElement().accept(this);
 				_count++;
 			}
@@ -133,24 +151,28 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			return null;
 	}
 
-	public R visit(NodeOptional n) {
+	public R visit(NodeOptional n)
+	{
 		if (n.present())
 			return n.node.accept(this);
 		else
 			return null;
 	}
 
-	public R visit(NodeSequence n) {
+	public R visit(NodeSequence n)
+	{
 		R _ret = null;
 		int _count = 0;
-		for (Enumeration<Node> e = n.elements(); e.hasMoreElements();) {
+		for (Enumeration<Node> e = n.elements(); e.hasMoreElements();)
+		{
 			e.nextElement().accept(this);
 			_count++;
 		}
 		return _ret;
 	}
 
-	public R visit(NodeToken n) {
+	public R visit(NodeToken n)
+	{
 		return null;
 	}
 
@@ -161,7 +183,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> MainClass() f1 -> ( TypeDeclaration() )* f2 -> <EOF>
 	 */
-	public R visit(Goal n) {
+	public R visit(Goal n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -175,7 +198,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f11 -> Identifier() f12 -> ")" f13 -> "{" f14 -> PrintStatement() f15 ->
 	 * "}" f16 -> "}"
 	 */
-	public R visit(MainClass n) {
+	public R visit(MainClass n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -200,13 +224,16 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> ClassDeclaration() | ClassExtendsDeclaration()
 	 */
-	public R visit(TypeDeclaration n) {
+	public R visit(TypeDeclaration n)
+	{
 		R _ret = null;
-		if (n.f0.which == 0) {
+		if (n.f0.which == 0)
+		{
 			String name = ((ClassDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
 		}
-		if (n.f0.which == 1) {
+		if (n.f0.which == 1)
+		{
 			String name = ((ClassExtendsDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
 		}
@@ -218,7 +245,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> "class" f1 -> Identifier() f2 -> "{" f3 -> ( VarDeclaration() )* f4
 	 * -> ( MethodDeclaration() )* f5 -> "}"
 	 */
-	public R visit(ClassDeclaration n) {
+	public R visit(ClassDeclaration n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -233,7 +261,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> "class" f1 -> Identifier() f2 -> "extends" f3 -> Identifier() f4 ->
 	 * "{" f5 -> ( VarDeclaration() )* f6 -> ( MethodDeclaration() )* f7 -> "}"
 	 */
-	public R visit(ClassExtendsDeclaration n) {
+	public R visit(ClassExtendsDeclaration n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -249,7 +278,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> Type() f1 -> Identifier() f2 -> ";"
 	 */
-	public R visit(VarDeclaration n) {
+	public R visit(VarDeclaration n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -263,7 +293,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f8 -> ( Statement() )* f9 -> "return" f10 -> Expression() f11 -> ";" f12
 	 * -> "}"
 	 */
-	public R visit(MethodDeclaration n) {
+	public R visit(MethodDeclaration n)
+	{
 		R _ret = null;
 		String name = n.f2.f0.tokenImage;
 		SymbolTable.currentFunction = name;
@@ -284,14 +315,17 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 		R ret1Type = IType(ret1);
 		R ret2Type = IType(ret2);
-		if (ret1Type != ret2Type) {
+		if (ret1Type != ret2Type)
+		{
 			boolean checkFail = false;
-			if (SymbolTable.Alias.containsKey(ret1Type)) {
+			if (SymbolTable.Alias.containsKey(ret1Type))
+			{
 				if (SymbolTable.Alias.get(ret1Type).contains(ret2Type))
 					checkFail = true;
 			}
 
-			if (!checkFail) {
+			if (!checkFail)
+			{
 				Exit("Return Type Mismatch");
 			}
 		}
@@ -302,7 +336,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> FormalParameter() f1 -> ( FormalParameterRest() )*
 	 */
-	public R visit(FormalParameterList n) {
+	public R visit(FormalParameterList n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -312,7 +347,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> Type() f1 -> Identifier()
 	 */
-	public R visit(FormalParameter n) {
+	public R visit(FormalParameter n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -323,7 +359,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "," f1 -> FormalParameter()
 	 */
-	public R visit(FormalParameterRest n) {
+	public R visit(FormalParameterRest n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -333,7 +370,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> ArrayType() | BooleanType() | IntegerType() | Identifier()
 	 */
-	public R visit(Type n) {
+	public R visit(Type n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		if (n.f0.which == 0)
@@ -350,7 +388,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "int" f1 -> "[" f2 -> "]"
 	 */
-	public R visit(ArrayType n) {
+	public R visit(ArrayType n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -361,7 +400,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "boolean"
 	 */
-	public R visit(BooleanType n) {
+	public R visit(BooleanType n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		return _ret;
@@ -370,7 +410,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "int"
 	 */
-	public R visit(IntegerType n) {
+	public R visit(IntegerType n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		return _ret;
@@ -380,7 +421,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> Block() | AssignmentStatement() | ArrayAssignmentStatement() |
 	 * IfStatement() | WhileStatement() | PrintStatement()
 	 */
-	public R visit(Statement n) {
+	public R visit(Statement n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		return _ret;
@@ -389,7 +431,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "{" f1 -> ( Statement() )* f2 -> "}"
 	 */
-	public R visit(Block n) {
+	public R visit(Block n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -400,7 +443,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> Identifier() f1 -> "=" f2 -> Expression() f3 -> ";"
 	 */
-	public R visit(AssignmentStatement n) {
+	public R visit(AssignmentStatement n)
+	{
 		R _ret = null;
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
@@ -410,15 +454,18 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		R ret1Type = IType(ret1);
 		R ret2Type = IType(ret2);
 
-		if (ret1Type != ret2Type) {
+		if (ret1Type != ret2Type)
+		{
 
 			boolean checkFail = false;
-			if (SymbolTable.Alias.containsKey(ret1Type)) {
+			if (SymbolTable.Alias.containsKey(ret1Type))
+			{
 				if (SymbolTable.Alias.get(ret1Type).contains(ret2Type))
 					checkFail = true;
 			}
 
-			if (!checkFail) {
+			if (!checkFail)
+			{
 				Exit("LHS != RHS while assigning");
 			}
 		}
@@ -429,7 +476,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> Identifier() f1 -> "[" f2 -> Expression() f3 -> "]" f4 -> "=" f5 ->
 	 * Expression() f6 -> ";"
 	 */
-	public R visit(ArrayAssignmentStatement n) {
+	public R visit(ArrayAssignmentStatement n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -445,7 +493,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> "if" f1 -> "(" f2 -> Expression() f3 -> ")" f4 -> Statement() f5 ->
 	 * "else" f6 -> Statement()
 	 */
-	public R visit(IfStatement n) {
+	public R visit(IfStatement n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -460,7 +509,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "while" f1 -> "(" f2 -> Expression() f3 -> ")" f4 -> Statement()
 	 */
-	public R visit(WhileStatement n) {
+	public R visit(WhileStatement n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -474,12 +524,14 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> "System.out.println" f1 -> "(" f2 -> Expression() f3 -> ")" f4 ->
 	 * ";"
 	 */
-	public R visit(PrintStatement n) {
+	public R visit(PrintStatement n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
 		_ret = n.f2.accept(this);
-		if (IType(_ret) != "int") {
+		if (IType(_ret) != "int")
+		{
 			Exit("Print statement doesnt have an int");
 		}
 		n.f3.accept(this);
@@ -492,7 +544,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * MinusExpression() | TimesExpression() | ArrayLookup() | ArrayLength() |
 	 * MessageSend() | PrimaryExpression()
 	 */
-	public R visit(Expression n) {
+	public R visit(Expression n)
+	{
 		R _ret = null;
 		_ret = n.f0.accept(this);
 
@@ -503,11 +556,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> PrimaryExpression() f1 -> "&" f2 -> PrimaryExpression()
 	 */
 
-	public R visit(AndExpression n) {
+	public R visit(AndExpression n)
+	{
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
-		if (!(IType(ret1) == IType(ret2) && (IType(ret1) == "boolean"))) {
+		if (!(IType(ret1) == IType(ret2) && (IType(ret1) == "boolean")))
+		{
 			{
 				Exit("& - Type mismatch");
 			}
@@ -520,12 +575,14 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
     * f1 -> "<"
     * f2 -> PrimaryExpression()
     */
-	public R visit(CompareExpression n) {
+	public R visit(CompareExpression n)
+	{
 
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
-		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int")) {
+		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int"))
+		{
 			Exit("< - Type mismatch");
 		}
 		return (R) "boolean";
@@ -534,11 +591,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> PrimaryExpression() f1 -> "+" f2 -> PrimaryExpression()
 	 */
-	public R visit(PlusExpression n) {
+	public R visit(PlusExpression n)
+	{
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
-		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int")) {
+		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int"))
+		{
 			Exit("+ - Type mismatch");
 		}
 		return (R) "int";
@@ -547,11 +606,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> PrimaryExpression() f1 -> "-" f2 -> PrimaryExpression()
 	 */
-	public R visit(MinusExpression n) {
+	public R visit(MinusExpression n)
+	{
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
-		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int")) {
+		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int"))
+		{
 			Exit("- - Type mismatch");
 		}
 		return (R) "int";
@@ -560,11 +621,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> PrimaryExpression() f1 -> "*" f2 -> PrimaryExpression()
 	 */
-	public R visit(TimesExpression n) {
+	public R visit(TimesExpression n)
+	{
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
-		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int")) {
+		if (!(IType(ret1) == IType(ret2) && IType(ret1) == "int"))
+		{
 			Exit("* - Type mismatch");
 		}
 		return (R) "int";
@@ -573,18 +636,21 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> PrimaryExpression() f1 -> "[" f2 -> PrimaryExpression() f3 -> "]"
 	 */
-	public R visit(ArrayLookup n) {
+	public R visit(ArrayLookup n)
+	{
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 		n.f3.accept(this);
 
-		if (IType(ret1) != "int[]") {
+		if (IType(ret1) != "int[]")
+		{
 
 			Exit("Array Lookup 1");
 
 		}
-		if (IType(ret2) != "int") {
+		if (IType(ret2) != "int")
+		{
 
 			Exit("Array Lookup 2");
 
@@ -595,13 +661,15 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> PrimaryExpression() f1 -> "." f2 -> "length"
 	 */
-	public R visit(ArrayLength n) {
+	public R visit(ArrayLength n)
+	{
 		R _ret = null;
 		_ret = n.f0.accept(this);
 		n.f1.accept(this);
 		n.f2.accept(this);
 
-		if (IType(_ret) != "int[]") {
+		if (IType(_ret) != "int[]")
+		{
 			Exit("Array Length");
 		}
 		return (R) "int";
@@ -611,7 +679,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> PrimaryExpression() f1 -> "." f2 -> Identifier() f3 -> "(" f4 -> (
 	 * ExpressionList() )? f5 -> ")"
 	 */
-	public R visit(MessageSend n) {
+	public R visit(MessageSend n)
+	{
 		R _ret = null;
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
@@ -626,32 +695,39 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		String hashString = symt.hashString("function", (String) ret2,
 				(String) ClassName(ret1), (String) ret2);
 
-		if (SymbolTable.mainTable.containsKey(hashString)) {
+		if (SymbolTable.mainTable.containsKey(hashString))
+		{
 			FunctionClass F = (FunctionClass) symt.query(hashString);
 			int i;
 
 			ArrayList<String> params = new ArrayList<String>();
-			if (k != -1) {
+			if (k != -1)
+			{
 				params = paraStack.elementAt(k);
 
-				if (params.size() != F.formalParamList.size()) {
+				if (params.size() != F.formalParamList.size())
+				{
 
 					Exit("Number of params doesnt match");
 				}
-				for (i = 0; i < params.size(); i++) {
+				for (i = 0; i < params.size(); i++)
+				{
 					if (params.get(i) == null)
 						Exit("Null Parameter");
-					if (!(params.get(i).equals(F.formalParamList.get(i).type))) {
+					if (!(params.get(i).equals(F.formalParamList.get(i).type)))
+					{
 						boolean checkFail = false;
 						String ret1Type = F.formalParamList.get(i).type;
 						String ret2Type = params.get(i);
-						if (SymbolTable.Alias.containsKey(ret2Type)) {
+						if (SymbolTable.Alias.containsKey(ret2Type))
+						{
 							if (SymbolTable.Alias.get(ret2Type).contains(
 									ret1Type))
 								checkFail = true;
 						}
 
-						if (checkFail) {
+						if (checkFail)
+						{
 
 							Exit("Actual Param doesnt match Formal Param");
 						}
@@ -661,7 +737,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 				k--;
 			}
 			return (R) F.retType;
-		} else {
+		} else
+		{
 			Exit("Class function call");
 		}
 		return _ret;
@@ -670,7 +747,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> Expression() f1 -> ( ExpressionRest() )*
 	 */
-	public R visit(ExpressionList n) {
+	public R visit(ExpressionList n)
+	{
 		R _ret = null;
 		R ret1 = n.f0.accept(this);
 		paraStack.get(k).add((String) IType(ret1));
@@ -682,7 +760,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "," f1 -> Expression()
 	 */
-	public R visit(ExpressionRest n) {
+	public R visit(ExpressionRest n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		R ret1 = n.f1.accept(this);
@@ -696,7 +775,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * ThisExpression() | ArrayAllocationExpression() | AllocationExpression() |
 	 * NotExpression() | BracketExpression()
 	 */
-	public R visit(PrimaryExpression n) {
+	public R visit(PrimaryExpression n)
+	{
 		R _ret = null;
 		_ret = (R) n.f0.accept(this);
 
@@ -706,7 +786,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> <INTEGER_LITERAL>
 	 */
-	public R visit(IntegerLiteral n) {
+	public R visit(IntegerLiteral n)
+	{
 		n.f0.accept(this);
 		return (R) "int";
 	}
@@ -714,7 +795,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "true"
 	 */
-	public R visit(TrueLiteral n) {
+	public R visit(TrueLiteral n)
+	{
 		n.f0.accept(this);
 		return (R) "boolean";
 	}
@@ -722,7 +804,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "false"
 	 */
-	public R visit(FalseLiteral n) {
+	public R visit(FalseLiteral n)
+	{
 		n.f0.accept(this);
 		return (R) "boolean";
 	}
@@ -730,7 +813,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> <IDENTIFIER>
 	 */
-	public R visit(Identifier n) {
+	public R visit(Identifier n)
+	{
 		n.f0.accept(this);
 
 		return (R) n.f0.tokenImage;
@@ -739,7 +823,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "this"
 	 */
-	public R visit(ThisExpression n) {
+	public R visit(ThisExpression n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		_ret = (R) SymbolTable.currentClass;
@@ -749,13 +834,15 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "new" f1 -> "int" f2 -> "[" f3 -> Expression() f4 -> "]"
 	 */
-	public R visit(ArrayAllocationExpression n) {
+	public R visit(ArrayAllocationExpression n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
 		n.f2.accept(this);
 		_ret = n.f3.accept(this);
-		if (IType(_ret) != "int") {
+		if (IType(_ret) != "int")
+		{
 			Exit("Integer inside a array bound");
 		}
 		n.f4.accept(this);
@@ -765,13 +852,15 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "new" f1 -> Identifier() f2 -> "(" f3 -> ")"
 	 */
-	public R visit(AllocationExpression n) {
+	public R visit(AllocationExpression n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		_ret = n.f1.accept(this);
 		String hashString = symt.hashString("class", (String) _ret,
 				(String) _ret, null);
-		if (!SymbolTable.mainTable.containsKey(hashString)) {
+		if (!SymbolTable.mainTable.containsKey(hashString))
+		{
 			Exit("new Identifier()");
 		}
 
@@ -783,11 +872,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "!" f1 -> Expression()
 	 */
-	public R visit(NotExpression n) {
+	public R visit(NotExpression n)
+	{
 
 		n.f0.accept(this);
 		R ret = n.f1.accept(this);
-		if (IType(ret) != "boolean") {
+		if (IType(ret) != "boolean")
+		{
 			Exit("!Expression()");
 		}
 
@@ -797,7 +888,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "(" f1 -> Expression() f2 -> ")"
 	 */
-	public R visit(BracketExpression n) {
+	public R visit(BracketExpression n)
+	{
 		R _ret = null;
 		n.f0.accept(this);
 		_ret = (R) n.f1.accept(this);
