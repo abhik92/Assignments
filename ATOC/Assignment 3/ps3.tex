@@ -30,10 +30,13 @@
 \hrule
 
 \begin{questions}
-\question[10] The set $\mathcal{W}_n$ :
+\question[10]
+Recall
+\[ K = \{ x~|~M_x \text{ halts on } x\}\] Prove the following.
 \begin{parts}
-\part Fix a number $n$. Show that the set $$\mathcal{W}_n = \{ y \mid M_n \textrm{ accepts } y \}$$ is complete for the class of semi-decidable languages.
-\part For every function $f$ that can be computed by a total Turing machine, prove that there exists an $n$ such that $\mathcal{W}_n = \mathcal{W}_{f(n)}$
+\part $K$ is {\sc SD}-complete.
+\part Let $K^X = \{ x~|~ M_x^X \text{ is an oracle TM with oracle $X$ 
+and $M_x^X$ halts on $x$} \}$. Show that $K^K$ is $\Sigma_2$-complete. 
 \end{parts}
 
 \question[10] A set $P$ is \textit{partially productive} if there is a partial recursive function(i.e. computed by a Turing machine $N$ - which need not be total) $\psi$ called the {\em productive function} such that:
@@ -54,8 +57,8 @@ Show that Post's simple set is effectively simple. \\[2mm]
 \question[10]
 Consider the following computational problems :
 \begin{parts}
-\part Given a Turing machine $M$, test if $M$ is Productive.
-\part Given a Turing machine $M$, test if $M$ is Simple.
+\part Given a Turing machine $M$, test if $L(M)$ is Productive.
+\part Given a Turing machine $M$, test if $L(M)$ is Simple.
 \end{parts}
 Are they decidable? semi-decidable? \\[2mm]
 (Extra Credit) Place them in the arithmetic hierarchy.
