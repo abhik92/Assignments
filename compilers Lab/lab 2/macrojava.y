@@ -185,11 +185,11 @@ Goal: MacroDefinition MainClass TypeDeclaration EndOfFile {
 
 
 MainClass :	CLASS IDENTIFIER '{' PUBLIC STATIC VOID IDENTIFIER '(' STRING '[' ']' IDENTIFIER ')' '{' recursiveStatement '}' '}' {
-                $1="class";
-                $4="public";
-                $5="static";
-                $6="void";
-                $9="string";
+                $1="class ";
+                $4="public ";
+                $5="static ";
+                $6="void ";
+                $9="String ";
                 
                 $$ = (char*)malloc(sizeof(char)*(strlen($1) + strlen($2)+ 1+ strlen($4)+ strlen($5)+ strlen($6)+ strlen($7)+ 1+ strlen($9)+ 1+ 1+ strlen($12)+ 1+ 1+ strlen($15)+ 1+ 1+1));
                 $$[0] = '\0';
@@ -203,7 +203,7 @@ MainClass :	CLASS IDENTIFIER '{' PUBLIC STATIC VOID IDENTIFIER '(' STRING '[' ']
                 strcat($$,"(");
                 strcat($$,$9);
                 strcat($$,"[");
-                strcat($$,"]");
+                strcat($$,"] ");
                 strcat($$,$12);
                 strcat($$,")");
                 strcat($$,"{");
@@ -216,7 +216,7 @@ MainClass :	CLASS IDENTIFIER '{' PUBLIC STATIC VOID IDENTIFIER '(' STRING '[' ']
 
 TypeDeclaration	: TypeDeclaration CLASS IDENTIFIER '{' TypeISC MethodDeclaration '}' {
                     
-                    $2="class";
+                    $2="class ";
 
                     $$ = (char*)malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+1+strlen($5)+strlen($6)+1+1));
                     $$[0] = '\0';
@@ -231,8 +231,8 @@ TypeDeclaration	: TypeDeclaration CLASS IDENTIFIER '{' TypeISC MethodDeclaration
                 
                 }
                 | TypeDeclaration CLASS IDENTIFIER EXTENDS IDENTIFIER '{' TypeISC MethodDeclaration '}' {
-                    $2="class";
-                    $4="extends";
+                    $2="class ";
+                    $4="extends ";
                     $$ = (char*)malloc(sizeof(char)*(strlen($1)+strlen($2)+strlen($3)+strlen($4)+strlen($5)+1+strlen($7)+strlen($8)+1+1));
                     $$[0] = '\0';
                     strcat($$,$1);
@@ -256,8 +256,8 @@ TypeDeclaration	: TypeDeclaration CLASS IDENTIFIER '{' TypeISC MethodDeclaration
 
 MethodDeclaration : MethodDeclaration PUBLIC Type IDENTIFIER '(' Type IDENTIFIER CTID ')' '{' TypeISC recursiveStatement RETURN Expression ';' '}' {
                     
-                    $2="public";
-                    $13="return";
+                    $2="public ";
+                    $13="return ";
 
                     $$ = (char*)malloc(sizeof(char)*(strlen($1) + strlen($2) + strlen($3)+ strlen($4)+ 1+ strlen($6)+ strlen($7)+ strlen($8)+ 1+ 1+ strlen($11)+ strlen($12)+ strlen($13)+ strlen($14)+ 1+ 1+1));
                     $$[0] = '\0';
@@ -281,8 +281,8 @@ MethodDeclaration : MethodDeclaration PUBLIC Type IDENTIFIER '(' Type IDENTIFIER
                   } 
                   |	MethodDeclaration PUBLIC Type IDENTIFIER '('  ')' '{' TypeISC recursiveStatement RETURN Expression ';' '}' {
                         
-                        $2="public";
-                        $10="return";
+                        $2="public ";
+                        $10="return ";
                         
                         $$ = (char*)malloc(sizeof(char)*(strlen($1) + strlen($2) + strlen($3)+ strlen($4)+ 3+ strlen($8)+ strlen($9)+ strlen($10)+ strlen($11)+ 2+1));
                         $$[0] = '\0';
@@ -311,17 +311,17 @@ MethodDeclaration : MethodDeclaration PUBLIC Type IDENTIFIER '(' Type IDENTIFIER
 
 Type :	INT '[' ']' {
             
-            $1 = "int";
+            $1 = "int ";
             $$ = (char*)malloc(sizeof(char)*(strlen($1)+2+1));
             $$[0] = '\0';
             
             strcat($$,$1);
             strcat($$,"[");
-            strcat($$,"]");
+            strcat($$,"] ");
      
      }
      |  BOOLEAN {
-        $1="boolean";
+        $1="boolean ";
 
         $$ = (char*)malloc(sizeof(char)*(strlen($1)+1));
         $$[0] = '\0';
@@ -329,7 +329,7 @@ Type :	INT '[' ']' {
      
      }
      |	INT {
-        $1="int";
+        $1="int ";
 
         $$ = (char*)malloc(sizeof(char)*(strlen($1)+1));
         $$[0] = '\0';
@@ -414,7 +414,7 @@ Statement : '{' recursiveStatement '}' {
               strcat($$,$1);
               strcat($$,"[");
               strcat($$,$3);
-              strcat($$,"]");
+              strcat($$,"] ");
               strcat($$,"=");
               strcat($$,$6);
               strcat($$,";");
@@ -422,7 +422,7 @@ Statement : '{' recursiveStatement '}' {
           }
           |	IF '(' Expression ')' Statement {
               
-              $1="if";
+              $1="if ";
               $$ = (char*)malloc(sizeof(char)*(strlen($1)+1+strlen($3)+1+strlen($5)+1));
             
               $$[0] = '\0';
@@ -436,8 +436,8 @@ Statement : '{' recursiveStatement '}' {
           }
           |	IF '(' Expression ')' Statement ELSE Statement {
               
-              $1="if";
-              $6="else";
+              $1="if ";
+              $6="else ";
 
               $$ = (char*)malloc(sizeof(char)*(strlen($1)+1+strlen($3)+1+strlen($5)+strlen($6)+strlen($7)+1));
               $$[0] = '\0';
@@ -454,7 +454,7 @@ Statement : '{' recursiveStatement '}' {
           
           }
           |	WHILE '(' Expression ')' Statement {
-              $1="while";
+              $1="while ";
               
               $$ = (char*)malloc(sizeof(char)*(strlen($1)+1+strlen($3)+1+strlen($5)+1));
             
@@ -751,12 +751,12 @@ Expression  :	PrimaryExpression '&' PrimaryExpression {
                 strcat($$,$1);
                 strcat($$,"[");
                 strcat($$,$3);
-                strcat($$,"]");
+                strcat($$,"] ");
 
             
             }
             |	PrimaryExpression '.' length {
-                $3="length";
+                $3="length ";
                 
                 $$ = (char*)malloc(sizeof(char)*(strlen($1)+1+strlen($3)+1));
                 $$[0] = '\0';
@@ -883,8 +883,8 @@ PrimaryExpression   :	INTVAL {
                     }
                     |	NEW INT '[' Expression ']' {
                         
-                        $1="new";
-                        $2="int";
+                        $1="new ";
+                        $2="int ";
                         
                         $$ = (char*)malloc(sizeof(char)*(strlen($1)+strlen($2)+1+strlen($4)+1+1));
                         $$[0] = '\0';
@@ -892,14 +892,14 @@ PrimaryExpression   :	INTVAL {
                         strcat($$,$2);
                         strcat($$,"[");
                         strcat($$,$4);
-                        strcat($$,"]");
+                        strcat($$,"] ");
 
                     
                     
                     }
                     |	NEW IDENTIFIER '(' ')' {
                         
-                        $1 = "new";    
+                        $1 = "new ";    
                         $$ = (char*)malloc(sizeof(char)*(strlen($1)+strlen($2)+2+1));
                         $$[0] = '\0';
                         strcat($$,$1);

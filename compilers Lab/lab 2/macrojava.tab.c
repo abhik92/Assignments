@@ -187,7 +187,7 @@ extern int yyparse();
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 1
+# define YYDEBUG 0
 #endif
 
 /* Enabling verbose error messages.  */
@@ -1667,11 +1667,11 @@ yyreduce:
 /* Line 1806 of yacc.c  */
 #line 187 "macrojava.y"
     {
-                (yyvsp[(1) - (17)].id)="class";
-                (yyvsp[(4) - (17)].id)="public";
-                (yyvsp[(5) - (17)].id)="static";
-                (yyvsp[(6) - (17)].id)="void";
-                (yyvsp[(9) - (17)].id)="string";
+                (yyvsp[(1) - (17)].id)="class ";
+                (yyvsp[(4) - (17)].id)="public ";
+                (yyvsp[(5) - (17)].id)="static ";
+                (yyvsp[(6) - (17)].id)="void ";
+                (yyvsp[(9) - (17)].id)="String ";
                 
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (17)].id)) + strlen((yyvsp[(2) - (17)].id))+ 1+ strlen((yyvsp[(4) - (17)].id))+ strlen((yyvsp[(5) - (17)].id))+ strlen((yyvsp[(6) - (17)].id))+ strlen((yyvsp[(7) - (17)].id))+ 1+ strlen((yyvsp[(9) - (17)].id))+ 1+ 1+ strlen((yyvsp[(12) - (17)].id))+ 1+ 1+ strlen((yyvsp[(15) - (17)].id))+ 1+ 1+1));
                 (yyval.id)[0] = '\0';
@@ -1685,7 +1685,7 @@ yyreduce:
                 strcat((yyval.id),"(");
                 strcat((yyval.id),(yyvsp[(9) - (17)].id));
                 strcat((yyval.id),"[");
-                strcat((yyval.id),"]");
+                strcat((yyval.id),"] ");
                 strcat((yyval.id),(yyvsp[(12) - (17)].id));
                 strcat((yyval.id),")");
                 strcat((yyval.id),"{");
@@ -1703,7 +1703,7 @@ yyreduce:
 #line 217 "macrojava.y"
     {
                     
-                    (yyvsp[(2) - (7)].id)="class";
+                    (yyvsp[(2) - (7)].id)="class ";
 
                     (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+strlen((yyvsp[(2) - (7)].id))+strlen((yyvsp[(3) - (7)].id))+1+strlen((yyvsp[(5) - (7)].id))+strlen((yyvsp[(6) - (7)].id))+1+1));
                     (yyval.id)[0] = '\0';
@@ -1724,8 +1724,8 @@ yyreduce:
 /* Line 1806 of yacc.c  */
 #line 233 "macrojava.y"
     {
-                    (yyvsp[(2) - (9)].id)="class";
-                    (yyvsp[(4) - (9)].id)="extends";
+                    (yyvsp[(2) - (9)].id)="class ";
+                    (yyvsp[(4) - (9)].id)="extends ";
                     (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (9)].id))+strlen((yyvsp[(2) - (9)].id))+strlen((yyvsp[(3) - (9)].id))+strlen((yyvsp[(4) - (9)].id))+strlen((yyvsp[(5) - (9)].id))+1+strlen((yyvsp[(7) - (9)].id))+strlen((yyvsp[(8) - (9)].id))+1+1));
                     (yyval.id)[0] = '\0';
                     strcat((yyval.id),(yyvsp[(1) - (9)].id));
@@ -1759,8 +1759,8 @@ yyreduce:
 #line 257 "macrojava.y"
     {
                     
-                    (yyvsp[(2) - (16)].id)="public";
-                    (yyvsp[(13) - (16)].id)="return";
+                    (yyvsp[(2) - (16)].id)="public ";
+                    (yyvsp[(13) - (16)].id)="return ";
 
                     (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (16)].id)) + strlen((yyvsp[(2) - (16)].id)) + strlen((yyvsp[(3) - (16)].id))+ strlen((yyvsp[(4) - (16)].id))+ 1+ strlen((yyvsp[(6) - (16)].id))+ strlen((yyvsp[(7) - (16)].id))+ strlen((yyvsp[(8) - (16)].id))+ 1+ 1+ strlen((yyvsp[(11) - (16)].id))+ strlen((yyvsp[(12) - (16)].id))+ strlen((yyvsp[(13) - (16)].id))+ strlen((yyvsp[(14) - (16)].id))+ 1+ 1+1));
                     (yyval.id)[0] = '\0';
@@ -1790,8 +1790,8 @@ yyreduce:
 #line 282 "macrojava.y"
     {
                         
-                        (yyvsp[(2) - (13)].id)="public";
-                        (yyvsp[(10) - (13)].id)="return";
+                        (yyvsp[(2) - (13)].id)="public ";
+                        (yyvsp[(10) - (13)].id)="return ";
                         
                         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (13)].id)) + strlen((yyvsp[(2) - (13)].id)) + strlen((yyvsp[(3) - (13)].id))+ strlen((yyvsp[(4) - (13)].id))+ 3+ strlen((yyvsp[(8) - (13)].id))+ strlen((yyvsp[(9) - (13)].id))+ strlen((yyvsp[(10) - (13)].id))+ strlen((yyvsp[(11) - (13)].id))+ 2+1));
                         (yyval.id)[0] = '\0';
@@ -1830,13 +1830,13 @@ yyreduce:
 #line 312 "macrojava.y"
     {
             
-            (yyvsp[(1) - (3)].id) = "int";
+            (yyvsp[(1) - (3)].id) = "int ";
             (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+2+1));
             (yyval.id)[0] = '\0';
             
             strcat((yyval.id),(yyvsp[(1) - (3)].id));
             strcat((yyval.id),"[");
-            strcat((yyval.id),"]");
+            strcat((yyval.id),"] ");
      
      }
     break;
@@ -1846,7 +1846,7 @@ yyreduce:
 /* Line 1806 of yacc.c  */
 #line 323 "macrojava.y"
     {
-        (yyvsp[(1) - (1)].id)="boolean";
+        (yyvsp[(1) - (1)].id)="boolean ";
 
         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
         (yyval.id)[0] = '\0';
@@ -1860,7 +1860,7 @@ yyreduce:
 /* Line 1806 of yacc.c  */
 #line 331 "macrojava.y"
     {
-        (yyvsp[(1) - (1)].id)="int";
+        (yyvsp[(1) - (1)].id)="int ";
 
         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (1)].id))+1));
         (yyval.id)[0] = '\0';
@@ -1993,7 +1993,7 @@ yyreduce:
               strcat((yyval.id),(yyvsp[(1) - (7)].id));
               strcat((yyval.id),"[");
               strcat((yyval.id),(yyvsp[(3) - (7)].id));
-              strcat((yyval.id),"]");
+              strcat((yyval.id),"] ");
               strcat((yyval.id),"=");
               strcat((yyval.id),(yyvsp[(6) - (7)].id));
               strcat((yyval.id),";");
@@ -2007,7 +2007,7 @@ yyreduce:
 #line 423 "macrojava.y"
     {
               
-              (yyvsp[(1) - (5)].id)="if";
+              (yyvsp[(1) - (5)].id)="if ";
               (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+1+strlen((yyvsp[(3) - (5)].id))+1+strlen((yyvsp[(5) - (5)].id))+1));
             
               (yyval.id)[0] = '\0';
@@ -2027,8 +2027,8 @@ yyreduce:
 #line 437 "macrojava.y"
     {
               
-              (yyvsp[(1) - (7)].id)="if";
-              (yyvsp[(6) - (7)].id)="else";
+              (yyvsp[(1) - (7)].id)="if ";
+              (yyvsp[(6) - (7)].id)="else ";
 
               (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (7)].id))+1+strlen((yyvsp[(3) - (7)].id))+1+strlen((yyvsp[(5) - (7)].id))+strlen((yyvsp[(6) - (7)].id))+strlen((yyvsp[(7) - (7)].id))+1));
               (yyval.id)[0] = '\0';
@@ -2051,7 +2051,7 @@ yyreduce:
 /* Line 1806 of yacc.c  */
 #line 456 "macrojava.y"
     {
-              (yyvsp[(1) - (5)].id)="while";
+              (yyvsp[(1) - (5)].id)="while ";
               
               (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+1+strlen((yyvsp[(3) - (5)].id))+1+strlen((yyvsp[(5) - (5)].id))+1));
             
@@ -2481,7 +2481,7 @@ yyreduce:
                 strcat((yyval.id),(yyvsp[(1) - (4)].id));
                 strcat((yyval.id),"[");
                 strcat((yyval.id),(yyvsp[(3) - (4)].id));
-                strcat((yyval.id),"]");
+                strcat((yyval.id),"] ");
 
             
             }
@@ -2492,7 +2492,7 @@ yyreduce:
 /* Line 1806 of yacc.c  */
 #line 758 "macrojava.y"
     {
-                (yyvsp[(3) - (3)].id)="length";
+                (yyvsp[(3) - (3)].id)="length ";
                 
                 (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (3)].id))+1+strlen((yyvsp[(3) - (3)].id))+1));
                 (yyval.id)[0] = '\0';
@@ -2677,8 +2677,8 @@ yyreduce:
 #line 884 "macrojava.y"
     {
                         
-                        (yyvsp[(1) - (5)].id)="new";
-                        (yyvsp[(2) - (5)].id)="int";
+                        (yyvsp[(1) - (5)].id)="new ";
+                        (yyvsp[(2) - (5)].id)="int ";
                         
                         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (5)].id))+strlen((yyvsp[(2) - (5)].id))+1+strlen((yyvsp[(4) - (5)].id))+1+1));
                         (yyval.id)[0] = '\0';
@@ -2686,7 +2686,7 @@ yyreduce:
                         strcat((yyval.id),(yyvsp[(2) - (5)].id));
                         strcat((yyval.id),"[");
                         strcat((yyval.id),(yyvsp[(4) - (5)].id));
-                        strcat((yyval.id),"]");
+                        strcat((yyval.id),"] ");
 
                     
                     
@@ -2699,7 +2699,7 @@ yyreduce:
 #line 900 "macrojava.y"
     {
                         
-                        (yyvsp[(1) - (4)].id) = "new";    
+                        (yyvsp[(1) - (4)].id) = "new ";    
                         (yyval.id) = (char*)malloc(sizeof(char)*(strlen((yyvsp[(1) - (4)].id))+strlen((yyvsp[(2) - (4)].id))+2+1));
                         (yyval.id)[0] = '\0';
                         strcat((yyval.id),(yyvsp[(1) - (4)].id));
