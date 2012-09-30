@@ -20,7 +20,7 @@
 {\sf IITM-CS6014 : Advanced Theory of Computation  \hfill Author : Karthik Abinav S (CS10B057)}
 \vspace{3mm}\\
 \noindent
-{\sf Problem Set \#3 }
+{\sf Problem Set \#3 \hfill Colloborators: Saikrishna}
 \vspace{3mm}
 \hrule
 
@@ -129,9 +129,31 @@ A simple set is {\em effectively simple} if there is a recursive function $f$ su
 Show that Post's simple set is effectively simple. \\[2mm]
 (Extra Credit) If a set $A$ is effectively simple, argue that $K \le_T A$. This justifies why Friedberg-Muchnik had to do a different construction. 
 (Hint: Normal homework rules does not apply to this question. You can look up anywhere, but cite your sources. !).
-
+%Question 4
 \textbf{Answer:}\newline
 
+Since $A$ is simple set, implies it intersects every infinite semidecidable language. In other words, if $\overline{A}$ intersects a particular semi decidable
+language, it is finite. Hence, \newline
+\[ \forall n\in \mathbb{N} : \W_n \subseteq \overline{A} \implies |\W_n|~is~finite. \]
+
+ It now remains to show that, there exists a function $f(n)$ such that, $|\W_n|\leq f(n)$. \newline
+ 
+ Let $n'$ be the length of the encoding of a machine which has the same configuration as $M_{n}$ except that the accept and reject states are interchanged.
+ For $f(n) \geq 2*(n+n')$ , the above condition $|\W_n|\leq f(n)$ will satisy. \newline
+ 
+ Consider the enumeration machine which simulates $M_{n}$ on all inputs $x \in \Sigma^{\ast}$ in a time sharing fashion. For all strings greater than
+ $2n$ , those strings which accept will belong to $A$ , from the enumeration machine constructed in class. Hence, only those strings which are greater
+ than $2n$ and $M_{n}$ rejects is to be considered. \newline
+ 
+ Consider the new machine $M_{n'}$ with accept and reject states of $M_{n}$ interchanged . For the first $2n'$ steps all strings that are accepted by this machine are only to be considered. Note that for strings
+ of length greater than $2n'$ and accepted by this new machine, they will belong to $A$ from the enumerator constructed in class. \newline
+ Hence, $f(n) \geq 2*(n+n')$ will ensure that $f(n) \geq |\W_n|$.
+ \newline
+ 
+ \textbf{Extra Credit:}\newline
+ %Answer to extra credit
+ 
+ 
 \question[10]
 Consider the following computational problems :
 \begin{parts}
@@ -141,7 +163,7 @@ Consider the following computational problems :
 Are they decidable? semi-decidable? \\[2mm]
 (Extra Credit) Place them in the arithmetic hierarchy. \newline
 \textbf{Answer(a)}\newline
-This language is  decidable. \newline
+This language is  decidable ($\Delta_{1}$). \newline
 Productive set $P$ is defined as for a effectively computable $\sigma$, \newline
 $\forall x$, $W_{x}\subseteq P \Longrightarrow \sigma (x) \in P \setminus W_{x}$
 
@@ -158,9 +180,6 @@ The property is a non monotone property.\newline
 Consider the language $\Sigma^{\ast}$. This is not a simple set (because $\overline{L}$ is not infinite).
 But in class we proved that there exists a simple set. Since, simple sets are semi decidable sets and it is a subset of $\Sigma^{\ast}$ , therefore,
 it is not monotone. Hence from rice theorem 2 , its not semidecidable.
-
-
-
 
 
 \end{questions}

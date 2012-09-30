@@ -123,17 +123,26 @@ $\{ W_{f(n)} \}$ = $\Sigma^\ast$ for $\forall n \in N$ . Hence, this set has onl
 
 
 
-
-
 \question[5]
 A simple set is {\em effectively simple} if there is a recursive function $f$ such that:
 \[ \forall n\in \mathbb{N} : \W_n \subseteq \overline{A} \implies |\W_n| \le f(n) \]
 Show that Post's simple set is effectively simple. \\[2mm]
 (Extra Credit) If a set $A$ is effectively simple, argue that $K \le_T A$. This justifies why Friedberg-Muchnik had to do a different construction. 
 (Hint: Normal homework rules does not apply to this question. You can look up anywhere, but cite your sources. !).
-
+%Question 4
 \textbf{Answer:}\newline
 
+Since $A$ is simple set, implies it intersects every infinite semidecidable language. In other words, if $\overline{A}$ intersects a particular semi decidable
+language, it is finite. Hence, \newline
+\[ \forall n\in \mathbb{N} : \W_n \subseteq \overline{A} \implies |\W_n|~is~finite. \]
+
+ It now remains to show that, there exists a function $f(n)$ such that, $|\W_n|\leq f(n)$. \newline
+ 
+ Let $n'$ be the length of the encoding of a machine which has the same configuration as $M_{n}$ except that the accept and reject states are interchanged.
+ For $f(n) \geq 2*(n+n')$ , the above condition $|\W_n|\leq f(n)$ will satisy. \newline
+ 
+ Consider the enumeration machine which simulates $M_{n}$ on all inputs $x \in \Sigma^{\ast}$ in a time sharing fashion.
+ 
 \question[10]
 Consider the following computational problems :
 \begin{parts}
@@ -143,7 +152,27 @@ Consider the following computational problems :
 Are they decidable? semi-decidable? \\[2mm]
 (Extra Credit) Place them in the arithmetic hierarchy. \newline
 \textbf{Answer(a)}\newline
+This language is  decidable. \newline
+Productive set $P$ is defined as for a effectively computable $\sigma$, \newline
+$\forall x$, $W_{x}\subseteq P \Longrightarrow \sigma (x) \in P \setminus W_{x}$
+
+But , since here $P$ is semidecidable , there fore for some particular value of $x=t$ , $W_{t}$ = $P$. And hence , the condition above will not satisy for this
+value of $x$. i.e. \newline
+$\forall x$, $P \subseteq P  \Longrightarrow \sigma (x) \in \varnothing$. \newline
+And since, no element can belong to the set $\varnothing$, hence the property is always false. This can be easily decided by a total TM.
+
+
 \textbf{Answer(b)}\newline
+This language is not semidecidable. This can be shown using Rice Theorem 2.\newline
+
+The property is a non monotone property.\newline
+Consider the language $\Sigma^{\ast}$. This is not a simple set (because $\overline{L}$ is not infinite).
+But in class we proved that there exists a simple set. Since, simple sets are semi decidable sets and it is a subset of $\Sigma^{\ast}$ , therefore,
+it is not monotone. Hence from rice theorem 2 , its not semidecidable.
+
+
+
+
 
 \end{questions}
 \end{document}
