@@ -123,6 +123,8 @@ $\{ W_{f(n)} \}$ = $\Sigma^\ast$ for $\forall n \in N$ . Hence, this set has onl
 
 
 
+
+
 \question[5]
 A simple set is {\em effectively simple} if there is a recursive function $f$ such that:
 \[ \forall n\in \mathbb{N} : \W_n \subseteq \overline{A} \implies |\W_n| \le f(n) \]
@@ -141,27 +143,7 @@ Consider the following computational problems :
 Are they decidable? semi-decidable? \\[2mm]
 (Extra Credit) Place them in the arithmetic hierarchy. \newline
 \textbf{Answer(a)}\newline
-This language is  decidable. \newline
-Productive set $P$ is defined as for a effectively computable $\sigma$, \newline
-$\forall x$, $W_{x}\subseteq P \Longrightarrow \sigma (x) \in P \setminus W_{x}$
-
-But , since here $P$ is semidecidable , there fore for some particular value of $x=t$ , $W_{t}$ = $P$. And hence , the condition above will not satisy for this
-value of $x$. i.e. \newline
-$\forall x$, $P \subseteq P  \Longrightarrow \sigma (x) \in \varnothing$. \newline
-And since, no element can belong to the set $\varnothing$, hence the property is always false. This can be easily decided by a total TM.
-
-
 \textbf{Answer(b)}\newline
-This language is not semidecidable. This can be shown using Rice Theorem 2.\newline
-
-The property is a non monotone property.\newline
-Consider the language $\Sigma^{\ast}$. This is not a simple set (because $\overline{L}$ is not infinite).
-But in class we proved that there exists a simple set. Since, simple sets are semi decidable sets and it is a subset of $\Sigma^{\ast}$ , therefore,
-it is not monotone. Hence from rice theorem 2 , its not semidecidable.
-
-
-
-
 
 \end{questions}
 \end{document}
