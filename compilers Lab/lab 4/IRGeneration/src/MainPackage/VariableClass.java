@@ -4,7 +4,8 @@ public class VariableClass {
 	public String type;
 	public String name;
 	public int tempNumber;
-
+	public int offset;
+	
 	public VariableClass(String type, String name, int tempNumber) {
 		this.type = type;
 		this.name = name;

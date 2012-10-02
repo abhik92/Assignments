@@ -227,9 +227,6 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			if (this.currentTempNumber > SymbolTable.maxTempNumber)
 				SymbolTable.maxTempNumber = this.currentTempNumber;
 			this.currentTempNumber++;
-		} else {
-			GJNoArguDepthFirst_Parse2
-					.Exit("Redeclaration of variables/functions");
 		}
 
 		n.f0.accept(this);
@@ -272,9 +269,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		String hashString = symt.hashString("function", name,
 				SymbolTable.currentClass, SymbolTable.currentFunction);
 		if (!SymbolTable.mainTable.containsKey(hashString)) {
-			symt.push(hashString, new FunctionClass(retType));
-		} else {
-			GJNoArguDepthFirst_Parse2.Exit("Redclaration of function/variable");
+			symt.push(hashString, new FunctionClass(retType, name));
 		}
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -342,9 +337,6 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 					SymbolTable.currentClass, SymbolTable.currentFunction),
 					new VariableClass(type, name, this.argTempNumber));
 
-		} else {
-			GJNoArguDepthFirst_Parse2
-					.Exit("Redclaration of variable/fuinction");
 		}
 		F.formalParamList
 				.add(new VariableClass(type, name, this.argTempNumber));

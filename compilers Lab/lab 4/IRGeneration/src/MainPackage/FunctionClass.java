@@ -3,11 +3,14 @@ package MainPackage;
 import java.util.ArrayList;
 
 public class FunctionClass {
+	public String name;
 	public String retType;
 	public ArrayList<VariableClass> formalParamList;
+	public int offset;
 
-	public FunctionClass(String retType) {
+	public FunctionClass(String retType, String name) {
 		this.retType = retType;
+		this.name = name;
 		this.formalParamList = new ArrayList<VariableClass>();
 	}
 }

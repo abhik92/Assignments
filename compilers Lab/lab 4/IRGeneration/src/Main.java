@@ -10,7 +10,7 @@ public class Main {
 		try {
 
 			Node root = new MiniJavaParser(new FileInputStream(
-					"../TestCases/minijava/Vetti.java")).Goal();
+					"../TestCases/minijava/Factorial.java")).Goal();
 
 			// Node root = new MiniJavaParser(System.in).Goal();
 			SymbolTable sym = new SymbolTable();
