@@ -239,6 +239,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			String name = ((ClassExtendsDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
 		}
+		SymbolTable.currentFunction = null;
 		n.f0.accept(this);
 		return _ret;
 	}
@@ -613,7 +614,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	public R visit(MessageSend n) {
 		R _ret = null;
 		R ret1 = n.f0.accept(this);
-		System.out.println(ret1);
+		// System.out.println(ret1);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 		n.f3.accept(this);
@@ -747,7 +748,45 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		n.f2.accept(this);
 		_ret = n.f3.accept(this);
-		String var = " HALLOCATE TIMES PLUS " + (String) _ret + " 1 4 ";
+		int currentMax = SymbolTable.maxTempNumber;
+		SymbolTable.maxTempNumber++;
+		String var = " BEGIN ";
+		var = var + " MOVE TEMP " + currentMax + " ";
+
+		String exp = (String) _ret;
+		String hashString = symt.hashString("variable", exp,
+				SymbolTable.currentClass, SymbolTable.currentFunction);
+
+		if (SymbolTable.mainTable.containsKey(hashString)) {
+			VariableClass V = (VariableClass) symt.query(hashString);
+			exp = " TEMP " + V.tempNumber;
+
+		}
+		hashString = symt.hashString("variable", exp, SymbolTable.currentClass,
+				null);
+
+		if (SymbolTable.mainTable.containsKey(hashString)) {
+			ArrayList<Object> VariableTable = (ArrayList<Object>) tempTable
+					.get(0);
+			int offset = 4;
+			for (Object o : VariableTable) {
+				VariableClass objToVar = (VariableClass) o;
+				if (objToVar.name.equals(exp)) {
+					break;
+				}
+				offset += 4;
+			}
+			var = var + " HLOAD TEMP " + SymbolTable.maxTempNumber + " TEMP 0 "
+					+ offset;
+			exp = " TEMP " + SymbolTable.maxTempNumber;
+			SymbolTable.maxTempNumber++;
+		}
+
+		var = var + " HALLOCATE TIMES PLUS " + exp + " 1 4 ";
+
+		var = var + " RETURN " + currentMax;
+		var = var + " END ";
+		System.out.println(var);
 		n.f4.accept(this);
 		return (R) var;
 	}
@@ -778,6 +817,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 				+ func.size() * 4;
 
 		varTable.add("TEMP " + SymbolTable.maxTempNumber);
+
 		varTable.addAll(vars);
 		SymbolTable.maxTempNumber++;
 
@@ -804,7 +844,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		// Store all the variables in the variable table list
 		for (VariableClass V : vars) {
 			var = var + " HSTORE TEMP " + (SymbolTable.maxTempNumber - 1) + " "
-					+ count + " " + (String) _ret + "_" + V.name;
+					+ count + " 0 ";
 			count = count + 4;
 		}
 

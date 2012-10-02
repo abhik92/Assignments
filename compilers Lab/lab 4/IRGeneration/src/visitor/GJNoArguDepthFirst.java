@@ -222,11 +222,16 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		String hashString = symt.hashString("variable", name,
 				SymbolTable.currentClass, SymbolTable.currentFunction);
 		if (!SymbolTable.mainTable.containsKey(hashString)) {
-			symt.push(hashString, new VariableClass(type, name,
-					this.currentTempNumber));
-			if (this.currentTempNumber > SymbolTable.maxTempNumber)
-				SymbolTable.maxTempNumber = this.currentTempNumber;
-			this.currentTempNumber++;
+
+			if (SymbolTable.currentFunction == null) {
+				symt.push(hashString, new VariableClass(type, name, -1));
+			} else {
+				symt.push(hashString, new VariableClass(type, name,
+						this.currentTempNumber));
+				if (this.currentTempNumber > SymbolTable.maxTempNumber)
+					SymbolTable.maxTempNumber = this.currentTempNumber;
+				this.currentTempNumber++;
+			}
 		}
 
 		n.f0.accept(this);
