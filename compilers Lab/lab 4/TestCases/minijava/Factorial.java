@@ -1,6 +1,6 @@
 class Factorial{
     public static void main(String[] a){
-        System.out.println(new Fac().Pls3(10));
+        System.out.println(new Fac().Pls3(10,24));
     }
 }
 
@@ -18,7 +18,7 @@ class Fac {
         return num_aux ;
     }
     
-    public int Pls3(int num){
+    public int Pls3(int num,int stalk){
         int num_aux ;
         int[] number;
         if (num < 1)

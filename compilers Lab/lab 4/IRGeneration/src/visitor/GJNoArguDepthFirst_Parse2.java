@@ -22,6 +22,7 @@ import MainPackage.Class;
 public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/* Set of helper variables and functions */
 	public SymbolTable symt;
+	public String params = new String();
 	public int k = -1;
 	public Vector<ArrayList<String>> paraStack = new Vector<ArrayList<String>>();
 
@@ -687,7 +688,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		SymbolTable.maxTempNumber++;
 
 		n.f3.accept(this);
-		n.f4.accept(this);
+		R params = n.f4.accept(this);
+		var = var + " ( TEMP " + classTemp + " " + params + " ) ";
 		n.f5.accept(this);
 		System.out.println(var);
 		return (R) var;
@@ -697,21 +699,20 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> Expression() f1 -> ( ExpressionRest() )*
 	 */
 	public R visit(ExpressionList n) {
-		R _ret = null;
 		R ret1 = n.f0.accept(this);
-		n.f1.accept(this);
-		return _ret;
+		R ret2 = n.f1.accept(this);
+		params = (String) ret1 + " " + params;
+		return (R) params;
 	}
 
 	/**
 	 * f0 -> "," f1 -> Expression()
 	 */
 	public R visit(ExpressionRest n) {
-		R _ret = null;
 		n.f0.accept(this);
 		R ret1 = n.f1.accept(this);
-
-		return _ret;
+		params = " " + (String) ret1 + params;
+		return (R) params;
 	}
 
 	/**
