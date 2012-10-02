@@ -19,7 +19,6 @@ public class Main {
 				new SymbolTable().findTransitiveClosure();
 			}
 			root.accept(new GJNoArguDepthFirst_Parse2(sym));
-			System.out.print("Program type checked successfully");
 		} catch (ParseException e) {
 			System.out.println(e.toString());
 		}

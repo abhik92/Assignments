@@ -40,10 +40,9 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		for (Entry<String, Object> s : allElements) {
 			String key = s.getKey();
 			String values[] = key.split("\\s+");
-			if (values[2].equals(className)) {
+			if (values[0].equals("function") && values[2].equals(className)) {
 				Object o = s.getValue();
-				if (o instanceof FunctionClass)
-					funcs.add((FunctionClass) o);
+				funcs.add((FunctionClass) o);
 
 			}
 		}
@@ -57,10 +56,10 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		for (Entry<String, Object> s : allElements) {
 			String key = s.getKey();
 			String values[] = key.split("\\s+");
-			if (values[2].equals(className) && values[3] == null) {
+			if (values[0].equals("variable") && values[2].equals(className)
+					&& values[3].equals("null")) {
 				Object o = s.getValue();
-				if (o instanceof VariableClass)
-					vars.add((VariableClass) o);
+				vars.add((VariableClass) o);
 
 			}
 		}
@@ -234,10 +233,40 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		if (n.f0.which == 0) {
 			String name = ((ClassDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
+
+			ArrayList<Object> varTable = new ArrayList<Object>();
+			ArrayList<FunctionClass> funcTable = new ArrayList<FunctionClass>();
+
+			ArrayList<FunctionClass> func = this.getFunctions(name);
+			ArrayList<VariableClass> vars = this.getVariables(name);
+
+			funcTable.addAll(func);
+			tempTable.put(21, funcTable);
+
+			varTable.add("TEMP " + 21);
+			varTable.addAll(vars);
+
+			tempTable.put(0, varTable);
+
 		}
 		if (n.f0.which == 1) {
 			String name = ((ClassExtendsDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
+
+			ArrayList<Object> varTable = new ArrayList<Object>();
+			ArrayList<FunctionClass> funcTable = new ArrayList<FunctionClass>();
+
+			ArrayList<FunctionClass> func = this.getFunctions(name);
+			ArrayList<VariableClass> vars = this.getVariables(name);
+
+			funcTable.addAll(func);
+			tempTable.put(21, funcTable);
+
+			varTable.add("TEMP " + 21);
+			varTable.addAll(vars);
+
+			tempTable.put(0, varTable);
+
 		}
 		SymbolTable.currentFunction = null;
 		n.f0.accept(this);
@@ -610,63 +639,66 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> PrimaryExpression() f1 -> "." f2 -> Identifier() f3 -> "(" f4 -> (
 	 * ExpressionList() )? f5 -> ")"
 	 */
-	// TODO
 	public R visit(MessageSend n) {
-		R _ret = null;
-		R ret1 = n.f0.accept(this);
-		// System.out.println(ret1);
+		int classTemp = SymbolTable.maxTempNumber;
+		SymbolTable.maxTempNumber++;
+		String var = " CALL ";
+		var = var + " BEGIN ";
+		var = var + " MOVE TEMP " + classTemp + " ";
+		R primExp = n.f0.accept(this);
+
+		var = var + (String) primExp;
+		String returnNumber;
+
+		// Brute it out!
+		try {
+			returnNumber = ((String) primExp).split("RETURN")[1].split("\\s+")[2];
+		} catch (Exception e) {
+			returnNumber = ((String) primExp).split("\\s+")[2];
+		}
+		int retNum = Integer.parseInt(returnNumber);
+
 		n.f1.accept(this);
-		R ret2 = n.f2.accept(this);
+
+		R iden = n.f2.accept(this);
+
+		var = var + " HLOAD TEMP " + SymbolTable.maxTempNumber + " TEMP "
+				+ classTemp + " 0 ";
+		SymbolTable.maxTempNumber++;
+		int offset = 0;
+
+		Object o = this.tempTable.get(retNum);
+		ArrayList<Object> V = (ArrayList<Object>) o;
+		String funcTable = (String) V.get(0);
+		int func = Integer.parseInt(funcTable.split("\\s+")[1]);
+		Object o2 = this.tempTable.get(func);
+		ArrayList<FunctionClass> F = (ArrayList<FunctionClass>) o2;
+
+		for (FunctionClass Fun : F) {
+			if (Fun.name.equals(iden)) {
+
+				break;
+			}
+			offset += 4;
+		}
+
+		var = var + " HLOAD TEMP " + SymbolTable.maxTempNumber + " TEMP "
+				+ (SymbolTable.maxTempNumber - 1) + " " + offset + " ";
+		SymbolTable.maxTempNumber++;
+
 		n.f3.accept(this);
-		k++;
-		ArrayList<String> par = new ArrayList<String>();
-		paraStack.add(k, par);
 		n.f4.accept(this);
 		n.f5.accept(this);
-
-		String hashString = symt.hashString("function", (String) ret2,
-				(String) ClassName(ret1), (String) ret2);
-
-		if (SymbolTable.mainTable.containsKey(hashString)) {
-			FunctionClass F = (FunctionClass) symt.query(hashString);
-			int i;
-
-			ArrayList<String> params = new ArrayList<String>();
-			if (k != -1) {
-				params = paraStack.elementAt(k);
-
-				for (i = 0; i < params.size(); i++) {
-
-					if (!(params.get(i).equals(F.formalParamList.get(i).type))) {
-						boolean checkFail = false;
-						String ret1Type = F.formalParamList.get(i).type;
-						String ret2Type = params.get(i);
-						if (SymbolTable.Alias.containsKey(ret2Type)) {
-							if (SymbolTable.Alias.get(ret2Type).contains(
-									ret1Type))
-								checkFail = true;
-						}
-
-					}
-				}
-				params.clear();
-				k--;
-			}
-			return (R) F.retType;
-		}
-		return _ret;
+		System.out.println(var);
+		return (R) var;
 	}
 
 	/**
 	 * f0 -> Expression() f1 -> ( ExpressionRest() )*
 	 */
-	// TODO
 	public R visit(ExpressionList n) {
 		R _ret = null;
 		R ret1 = n.f0.accept(this);
-		paraStack.get(k).add((String) IType(ret1));
-
-		System.out.println(ret1);
 		n.f1.accept(this);
 		return _ret;
 	}
@@ -674,12 +706,10 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/**
 	 * f0 -> "," f1 -> Expression()
 	 */
-	// TODO
 	public R visit(ExpressionRest n) {
 		R _ret = null;
 		n.f0.accept(this);
 		R ret1 = n.f1.accept(this);
-		paraStack.get(k).add((String) IType(ret1));
 
 		return _ret;
 	}
@@ -751,7 +781,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		int currentMax = SymbolTable.maxTempNumber;
 		SymbolTable.maxTempNumber++;
 		String var = " BEGIN ";
-		var = var + " MOVE TEMP " + currentMax + " ";
 
 		String exp = (String) _ret;
 		String hashString = symt.hashString("variable", exp,
@@ -770,10 +799,15 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 					.get(0);
 			int offset = 4;
 			for (Object o : VariableTable) {
+				if (o instanceof String)
+					continue;
+
 				VariableClass objToVar = (VariableClass) o;
 				if (objToVar.name.equals(exp)) {
+
 					break;
 				}
+
 				offset += 4;
 			}
 			var = var + " HLOAD TEMP " + SymbolTable.maxTempNumber + " TEMP 0 "
@@ -781,12 +815,12 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			exp = " TEMP " + SymbolTable.maxTempNumber;
 			SymbolTable.maxTempNumber++;
 		}
-
+		var = var + " MOVE TEMP " + currentMax + " ";
 		var = var + " HALLOCATE TIMES PLUS " + exp + " 1 4 ";
 
-		var = var + " RETURN " + currentMax;
+		var = var + " RETURN " + " TEMP " + currentMax;
 		var = var + " END ";
-		System.out.println(var);
+		// System.out.println(var);
 		n.f4.accept(this);
 		return (R) var;
 	}
@@ -850,6 +884,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 		var = var + " RETURN TEMP " + (SymbolTable.maxTempNumber - 1);
 		var = var + " END ";
+		// System.out.println(var);
 		n.f2.accept(this);
 		n.f3.accept(this);
 		return (R) var;
