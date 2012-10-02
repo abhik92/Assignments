@@ -576,7 +576,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 
-		return (R) "boolean";
+		String var = " TIMES " + ret1 + " " + ret2 + " ";
+		return (R) var;
 	}
 
 	/**
@@ -587,7 +588,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 
-		return (R) "int";
+		String var = " PLUS " + ret1 + " " + ret2 + " ";
+		return (R) var;
 	}
 
 	/**
@@ -598,7 +600,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 
-		return (R) "int";
+		String var = " MINUS " + ret1 + " " + ret2 + " ";
+		return (R) var;
 	}
 
 	/**
@@ -609,7 +612,9 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 
-		return (R) "int";
+		String var = " TIMES " + ret1 + " " + ret2 + " ";
+		return (R) var;
+
 	}
 
 	/**
