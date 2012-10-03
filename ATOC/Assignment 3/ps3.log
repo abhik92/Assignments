@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  30 SEP 2012 19:21
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.7.27)  3 OCT 2012 16:00
 entering extended mode
  %&-line parsing enabled.
 **ps3.tex
@@ -336,7 +336,7 @@ This exam has a total of 0 bonus points.
 (./ps3.aux) ) 
 Here is how much of TeX's memory you used:
  3291 strings out of 495061
- 37650 string characters out of 1182622
+ 37650 string characters out of 1182621
  105513 words of memory out of 3000000
  6460 multiletter control sequences out of 15000+50000
  10192 words of font info for 39 fonts, out of 3000000 for 9000
@@ -354,7 +354,7 @@ e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texl
 ive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/ty
 pe1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on ps3.pdf (4 pages, 145263 bytes).
+Output written on ps3.pdf (4 pages, 145470 bytes).
 PDF statistics:
  67 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
