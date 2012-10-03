@@ -22,6 +22,7 @@ import MainPackage.Class;
 public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	/* Set of helper variables and functions */
 	public SymbolTable symt;
+	public int labelNumber = 0;
 	public String params = new String();
 	public int k = -1;
 	public Vector<ArrayList<String>> paraStack = new Vector<ArrayList<String>>();
@@ -48,6 +49,41 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			}
 		}
 		return funcs;
+	}
+
+	public String returnTempNumber(String exp) {
+		String hashString = symt.hashString("variable", exp,
+				SymbolTable.currentClass, SymbolTable.currentFunction);
+		String ret = "";
+		if (SymbolTable.mainTable.containsKey(hashString)) {
+			// Function Variable
+			VariableClass V = ((VariableClass) symt.query(hashString));
+			int val = V.tempNumber;
+			ret = ret + " TEMP " + val + " ";
+		}
+		hashString = symt.hashString("variable", exp, SymbolTable.currentClass,
+				null);
+		if (SymbolTable.mainTable.containsKey(hashString)) {
+			// Class variable
+
+			ArrayList<Object> VariableTable = (ArrayList<Object>) tempTable
+					.get(0);
+			int offset = 4;
+			for (Object o : VariableTable) {
+				if (o instanceof String)
+					continue;
+
+				VariableClass objToVar = (VariableClass) o;
+				if (objToVar.name.equals(exp)) {
+
+					break;
+				}
+
+				offset += 4;
+			}
+			ret = ret + " TEMP 0 " + offset + " ";
+		}
+		return ret;
 	}
 
 	public ArrayList<VariableClass> getVariables(String className) {
@@ -502,15 +538,23 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * "else" f6 -> Statement()
 	 */
 	public R visit(IfStatement n) {
-		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
-		n.f2.accept(this);
+		R ifexp = n.f2.accept(this);
 		n.f3.accept(this);
-		n.f4.accept(this);
+		R ifstmnt = n.f4.accept(this);
 		n.f5.accept(this);
-		n.f6.accept(this);
-		return _ret;
+		R elsestmnt = n.f6.accept(this);
+
+		String var = "";
+		var = " CJUMP " + (String) ifexp + " L" + labelNumber + " "
+				+ (String) ifstmnt + " JUMP L" + (labelNumber + 1);
+		var = var + " L" + labelNumber + " " + (String) elsestmnt + " L"
+				+ (labelNumber + 1) + " NOOP ";
+		labelNumber += 2;
+
+		System.out.println(var);
+		return (R) var;
 	}
 
 	/**
@@ -576,7 +620,14 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 
-		String var = " TIMES " + ret1 + " " + ret2 + " ";
+		String valOne = this.returnTempNumber((String) ret1);
+		if (!valOne.equals(""))
+			ret1 = (R) valOne;
+		String valTwo = this.returnTempNumber((String) ret2);
+		if (!valTwo.equals(""))
+			ret2 = (R) valTwo;
+
+		String var = " LT " + ret1 + " " + ret2 + " ";
 		return (R) var;
 	}
 
@@ -587,6 +638,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
+
+		String valOne = this.returnTempNumber((String) ret1);
+		if (!valOne.equals(""))
+			ret1 = (R) valOne;
+		String valTwo = this.returnTempNumber((String) ret2);
+		if (!valTwo.equals(""))
+			ret2 = (R) valTwo;
 
 		String var = " PLUS " + ret1 + " " + ret2 + " ";
 		return (R) var;
@@ -600,6 +658,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
 
+		String valOne = this.returnTempNumber((String) ret1);
+		if (!valOne.equals(""))
+			ret1 = (R) valOne;
+		String valTwo = this.returnTempNumber((String) ret2);
+		if (!valTwo.equals(""))
+			ret2 = (R) valTwo;
+
 		String var = " MINUS " + ret1 + " " + ret2 + " ";
 		return (R) var;
 	}
@@ -611,6 +676,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
 		R ret2 = n.f2.accept(this);
+
+		String valOne = this.returnTempNumber((String) ret1);
+		if (!valOne.equals(""))
+			ret1 = (R) valOne;
+		String valTwo = this.returnTempNumber((String) ret2);
+		if (!valTwo.equals(""))
+			ret2 = (R) valTwo;
 
 		String var = " TIMES " + ret1 + " " + ret2 + " ";
 		return (R) var;
@@ -638,7 +710,27 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		n.f2.accept(this);
 
-		return (R) "int";
+		String exp = (String) _ret;
+		String hashString = symt.hashString("variable", exp,
+				SymbolTable.currentClass, SymbolTable.currentFunction);
+		String var = "";
+		int sizeLocation = 0;
+		if (SymbolTable.mainTable.containsKey(hashString)) {
+			// Function variable
+			VariableClass V = (VariableClass) symt.query(hashString);
+			sizeLocation = V.tempNumber;
+
+		}
+		hashString = symt.hashString("variable", exp, SymbolTable.currentClass,
+				SymbolTable.currentFunction);
+		if (SymbolTable.mainTable.containsKey(hashString)) {
+			// Class Variable
+			VariableClass V = (VariableClass) symt.query(hashString);
+			sizeLocation = V.locationOfSize;
+
+		}
+		var = var + " " + (this.tempTable.get(sizeLocation)) + " ";
+		return (R) var;
 	}
 
 	/**
@@ -696,7 +788,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		R params = n.f4.accept(this);
 		var = var + " ( TEMP " + classTemp + " " + params + " ) ";
 		n.f5.accept(this);
-		System.out.println(var);
+		// System.out.println(var);
 		return (R) var;
 	}
 
@@ -823,6 +915,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		}
 		var = var + " MOVE TEMP " + currentMax + " ";
 		var = var + " HALLOCATE TIMES PLUS " + exp + " 1 4 ";
+
+		this.tempTable.put(currentMax, exp);
 
 		var = var + " RETURN " + " TEMP " + currentMax;
 		var = var + " END ";

@@ -24,8 +24,10 @@ class Fac {
         if (num < 1)
             num_aux = 1 ;
         else
-            num_aux = num * /*(this.ComputeFac(num-1))*/1 ;
+            num_aux = num * 1 ;
+
         number = new int[ioitc];
+        num_aux = number.length;
         return num_aux ;
     }public int ComputeFac(int num){
         int num_aux ;
@@ -37,4 +39,17 @@ class Fac {
         number = new int[ioitc];
         return num_aux ;
     }
+}
+
+class MokkaiSai
+{
+    int a;
+    public int func()
+    {
+
+        return 1;
+
+    }
+
+
 }
