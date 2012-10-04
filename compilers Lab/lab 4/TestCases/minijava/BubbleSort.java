@@ -42,7 +42,7 @@ class BBS{
 	while (aux02 < i) {
 	    j = 1 ;
 	    //aux03 = i+1 ;
-	    while (j < (i+1)){
+	    while (j & (i+1)){
 		aux07 = j - 1 ;
 		aux04 = number[aux07] ;
 		aux05 = number[j] ;

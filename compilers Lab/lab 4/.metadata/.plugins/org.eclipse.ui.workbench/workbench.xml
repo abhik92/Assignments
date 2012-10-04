@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="18" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
 <window height="719" maximized="true" width="1024" x="0" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -49,11 +49,11 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst_Parse2.java" partName="GJNoArguDepthFirst_Parse2.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 4/IRGeneration/src/visitor/GJNoArguDepthFirst_Parse2.java" title="GJNoArguDepthFirst_Parse2.java" tooltip="IRGeneration/src/visitor/GJNoArguDepthFirst_Parse2.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IRGeneration/src/visitor/GJNoArguDepthFirst_Parse2.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14439" selectionTopPixel="10207"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="16788" selectionTopPixel="11349"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VariableClass.java" partName="VariableClass.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 4/IRGeneration/src/MainPackage/VariableClass.java" title="VariableClass.java" tooltip="IRGeneration/src/MainPackage/VariableClass.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IRGeneration/src/MainPackage/VariableClass.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="136" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="287" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst.java" partName="GJNoArguDepthFirst.java" path="/home/kabinav/fifthsem/Assignments/compilers Lab/lab 4/IRGeneration/src/visitor/GJNoArguDepthFirst.java" title="GJNoArguDepthFirst.java" tooltip="IRGeneration/src/visitor/GJNoArguDepthFirst.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/IRGeneration/src/visitor/GJNoArguDepthFirst.java"/>
@@ -74,9 +74,7 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings (100 of 388 items)"/>
-<category IMemento.internal.id="Errors"/>
+<expanded>&#x0A;<category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -296,7 +294,7 @@
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.2496318" ratioLeft="339" ratioRight="1019" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.13174492" ratioLeft="188" ratioRight="1239" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.94463086" ratioLeft="563" ratioRight="33" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
@@ -315,7 +313,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@81e2e0" ratio="0.9546703" ratioLeft="695" ratioRight="33" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@81e2e0" ratio="0.94463086" ratioLeft="563" ratioRight="33" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -337,136 +335,24 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IRGeneration/src/visitor/GJNoArguDepthFirst_Parse2.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IRGeneration/src/MainPackage/VariableClass.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IRGeneration/src/MainPackage/FunctionClass.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IRGeneration/src/MainPackage/SymbolTable.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IRGeneration/src/visitor/GJNoArguDepthFirst.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IRGeneration/src/Main.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/IRGeneration/src/MainPackage/VariableClass.java"/>
 </editors>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="1371" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="1861" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="1856" y="3"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="18776" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17422" y="219"/>
-</item>
-<item historyLabel="SymbolTable.java" index="3">
-<position info="not_deleted" x="383" y="80"/>
-</item>
-<item historyLabel="VariableClass.java" index="1">
-<position info="not_deleted" x="136" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17422" y="219"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17982" y="84"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17982" y="84"/>
-</item>
-<item historyLabel="SymbolTable.java" index="3">
-<position info="not_deleted" x="383" y="80"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17982" y="84"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17641" y="4"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17982" y="84"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17951" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17940" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17504" y="4"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17502" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17504" y="4"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="17462" y="3"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="18827" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="19360" y="0"/>
-</item>
-<item historyLabel="VariableClass.java" index="1">
-<position info="not_deleted" x="136" y="0"/>
-</item>
-<item historyLabel="FunctionClass.java" index="2">
-<position info="not_deleted" x="196" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="4">
-<position info="not_deleted" x="3" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="4">
-<position info="not_deleted" x="6464" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="18240" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="18217" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="18684" y="4"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="18680" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="18773" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="4">
-<position info="not_deleted" x="6464" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="18773" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
-<position info="not_deleted" x="15372" y="0"/>
-</item>
-<item historyLabel="Main.java" index="5">
+<item historyLabel="Main.java" index="3">
 <position info="not_deleted" x="325" y="0"/>
 </item>
 <item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
 <position info="not_deleted" x="15128" y="0"/>
 </item>
-<item historyLabel="SymbolTable.java" index="3">
+<item historyLabel="SymbolTable.java" index="1">
 <position info="not_deleted" x="4485" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="4">
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
 <position info="not_deleted" x="8027" y="0"/>
 </item>
-<item historyLabel="Main.java" index="5">
+<item historyLabel="Main.java" index="3">
 <position info="not_deleted" x="325" y="0"/>
 </item>
 <item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
@@ -490,8 +376,119 @@
 <item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
 <position info="not_deleted" x="16897" y="0"/>
 </item>
-<item active="true" historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
 <position info="not_deleted" x="13663" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="18300" y="54"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="18691" y="39"/>
+</item>
+<item historyLabel="VariableClass.java" index="4">
+<position info="not_deleted" x="287" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="15004" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17259" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17432" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17458" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17491" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17671" y="3"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17544" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17182" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17380" y="4"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17348" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17339" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17380" y="4"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17670" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="17621" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="12385" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="13533" y="4"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="13353" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="13533" y="4"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="13578" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="13559" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1684" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1979" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1890" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1916" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1928" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1631" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="1765" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="2355" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="15126" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="15113" y="0"/>
+</item>
+<item active="true" historyLabel="GJNoArguDepthFirst_Parse2.java" index="0">
+<position info="not_deleted" x="14979" y="104"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

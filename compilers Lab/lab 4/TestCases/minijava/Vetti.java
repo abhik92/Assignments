@@ -1,5 +1,3 @@
-//Avalo range aaytya
-
 class Factorial{
     public static void main(String[] a){
         System.out.println(1);
@@ -8,15 +6,17 @@ class Factorial{
 
 class Fac {
         
+        int gen;
         public int func(int num)
         {
         int num_aux ;
-        int[] n2;
+        int[] num2;
+        num2 = new int[5];
         if (num_aux < 1)
             num_aux = 1 ;
         else
-            num_aux = num_aux * 1 ;
-        n2[3] = 4;
+           gen = 1 ;
+                
         return num_aux ;
     }
 }
