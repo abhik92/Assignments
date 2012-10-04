@@ -50,7 +50,6 @@ class QS{
 		    aux03 = number[i] ;
 		    if (!(aux03<v)) cont02 = false ;
 		    else cont02 = true ;
-		    
 		}
 		cont02 = true ;
 		while (cont02){
@@ -67,13 +66,11 @@ class QS{
 		//aux03 = i + 1 ;
 		if ( j < (i+1)) cont01 = false ;
 		else cont01 = true ;
-		
-		
 	    }
 	    number[j] = number[i] ;
 	    number[i] = number[right] ;
 	    number[right] = t ;
-	   nt = this.Sort(left,i-1);
+	    nt = this.Sort(left,i-1);
 	    nt = this.Sort(i+1,right);
 	}
 	else nt = 0 ;

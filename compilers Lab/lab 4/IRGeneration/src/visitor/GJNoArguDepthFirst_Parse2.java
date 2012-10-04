@@ -565,12 +565,16 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			VariableClass V = (VariableClass) symt.query(hashString);
 			var = " MOVE " + "TEMP " + V.tempNumber + " " + (String) ret2;
 
+			// Array Type
 			if (V.type.equals("int[]")) {
 				int size = exp.split("RETURN").length;
 				String values = exp.split("RETURN")[size - 1].split("\\s+")[2];
 				V.locationOfSize = Integer.parseInt(values);
 				symt.push(hashString, V);
 			}
+
+			// Class Type
+			// Same as Array
 
 		}
 		hashString = symt.hashString("variable", variableName,
@@ -699,22 +703,31 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
-		R ifexp = n.f2.accept(this);
+
 		String var = "";
+		var = " CJUMP ";
+		System.out.println(var);
+		R ifexp = n.f2.accept(this);
+
 		int elselabel = this.labelNumber;
 		int breaklabel = this.labelNumber + 1;
-		var = " CJUMP " + (String) ifexp + " L" + elselabel;
+		this.labelNumber += 2;
+		var = (String) ifexp + " L" + elselabel;
 		System.out.println(var);
 		n.f3.accept(this);
-		R ifstmnt = n.f4.accept(this);
+		// ifstmnt
+		n.f4.accept(this);
+
 		var = " " + " JUMP L" + breaklabel;
 		System.out.println(var);
-		labelNumber += 2;
+
 		n.f5.accept(this);
 		var = "";
 		var = var + " L" + elselabel;
 		System.out.println(var);
-		R elsestmnt = n.f6.accept(this);
+
+		// elsestmnt
+		n.f6.accept(this);
 		var = "";
 		var = var + " " + " L" + breaklabel + " NOOP ";
 
@@ -728,13 +741,16 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	public R visit(WhileStatement n) {
 		n.f0.accept(this);
 		n.f1.accept(this);
-
-		R exp = n.f2.accept(this);
 		String var = "";
 		int looplabel = this.labelNumber;
 		int breaklabel = this.labelNumber + 1;
-		var = " L" + looplabel + " CJUMP " + (String) exp + " L" + breaklabel;
+
+		var = " L" + looplabel + " CJUMP ";
+		System.out.println(var);
 		this.labelNumber += 2;
+		R exp = n.f2.accept(this);
+		var = (String) exp + " L" + breaklabel;
+
 		System.out.println(var);
 		n.f3.accept(this);
 

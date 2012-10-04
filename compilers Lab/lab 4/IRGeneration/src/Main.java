@@ -10,7 +10,7 @@ public class Main {
 		try {
 
 			Node root = new MiniJavaParser(new FileInputStream(
-					"../TestCases/minijava/LinkedList.java")).Goal();
+					"../TestCases/minijava/BinarySearch.java")).Goal();
 
 			// Node root = new MiniJavaParser(System.in).Goal();
 			SymbolTable sym = new SymbolTable();
