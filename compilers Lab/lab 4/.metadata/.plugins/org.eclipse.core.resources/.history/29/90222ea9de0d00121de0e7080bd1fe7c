@@ -1055,8 +1055,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f3.accept(this);
 
 		R params = n.f4.accept(this);
-		if (params == null)
-			params = (R) "";
+		if (params.equals("null"))
+			params = (R)"";
 		var = var + " RETURN TEMP " + (SymbolTable.maxTempNumber - 1) + " END ";
 		var = var + " ( TEMP " + classTemp + " " + params + " ) ";
 		n.f5.accept(this);
@@ -1082,7 +1082,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	public R visit(ExpressionRest n) {
 		n.f0.accept(this);
 		R ret1 = n.f1.accept(this);
-		params = " " + (String) ret1 + params;
+		if (!(ret1 == null))
+			params = " " + (String) ret1 + params;
 		return (R) params;
 	}
 

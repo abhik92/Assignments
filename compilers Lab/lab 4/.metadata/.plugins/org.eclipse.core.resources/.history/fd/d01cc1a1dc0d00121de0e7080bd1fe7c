@@ -545,7 +545,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 		_ret = n.f1.accept(this);
 		n.f2.accept(this);
-		// statement = _ret + statement;
+		//statement = _ret + statement;
 		return (R) statement;
 	}
 
@@ -622,14 +622,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f4.accept(this);
 		R expression2 = n.f5.accept(this);
 		n.f6.accept(this);
-
-		String valOne = this.returnTempNumber((String) expression1);
-		if (!valOne.equals(""))
-			expression1 = (R) valOne;
-		String valTwo = this.returnTempNumber((String) expression2);
-		if (!valTwo.equals(""))
-			expression2 = (R) valTwo;
-
 		String var = "";
 		String firstString = "";
 		String secondString = "";
@@ -888,82 +880,12 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * f0 -> PrimaryExpression() f1 -> "[" f2 -> PrimaryExpression() f3 -> "]"
 	 */
 	public R visit(ArrayLookup n) {
-		R identifier = n.f0.accept(this);
+		R ret1 = n.f0.accept(this);
 		n.f1.accept(this);
-		R expression1 = n.f2.accept(this);
+		R ret2 = n.f2.accept(this);
 		n.f3.accept(this);
 
-		String var = "";
-		String firstString = "";
-		String secondString = "";
-		int offset = 0;
-
-		String valOne = this.returnTempNumber((String) expression1);
-		if (!valOne.equals(""))
-			expression1 = (R) valOne;
-
-		String hashString;
-		hashString = symt.hashString("variable", (String) identifier,
-				SymbolTable.currentClass, null);
-
-		if (SymbolTable.mainTable.containsKey(hashString)) {
-
-			ArrayList<Object> V = (ArrayList<Object>) this.tempTable.get(0);
-			offset = 4;
-			for (Object o : V) {
-				if (o instanceof String)
-					continue;
-				VariableClass v = (VariableClass) o;
-				if (v.name.equals((String) identifier)) {
-					break;
-				}
-				offset += 4;
-
-			}
-
-			firstString = firstString + " BEGIN HLOAD TEMP "
-					+ SymbolTable.maxTempNumber + " TEMP 0 " + offset;
-			firstString = firstString + " RETURN TEMP "
-					+ SymbolTable.maxTempNumber + " END ";
-
-			SymbolTable.maxTempNumber++;
-		}
-
-		hashString = symt.hashString("variable", (String) identifier,
-				SymbolTable.currentClass, SymbolTable.currentFunction);
-
-		if (SymbolTable.mainTable.containsKey(hashString)) {
-			VariableClass V = (VariableClass) symt.query(hashString);
-			firstString = firstString + " BEGIN MOVE TEMP "
-					+ SymbolTable.maxTempNumber + " " + V.tempNumber;
-			firstString = firstString + " RETURN TEMP "
-					+ SymbolTable.maxTempNumber + " END ";
-
-			SymbolTable.maxTempNumber++;
-		}
-
-		secondString = secondString + " BEGIN " + " MOVE TEMP "
-				+ SymbolTable.maxTempNumber + " TIMES 4 ";
-		SymbolTable.maxTempNumber++;
-		secondString = secondString + expression1;
-		secondString = secondString + " HLOAD TEMP "
-				+ SymbolTable.maxTempNumber + " " + firstString + " 0 ";
-		SymbolTable.maxTempNumber++;
-		secondString = secondString + " CJUMP MINUS 1 LT TEMP "
-				+ (SymbolTable.maxTempNumber - 2) + " "
-				+ (SymbolTable.maxTempNumber - 1) + " L" + this.labelNumber;
-		this.labelNumber++;
-
-		secondString = secondString + " ERROR " + " L" + (this.labelNumber - 1)
-				+ " NOOP RETURN TEMP " + (SymbolTable.maxTempNumber - 2)
-				+ " END ";
-
-		var = var + " BEGIN HLOAD TEMP " + SymbolTable.maxTempNumber + " PLUS "
-				+ firstString + " PLUS " + secondString + " 4 0 RETURN TEMP "
-				+ SymbolTable.maxTempNumber + " END ";
-		SymbolTable.maxTempNumber++;
-
-		return (R) var;
+		return (R) "int";
 	}
 
 	/**
@@ -1053,10 +975,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		SymbolTable.maxTempNumber++;
 
 		n.f3.accept(this);
-
 		R params = n.f4.accept(this);
-		if (params == null)
-			params = (R) "";
 		var = var + " RETURN TEMP " + (SymbolTable.maxTempNumber - 1) + " END ";
 		var = var + " ( TEMP " + classTemp + " " + params + " ) ";
 		n.f5.accept(this);
@@ -1071,7 +990,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		params = "";
 		R ret1 = n.f0.accept(this);
 		R ret2 = n.f1.accept(this);
-		// System.out.println(ret1);
 		params = (String) ret1 + " " + params;
 		return (R) params;
 	}

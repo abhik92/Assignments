@@ -1053,10 +1053,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		SymbolTable.maxTempNumber++;
 
 		n.f3.accept(this);
-
 		R params = n.f4.accept(this);
-		if (params == null)
-			params = (R) "";
 		var = var + " RETURN TEMP " + (SymbolTable.maxTempNumber - 1) + " END ";
 		var = var + " ( TEMP " + classTemp + " " + params + " ) ";
 		n.f5.accept(this);
@@ -1071,7 +1068,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		params = "";
 		R ret1 = n.f0.accept(this);
 		R ret2 = n.f1.accept(this);
-		// System.out.println(ret1);
+		System.out.println(ret1);
 		params = (String) ret1 + " " + params;
 		return (R) params;
 	}
