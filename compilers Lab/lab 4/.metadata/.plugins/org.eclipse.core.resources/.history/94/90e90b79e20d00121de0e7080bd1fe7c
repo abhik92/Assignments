@@ -10,7 +10,7 @@ public class Main {
 		try {
 
 			Node root = new MiniJavaParser(new FileInputStream(
-					"../TestCases/minijava/MoreThan4.java")).Goal();
+					"../TestCases/minijava/BubbleSort.java")).Goal();
 
 			// Node root = new MiniJavaParser(System.in).Goal();
 			SymbolTable sym = new SymbolTable();
