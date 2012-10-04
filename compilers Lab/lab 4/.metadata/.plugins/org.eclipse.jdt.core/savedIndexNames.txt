@@ -4,7 +4,6 @@ INDEX VERSION 1.126+/home/kabinav/fifthsem/Assignments/compilers Lab/lab 4/.meta
 3223902160.index
 2040264796.index
 2889915287.index
-351833167.index
 406065318.index
 1654635368.index
 1189062746.index

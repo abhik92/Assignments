@@ -42,7 +42,7 @@ class BBS{
 	while (aux02 < i) {
 	    j = 1 ;
 	    //aux03 = i+1 ;
-	    while (j & (i+1)){
+	    while (j < (i+1)){
 		aux07 = j - 1 ;
 		aux04 = number[aux07] ;
 		aux05 = number[j] ;
@@ -76,7 +76,7 @@ class BBS{
 	size = sz ;
 	number = new int[sz] ;
 	
-	number[0] = 21 ;
+	number[0] = 20 ;
 	number[1] = 7  ; 
 	number[2] = 12 ;
 	number[3] = 18 ;

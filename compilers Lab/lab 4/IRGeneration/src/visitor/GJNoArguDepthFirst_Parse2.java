@@ -24,7 +24,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	public SymbolTable symt;
 	public int labelNumber = 0;
 	public String params = new String();
-	public String statement = new String();
+	// public String statement = new String();
+
 	public String method = new String();
 	public String classStar = new String();
 
@@ -85,7 +86,10 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 				offset += 4;
 			}
-			ret = ret + " TEMP 0 " + offset + " ";
+			ret = ret + " BEGIN HLOAD TEMP " + SymbolTable.maxTempNumber
+					+ " TEMP 0 " + offset + " RETURN TEMP "
+					+ SymbolTable.maxTempNumber + " END";
+			SymbolTable.maxTempNumber++;
 		}
 		return ret;
 	}
@@ -231,13 +235,9 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	public R visit(Goal n) {
 
 		R _ret = null;
-		R main = n.f0.accept(this);
-		classStar = "";
-		R others = n.f1.accept(this);
+		n.f0.accept(this);
+		n.f1.accept(this);
 		n.f2.accept(this);
-		others = (R) classStar;
-		System.out.println(main);
-		System.out.println(others);
 		return _ret;
 	}
 
@@ -248,6 +248,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * "}" f16 -> "}"
 	 */
 	public R visit(MainClass n) {
+		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
 		n.f2.accept(this);
@@ -256,6 +257,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f5.accept(this);
 		String var = "";
 		var = var + " MAIN ";
+		System.out.println(var);
 		n.f6.accept(this);
 		n.f7.accept(this);
 		n.f8.accept(this);
@@ -264,12 +266,13 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f11.accept(this);
 		n.f12.accept(this);
 		n.f13.accept(this);
-		R prnt = n.f14.accept(this);
-		var = var + prnt;
+		n.f14.accept(this);
 		n.f15.accept(this);
 		n.f16.accept(this);
+		var = "";
 		var = var + " END ";
-		return (R) var;
+		System.out.println(var);
+		return _ret;
 	}
 
 	/**
@@ -277,7 +280,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(TypeDeclaration n) {
 		R _ret = null;
-		// classStar = "";
 		if (n.f0.which == 0) {
 			String name = ((ClassDeclaration) n.f0.choice).f1.f0.tokenImage;
 			SymbolTable.currentClass = name;
@@ -318,9 +320,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		}
 		SymbolTable.currentFunction = null;
 		_ret = n.f0.accept(this);
-		classStar = classStar + _ret;
-		// System.out.println(_ret);
-		return (R) classStar;
+		return _ret;
 	}
 
 	/**
@@ -333,11 +333,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		n.f2.accept(this);
 		n.f3.accept(this);
-		method = "";
 		_ret = n.f4.accept(this);
-		_ret = (R) method;
-
-		// System.out.println(method);
 		n.f5.accept(this);
 		return _ret;
 	}
@@ -354,8 +350,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f3.accept(this);
 		n.f4.accept(this);
 		n.f5.accept(this);
-		_ret = n.f6.accept(this);
-		_ret = (R) method;
+		n.f6.accept(this);
 		n.f7.accept(this);
 		return _ret;
 	}
@@ -379,8 +374,6 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(MethodDeclaration n) {
 		R _ret = null;
-		// method = "";
-		statement = "";
 		String name = n.f2.f0.tokenImage;
 		SymbolTable.currentFunction = name;
 
@@ -395,25 +388,26 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		int numberOfParams = F.formalParamList.size();
 		var = var + (numberOfParams + 1) + " ] ";
 		var = var + " BEGIN ";
+		System.out.println(var);
 		n.f3.accept(this);
 		n.f4.accept(this);
 		n.f5.accept(this);
 		n.f6.accept(this);
 		n.f7.accept(this);
 		n.f8.accept(this);
-		var = var + (String) statement;
-		// System.out.println(var);
-
 		n.f9.accept(this);
 		R ret2 = n.f10.accept(this);
+		var = "";
 		var = var + " RETURN " + ret2;
+		System.out.println(var);
 		n.f11.accept(this);
 		n.f12.accept(this);
+		var = "";
 		var = var + " END ";
 
-		method = method + var;
-		// System.out.println(var);
-		return (R) var;
+		System.out.println(var);
+
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -526,15 +520,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(Statement n) {
 		R _ret = null;
-		// statement = "";
 		_ret = n.f0.accept(this);
-		if (n.f0.which == 0) {
-			statement = (String) _ret;
-		} else {
-			statement = statement + (String) _ret;
-		}
-		// System.out.println(statement);
-		return (R) statement;
+		return (R) _ret;
 	}
 
 	/**
@@ -545,8 +532,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 		_ret = n.f1.accept(this);
 		n.f2.accept(this);
-		// statement = _ret + statement;
-		return (R) statement;
+
+		return (R) _ret;
 	}
 
 	/**
@@ -606,8 +593,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			var = " HSTORE TEMP 0 " + offset + " " + (String) ret2;
 
 		}
-		// System.out.println(var);
-		return (R) var;
+		System.out.println(var);
+		return (R) _ret;
 	}
 
 	/**
@@ -683,7 +670,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 				+ SymbolTable.maxTempNumber + " " + firstString + " 0 ";
 		SymbolTable.maxTempNumber++;
 		secondString = secondString + " CJUMP MINUS 1 LT TEMP "
-				+ (SymbolTable.maxTempNumber - 2) + " "
+				+ (SymbolTable.maxTempNumber - 2) + " TEMP "
 				+ (SymbolTable.maxTempNumber - 1) + " L" + this.labelNumber;
 		this.labelNumber++;
 
@@ -694,7 +681,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		var = var + " HSTORE PLUS " + firstString + " PLUS " + secondString
 				+ " 4 0 " + expression2;
 
-		return (R) var;
+		System.out.println(var);
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -702,23 +690,30 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	 * "else" f6 -> Statement()
 	 */
 	public R visit(IfStatement n) {
+		R _ret = null;
 		n.f0.accept(this);
 		n.f1.accept(this);
 		R ifexp = n.f2.accept(this);
+		String var = "";
+		int elselabel = this.labelNumber;
+		int breaklabel = this.labelNumber + 1;
+		var = " CJUMP " + (String) ifexp + " L" + elselabel;
+		System.out.println(var);
 		n.f3.accept(this);
 		R ifstmnt = n.f4.accept(this);
-		n.f5.accept(this);
-		R elsestmnt = n.f6.accept(this);
-
-		String var = "";
-		var = " CJUMP " + (String) ifexp + " L" + labelNumber + " "
-				+ (String) ifstmnt + " JUMP L" + (labelNumber + 1);
-		var = var + " L" + labelNumber + " " + (String) elsestmnt + " L"
-				+ (labelNumber + 1) + " NOOP ";
+		var = " " + " JUMP L" + breaklabel;
+		System.out.println(var);
 		labelNumber += 2;
+		n.f5.accept(this);
+		var = "";
+		var = var + " L" + elselabel;
+		System.out.println(var);
+		R elsestmnt = n.f6.accept(this);
+		var = "";
+		var = var + " " + " L" + breaklabel + " NOOP ";
 
-		// System.out.println(var);
-		return (R) var;
+		System.out.println(var);
+		return (R) _ret;
 	}
 
 	/**
@@ -729,16 +724,19 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R exp = n.f2.accept(this);
 		n.f3.accept(this);
-		R smt = n.f4.accept(this);
 		String var = "";
-		var = var + " L" + this.labelNumber + " CJUMP " + (String) exp + " L"
-				+ (this.labelNumber + 1);
-		var = var + " " + (String) smt + " JUMP L" + (this.labelNumber) + " L"
-				+ (this.labelNumber + 1) + " NOOP ";
-
+		int looplabel = this.labelNumber;
+		int breaklabel = this.labelNumber + 1;
 		this.labelNumber += 2;
-		// System.out.println(var);
-		return (R) var;
+		var = var + " L" + looplabel + " CJUMP " + (String) exp + " L"
+				+ breaklabel;
+		System.out.println(var);
+		R smt = n.f4.accept(this);
+		var = "";
+		var = " JUMP L" + looplabel + " L" + breaklabel + " NOOP ";
+
+		System.out.println(var);
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -753,7 +751,8 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f4.accept(this);
 
 		String var = " PRINT " + (String) exp + " ";
-		return (R) var;
+		System.out.println(var);
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -801,7 +800,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		this.labelNumber++;
 
 		// System.out.println(var);
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 /**
@@ -823,7 +822,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			ret2 = (R) valTwo;
 
 		String var = " LT " + ret1 + " " + ret2 + " ";
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -842,7 +841,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			ret2 = (R) valTwo;
 
 		String var = " PLUS " + ret1 + " " + ret2 + " ";
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -861,7 +860,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			ret2 = (R) valTwo;
 
 		String var = " MINUS " + ret1 + " " + ret2 + " ";
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -880,7 +879,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 			ret2 = (R) valTwo;
 
 		String var = " TIMES " + ret1 + " " + ret2 + " ";
-		return (R) var;
+		return (R) (var + "\n");
 
 	}
 
@@ -943,14 +942,14 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		}
 
 		secondString = secondString + " BEGIN " + " MOVE TEMP "
-				+ SymbolTable.maxTempNumber + " TIMES 4 ";
+				+ SymbolTable.maxTempNumber + " TIMES ";
 		SymbolTable.maxTempNumber++;
-		secondString = secondString + expression1;
+		secondString = secondString + expression1 + " 4 ";
 		secondString = secondString + " HLOAD TEMP "
 				+ SymbolTable.maxTempNumber + " " + firstString + " 0 ";
 		SymbolTable.maxTempNumber++;
 		secondString = secondString + " CJUMP MINUS 1 LT TEMP "
-				+ (SymbolTable.maxTempNumber - 2) + " "
+				+ (SymbolTable.maxTempNumber - 2) + " TEMP "
 				+ (SymbolTable.maxTempNumber - 1) + " L" + this.labelNumber;
 		this.labelNumber++;
 
@@ -963,7 +962,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 				+ SymbolTable.maxTempNumber + " END ";
 		SymbolTable.maxTempNumber++;
 
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -995,7 +994,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 		}
 		var = var + " " + (this.tempTable.get(sizeLocation)) + " ";
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -1061,7 +1060,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		var = var + " ( TEMP " + classTemp + " " + params + " ) ";
 		n.f5.accept(this);
 		// System.out.println(var);
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -1138,7 +1137,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 	public R visit(ThisExpression n) {
 		n.f0.accept(this);
 		String var = " TEMP 0 ";
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -1192,11 +1191,25 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 
 		this.tempTable.put(currentMax, exp);
 
+		var = var + " MOVE TEMP " + SymbolTable.maxTempNumber + " 4 ";
+		var = var + " L" + this.labelNumber + " CJUMP  LT TEMP "
+				+ SymbolTable.maxTempNumber;
+		var = var + " TIMES  PLUS " + exp + " 1  4 L" + (this.labelNumber + 1);
+		var = var + " HSTORE  PLUS TEMP " + (SymbolTable.maxTempNumber - 1)
+				+ " TEMP " + (SymbolTable.maxTempNumber);
+		var = var + " 0  0 ";
+		var = var + " MOVE TEMP " + SymbolTable.maxTempNumber + " PLUS TEMP "
+				+ SymbolTable.maxTempNumber + " 4 ";
+		var = var + " JUMP L" + this.labelNumber + " L"
+				+ (this.labelNumber + 1) + " HSTORE TEMP "
+				+ (SymbolTable.maxTempNumber - 1);
+		var = var + " 0  TIMES " + exp + " 4 ";
+
 		var = var + " RETURN " + " TEMP " + currentMax;
 		var = var + " END ";
 		// System.out.println(var);
 		n.f4.accept(this);
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -1261,7 +1274,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		// System.out.println(var);
 		n.f2.accept(this);
 		n.f3.accept(this);
-		return (R) var;
+		return (R) (var + "\n");
 	}
 
 	/**
@@ -1272,7 +1285,7 @@ public class GJNoArguDepthFirst_Parse2<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 		R ret = n.f1.accept(this);
 		String str = " MINUS 1 " + (String) ret + " ";
-		return (R) (str);
+		return (R) (str + "\n");
 	}
 
 	/**
