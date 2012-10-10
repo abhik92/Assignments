@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 5/.metadata/.plugins/org.eclipse.jdt.core
+3080898747.index
+3672861644.index
