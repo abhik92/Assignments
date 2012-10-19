@@ -7183,3 +7183,38 @@ Contains: Failed to acquire lock for git repository.
 !MESSAGE Problems encountered while deleting resources.
 !SUBENTRY 2 com.aptana.git.core 4 0 2012-10-05 06:19:33.999
 !MESSAGE Failed to acquire lock for git repository.
+
+!ENTRY com.aptana.core 4 0 2012-10-05 06:57:27.731
+!MESSAGE (Build 3.0.4.1325689477) [ERROR]  Error removing watch 65
+!STACK 0
+net.contentobjects.jnotify.linux.JNotifyException_linux: Error removing watch 65
+	at net.contentobjects.jnotify.linux.JNotify_linux.removeWatch(JNotify_linux.java:123)
+	at net.contentobjects.jnotify.linux.JNotifyAdapterLinux.unwatch(JNotifyAdapterLinux.java:239)
+	at net.contentobjects.jnotify.linux.JNotifyAdapterLinux.removeWatch(JNotifyAdapterLinux.java:207)
+	at com.aptana.filewatcher.FileWatcher.removeWatch(FileWatcher.java:80)
+	at com.aptana.core.CorePlugin$ResourceListener.unhookFilewatcher(CorePlugin.java:482)
+	at com.aptana.core.CorePlugin$ResourceListener.unhookAll(CorePlugin.java:438)
+	at com.aptana.core.CorePlugin$ResourceListener.dispose(CorePlugin.java:428)
+	at com.aptana.core.CorePlugin.removeProjectListeners(CorePlugin.java:260)
+	at com.aptana.core.CorePlugin.stop(CorePlugin.java:179)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl$2.run(BundleContextImpl.java:843)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.eclipse.osgi.framework.internal.core.BundleContextImpl.stop(BundleContextImpl.java:836)
+	at org.eclipse.osgi.framework.internal.core.BundleHost.stopWorker(BundleHost.java:474)
+	at org.eclipse.osgi.framework.internal.core.AbstractBundle.suspend(AbstractBundle.java:546)
+	at org.eclipse.osgi.framework.internal.core.Framework.suspendBundle(Framework.java:1098)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.decFWSL(StartLevelManager.java:593)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.doSetStartLevel(StartLevelManager.java:261)
+	at org.eclipse.osgi.framework.internal.core.StartLevelManager.shutdown(StartLevelManager.java:216)
+	at org.eclipse.osgi.framework.internal.core.InternalSystemBundle.suspend(InternalSystemBundle.java:266)
+	at org.eclipse.osgi.framework.internal.core.Framework.shutdown(Framework.java:685)
+	at org.eclipse.osgi.framework.internal.core.Framework.close(Framework.java:583)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.shutdown(EclipseStarter.java:409)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:200)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:616)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:559)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:514)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1311)
