@@ -1,0 +1,212 @@
+\documentclass[addpoints,12pt]{exam}
+\printanswers
+\usepackage{amsmath,amssymb,complexity,amsthm}
+\usepackage{graphicx}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\SD}{{\sf SD}}
+\newcommand{\N}{{\mathbb{N}}}
+
+\begin{document}
+\hrule
+\vspace{3mm}
+\noindent
+{\sf IITM-CS6014 : Advanced Theory of Computation  \hfill Author: Karthik Abinav}
+\vspace{3mm}\\
+\noindent
+{\sf Problem Set \#4}
+\vspace{3mm}
+\hrule
+{\small
+\begin{itemize}
+\item Rules of the game remain the same. Submissions must be single file in \LaTeX~format at the upload link set up in cse moodle page of the course. 
+\end{itemize}}
+\hrule
+
+\begin{questions}
+\question[15]
+Argue whether the following functions qualify to be called as a
+\emph{resource} according to Blum's resource axioms.
+\begin{parts}
+\part[3]$ {\sf VALUE}(M,x) = \begin{cases} 
+			 0 & \text{ if $M$ rejects $x$}, \\
+			 1 & \text{ if $M$ accepts $x$}, \\
+			 \text{undefined} & \text{ if $M$ does not halts on
+			 $x$}
+		 	\end{cases}
+$
+\newline 
+\textbf{Answer} \newline
+The above resource function satisfies Blums first axiom i.e. it is defined only when $M$ halts on $x$. However, given a $M$,$x$,$k$ , it is not decidable
+to check if VALUE(M,x) = k. Hence it is not a resource.
+
+Consider $R= \{(M,x,k):VALUE(M,x)=k\}$
+
+Suppose $R$ was decidable via a total TM $N$, then $MP$ can be decided by giving $(M,x,1)$ as input to $N$. But, $MP$ is not decidable and hence $R$ is not decidable.
+
+
+\part[5] A \emph{turn} of tape head is defined as movement of tape head from
+$L \to R$ or $R \to L$. 
+
+$ {\sf TURN}(M,x) = \begin{cases}
+			 \text{No. of turns that tape head makes when $M$ runs
+			 on $x$} & \text{ if $M$ halts on $x$} \\
+			 \text{undefined} & \text{ otherwise}
+			\end{cases}
+$
+\newline 
+\textbf{Answer} \newline
+The above resource function satisfies Blums first axiom i.e. it is defined only when $M$ halts on $x$. 
+The above resource also satisfies Blum's second axiom, i.e.
+$R=\{(M,x,k):TURN(M,x)=k\}$ is a decidable set. \newline
+
+Consider a total TM $N$ corresponding to $R$. Let the description of this machine be as follows: \newline
+\begin{itemize}
+ \item Run $M$ on $x$.
+ \item If the machine makes more than $k$ turns, reject and halt.
+ \item Else, machine $M$ will halt on $x$ and hence if the number of turns made by the machine is $k$, accept. Else , reject.
+\end{itemize}
+
+\textbf{Claim} \newline
+Language accepted by a machine which makes finite number of turns is regular. \newline
+
+This is because, the crossing sequence at every index for this machine will be bounded by a fixed constant $s$ , and from class we saw such machines
+accept only regular languages. \newline
+
+From the claim above, the machine $N$ will always halt and hence is total.
+
+
+\part[5] $ {\sf COUNT}(M,x) = \begin{cases}
+			 \text{No. of times $M$ vists a state $q$}
+			 & \text{ if $M$ halts on $x$} \\
+			 \text{undefined} & \text{ otherwise}
+			\end{cases}
+$
+\newline
+\textbf{Answer} \newline
+The above resource function satisfies Blums first axiom i.e. it is defined only when $M$ halts on $x$. However, given a $M$,$x$,$k$ , it is not decidable
+to check if COUNT(M,x) = k. Hence it is not a resource.
+
+Consider $R= \{(M,x,k):COUNT(M,x)=k\}$
+
+Suppose $R$ was decidable, then we can use it as a sub routine to decide the $HP$ as follows :
+
+Construct a machine $N$ as follows:
+\begin{itemize}
+ \item Simulate $M$ on $x$.
+ \item If $M$ halts on $x$, then have a trasition to a special accept state.
+\end{itemize}
+
+This gives the reduction from $R$ to $HP$.
+
+\end{parts}
+
+\question[5] 
+Show that if $\NTIME(n) = \DTIME(n)$ then $\P = \NP$. (Padding !!)
+
+\textbf{Answer} \newline
+
+Let $NTIME(n) = DTIME(n)$. \newline
+Let $L \in NP$ via a non-deterministic machine $M$. \newline
+Consider $L_{pad} = \{x\#1^{|x|^{c}} : x \in L\}$ \newline
+
+Consider a N which does the following on input y:
+\begin{itemize}
+ \item Check if $y=x\#1^{|x|^{c}}$.
+ \item Extract $x$
+ \item Run machine $M$ on $x$, to check if $x \in L $. If yes, accept. Else, reject.
+\end{itemize}
+
+The running time of the above machine is linear in its input size. Therefore, $L_{pad} \in NTIME(n)$. \newline
+From assumption, $L_{pad} \in DTIME(n)$.Let the deterministic machine accpeting this be $N'$.
+
+Consider a machine $M'$ which does the following: \newline
+\begin{itemize}
+ \item Construct $y=x\#1^{|x|^{c}}$
+ \item Check if $y \in L_{pad}$. If yes, accept . Else , reject.
+\end{itemize}
+
+$L(M') = L$. The time taken by this deterministic machine is polynomial in its input length. Hence, $L \in P$.
+
+\question[10]
+ Space Hierarchy theorem implies the following: For any $k >
+0$, There is a language in $\DSPACE(n^{k+1})$ that is not in
+$\DSPACE(n^k)$. Use this and a padding argument to show that: $\P
+\neq \DSPACE(n)$. (6pts) \\ (Note that we do not know the containment
+in either direction.) \\ You can do this in two steps:
+\begin{parts}
+\part For every language $L$ define, $L_{pad} = \{x01^{|x|^2}~:~x
+      \in L\}$.\\ Argue that $L_{pad}$ is in $\P$ $\implies$ $L \in
+      \P$.
+\part Show an $L_{pad}$ which is in $\DSPACE(n)$ but whose
+      corresponding $L$ is not in $\DSPACE(n)$.
+\end{parts}
+
+% Yet to be done
+
+\question[5]
+Show that if $\SAT \in \NP \cap \co\NP$ then $\NP = \co\NP$. (Definitions !)
+\textbf{Answer} \newline
+$\SAT$ is $NP-Complete$ . Hence, for every language $L$ in $NP$, there is a polynomial time reduction to $\SAT$. And,
+$\SAT \in \NP \cap \co\NP$ $\Longrightarrow$ $L \in NP \cap \co\NP$ $\Longrightarrow$ Every Language in $NP$ belongs to $NP \cap \co\NP$ $\Longrightarrow$ Every Language in $NP$
+ belongs to $\co\NP$ ...(1)
+
+
+\question[5]
+If $L, L'$ are in $\NP$, then show that $L \cup L'$, $L \cap L'$ are in $\NP$. (Definitions !)
+  
+\question[5]
+If $L, L'$ are in $\NP \cap \co\NP$, then show that $L \oplus  L'$ defined as 
+\[ L \oplus L' = \{ x : x \textrm{ is in one of $L$ or $L'$ but not both.} \} \]
+is in $\NP \cap \co\NP$. (Definitions !)
+
+\question[15]
+Consider the following language: PRIMES $= \{ n ~|~ n
+\textrm{ is a prime } \}$ where the input $n$ is in binary.  Without
+using the known result that PRIMES is in $\P$, solve the following:
+\begin{parts}
+\part[5] Show that PRIMES is in $\co\NP$.
+\part[10] Here is Lucas test for primality (you dont need prove it) : $n$ is prime if and only if there is an integer $a \in \{2, \ldots,
+  n-1\}$ with $a^{n-1} \equiv 1 \mod n$, and for every prime factor $q$ of $n-1$ : $a^{\frac{n-1}{q}} \not\equiv 1 \mod n$. Use this test to show that PRIMES is in $\NP$.
+\end{parts}
+Hence conclude that PRIMES is in $\NP$ $\cap$ $\co\NP$.
+
+%\question
+%Show that $\DSPACE(n^5) \subseteq \NSPACE(n^2)$.
+
+\question[10] Prove that reachability in undirected forests (a possibly disconnected acyclic undirected graph) can be solved in $\log$-space. That is, given $(T,s,t)$ where $T$ is an undirected forest, it can be tested in $\log$-space whether $s$ is connected to $t$ by a path.
+
+\question[18]
+Let $\E = \bigcup_{c > 0} \DTIME(2^{cn})$ and $\NE = \bigcup_{c > 0} \NTIME(2^{cn})$. A set $A$ is called {\em sparse} if there is a polynomial $p$,
+    such that $|\{ x \in A : |x| = n \}| \le p(n)$. A set $A$ is called
+    {\em tally set} if $A \subseteq \{1\}^*$.  Prove that following
+    are equivalent.
+  \begin{enumerate}
+  \item Restricted to tally sets $\NP = \P$. That is all tally sets in $\NP$ are in $\P$.
+  \item Restricted to sparse sets $\NP = \P$. That is all sparse sets
+    in $\NP$ are in $\P$.
+  \item $\E = \NE$
+  \end{enumerate}
+  Hence conclude that $\E \ne \NE \implies \P \ne \NP$.
+  
+  \emph{Hint : Try for (b) $\implies$ (a) $\implies$ (c) $\implies$ (b). 
+  For the second implication : consider the language $L_{tally} = \{1^{2^{c|x|}} : x \in L\}$.
+  This will not work, but a slight modification of this language which includes some more information about 
+  $x$ will work !. \\ For the third implication, consider the language 
+\[ L_{order} = \{(k,i,c): \textrm{the $i^{th}$ bit of the $k^{th}$ string(in lex order) in L is $c$} \} \] }
+
+\question[7] 
+Imagine a world in which $\P = \NP$. Now show that there is a
+polynomial time algorithm which given a Boolean formula $\phi$ produces a satisfying assignment for $\phi$ if $\phi$ is satisfiable.(Hint : Use queries to SAT).
+
+\end{questions}
+
+
+
+\end{document}
