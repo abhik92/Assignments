@@ -151,7 +151,7 @@ in either direction.) \\ You can do this in two steps:
 % Yet to be done
 
 \question[5]
-Show that if $\SAT \in \NP \cap \co\NP$ then $\NP = \co\NP$. (Definitions !)
+Show that if $\SAT \in \NP \cap \co\NP$ then $\NP = \co\NP$. (Definitions !) \newline
 \textbf{Answer} \newline
 $\SAT$ is $\NP-Complete$ . Hence, for every language $L$ in $\NP$, there is a polynomial time reduction to $\SAT$. And,
 $\SAT \in \NP \cap \co\NP$ $\Longrightarrow$ $L \in \NP \cap \co\NP$ $\Longrightarrow$ Every Language in $\NP$ belongs to $\NP \cap \co\NP$ $\Longrightarrow$ Every Language in $\NP$
@@ -164,12 +164,40 @@ $\SAT \in \NP \cap \co\NP$ $\Longrightarrow$ $L \in \NP \cap \co\NP$ $\Longright
 
 
 \question[5]
-If $L, L'$ are in $\NP$, then show that $L \cup L'$, $L \cap L'$ are in $\NP$. (Definitions !)
-  
+If $L, L'$ are in $\NP$, then show that $L \cup L'$, $L \cap L'$ are in $\NP$. (Definitions !) \newline
+\textbf{Answer} \newline
+From defn, $L \in \NP$ $\Leftrightarrow$ there exists a polynomial length certificate $c_{1}$ which can be verified in polynomial time via a machine $M_{1}$. \newline
+Similarly, $L' \in \NP$ $\Leftrightarrow$ there exists a polynomial length certificate $c_{2}$ which can be verified in polynomial time via a machine $M_{2}$. \newline
+
+$L \cap L'$, construct a new certificate $c_{1}\#c_{2}$ . This is of polynomial size. To verify if $x \in L \cap L'$ , we need to construct a polynomial time running machine
+which verifies $c_{1}$ and $c_{2}$. Construct a new machine $N$ which simulates first simulates $M_{1}$ on input $c_{1}$ and verifies if its the correct certificate of $L$.
+If yes, it proceeds to simulating $M_{2}$ on $c_{2}$. Else rejects. Similarly if $c_{2}$ is verified as the correct certificate of $L'$ by simulation of $M_{2}$ then it will accept. Else reject.
+Since simulation of both $M_{1}$ and $M_{2}$ takes polynomial time in the input length, hence $N$ also runs in polynomial time. \newline
+
+$L \cup L'$, construct a new certificate $c_{1}\#c_{2}$ . This is of polynomial size. To verify if $x \in L \cup L'$ , we need to construct a polynomial time running machine
+which verifies $c_{1}$ and $c_{2}$. Construct a new machine $N$ which simulates first simulates $M_{1}$ on input $c_{1}$ and verifies if its the correct certificate of $L$.
+If no , it proceeds to simulating $M_{2}$ on $c_{2}$. Else accepts. If $c_{2}$ is verified as the correct certificate of $L'$ by simulation of $M_{2}$ then it will accept. Else reject.
+Since simulation of both $M_{1}$ and $M_{2}$ takes polynomial time in the input length, hence $N$ also runs in polynomial time.
+
 \question[5]
 If $L, L'$ are in $\NP \cap \co\NP$, then show that $L \oplus  L'$ defined as 
 \[ L \oplus L' = \{ x : x \textrm{ is in one of $L$ or $L'$ but not both.} \} \]
-is in $\NP \cap \co\NP$. (Definitions !)
+is in $\NP \cap \co\NP$. (Definitions !)\newline
+\textbf{Answer} \newline
+If $L \in \NP \cap \co\NP$ implies $\overline{L} \in \NP$. Similarly, $\overline{L'} \in \NP$.\newline
+Let $c_{1},c_{2},c_{3},c_{4}$ be the polynomial size certificates verifiable in polynomial time corresponding to language $L,\overline{L},L',\overline{L'}$ respectively. \newline
+
+Similar to the construction above we have to check if $c_{1}~and~c_{3}$ are the correct certificates or $c_{2}~and~c_{4}$ are correct certificates for the respectively
+languages $L \cap \overline{L'}$ and $\overline{L} \cap L'$. Hence, $L \oplus  L' \in \NP$. \newline
+
+Similarly, we have to check if $c_{1}~and~c_{4}$ are the correct certificates or $c_{2}~and~c_{3}$ are correct certificates for the respectively
+languages $\overline{L} \cap \overline{L'}$ and $L \cap L'$. Hence, $L \oplus  L' \in \co\NP$.\newline
+
+Therefore, $L \oplus  L' \in \NP \cap \co\NP$
+
+
+
+
 
 \question[15]
 Consider the following language: PRIMES $= \{ n ~|~ n
