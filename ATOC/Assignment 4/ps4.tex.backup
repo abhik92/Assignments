@@ -148,6 +148,7 @@ in either direction.) \\ You can do this in two steps:
       corresponding $L$ is not in $\DSPACE(n)$.
 \end{parts}
 
+\textbf{Answer} \newline
 (a) For every language $L$ , let $L_{pad} = \{x01^{|x|^2}~:~x \in L\}$. \newline
 Let $L_{pad} \in \P$ via a deterministic machine $M$ running in polynomial time. \newline
 Given an input $y$, $M$ does the following
@@ -253,10 +254,19 @@ Clearly, since $a<n$, therefore it can be represented using log(n) bits. Now we 
 
 Let n-1 be factorized as $p_{1}^{a_{1}}\ast p_{2}^{a_{2}}\ast ..p_{k}^{a_{k}}$. \newline
 This product is greater than $2^{a_{1}}\ast 2^{a_{2}}\ast ... 2^{a_{k}}$.
-Therefore, $a_{1}+a_{2}...a_{k}<log(n)$.
-  
+Therefore, $a_{1}+a_{2}...a_{k}<log(n)$. Implies the number of prime factors of n-1 is utmost log(n). \newline
+
+For each of $p_{1},p_{2}..p_{k}$, there will be another set of certificates. Each of these certificates is a polynomial in log(n) and verifiable in polynomial in log(n)(From strong induction, because each of
+$p_{1},p_{2}..p_{k}$ is strictly smaller than n-1).
+Hence, the total time for verifying the prime factorization for n-1 is (polynomial in log(n)) $\ast$ (polynomial in log(n)), which is polynomial in log(n).\newline
+And since each of the prime factors can be log(n) length and there are log(n) of them, the total length is a polynomial in log(n).
+
+Therefore, the certificate a , prime factors of (n-1) is a polynomial size in input length verifiable in polynomial time in input length. Therefore,
+PRIMES $\in \NP$.
 \end{parts}
 Hence conclude that PRIMES is in $\NP$ $\cap$ $\co\NP$.
+
+From (a),(b), PRIMES is in $\NP$ $\cap$ $\co\NP$.
 
 \question[10] Prove that reachability in undirected forests (a possibly disconnected acyclic undirected graph) can be solved in $\log$-space. That is, given $(T,s,t)$ where $T$ is an undirected forest, it can be tested in $\log$-space whether $s$ is connected to $t$ by a path.
 
@@ -279,9 +289,30 @@ Let $\E = \bigcup_{c > 0} \DTIME(2^{cn})$ and $\NE = \bigcup_{c > 0} \NTIME(2^{c
   $x$ will work !. \\ For the third implication, consider the language 
 \[ L_{order} = \{(k,i,c): \textrm{the $i^{th}$ bit of the $k^{th}$ string(in lex order) in L is $c$} \} \] }
 
+
+\textbf{Answer}\newline
+
+From the definition, every tally set $\A$ is a sparse set for a polynomial $p(n)=2$.Because $\A \subseteq \{1\}^{\ast}$ implies $\forall n$ $|\{|x|=n:x \in A\}|$ is either 0 or 1.\newline
+Hence, (b) $\implies$ (a) is trivially true.
+
+
 \question[7] 
 Imagine a world in which $\P = \NP$. Now show that there is a
 polynomial time algorithm which given a Boolean formula $\phi$ produces a satisfying assignment for $\phi$ if $\phi$ is satisfiable.(Hint : Use queries to SAT).
+\newline
+\textbf{Answer}\newline
+We can get the assignments for $x_{1},x_{2},...x_{n}$ in n+1 queries to $\SAT$ as follows.
+\begin{itemize}
+ \item Firstly, make a query to $\SAT$ to find if $\phi$ is satisfiable. If no, immediately return.
+ \item If $\phi$ is satisfiable, construct new expressions, $\phi_{1}$,$\phi_{2}$...$\phi_{n}$, where,
+    $\phi_{i}=\phi \wedge x_{i}$.\newline
+    If, $\phi_{i}$ is satisfiable(By query on $\SAT$) assign $x_{i}=1$. Else, assign $x_{i}=0$.
+\end{itemize}
+
+Since, $\P = \NP$, therefore there is a polynomial time algorithm to $\SAT$. And since, the number of queries to $\SAT$ is in $O(n)$(and $\phi$ has atleast n variables), therefore,
+above algorithm runs in polynomial time.
+
+
 
 \end{questions}
 

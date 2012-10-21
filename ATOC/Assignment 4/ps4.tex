@@ -289,6 +289,13 @@ Let $\E = \bigcup_{c > 0} \DTIME(2^{cn})$ and $\NE = \bigcup_{c > 0} \NTIME(2^{c
   $x$ will work !. \\ For the third implication, consider the language 
 \[ L_{order} = \{(k,i,c): \textrm{the $i^{th}$ bit of the $k^{th}$ string(in lex order) in L is $c$} \} \] }
 
+
+\textbf{Answer}\newline
+
+From the definition, every tally set $\A$ is a sparse set for a polynomial $p(n)=2$. Because $\A \subseteq \{1\}^{\ast}$ implies $\forall n$ $|\{|x|=n:x \in A\}|$ is either 0 or 1.\newline
+Hence, (b) $\implies$ (a) is trivially true.That is if every sparse set in $\NP$ is in $\P$, then every tally set(which is a subset of sparse set) in $\NP$ is in $\P$.	
+
+
 \question[7] 
 Imagine a world in which $\P = \NP$. Now show that there is a
 polynomial time algorithm which given a Boolean formula $\phi$ produces a satisfying assignment for $\phi$ if $\phi$ is satisfiable.(Hint : Use queries to SAT).
@@ -299,10 +306,10 @@ We can get the assignments for $x_{1},x_{2},...x_{n}$ in n+1 queries to $\SAT$ a
  \item Firstly, make a query to $\SAT$ to find if $\phi$ is satisfiable. If no, immediately return.
  \item If $\phi$ is satisfiable, construct new expressions, $\phi_{1}$,$\phi_{2}$...$\phi_{n}$, where,
     $\phi_{i}=\phi \wedge x_{i}$.\newline
-    If, $\phi_{i}$ is satisfiable assign $x_{i}=1$. Else, assign $x_{i}=0$.
+    If, $\phi_{i}$ is satisfiable(By query on $\SAT$) assign $x_{i}=1$. Else, assign $x_{i}=0$.
 \end{itemize}
 
-Since, $\P = \NP$, therefore there is a polynomial time algorithm to $\SAT$. And since, the number of queries to $\SAT$ is in $O(n)$, therefore,
+Since, $\P = \NP$, therefore there is a polynomial time algorithm to $\SAT$. And since, the number of queries to $\SAT$ is in $O(n)$(and $\phi$ has atleast n variables), therefore,
 above algorithm runs in polynomial time.
 
 

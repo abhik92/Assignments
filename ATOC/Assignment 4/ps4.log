@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  21 OCT 2012 17:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  21 OCT 2012 18:49
 entering extended mode
  %&-line parsing enabled.
 **ps4.tex
@@ -365,7 +365,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 255--258
 
  []
 
-[5] [6]
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 293--294
+
+ []
+
+[6] [7]
 This exam contains 10 questions with 7 parts, 0 subparts, and 0 subsubparts.
 This exam has a total of 123 points.
 This exam has a total of 0 bonus points.
@@ -391,9 +396,9 @@ fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1
 /public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti
 12.pfb>
-Output written on ps4.pdf (6 pages, 183217 bytes).
+Output written on ps4.pdf (7 pages, 184641 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
+ 82 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
