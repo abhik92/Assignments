@@ -148,7 +148,36 @@ in either direction.) \\ You can do this in two steps:
       corresponding $L$ is not in $\DSPACE(n)$.
 \end{parts}
 
-% Yet to be done
+\textbf{Answer} \newline
+(a) For every language $L$ , let $L_{pad} = \{x01^{|x|^2}~:~x \in L\}$. \newline
+Let $L_{pad} \in \P$ via a deterministic machine $M$ running in polynomial time. \newline
+Given an input $y$, $M$ does the following
+\begin{itemize}
+ \item Checks if $y$ is of the form $x01^{|x|^2}$.
+ \item Extracts $x$ out of it, and checks if $x \in L$.
+\end{itemize}
+
+Since, $M$ runs in polynomial time, it does steps 1 and 2 in polynomial time each. Given an $x$, checking if $x \in L$ can be done in polynomial time by a deterministic machine.
+Hence, $L \in \P$.
+
+(b) From space hierarchy theorem, $\exists$ $\A$ such that , $\A \in \DSPACE(n^2)$ but $\A \notin \DSPACE(n)$. \newline
+Consider $\A_{pad} = \{x01^{|x|^2}~:~x \in A\}$ \newline
+Consider a machine $N$ accepting $\A_{pad}$. It does the following
+\begin{itemize}
+ \item Checks if the input $y$ is of the form $x01^{|x|^2}$.
+ \item It extracts $x$ from the input and checks if $x \in \A$.
+\end{itemize}
+
+This machine takes space $|x|^{2}$. That is $\DSPACE(n)$. (Since input size is $|x|^{2}$).
+Hence, (b) is also true.
+
+Now, it remains to show that (a) and (b) $\implies$ $\P \neq \DSPACE(n)$. \newline
+
+This can be shown by contradiction. Suppose $\P = \DSPACE(n)$. Then $\A_{pad} \in \DSPACE(n) \implies \A_{pad} \in \P \implies \A \in \P \implies \A \in \DSPACE(n)$.
+\newline
+But this is a contradiction, because $\A$ belongs to $\DSPACE(n^{2})$ and not $\DSPACE(n)$.
+
+Therefore, (a) and (b) $\implies$ $\P \neq \DSPACE(n)$.
 
 \question[5]
 Show that if $\SAT \in \NP \cap \co\NP$ then $\NP = \co\NP$. (Definitions !) \newline
@@ -195,23 +224,49 @@ languages $\overline{L} \cap \overline{L'}$ and $L \cap L'$. Hence, $L \oplus  L
 
 Therefore, $L \oplus  L' \in \NP \cap \co\NP$
 
-
-
-
-
 \question[15]
 Consider the following language: PRIMES $= \{ n ~|~ n
 \textrm{ is a prime } \}$ where the input $n$ is in binary.  Without
 using the known result that PRIMES is in $\P$, solve the following:
 \begin{parts}
 \part[5] Show that PRIMES is in $\co\NP$.
+\newline
+\textbf{Answer}\newline
+To show that PRIMES $\in \co\NP$ , we have to show that $\overline{PRIMES} \in \NP$. \newline
+$\overline{PRIMES} = \{n~| ~ \exists p,q~s.t.~p,q \neq 1~and~p \ast q = n\}$ \newline
+Given p,q as a certificate (each of them need log n bits respectively and hence polynomial in the size of input n), we can verify if p $\ast$ q = n in polynomial time
+as follows: \newline
+Calculate n/p using long-division. Since each step of long division eliminates on digit from the dividend(and every step is polynomial in dividend length), hence it runs for polynomial time in the length
+of dividend. Now check if the obtained quotient is equal to q and the obtained remainder is equal to 0 (This can be done in linear time with respect to length of q). \newline
+
+Therefore,$\overline{PRIMES} \in \NP$ and hence PRIMES $\in \co\NP$.
+
 \part[10] Here is Lucas test for primality (you dont need prove it) : $n$ is prime if and only if there is an integer $a \in \{2, \ldots,
   n-1\}$ with $a^{n-1} \equiv 1 \mod n$, and for every prime factor $q$ of $n-1$ : $a^{\frac{n-1}{q}} \not\equiv 1 \mod n$. Use this test to show that PRIMES is in $\NP$.
+\newline
+\textbf{Answer}\newline
+Given a and the prime factorization of n-1 as a certificate, it is easy to verify the above condition of Lucas in O($log^{3}$(n)) time. Modular exponentiation takes
+O(log n) time and at each stage multiplication takes O($log^{2}$(n)) steps. Now we have to show that $|a|$ + $|\text{prime factorization of n-1}|$ is a polynomial in log n. \newline
+
+Clearly, since $a<n$, therefore it can be represented using log(n) bits. Now we have to check \newline
+1) prime factorization of n-1 can be represented in poly in log(n) bits.\newline
+2) Each of the prime factors should be further verified as a prime.\newline
+
+Let n-1 be factorized as $p_{1}^{a_{1}}\ast p_{2}^{a_{2}}\ast ..p_{k}^{a_{k}}$. \newline
+This product is greater than $2^{a_{1}}\ast 2^{a_{2}}\ast ... 2^{a_{k}}$.
+Therefore, $a_{1}+a_{2}...a_{k}<log(n)$. Implies the number of prime factors of n-1 is utmost log(n). \newline
+
+For each of $p_{1},p_{2}..p_{k}$, there will be another set of certificates. Each of these certificates is a polynomial in log(n) and verifiable in polynomial in log(n)(From strong induction, because each of
+$p_{1},p_{2}..p_{k}$ is strictly smaller than n-1).
+Hence, the total time for verifying the prime factorization for n-1 is (polynomial in log(n)) $\ast$ (polynomial in log(n)), which is polynomial in log(n).\newline
+And since each of the prime factors can be log(n) length and there are log(n) of them, the total length is a polynomial in log(n).
+
+Therefore, the certificate a , prime factors of (n-1) is a polynomial size in input length verifiable in polynomial time in input length. Therefore,
+PRIMES $\in \NP$.
 \end{parts}
 Hence conclude that PRIMES is in $\NP$ $\cap$ $\co\NP$.
 
-%\question
-%Show that $\DSPACE(n^5) \subseteq \NSPACE(n^2)$.
+From (a),(b), PRIMES is in $\NP$ $\cap$ $\co\NP$.
 
 \question[10] Prove that reachability in undirected forests (a possibly disconnected acyclic undirected graph) can be solved in $\log$-space. That is, given $(T,s,t)$ where $T$ is an undirected forest, it can be tested in $\log$-space whether $s$ is connected to $t$ by a path.
 
@@ -237,6 +292,20 @@ Let $\E = \bigcup_{c > 0} \DTIME(2^{cn})$ and $\NE = \bigcup_{c > 0} \NTIME(2^{c
 \question[7] 
 Imagine a world in which $\P = \NP$. Now show that there is a
 polynomial time algorithm which given a Boolean formula $\phi$ produces a satisfying assignment for $\phi$ if $\phi$ is satisfiable.(Hint : Use queries to SAT).
+\newline
+\textbf{Answer}\newline
+We can get the assignments for $x_{1},x_{2},...x_{n}$ in n+1 queries to $\SAT$ as follows.
+\begin{itemize}
+ \item Firstly, make a query to $\SAT$ to find if $\phi$ is satisfiable. If no, immediately return.
+ \item If $\phi$ is satisfiable, construct new expressions, $\phi_{1}$,$\phi_{2}$...$\phi_{n}$, where,
+    $\phi_{i}=\phi \wedge x_{i}$.\newline
+    If, $\phi_{i}$ is satisfiable assign $x_{i}=1$. Else, assign $x_{i}=0$.
+\end{itemize}
+
+Since, $\P = \NP$, therefore there is a polynomial time algorithm to $\SAT$. And since, the number of queries to $\SAT$ is in $O(n)$, therefore,
+above algorithm runs in polynomial time.
+
+
 
 \end{questions}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  20 OCT 2012 17:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  21 OCT 2012 17:55
 entering extended mode
  %&-line parsing enabled.
 **ps4.tex
@@ -303,48 +303,81 @@ t/12 L$ \OT1/cmr/m/n/12 is not in $[](\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 )$.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--159
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--171
-
+Overfull \hbox (23.06604pt too wide) in paragraph at lines 176--179
+[]\OT1/cmr/m/n/12 This can be shown by con-tra-dic-tion. Sup-pose $\OT1/cmss/m/
+n/12 P \OT1/cmr/m/n/12 = [](\OML/cmm/m/it/12 n\OT1/cmr/m/n/12 )$. Then $\OT1/cm
+ss/m/n/12 A[] \OMS/cmsy/m/n/12 2 []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 n\OT1/cmr/
+m/n/12 )  =[]\OMS/cmsy/m/n/12 )
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--176
+Underfull \hbox (badness 10000) in paragraph at lines 183--188
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 184--189
+Underfull \hbox (badness 10000) in paragraph at lines 196--200
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--192
+Underfull \hbox (badness 10000) in paragraph at lines 201--205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--195
+Underfull \hbox (badness 10000) in paragraph at lines 213--218
 
  []
 
-[4] [5]
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--221
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--224
+
+ []
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 232--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--250
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--258
+
+ []
+
+[5] [6]
 This exam contains 10 questions with 7 parts, 0 subparts, and 0 subsubparts.
 This exam has a total of 123 points.
 This exam has a total of 0 bonus points.
 (./ps4.aux) ) 
 Here is how much of TeX's memory you used:
- 3343 strings out of 495061
- 38387 string characters out of 1182622
- 107708 words of memory out of 3000000
- 6510 multiletter control sequences out of 15000+50000
+ 3346 strings out of 495061
+ 38432 string characters out of 1182622
+ 107720 words of memory out of 3000000
+ 6513 multiletter control sequences out of 15000+50000
  13040 words of font info for 49 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 28i,13n,24p,324b,351s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,13n,24p,324b,375s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-te
@@ -358,9 +391,9 @@ fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1
 /public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti
 12.pfb>
-Output written on ps4.pdf (5 pages, 176068 bytes).
+Output written on ps4.pdf (6 pages, 183217 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
