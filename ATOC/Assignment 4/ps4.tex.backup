@@ -199,12 +199,12 @@ From defn, $L \in \NP$ $\Leftrightarrow$ there exists a polynomial length certif
 Similarly, $L' \in \NP$ $\Leftrightarrow$ there exists a polynomial length certificate $c_{2}$ which can be verified in polynomial time via a machine $M_{2}$. \newline
 
 $L \cap L'$, construct a new certificate $c_{1}\#c_{2}$ . This is of polynomial size. To verify if $x \in L \cap L'$ , we need to construct a polynomial time running machine
-which verifies $c_{1}$ and $c_{2}$. Construct a new machine $N$ which simulates first simulates $M_{1}$ on input $c_{1}$ and verifies if its the correct certificate of $L$.
+which verifies $c_{1}$ and $c_{2}$. Construct a new machine $N$ which first simulates $M_{1}$ on input $c_{1}$ and verifies if its the correct certificate of $L$.
 If yes, it proceeds to simulating $M_{2}$ on $c_{2}$. Else rejects. Similarly if $c_{2}$ is verified as the correct certificate of $L'$ by simulation of $M_{2}$ then it will accept. Else reject.
 Since simulation of both $M_{1}$ and $M_{2}$ takes polynomial time in the input length, hence $N$ also runs in polynomial time. \newline
 
 $L \cup L'$, construct a new certificate $c_{1}\#c_{2}$ . This is of polynomial size. To verify if $x \in L \cup L'$ , we need to construct a polynomial time running machine
-which verifies $c_{1}$ and $c_{2}$. Construct a new machine $N$ which simulates first simulates $M_{1}$ on input $c_{1}$ and verifies if its the correct certificate of $L$.
+which verifies $c_{1}$ and $c_{2}$. Construct a new machine $N$ which first simulates $M_{1}$ on input $c_{1}$ and verifies if its the correct certificate of $L$.
 If no , it proceeds to simulating $M_{2}$ on $c_{2}$. Else accepts. If $c_{2}$ is verified as the correct certificate of $L'$ by simulation of $M_{2}$ then it will accept. Else reject.
 Since simulation of both $M_{1}$ and $M_{2}$ takes polynomial time in the input length, hence $N$ also runs in polynomial time.
 
@@ -292,9 +292,13 @@ Let $\E = \bigcup_{c > 0} \DTIME(2^{cn})$ and $\NE = \bigcup_{c > 0} \NTIME(2^{c
 
 \textbf{Answer}\newline
 
-From the definition, every tally set $\A$ is a sparse set for a polynomial $p(n)=2$.Because $\A \subseteq \{1\}^{\ast}$ implies $\forall n$ $|\{|x|=n:x \in A\}|$ is either 0 or 1.\newline
-Hence, (b) $\implies$ (a) is trivially true.
-
+From the definition, every tally set $\A$ is a sparse set for a polynomial $p(n)=2$. Because $\A \subseteq \{1\}^{\ast}$ implies $\forall n$ $|\{|x|=n:x \in A\}|$ is either 0 or 1.\newline
+Hence, (b) $\implies$ (a) is trivially true.That is if every sparse set in $\NP$ is in $\P$, then every tally set(which is a subset of sparse set) in $\NP$ is in $\P$.	
+\newline
+\verb Idea \verb taken \verb from \verb Akshay
+(a) $\implies$ (c) \newline
+Let, $x \in L$ such that, $L \in \NE$. Consider the padded version of $L$ as $L_{tally} = \{1^{c \ast i}:\text{i th lexicographic string in $\{0,1\}^{\ast}$ is $x$}.\}$
+Clearly, the length 
 
 \question[7] 
 Imagine a world in which $\P = \NP$. Now show that there is a

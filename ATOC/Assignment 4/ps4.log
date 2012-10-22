@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  21 OCT 2012 18:49
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  22 OCT 2012 16:29
 entering extended mode
  %&-line parsing enabled.
 **ps4.tex
@@ -181,12 +181,18 @@ Package: amsthm 2004/08/06 v2.20
 \thm@headsep=\skip70
 \dth@everypar=\toks29
 )
+(/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks30
+\verbatim@line=\toks31
+\verbatim@in@stream=\read1
+)
 (/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks30
+\KV@toks@=\toks32
 )
 (/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
@@ -230,11 +236,11 @@ LaTeX Font Info:    ... okay on input line 16.
 \scratchbox=\box28
 \nofMPsegments=\count137
 \nofMParguments=\count138
-\everyMPshowfont=\toks31
+\everyMPshowfont=\toks33
 \MPscratchCnt=\count139
 \MPscratchDim=\dimen118
 \MPnumerator=\count140
-\everyMPtoPDFconversion=\toks32
+\everyMPtoPDFconversion=\toks34
 )
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 28.
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
@@ -370,17 +376,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 293--294
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 295--298
+
+ []
+
 [6] [7]
 This exam contains 10 questions with 7 parts, 0 subparts, and 0 subsubparts.
 This exam has a total of 123 points.
 This exam has a total of 0 bonus points.
 (./ps4.aux) ) 
 Here is how much of TeX's memory you used:
- 3346 strings out of 495061
- 38432 string characters out of 1182622
- 107720 words of memory out of 3000000
- 6513 multiletter control sequences out of 15000+50000
- 13040 words of font info for 49 fonts, out of 3000000 for 9000
+ 3379 strings out of 495061
+ 39007 string characters out of 1182622
+ 108363 words of memory out of 3000000
+ 6542 multiletter control sequences out of 15000+50000
+ 13209 words of font info for 50 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  28i,13n,24p,324b,375s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pf
@@ -395,10 +406,10 @@ mf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/
 fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1
 /public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
 onts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti
-12.pfb>
-Output written on ps4.pdf (7 pages, 184641 bytes).
+12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on ps4.pdf (7 pages, 191229 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
+ 86 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
