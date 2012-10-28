@@ -43,8 +43,8 @@ We can show this by proving the contrapositive of the statement. i.e. If there e
 
 Consider, any formula in the {\sc CNF}. Now, use the algorithm and convert it into a {\sc DNF}. The formula will be of the form, $P_{1} \vee P_{2} ..$
 and having the same satisfiability as the {\sc CNF}. Now, scan through each of the $P_{i}$ and see if any clause has both the variables $x_{i}$ and $\overline{x_{i}}$.
-If not, assign to all variables of form $x_{j}$ a true and $\overline{x_{j}}$ a false value. Else, if there is no such clause, report unsatisfiable. \newline
-Hence, any $\SAT$ problem can be solved in polynomial time, since the scanning takes atmost the length of the clause. And since, $\SAT$ is $\NP$-Complete,
+If not, assign to all variables in that clause of form $x_{j}$ a true and $\overline{x_{j}}$ a false value and for the variables not in that clause any value.Then report satisfiable. Else, if there is no such clause, report unsatisfiable. \newline
+Hence, $\SAT$ problem can be solved in polynomial time, since the scanning takes atmost the length of the clause. And since, $\SAT$ is $\NP$-Complete,
 Every problem in $\NP$ can be decided in polynomial time. And hence $\P = \NP$.
 
 \end{solution}
