@@ -1,0 +1,13 @@
+import java.util.Vector;
+
+public class ControlFlowNode {
+	/*
+	 * MOVE - 1 NOOP - 2 ERROR - 3 CJUMP - 4 JUMP - 5 HSTORE - 6 HLOAD - 7 PRINT
+	 * - 8 CALL - 9
+	 */
+
+	int typeOfInstruction; // Every instruction is numbered
+	Vector<Integer> inNodes; // List of basic blocks which enter this node
+	Vector<Integer> outNodes; // List of basic blocks which leave this node
+
+}

@@ -1,0 +1,65 @@
+\documentclass[12pt]{exam}
+\printanswers
+\usepackage{amsmath,amssymb,complexity}
+\begin{document}
+\hrule
+\vspace{3mm}
+\noindent 
+{\sf CS6014 : Advanced Theory of Computation  \hfill Author: Karthik Abinav(CS10B057)}
+\vspace{3mm}\\
+\noindent 
+{\sf Problem Set \#5 }
+\vspace{3mm}
+\hrule
+
+\begin{questions}
+
+\question
+Let $A$ be an $\NP$-complete language and $B$ be in $\P$. Prove that if $A \cap B = \phi$, then  $A \cup B$ is $\NP$-complete. What can you say about the complexity of $A \cup B$ if $A$ and $B$ are not known to be disjoint?
+
+\question
+Show that a {\sc DNF} formula can be converted in polynomial time to a {\sc CNF} formula, with possibly more number of variables , preserving satisfiability. Show that if $\P \ne \NP$, there cannot be a polynomial time algorithm that switches a {\sc CNF} formula to an {\sc DNF} formula preserving satisfiability.
+\begin{solution}
+\newline
+\textbf{Part a} \newline
+The formula $\phi$ in {\sc DNF} will be as $P_{1} \vee P_{2} \vee P_{3} .. $ . Every $P_{i}$ will be of the form $x_{1} \wedge x_{2} \wedge x_{3} ..$
+Now , take every clause of the form $P_{i} \vee P_{j}$ . \newline
+If either $P_{i}$ or $P_{j}$ is a variable, then directly distribute the expression over the $\vee$ to get an expression in {\sc CNF}. \newline
+Else, introduce a new symbol $y_{i}$ and make the clauses $(y_{i} \vee P_{i}) \wedge (\overline{y_{i}} \vee P_{j})$. \newline
+This will preserve the satisfiability of the $(P_{i} \vee P_{j})$ expression as follows:
+\begin{itemize}
+ \item If both $P_{i}$ and $P_{j}$ is false, putting any value to $y_{i}$ will preserve satisfiability.
+ \item Similarly if both $P_{i}$ and $P_{j}$ is true, then putting any value to $y_{i}$ will preserve satisfiability.
+ \item Suppose one of them is true and other is false. WLG let $P_{i}$ be true. Then putting $y_{i}$ as true will preserve satisfiability.
+\end{itemize}
+
+Now, since $y_{i}$ is a variable, the subclauses can now be distributed in the same way as above. This will take atmost length of $P_{i}$ time.
+And total time taken to convert will be $|\text{number of clauses}| \ast |\text{Time taken to expand each clause}|$ . And this will 
+take polynomial time in length of the expression.
+
+\textbf{Part b} \newline
+We can show this by proving the contrapositive of the statement. i.e. If there exists a polynomial time conversion from {\sc CNF} to {\sc DNF}, then $\P = \NP$.
+\newline
+
+Consider, any formula in the {\sc CNF}. 
+
+\end{solution}
+
+
+\question
+Give a polynomial time algorithm for 2-$\SAT$ problem that we stated in class. Given a CNF formula $\phi$, where each clause has atmost two literals, test satisfiability. Is 2-$\SAT$ in $\NL$? Argue.
+
+\question
+Consider the complexity class $\DP$ ({\sc D} stands for \textit{difference}) as the set of problems $L$ such that $L = A \cap B$ where $A$ and $B$ are two languages in $\NP$ and $\co\NP$ respectively. Argue that $\DP \subseteq \P^{\NP}$. Argue that {\sc Exact-Clique} is $\DP$-complete.
+
+\question
+Cook-Levin Theorem is proved by reducing any $L \in \NP$ to $\SAT$. Is there any relation between the number of accepting paths of the non-deterministic machine (deciding $L$) and the number of satisfying assignments of the formula produced by the reduction? Check the same for the $\NP$-completeness proof for {\sc Independent Set Problem} that we did in class.
+
+\end{questions}
+
+%Add your answer like this.
+%\begin{solution}
+%
+%\end{solution}
+
+\end{document}

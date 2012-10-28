@@ -1,0 +1,7 @@
+import java.util.HashMap;
+
+public class SymbolTable {
+
+	public static HashMap<ControlFlowNode, Integer> nodeToVertex = new HashMap<ControlFlowNode, Integer>();
+	public static HashMap<Integer, ControlFlowNode> vertexToNode = new HashMap<Integer, ControlFlowNode>();
+}
