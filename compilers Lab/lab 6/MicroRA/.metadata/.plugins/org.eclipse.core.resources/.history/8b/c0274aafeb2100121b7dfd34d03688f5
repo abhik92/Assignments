@@ -1,0 +1,28 @@
+package MainPackage;
+
+import java.util.HashMap;
+
+public class AliasTable {
+	public static HashMap<String, String> IRtoRA = new HashMap<String, String>();
+	public static HashMap<String, String> RAtoIR = new HashMap<String, String>();
+
+	public void insert(String N, String I) {
+		IRtoRA.put(N, I);
+		RAtoIR.put(I, N);
+	}
+
+	public String getRAFromIR(String N) {
+		if (IRtoRA.containsKey(N))
+			return IRtoRA.get(N);
+
+		return null; 
+	}
+
+	public ControlFlowNode getNodeFromVertex(Integer I) {
+		if (vertexToNode.containsKey(I))
+			return vertexToNode.get(I);
+
+		return null;
+	}
+
+}

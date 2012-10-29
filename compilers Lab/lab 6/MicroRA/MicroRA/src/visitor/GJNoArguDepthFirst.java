@@ -7,6 +7,9 @@ package visitor;
 import syntaxtree.*;
 import java.util.*;
 
+import MainPackage.ControlFlowNode;
+import MainPackage.SymbolTable;
+
 /**
  * Provides default methods which visit each node in the tree in depth-first
  * order. Your visitors may extend this class.
@@ -15,6 +18,15 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	//
 	// Auto class visitors--probably don't need to be overridden.
 	//
+
+	static SymbolTable symt = new SymbolTable();
+	static int nodeNumber = 0; // Node number starts from zero
+
+	public boolean isTemp(String str) {
+		return str.startsWith("TEMP ");
+
+	}
+
 	public R visit(NodeList n) {
 		R _ret = null;
 		int _count = 0;
@@ -166,9 +178,16 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(HLoadStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		n.f1.accept(this);
-		n.f2.accept(this);
+		R used = n.f1.accept(this);
+		R def = n.f2.accept(this);
 		n.f3.accept(this);
+
+		ControlFlowNode N = new ControlFlowNode();
+		N.typeOfInstruction = "hload";
+		N.used.add((String) used);
+		N.defined.add((String) def);
+
+		symt.insert(N, nodeNumber++);
 		return _ret;
 	}
 
@@ -178,8 +197,16 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(MoveStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		n.f1.accept(this);
-		n.f2.accept(this);
+		R def = n.f1.accept(this);
+		R exp = n.f2.accept(this);
+
+		ControlFlowNode N = new ControlFlowNode();
+		N.typeOfInstruction = "move";
+		N.used.addAll((Collection<? extends String>) exp);
+		N.defined.add((String) def);
+
+		symt.insert(N, nodeNumber++);
+
 		return _ret;
 	}
 
@@ -189,7 +216,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(PrintStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		n.f1.accept(this);
+		R simExp = n.f1.accept(this);
+
+		ControlFlowNode N = new ControlFlowNode();
+		N.typeOfInstruction = "print";
+		N.used.add((String) simExp);
+
+		symt.insert(N, nodeNumber++);
 		return _ret;
 	}
 
@@ -198,7 +231,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(Exp n) {
 		R _ret = null;
-		n.f0.accept(this);
+		_ret = n.f0.accept(this);
 		return _ret;
 	}
 
@@ -220,13 +253,21 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	 * f0 -> "CALL" f1 -> SimpleExp() f2 -> "(" f3 -> ( Temp() )* f4 -> ")"
 	 */
 	public R visit(Call n) {
-		R _ret = null;
+		Vector<String> used = new Vector<String>();
 		n.f0.accept(this);
-		n.f1.accept(this);
+		R simExp = n.f1.accept(this);
+		if (isTemp((String) simExp))
+			used.add((String) simExp);
 		n.f2.accept(this);
-		n.f3.accept(this);
+		// n.f3.accept(this);
+		Vector<Node> params = n.f3.nodes;
+		for (Node node : params) {
+			R exp = node.accept(this);
+			if (isTemp((String) exp))
+				used.add((String) exp);
+		}
 		n.f4.accept(this);
-		return _ret;
+		return (R) used;
 	}
 
 	/**
@@ -235,19 +276,27 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(HAllocate n) {
 		R _ret = null;
 		n.f0.accept(this);
-		n.f1.accept(this);
-		return _ret;
+		_ret = n.f1.accept(this);
+		Vector<String> used = new Vector<String>();
+		if (isTemp((String) _ret))
+			used.add((String) _ret);
+		return (R) used;
 	}
 
 	/**
 	 * f0 -> Operator() f1 -> Temp() f2 -> SimpleExp()
 	 */
 	public R visit(BinOp n) {
-		R op = n.f0.accept(this);
+		n.f0.accept(this);
 		R temp = n.f1.accept(this);
 		R simExp = n.f2.accept(this);
-		String var = "" + op + temp + simExp;
-		return (R) var;
+
+		Vector<String> used = new Vector<String>();
+		used.add((String) temp);
+		if (isTemp((String) simExp))
+			used.add((String) simExp);
+
+		return (R) used;
 	}
 
 	/**
@@ -256,20 +305,6 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(Operator n) {
 		R _ret = null;
 		n.f0.accept(this);
-		switch (n.f0.which) {
-		case 0:
-			_ret = (R) "LT";
-			break;
-		case 1:
-			_ret = (R) "PLUS";
-			break;
-		case 2:
-			_ret = (R) "MINUS";
-			break;
-		case 3:
-			_ret = (R) "TIMES";
-			break;
-		}
 		return _ret;
 	}
 
