@@ -76,6 +76,7 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 	 */
 	public R visit(Goal n, A argu) {
 		R _ret = null;
+
 		n.f0.accept(this, argu);
 		n.f1.accept(this, argu);
 		n.f2.accept(this, argu);
@@ -104,6 +105,7 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 		n.f2.accept(this, argu);
 		n.f3.accept(this, argu);
 		n.f4.accept(this, argu);
+		currentFunction = "";
 		return _ret;
 	}
 
@@ -284,7 +286,8 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 		n.f0.accept(this, argu);
 		R iden = n.f1.accept(this, argu);
 		String var = "TEMP " + iden + "#" + currentFunction;
-		if (!AliasTable.IRtoRA.containsKey(var)) {
+		int number = Integer.parseInt((String) iden);
+		if (!AliasTable.IRtoRA.containsKey(var) && number >= 20) {
 			AliasTable.insert(var, "TEMP " + tempNumber++);
 		}
 		return _ret;
@@ -304,7 +307,7 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 	 */
 	public R visit(Label n, A argu) {
 		R _ret = null;
-		n.f0.accept(this, argu);
+
 		String var = n.f0.tokenImage + "#" + currentFunction;
 		if (functionName) {
 			functionName = false;
@@ -315,6 +318,7 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 				AliasTable.insert(var, "Label" + labelNumber++);
 			}
 		}
+		//n.f0.accept(this, argu);
 
 		return _ret;
 	}

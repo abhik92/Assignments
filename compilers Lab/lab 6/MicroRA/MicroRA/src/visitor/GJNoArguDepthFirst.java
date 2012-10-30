@@ -6,6 +6,7 @@ package visitor;
 
 import syntaxtree.*;
 import java.util.*;
+import java.util.ResourceBundle.Control;
 
 import MainPackage.ControlFlowNode;
 import MainPackage.SymbolTable;
@@ -21,10 +22,66 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 
 	static SymbolTable symt = new SymbolTable();
 	static int nodeNumber = 0; // Node number starts from zero
+	static boolean isLabel = true;
+	static Stack<String> flow = new Stack<String>();
 
 	public boolean isTemp(String str) {
 		return str.startsWith("TEMP ");
 
+	}
+
+	public void patch(String s) {
+
+		Stack<String> tempStack = new Stack<String>();
+		while (!flow.empty()) {
+			String top = flow.pop();
+			if (top.startsWith("BACKPATCH")) {
+				// tempStack.push(top);
+
+				String spl[] = top.split(":");
+
+				if (spl[1].equals(s)) {
+					String var = "PATCHED:" + s + ":" + spl[2];
+					tempStack.push(var);
+				} else
+					tempStack.push(top);
+			} else {
+				tempStack.push(top);
+			}
+
+		}
+		flow = tempStack;
+
+	}
+
+	public void connectEdges(ControlFlowNode N, Integer I, String label) {
+
+		Stack<String> tempStack = new Stack<String>();
+
+		while (!flow.empty()) {
+			String top = flow.pop();
+			if (top.startsWith("PATCHED")) {
+				String spl[] = top.split(":");
+				if (spl[1].equals(label)) {
+					int inNode = Integer.parseInt(spl[2]);
+
+					ControlFlowNode R = symt.getNodeFromVertex(inNode);
+					System.out.println(nodeNumber);
+
+					R.outNodes.add(nodeNumber);
+					symt.insert(R, inNode);
+					N.inNodes.add(inNode);
+				} else {
+					tempStack.push(top);
+				}
+			} else if (top.startsWith("BACKPATCH")) {
+				tempStack.push(top);
+			} else {
+				N.inNodes.add(Integer.parseInt(top));
+			}
+
+		}
+		flow = tempStack;
 	}
 
 	public R visit(NodeList n) {
@@ -127,6 +184,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(NoOpStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
+		ControlFlowNode N = new ControlFlowNode();
+		connectEdges(N, nodeNumber, "");
+
+		N.typeOfInstruction = "noop";
+
+		flow.push("" + nodeNumber);
+		symt.insert(N, nodeNumber++);
 		return _ret;
 	}
 
@@ -136,6 +200,14 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(ErrorStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
+
+		ControlFlowNode N = new ControlFlowNode();
+		connectEdges(N, nodeNumber, "");
+
+		N.typeOfInstruction = "error";
+
+		flow.push("" + nodeNumber);
+		symt.insert(N, nodeNumber++);
 		return _ret;
 	}
 
@@ -145,8 +217,19 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(CJumpStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		n.f1.accept(this);
-		n.f2.accept(this);
+		R used = n.f1.accept(this);
+		isLabel = false;
+		R label = n.f2.accept(this);
+
+		ControlFlowNode N = new ControlFlowNode();
+		connectEdges(N, nodeNumber, (String) label);
+
+		N.typeOfInstruction = "cjump";
+		N.used.add((String) used);
+
+		flow.push("BACKPATCH:" + label + ":" + nodeNumber);
+		flow.push("" + nodeNumber);
+		symt.insert(N, nodeNumber++);
 		return _ret;
 	}
 
@@ -156,7 +239,17 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(JumpStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		n.f1.accept(this);
+		isLabel = false;
+		R label = n.f1.accept(this);
+
+		ControlFlowNode N = new ControlFlowNode();
+		connectEdges(N, nodeNumber, (String) label);
+
+		N.typeOfInstruction = "jump";
+		flow.push("BACKPATCH:" + label + ":" + nodeNumber);
+		flow.push("" + nodeNumber);
+		symt.insert(N, nodeNumber++);
+
 		return _ret;
 	}
 
@@ -166,9 +259,19 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(HStoreStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		n.f1.accept(this);
+		R def = n.f1.accept(this);
 		n.f2.accept(this);
-		n.f3.accept(this);
+		R used = n.f3.accept(this);
+
+		ControlFlowNode N = new ControlFlowNode();
+		connectEdges(N, nodeNumber, "");
+
+		N.typeOfInstruction = "hstore";
+		N.used.add((String) used);
+		N.defined.add((String) def);
+
+		flow.push("" + nodeNumber);
+		symt.insert(N, nodeNumber++);
 		return _ret;
 	}
 
@@ -183,10 +286,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f3.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
+		connectEdges(N, nodeNumber, "");
+
 		N.typeOfInstruction = "hload";
 		N.used.add((String) used);
 		N.defined.add((String) def);
 
+		flow.push("" + nodeNumber);
 		symt.insert(N, nodeNumber++);
 		return _ret;
 	}
@@ -201,10 +307,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R exp = n.f2.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
+		connectEdges(N, nodeNumber, "");
+
 		N.typeOfInstruction = "move";
-		N.used.addAll((Collection<? extends String>) exp);
+		N.used = (Vector<String>) exp;
 		N.defined.add((String) def);
 
+		flow.push("" + nodeNumber);
 		symt.insert(N, nodeNumber++);
 
 		return _ret;
@@ -219,9 +328,12 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R simExp = n.f1.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
+		connectEdges(N, nodeNumber, "");
+
 		N.typeOfInstruction = "print";
 		N.used.add((String) simExp);
 
+		flow.push("" + nodeNumber);
 		symt.insert(N, nodeNumber++);
 		return _ret;
 	}
@@ -232,6 +344,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(Exp n) {
 		R _ret = null;
 		_ret = n.f0.accept(this);
+		if (n.f0.which == 3) {
+			Vector<String> used = new Vector<String>();
+			used.add((String) _ret);
+			return (R) used;
+
+		}
+
 		return _ret;
 	}
 
@@ -342,7 +461,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(Label n) {
 		R _ret = null;
+
+		if (isLabel) {
+			patch(n.f0.tokenImage);
+			isLabel = true;
+		}
 		n.f0.accept(this);
+
 		return (R) n.f0.tokenImage;
 	}
 

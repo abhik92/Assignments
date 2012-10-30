@@ -37,6 +37,7 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
@@ -45,7 +46,7 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/RegAlloc.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst.java" partName="GJNoArguDepthFirst.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/visitor/GJNoArguDepthFirst.java" title="GJNoArguDepthFirst.java" tooltip="MicroRA/src/visitor/GJNoArguDepthFirst.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst.java" partName="GJNoArguDepthFirst.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/visitor/GJNoArguDepthFirst.java" title="GJNoArguDepthFirst.java" tooltip="MicroRA/src/visitor/GJNoArguDepthFirst.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/visitor/GJNoArguDepthFirst.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3405" selectionTopPixel="2887"/>
 </editor>
@@ -57,6 +58,10 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/MainPackage/SymbolTable.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="21" selectionTopPixel="0"/>
 </editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ChangeLocalsToGlobal.java" partName="ChangeLocalsToGlobal.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/visitor/ChangeLocalsToGlobal.java" title="ChangeLocalsToGlobal.java" tooltip="MicroRA/src/visitor/ChangeLocalsToGlobal.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/visitor/ChangeLocalsToGlobal.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3" selectionTopPixel="4175"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
@@ -64,10 +69,6 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Warnings (100 of 113 items)"/>
-</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="579"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -126,7 +127,7 @@
 </view>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.ui.internal.ide.application.ResourcePerspective" id="org.eclipse.ui.resourcePerspective" label="Resource"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -324,7 +325,6 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/RegAlloc.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/RegAlloc.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/visitor/GJNoArguDepthFirst.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/syntaxtree/Node.java"/>
@@ -335,156 +335,157 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/SymbolTable.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/ControlFlowNode.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/SymbolTable.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/visitor/ChangeLocalsToGlobal.java"/>
 </editors>
 <item historyLabel="RegAlloc.java" index="0">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="RegAlloc.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="2397" y="0"/>
 </item>
-<item historyLabel="Node.java" index="3">
+<item historyLabel="Node.java" index="2">
 <position info="not_deleted" x="400" y="0"/>
 </item>
-<item historyLabel="NodeToken.java" index="4">
+<item historyLabel="NodeToken.java" index="3">
 <position info="not_deleted" x="3" y="0"/>
 </item>
-<item historyLabel="DepthFirstVisitor.java" index="5">
+<item historyLabel="DepthFirstVisitor.java" index="4">
 <position info="not_deleted" x="3" y="0"/>
 </item>
-<item historyLabel="Visitor.java" index="6">
+<item historyLabel="Visitor.java" index="5">
 <position info="not_deleted" x="3" y="0"/>
 </item>
-<item historyLabel="DepthFirstVisitor.java" index="5">
+<item historyLabel="DepthFirstVisitor.java" index="4">
 <position info="not_deleted" x="3" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="2397" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4121" y="0"/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="7">
+<item historyLabel="ControlFlowNode.java" index="6">
 <position info="not_deleted" x="303" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4121" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="7">
+<item historyLabel="ControlFlowNode.java" index="6">
 <position info="not_deleted" x="303" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position/>
 </item>
-<item historyLabel="SymbolTable.java" index="8">
+<item historyLabel="SymbolTable.java" index="7">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="7">
+<item historyLabel="ControlFlowNode.java" index="6">
 <position info="not_deleted" x="303" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="460" y="0"/>
 </item>
-<item historyLabel="SymbolTable.java" index="8">
+<item historyLabel="SymbolTable.java" index="7">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="7">
+<item historyLabel="ControlFlowNode.java" index="6">
 <position info="not_deleted" x="303" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="460" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="7">
+<item historyLabel="ControlFlowNode.java" index="6">
 <position info="not_deleted" x="303" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="9">
+<item historyLabel="ControlFlowNode.java" index="8">
 <position info="not_deleted" x="303" y="0"/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="9">
+<item historyLabel="ControlFlowNode.java" index="8">
 <position info="not_deleted" x="324" y="0"/>
 </item>
-<item historyLabel="SymbolTable.java" index="10">
+<item historyLabel="SymbolTable.java" index="9">
 <position info="not_deleted" x="21" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="9">
+<item historyLabel="ControlFlowNode.java" index="8">
 <position info="not_deleted" x="266" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="5219" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="5194" y="3"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="5161" y="6"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4885" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4903" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4866" y="3"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4835" y="6"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4591" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4359" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4390" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4336" y="6"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4369" y="3"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4587" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4488" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4587" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4630" y="0"/>
 </item>
-<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4538" y="6"/>
 </item>
-<item active="true" historyLabel="GJNoArguDepthFirst.java" index="2">
+<item historyLabel="GJNoArguDepthFirst.java" index="1">
 <position info="not_deleted" x="4569" y="3"/>
+</item>
+<item active="true" historyLabel="ChangeLocalsToGlobal.java" index="10">
+<position info="not_deleted" x="3" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -503,6 +504,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ChangeLocalsToGlobal.java" tooltip="MicroRA/src/visitor/ChangeLocalsToGlobal.java">
+<persistable path="/MicroRA/src/visitor/ChangeLocalsToGlobal.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SymbolTable.java" tooltip="MicroRA/src/SymbolTable.java">
 <persistable path="/MicroRA/src/SymbolTable.java"/>
 </file>
