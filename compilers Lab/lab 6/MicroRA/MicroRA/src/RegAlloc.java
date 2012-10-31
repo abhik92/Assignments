@@ -21,14 +21,17 @@ class Main {
 			// root.accept(new ChangeLocalsToGlobal(), null);
 			root.accept(new GJNoArguDepthFirst()); // Your assignment part is
 			// invoked here.
-
+			SymbolTable.connectLabels();
+			SymbolTable.getSuccessors();
+			
 			System.out.println("Program parsed successfully");
+
 			Set<java.util.Map.Entry<Integer, ControlFlowNode>> e = SymbolTable.vertexToNode
 					.entrySet();
 			for (java.util.Map.Entry<Integer, ControlFlowNode> ss : e) {
 				System.out.print(ss.getKey() + " "
 						+ ss.getValue().typeOfInstruction + " ");
-				for (Integer nn : ss.getValue().outNodes) {
+				for (Integer nn : ss.getValue().succ) {
 					System.out.print(nn + " ");
 				}
 				System.out.println();

@@ -3,4 +3,5 @@
 <fullyQualifiedTypeName name="MainPackage.ControlFlowNode"/>
 <fullyQualifiedTypeName name="syntaxtree.Node"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
 </qualifiedTypeNameHistroy>
