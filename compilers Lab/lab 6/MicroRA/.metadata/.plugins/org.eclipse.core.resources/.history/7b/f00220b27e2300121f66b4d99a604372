@@ -34,8 +34,7 @@ class Main {
 			SymbolTable.populateNodes();
 			SymbolTable.livenessAnalysis();
 			SymbolTable.getLiveRanges();
-			SymbolTable.linearScan();
-			
+
 			System.out.println("Program parsed successfully");
 
 			for (Pair N : SymbolTable.nodeList) {

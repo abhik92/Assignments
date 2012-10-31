@@ -56,6 +56,23 @@ Give a polynomial time algorithm for 2-$\SAT$ problem that we stated in class. G
 \question
 Consider the complexity class $\DP$ ({\sc D} stands for \textit{difference}) as the set of problems $L$ such that $L = A \cap B$ where $A$ and $B$ are two languages in $\NP$ and $\co\NP$ respectively. Argue that $\DP \subseteq \P^{\NP}$. Argue that {\sc Exact-Clique} is $\DP$-complete.
 
+\begin{solution}
+  Let $L \in \DP$ . Implies there exists $A$ and $B$ such that $A \cap B$ = $L$ . Now construct an OTM with a $\SAT$ as an oracle.
+  The description of the machine is as follows:
+  \begin{itemize}
+   \item Given an input $x$, checks if $x \in \A$ by doing the poly time reduction to $\SAT$ via a function $\sigma_{1}$ and queries the oracle 
+   for $\sigma_{1}(x) \in \SAT$.
+   \item checks if $x \notin \overline{B}$ by computing the poly time reduction to $\SAT$ via the function $\sigma_{2}$ and queries the oracle.
+   If $x \notin \overline{B} \implies x \in B$ because B is $\co\NP$.
+   \item The machine accepts if both queries give accept. Else, rejects.
+  \end{itemize}
+  Since, the reductions are poly time, this OT machine also runs in polynomial time. Hence, $L \in \DP \implies L \in \P^{\NP}$.
+  Therefore, $\DP \subseteq \P^{\NP}$.
+  
+  
+\end{solution}
+
+
 \question
 Cook-Levin Theorem is proved by reducing any $L \in \NP$ to $\SAT$. Is there any relation between the number of accepting paths of the non-deterministic machine (deciding $L$) and the number of satisfying assignments of the formula produced by the reduction? Check the same for the $\NP$-completeness proof for {\sc Independent Set Problem} that we did in class.
 
