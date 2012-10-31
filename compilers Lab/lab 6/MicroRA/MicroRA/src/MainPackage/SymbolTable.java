@@ -188,9 +188,8 @@ public class SymbolTable {
 	public static void sort() {
 		int i, j;
 		for (i = 0; i < nodeList.size(); i++) {
-			for(j=i+1;j<nodeList.size();j++)
-			{
-				
+			for (j = i + 1; j < nodeList.size(); j++) {
+				// if(nodeList.get(i).first)
 			}
 		}
 	}

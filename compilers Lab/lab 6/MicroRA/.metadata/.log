@@ -10767,3 +10767,19 @@ Binding(CTRL+SHIFT+U,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.ui 4 4 2012-11-01 00:06:00.085
+!MESSAGE Invalid preference page path: XML Syntax
+
+!ENTRY com.aptana.usage 4 0 2012-11-01 00:06:01.001
+!MESSAGE (Build 3.0.0.1334367142) [ERROR]  Unable to connect to database
+!STACK 0
+java.sql.SQLException: No suitable driver found for jdbc:derby:aptanaDB;create=true
+	at java.sql.DriverManager.getConnection(DriverManager.java:640)
+	at java.sql.DriverManager.getConnection(DriverManager.java:222)
+	at com.aptana.usage.AptanaDB.getConnection(AptanaDB.java:135)
+	at com.aptana.usage.AptanaDB.execute(AptanaDB.java:58)
+	at com.aptana.usage.AptanaDB.execute(AptanaDB.java:53)
+	at com.aptana.usage.AnalyticsLogger.logEvent(AnalyticsLogger.java:53)
+	at com.aptana.usage.StudioAnalytics$1.run(StudioAnalytics.java:71)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
