@@ -2,6 +2,7 @@ package MainPackage;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Vector;
 
 public class SymbolTable {
 
@@ -47,6 +48,7 @@ public class SymbolTable {
 		}
 	}
 
+	// Gets the successors of all the nodes from the predeccessors of the nodes
 	public static void getSuccessors() {
 		Set<java.util.Map.Entry<ControlFlowNode, Integer>> i1 = nodeToVertex
 				.entrySet();
@@ -63,5 +65,71 @@ public class SymbolTable {
 
 		}
 
+	}
+
+	public static Vector<String> setDifference(Vector<String> A,
+			Vector<String> B) {
+		Vector<String> result = new Vector<String>();
+		for (String s : A) {
+			if (!B.contains(s))
+				result.add(s);
+		}
+		return result;
+
+	}
+
+	public static Vector<String> setUnion(Vector<String> A, Vector<String> B) {
+		Vector<String> result = new Vector<String>();
+		for (String s : A) {
+			result.add(s);
+		}
+		for (String s : B) {
+			if (!result.contains(s))
+				result.add(s);
+		}
+		return result;
+	}
+
+	public static boolean noChange() {
+		Set<java.util.Map.Entry<ControlFlowNode, Integer>> nodes = nodeToVertex
+				.entrySet();
+		for (java.util.Map.Entry<ControlFlowNode, Integer> N : nodes) {
+			ControlFlowNode n = N.getKey();
+			if (!n.liveIn.equals(n.inPrime) && !n.liveOut.equals(n.outPrime))
+				return false;
+		}
+		return true;
+	}
+
+	public static void livenessAnalysis() {
+		Set<java.util.Map.Entry<ControlFlowNode, Integer>> nodes = nodeToVertex
+				.entrySet();
+
+		do {
+			for (java.util.Map.Entry<ControlFlowNode, Integer> N : nodes) {
+
+				ControlFlowNode n = N.getKey();
+				// in'[n]<-in[n]
+				n.inPrime.removeAllElements();
+				n.inPrime.addAll(n.liveIn);
+
+				// out'[n]<-out[n]
+				n.outPrime.removeAllElements();
+				n.outPrime.addAll(n.liveOut);
+
+				// in[n] ← use[n] ∪ (out[n] − def [n]);
+				n.liveIn.removeAllElements();
+				n.liveIn.addAll(setUnion(n.used,
+						setDifference(n.liveOut, n.defined)));
+
+				// out[n] ← U(s∈succ[n]) in[s] ;
+				n.liveOut.removeAllElements();
+				for (Integer I : n.succ) {
+					ControlFlowNode successor = vertexToNode.get(I);
+					n.liveOut.addAll(setUnion(n.liveOut, successor.liveIn));
+				}
+
+			}
+		} while (!noChange());
 	}
 }

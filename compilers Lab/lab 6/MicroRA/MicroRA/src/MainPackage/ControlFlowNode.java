@@ -19,4 +19,7 @@ public class ControlFlowNode {
 	public Vector<String> liveIn = new Vector<String>();
 	public Vector<String> liveOut = new Vector<String>();
 
+	public Vector<String> inPrime = new Vector<String>();
+	public Vector<String> outPrime = new Vector<String>();
+
 }

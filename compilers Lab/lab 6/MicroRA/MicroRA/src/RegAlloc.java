@@ -21,8 +21,11 @@ class Main {
 			// root.accept(new ChangeLocalsToGlobal(), null);
 			root.accept(new GJNoArguDepthFirst()); // Your assignment part is
 			// invoked here.
+			
+			
 			SymbolTable.connectLabels();
 			SymbolTable.getSuccessors();
+			SymbolTable.livenessAnalysis();
 			
 			System.out.println("Program parsed successfully");
 
