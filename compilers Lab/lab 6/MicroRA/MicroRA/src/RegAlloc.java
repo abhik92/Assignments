@@ -1,11 +1,18 @@
+/*
+ * Author : Karthik Abinav
+ * Roll Number : CS10B057
+ * References: Liveness Analysis , Linear Scan Algorithm (Class Slides,Wikipedia) 
+ */
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Set;
-
-import javax.swing.RowFilter.Entry;
+import java.util.Vector;
 
 import MainPackage.AliasTable;
 import MainPackage.ControlFlowNode;
+import MainPackage.LiveRange;
+import MainPackage.Pair;
 import MainPackage.SymbolTable;
 
 import syntaxtree.*;
@@ -21,23 +28,25 @@ class Main {
 			// root.accept(new ChangeLocalsToGlobal(), null);
 			root.accept(new GJNoArguDepthFirst()); // Your assignment part is
 			// invoked here.
-			
-			
+
 			SymbolTable.connectLabels();
 			SymbolTable.getSuccessors();
+			SymbolTable.populateNodes();
 			SymbolTable.livenessAnalysis();
-			
+			SymbolTable.getLiveRanges();
+
 			System.out.println("Program parsed successfully");
 
-			Set<java.util.Map.Entry<Integer, ControlFlowNode>> e = SymbolTable.vertexToNode
+			for (Pair N : SymbolTable.nodeList) {
+				System.out.println(N.second + " " + N.first.liveIn);
+			}
+
+			Set<java.util.Map.Entry<String, LiveRange>> e1 = SymbolTable.liveRanges
 					.entrySet();
-			for (java.util.Map.Entry<Integer, ControlFlowNode> ss : e) {
-				System.out.print(ss.getKey() + " "
-						+ ss.getValue().typeOfInstruction + " ");
-				for (Integer nn : ss.getValue().succ) {
-					System.out.print(nn + " ");
-				}
-				System.out.println();
+
+			for (java.util.Map.Entry<String, LiveRange> t : e1) {
+				System.out.println(t.getKey() + " " + t.getValue().start + " "
+						+ t.getValue().end);
 			}
 
 		} catch (ParseException e) {

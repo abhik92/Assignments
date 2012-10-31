@@ -1,0 +1,25 @@
+package MainPackage;
+
+import java.util.Vector;
+
+public class ControlFlowNode {
+
+	public String typeOfInstruction; // Name of instruction
+	public String currentLabel = "";
+	public String toLabel = "";
+
+	public Vector<String> defined = new Vector<String>(); // Temps defined in
+															// this node
+	public Vector<String> used = new Vector<String>(); // Temps used in this
+														// node
+
+	public Vector<Integer> pre = new Vector<Integer>();
+	public Vector<Integer> succ = new Vector<Integer>();
+
+	public Vector<String> liveIn = new Vector<String>();
+	public Vector<String> liveOut = new Vector<String>();
+	
+	public Vector<String> inPrime = new Vector<String>();
+	public Vector<String> outPrime = new Vector<String>();
+
+}

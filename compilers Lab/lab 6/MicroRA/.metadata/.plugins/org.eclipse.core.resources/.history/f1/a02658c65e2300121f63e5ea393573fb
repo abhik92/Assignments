@@ -1,0 +1,7 @@
+package MainPackage;
+
+public class LiveRange {
+	Integer start;
+	Integer end;
+
+}

@@ -1,0 +1,6 @@
+package MainPackage;
+
+public class Pair {
+	ControlFlowNode first;
+	Integer second;
+}
