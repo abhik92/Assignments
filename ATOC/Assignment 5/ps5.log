@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  31 OCT 2012 23:32
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  1 NOV 2012 00:03
 entering extended mode
  %&-line parsing enabled.
 **ps5.tex
@@ -208,17 +208,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--43
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 74.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 74.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
+
+
+LaTeX Font Warning: Command \sc invalid in math mode on input line 76.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--82
+
+ []
+
+[2] [3]
 This exam contains 5 questions with 0 parts, 0 subparts, and 0 subsubparts.
 (./ps5.aux) ) 
 Here is how much of TeX's memory you used:
- 2503 strings out of 495061
- 27477 string characters out of 1182622
- 94719 words of memory out of 3000000
- 5702 multiletter control sequences out of 15000+50000
+ 2504 strings out of 495061
+ 27485 string characters out of 1182622
+ 95719 words of memory out of 3000000
+ 5703 multiletter control sequences out of 15000+50000
  10147 words of font info for 38 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 28i,9n,24p,398b,329s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,9n,24p,398b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-t
@@ -228,9 +246,9 @@ c/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm
 /cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss8.pfb>
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
 /texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on ps5.pdf (2 pages, 113660 bytes).
+Output written on ps5.pdf (3 pages, 119405 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
+ 52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

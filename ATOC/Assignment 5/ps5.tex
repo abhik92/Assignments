@@ -57,6 +57,7 @@ Give a polynomial time algorithm for 2-$\SAT$ problem that we stated in class. G
 Consider the complexity class $\DP$ ({\sc D} stands for \textit{difference}) as the set of problems $L$ such that $L = A \cap B$ where $A$ and $B$ are two languages in $\NP$ and $\co\NP$ respectively. Argue that $\DP \subseteq \P^{\NP}$. Argue that {\sc Exact-Clique} is $\DP$-complete.
 
 \begin{solution}
+\textbf{Part a} \newline
   Let $L \in \DP$ . Implies there exists $A$ and $B$ such that $A \cap B$ = $L$ . Now construct an OTM with a $\SAT$ as an oracle.
   The description of the machine is as follows:
   \begin{itemize}
@@ -67,7 +68,25 @@ Consider the complexity class $\DP$ ({\sc D} stands for \textit{difference}) as 
    \item The machine accepts if both queries give accept. Else, rejects.
   \end{itemize}
   Since, the reductions are poly time, this OT machine also runs in polynomial time. Hence, $L \in \DP \implies L \in \P^{\NP}$.
-  Therefore, $\DP \subseteq \P^{\NP}$.
+  Therefore, $\DP \subseteq \P^{\NP}$. \newline
+\textbf{Part b} \newline  
+  To check $L \in $ {\sc Exact-Clique} we have to check two parts - $(G,k) \in$ {\sc Clique} and $(G,k+1) \notin$ {\sc Clique} 
+  Define ${\sc clique_{k}}$ as set of all graphs with a clique of size k. and similarly, ${\sc clique_{k+1}}$ as set of all graphs with a clique
+  of size k+1.
+  {\sc exact-clique} $\in \DP$ . The set $A = {\sc clique_{k}}$ and the set $B = {\sc clique_{k+1}}$. And $A$ is $\NP$ complete and $B$ is $\co\NP$ complete.
+  \newline
+  $\forall L \in \DP$
+  There exists a $\sigma_{1}$ computable in poly time(via machine $M_{1}$) such that, $x \in L \Leftrightarrow \sigma_{1}(x) \in A$ and
+  a poly time computable(via machine $M_{2}$) $\sigma_{2}$ such that , $x \in L \Leftrightarrow \sigma_{2}(x) \in B$. (Because $A$ and $B$ are $\NP$ complete and $\co\NP$ complete
+  respectively). \newline
+  
+  Construct a machine $N$ which simulates $M_{1}$ and $M_{2}$.
+  Given an input $y$, it computes $\sigma_{1}$ by simulating $M_{1}$ and checks if $\sigma_{1}(y) \in A$. \newline
+  Then computes $\sigma_{2}$ by simulating $M_{2}$ ad checks if $\sigma_{2}(y) \in B$.\newline
+  If both are true accepts, else rejects.\newline
+  Since both these machines run in poly time the machine $N$ also runs in poly time.Also, the language accepted by $N$ is {\sc Exact-Clique} .
+  This shows that {\sc Exact-clique} is $\DP$ complete.
+  
   
   
 \end{solution}

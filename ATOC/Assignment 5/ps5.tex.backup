@@ -57,9 +57,23 @@ Give a polynomial time algorithm for 2-$\SAT$ problem that we stated in class. G
 Consider the complexity class $\DP$ ({\sc D} stands for \textit{difference}) as the set of problems $L$ such that $L = A \cap B$ where $A$ and $B$ are two languages in $\NP$ and $\co\NP$ respectively. Argue that $\DP \subseteq \P^{\NP}$. Argue that {\sc Exact-Clique} is $\DP$-complete.
 
 \begin{solution}
-  Consider a language $\L \in \DP$ . Consider a language $\A$ which is $\NP$-complete. Since $\L$ belongs to $\NP \cap \co\NP$, therefore it can be reduced
-  to $\A$ in polynomial time via a deterministic machine $\M$. Construct an oracle turing machine, which does the 
-  
+\textbf{Part a} \newline
+  Let $L \in \DP$ . Implies there exists $A$ and $B$ such that $A \cap B$ = $L$ . Now construct an OTM with a $\SAT$ as an oracle.
+  The description of the machine is as follows:
+  \begin{itemize}
+   \item Given an input $x$, checks if $x \in \A$ by doing the poly time reduction to $\SAT$ via a function $\sigma_{1}$ and queries the oracle 
+   for $\sigma_{1}(x) \in \SAT$.
+   \item checks if $x \notin \overline{B}$ by computing the poly time reduction to $\SAT$ via the function $\sigma_{2}$ and queries the oracle.
+   If $x \notin \overline{B} \implies x \in B$ because B is $\co\NP$.
+   \item The machine accepts if both queries give accept. Else, rejects.
+  \end{itemize}
+  Since, the reductions are poly time, this OT machine also runs in polynomial time. Hence, $L \in \DP \implies L \in \P^{\NP}$.
+  Therefore, $\DP \subseteq \P^{\NP}$. \newline
+\textbf{Part b} \newline  
+  To check $L \in $ {\sc Exact-Clique} we have to check two parts - $(G,k) \in$ {\sc Clique} and $(G,k+1) \notin$ {\sc Clique} 
+  Define ${\sc clique_{k}}$ as set of all graphs with a clique of size k. and similarly, ${\sc clique_{k+1}}$ as set of all graphs with a clique
+  of size k+1.
+  {\sc exact-clique} $\in \DP$ . The set $A = {\sc clique_{k}}$ and the set $B = {\sc clique_{k+1}}$. And $A$ is $\NP$ complete and $B$ is $\co\NP$ complete.
   
 \end{solution}
 
