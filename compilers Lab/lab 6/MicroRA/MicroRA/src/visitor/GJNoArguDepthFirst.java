@@ -21,7 +21,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	//
 
 	static SymbolTable symt = new SymbolTable();
-	static int nodeNumber = 0; // Node number starts from zero
+	static public int nodeNumber = 0; // Node number starts from zero
 	static boolean label = true;
 	static boolean labelledInstruction = false;
 	static String curLabel = "";
@@ -230,7 +230,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(HStoreStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		R def = n.f1.accept(this);
+		R used1 = n.f1.accept(this);
 		n.f2.accept(this);
 		R used = n.f3.accept(this);
 
@@ -239,7 +239,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 
 		N.typeOfInstruction = "hstore";
 		N.used.add((String) used);
-		N.defined.add((String) def);
+		N.used.add((String) used1);
 
 		flow.push("" + nodeNumber);
 		symt.insert(N, nodeNumber++);

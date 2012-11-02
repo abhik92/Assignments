@@ -13,6 +13,7 @@ import MainPackage.AliasTable;
 import MainPackage.ControlFlowNode;
 import MainPackage.LiveRange;
 import MainPackage.Pair;
+import MainPackage.PairLiveRange;
 import MainPackage.SymbolTable;
 
 import syntaxtree.*;
@@ -35,19 +36,21 @@ class Main {
 			SymbolTable.livenessAnalysis();
 			SymbolTable.getLiveRanges();
 			SymbolTable.linearScan();
-			
+
 			System.out.println("Program parsed successfully");
 
-			for (Pair N : SymbolTable.nodeList) {
-				System.out.println(N.second + " " + N.first.liveIn);
-			}
-
-			Set<java.util.Map.Entry<String, LiveRange>> e1 = SymbolTable.liveRanges
+			Set<java.util.Map.Entry<PairLiveRange, String>> e1 = SymbolTable.registers
 					.entrySet();
 
-			for (java.util.Map.Entry<String, LiveRange> t : e1) {
-				System.out.println(t.getKey() + " " + t.getValue().start + " "
-						+ t.getValue().end);
+			for (java.util.Map.Entry<PairLiveRange, String> t : e1) {
+				System.out.println(t.getKey().first + " " + t.getValue());
+			}
+
+			Set<java.util.Map.Entry<PairLiveRange, Integer>> e2 = SymbolTable.location
+					.entrySet();
+
+			for (java.util.Map.Entry<PairLiveRange, Integer> t : e2) {
+				System.out.println(t.getKey().first + "t" + t.getValue());
 			}
 
 		} catch (ParseException e) {

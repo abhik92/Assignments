@@ -1,16 +1,27 @@
 package MainPackage;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Vector;
+
+import visitor.GJNoArguDepthFirst;
 
 public class SymbolTable {
 
 	public static HashMap<ControlFlowNode, Integer> nodeToVertex = new HashMap<ControlFlowNode, Integer>();
 	public static HashMap<Integer, ControlFlowNode> vertexToNode = new HashMap<Integer, ControlFlowNode>();
 	public static HashMap<String, LiveRange> liveRanges = new HashMap<String, LiveRange>();
+	public static HashMap<PairLiveRange, String> registers = new HashMap<PairLiveRange, String>();
+	public static HashMap<PairLiveRange, Integer> location = new HashMap<PairLiveRange, Integer>();
+
+	public static int stackPointer = 0;
 
 	public static Vector<Pair> nodeList = new Vector<Pair>();
+	public static Vector<PairLiveRange> LinearRange = new Vector<PairLiveRange>();
 
 	public void insert(ControlFlowNode N, Integer I) {
 		nodeToVertex.put(N, I);
@@ -107,7 +118,7 @@ public class SymbolTable {
 	public static boolean noChange() {
 		for (Pair N : nodeList) {
 			ControlFlowNode n = N.first;
-			if (!n.liveIn.equals(n.inPrime) && !n.liveOut.equals(n.outPrime))
+			if (!n.liveIn.equals(n.inPrime) || !n.liveOut.equals(n.outPrime))
 				return false;
 		}
 		return true;
@@ -172,6 +183,12 @@ public class SymbolTable {
 					} else if (N.getValue() < start)
 						start = N.getValue();
 				}
+				if (n.defined.contains(temp)) {
+					if (start == -1) {
+						start = N.getValue();
+					} else if (N.getValue() < start)
+						start = N.getValue();
+				}
 				if (n.liveIn.contains(temp)) {
 					if (end == -1) {
 						end = N.getValue();
@@ -186,16 +203,98 @@ public class SymbolTable {
 	}
 
 	public static void sort() {
-		int i, j;
-		for (i = 0; i < nodeList.size(); i++) {
-			for (j = i + 1; j < nodeList.size(); j++) {
-				// if(nodeList.get(i).first)
-			}
+		Set<java.util.Map.Entry<String, LiveRange>> temps = liveRanges
+				.entrySet();
+
+		for (Entry<String, LiveRange> iter : temps) {
+			PairLiveRange p = new PairLiveRange(iter.getKey(), iter.getValue());
+			LinearRange.add(p);
 		}
+
+		Collections.sort(LinearRange, new Comparator<PairLiveRange>() {
+			public int compare(PairLiveRange o1, PairLiveRange o2) {
+				return o1.second.start - o2.second.start;
+			}
+		});
+	}
+
+	/* Linear Scan ALgorithm Here */
+	static Vector<PairLiveRange> active = new Vector<PairLiveRange>();
+	static Vector<String> freeRegisters = new Vector<String>();
+
+	public static void addSorted(PairLiveRange i) {
+		active.add(i);
+
+		Collections.sort(active, new Comparator<PairLiveRange>() {
+			public int compare(PairLiveRange o1, PairLiveRange o2) {
+				return o1.second.end - o2.second.end;
+			}
+		});
+
+	}
+
+	public static void ExpireOldIntervals(PairLiveRange i) {
+		Vector<PairLiveRange> temporary = new Vector<PairLiveRange>();
+		for (PairLiveRange P : active)
+			temporary.add(P);
+
+		for (PairLiveRange j : temporary) {
+			if (j.second.end >= i.second.start)
+				break;
+			active.remove(j);
+			freeRegisters.add(registers.get(j.first));
+		}
+
+	}
+
+	public static void SpillAtInterval(PairLiveRange i) {
+		PairLiveRange spill = active.lastElement();
+		if (spill.second.end > i.second.end) {
+			registers.put(i, registers.get(spill));
+			location.put(spill, stackPointer);
+			stackPointer++;
+			active.remove(spill);
+			addSorted(i);
+		} else
+			location.put(i, stackPointer++);
+
 	}
 
 	public static void linearScan() {
 		sort();
+		freeRegisters.add("s0");
+		freeRegisters.add("s1");
+		freeRegisters.add("s2");
+		freeRegisters.add("s3");
+		freeRegisters.add("s4");
+		freeRegisters.add("s5");
+		freeRegisters.add("s6");
+		freeRegisters.add("s7");
+
+		freeRegisters.add("t0");
+		freeRegisters.add("t1");
+		freeRegisters.add("t1");
+		freeRegisters.add("t3");
+		freeRegisters.add("t4");
+		freeRegisters.add("t5");
+		freeRegisters.add("t6");
+		freeRegisters.add("t7");
+		freeRegisters.add("t8");
+		freeRegisters.add("t9");
+
+		active.clear();
+		for (PairLiveRange i : LinearRange) {
+			System.out.println(freeRegisters.size());
+			ExpireOldIntervals(i);
+			if (active.size() == 18)
+				SpillAtInterval(i);
+			else {
+
+				registers.put(i, freeRegisters.firstElement());
+				freeRegisters.remove(0);
+				addSorted(i);
+			}
+		}
 	}
 
 	public static void sync() {
