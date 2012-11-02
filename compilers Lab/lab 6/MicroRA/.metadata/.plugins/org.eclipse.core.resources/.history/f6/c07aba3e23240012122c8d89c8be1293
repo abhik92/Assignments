@@ -1,0 +1,12 @@
+package MainPackage;
+
+public class PairLiveRange {
+	String first;
+	LiveRange second;
+
+	public public PairLiveRange(String A, LiveRange I) {
+		this.first = A;
+		this.second = I;
+	}
+
+}

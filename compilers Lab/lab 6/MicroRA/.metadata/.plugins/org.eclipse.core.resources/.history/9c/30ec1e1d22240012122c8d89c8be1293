@@ -1,0 +1,13 @@
+package MainPackage;
+
+public class LiveRange implements Comparable<Integer> {
+	public Integer start;
+	public Integer end;
+
+	@Override
+	public int compareTo(Integer arg0) {
+		return this < arg0;
+		
+	}
+
+}

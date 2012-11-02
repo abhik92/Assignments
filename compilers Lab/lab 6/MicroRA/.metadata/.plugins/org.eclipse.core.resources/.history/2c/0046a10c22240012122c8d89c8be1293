@@ -1,0 +1,7 @@
+package MainPackage;
+
+public class LiveRange implements Comparable<Integer> {
+	public Integer start;
+	public Integer end;
+
+}

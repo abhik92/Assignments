@@ -1,0 +1,7 @@
+package MainPackage;
+
+public class PairLiveRange {
+	String first;
+	LiveRange second;
+	
+}

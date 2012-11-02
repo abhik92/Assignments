@@ -1,0 +1,18 @@
+package MainPackage;
+
+import java.util.Set;
+
+public class Debugger {
+
+	public static void printLiveRanges() {
+		System.out.println("Begin -- liveranges --");
+		Set<java.util.Map.Entry<String, LiveRange>> e = SymbolTable.liveRanges
+				.entrySet();
+
+		for (java.util.Map.Entry<PairLiveRange, String> t : e1) {
+			System.out.println(t.getKey().first + " " + t.getValue());
+		}
+
+	}
+
+}

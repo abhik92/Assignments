@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import MainPackage.AliasTable;
 import MainPackage.ControlFlowNode;
+import MainPackage.Debugger;
 import MainPackage.LiveRange;
 import MainPackage.Pair;
 import MainPackage.PairLiveRange;
@@ -37,21 +38,11 @@ class Main {
 			SymbolTable.getLiveRanges();
 			SymbolTable.linearScan();
 
-			System.out.println("Program parsed successfully");
+			// System.out.println("Program parsed successfully");
 
-			Set<java.util.Map.Entry<PairLiveRange, String>> e1 = SymbolTable.registers
-					.entrySet();
-
-			for (java.util.Map.Entry<PairLiveRange, String> t : e1) {
-				System.out.println(t.getKey().first + " " + t.getValue());
-			}
-
-			Set<java.util.Map.Entry<PairLiveRange, Integer>> e2 = SymbolTable.location
-					.entrySet();
-
-			for (java.util.Map.Entry<PairLiveRange, Integer> t : e2) {
-				System.out.println(t.getKey().first + "t" + t.getValue());
-			}
+			Debugger.printLiveRangesSorted();
+			Debugger.printRegisters();
+			Debugger.printStack();
 
 		} catch (ParseException e) {
 			System.out.println(e.toString());

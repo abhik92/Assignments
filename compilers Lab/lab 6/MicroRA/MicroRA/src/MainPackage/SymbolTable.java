@@ -239,17 +239,17 @@ public class SymbolTable {
 			temporary.add(P);
 
 		for (PairLiveRange j : temporary) {
-			if (j.second.end >= i.second.start)
+			if (j.second.end > i.second.start)
 				break;
 			active.remove(j);
-			freeRegisters.add(registers.get(j.first));
+			freeRegisters.add(registers.get(j));
 		}
 
 	}
 
 	public static void SpillAtInterval(PairLiveRange i) {
 		PairLiveRange spill = active.lastElement();
-		if (spill.second.end > i.second.end) {
+		if (spill.second.end >= i.second.end) {
 			registers.put(i, registers.get(spill));
 			location.put(spill, stackPointer);
 			stackPointer++;
@@ -273,7 +273,7 @@ public class SymbolTable {
 
 		freeRegisters.add("t0");
 		freeRegisters.add("t1");
-		freeRegisters.add("t1");
+		freeRegisters.add("t2");
 		freeRegisters.add("t3");
 		freeRegisters.add("t4");
 		freeRegisters.add("t5");
@@ -284,7 +284,6 @@ public class SymbolTable {
 
 		active.clear();
 		for (PairLiveRange i : LinearRange) {
-			System.out.println(freeRegisters.size());
 			ExpireOldIntervals(i);
 			if (active.size() == 18)
 				SpillAtInterval(i);
