@@ -28,36 +28,39 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	static boolean functionName = false;
 	static boolean label = true;
 
+	static int fSP = 0;
+
 	public boolean isTemp(String str) {
 		return str.startsWith("TEMP ");
 
 	}
 
-	public void save_callee() {
+	public void save_callee(int sp) {
 		int i;
-		for (i = 0; i < 8; i++)
-			System.out.println("ASTORE SPILLEDARG " + i + " s" + i);
+		int k = 0;
+		for (i = sp; i < sp + 8; i++, k++)
+			System.out.println("ASTORE SPILLEDARG " + i + " s" + k);
 
 	}
 
-	public void restore_callee() {
-		int i;
-		for (i = 0; i < 8; i++)
-			System.out.println("ALOAD s" + i + " SPILLEDARG " + i);
+	public void restore_callee(int sp) {
+		int i, k = 0;
+		for (i = sp - 8; i < sp; i++, k++)
+			System.out.println("ALOAD s" + k + " SPILLEDARG " + i);
 
 	}
 
-	public void save_caller() {
-		int i;
-		for (i = 0; i < 10; i++)
-			System.out.println("ASTORE SPILLEDARG " + i + " t" + i);
+	public void save_caller(int sp) {
+		int i, k = 0;
+		for (i = sp; i < sp + 10; i++, k++)
+			System.out.println("ASTORE SPILLEDARG " + i + " t" + k);
 
 	}
 
-	public void restore_caller() {
-		int i;
-		for (i = 0; i < 10; i++)
-			System.out.println("ALOAD t" + i + " SPILLEDARG " + i);
+	public void restore_caller(int sp) {
+		int i, k = 0;
+		for (i = sp - 10; i < sp; i++, k++)
+			System.out.println("ALOAD t" + k + " SPILLEDARG " + i);
 
 	}
 
@@ -122,6 +125,7 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		n.f2.accept(this);
 		System.out.println(" END ");
+		fSP = 0;
 		n.f3.accept(this);
 		n.f4.accept(this);
 		return _ret;
@@ -228,6 +232,7 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 
 		System.out.println(SymbolTable.variableRegister.get(temp1) + " " + intl
 				+ " " + SymbolTable.variableRegister.get(temp2));
+
 		return _ret;
 	}
 
@@ -312,13 +317,15 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	public R visit(StmtExp n) {
 		R _ret = null;
 		/* Save callee saved registers */
-		save_callee();
+		save_callee(fSP);
+		fSP += 8;
 		int i;
-		for (i = 1; i <= numberOfParams; i++) {
-			String var = "TEMP " + (-1 * (numberOfParams - i + 1));
+		for (i = 0; i < Math.min(4, numberOfParams); i++) {
+			String var = "TEMP " + i + "#" + currentFunction;
+			var = AliasTable.getRAFromIR(var);
 			// System.out.println(var);
 			System.out.println("MOVE " + SymbolTable.variableRegister.get(var)
-					+ " a" + (i - 1));
+					+ " a" + i);
 		}
 		n.f0.accept(this);
 		n.f1.accept(this);
@@ -331,7 +338,8 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 			System.out.println(" MOVE v0 " + simExp);
 
 		n.f4.accept(this);
-		restore_callee();
+		restore_callee(fSP);
+		fSP = 0;
 		System.out.println("END");
 
 		return _ret;
@@ -359,14 +367,16 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 
 		R lab = n.f1.accept(this);
-		save_caller();
+		save_caller(fSP);
+		fSP += 10;
 		if (isTemp((String) lab))
 			System.out.println("CALL " + SymbolTable.variableRegister.get(lab));
 		else
 			System.out.println("CALL " + lab);
 		n.f2.accept(this);
 		// n.f3.accept(this);
-		restore_caller();
+		restore_caller(fSP);
+		fSP -= 10;
 		n.f4.accept(this);
 		return _ret;
 	}
@@ -477,14 +487,16 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 			functionName = false;
 			currentFunction = n.f0.tokenImage;
 		}
-
-		_ret = (R) AliasTable.IRtoRA.get(var);
+		if (!SymbolTable.functions.contains(n.f0.tokenImage))
+			_ret = (R) AliasTable.IRtoRA.get(var);
+		else
+			_ret = (R) n.f0.tokenImage;
 
 		if (label) {
 			System.out.print(" " + _ret + " ");
 		}
 		label = true;
-		n.f0.accept(this);
+		// n.f0.accept(this);
 		return _ret;
 	}
 

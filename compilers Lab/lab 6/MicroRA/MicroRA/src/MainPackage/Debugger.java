@@ -70,4 +70,20 @@ public class Debugger {
 		System.out.println("End -- stack --");
 	}
 
+	public static boolean clashingAllocation() {
+		for (PairLiveRange P1 : SymbolTable.LinearRange) {
+			for (PairLiveRange P2 : SymbolTable.LinearRange) {
+				if (P1.second.start <= P2.second.end) {
+					if (P1.second.start >= P2.second.start) {
+						boolean var = (!(P1.equals(P2)) && SymbolTable.registers
+								.get(P1).equals(SymbolTable.registers.get(P2)));
+						if (var)
+							return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+
 }

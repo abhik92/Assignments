@@ -18,8 +18,11 @@ public class SymbolTable {
 	public static HashMap<PairLiveRange, String> registers = new HashMap<PairLiveRange, String>();
 	public static HashMap<PairLiveRange, Integer> location = new HashMap<PairLiveRange, Integer>();
 
+	public static Vector<String> functions = new Vector<String>();
+
 	public static HashMap<String, String> variableRegister = new HashMap<String, String>();
-	public static int stackPointer = 18;//0-17 reserved for storing the variables
+	public static int stackPointer = 18;// 0-17 reserved for storing the
+										// variables
 
 	public static Vector<Pair> nodeList = new Vector<Pair>();
 	public static Vector<PairLiveRange> LinearRange = new Vector<PairLiveRange>();

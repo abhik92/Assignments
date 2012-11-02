@@ -8,6 +8,7 @@ import syntaxtree.*;
 import java.util.*;
 
 import MainPackage.AliasTable;
+import MainPackage.SymbolTable;
 
 /**
  * Provides default methods which visit each node in the tree in depth-first
@@ -20,7 +21,7 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 	static String currentFunction = "";
 	static int labelNumber = 1;
 	static int tempNumber = 1;
-	static int paraNumber = -1; // parameter temps will be named as negative
+	static int paraNumber = -1; // parameter temps will be named
 	static boolean functionName = false;
 
 	public R visit(NodeList n, A argu) {
@@ -317,14 +318,15 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 			functionName = false;
 			currentFunction = n.f0.tokenImage;
 		} else {
-			if (!AliasTable.IRtoRA.containsKey(var)) {
+			if (!AliasTable.IRtoRA.containsKey(var)
+					&& !SymbolTable.functions.contains(n.f0.tokenImage)) {
 
 				AliasTable.insert(var, "Label" + labelNumber++);
 			}
+
 		}
 		// n.f0.accept(this, argu);
 
 		return _ret;
 	}
-
 }

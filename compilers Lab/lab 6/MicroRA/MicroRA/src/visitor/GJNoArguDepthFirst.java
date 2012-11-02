@@ -464,8 +464,10 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			functionName = false;
 			currentFunction = n.f0.tokenImage;
 		}
-
-		_ret = (R) AliasTable.IRtoRA.get(var);
+		if (!SymbolTable.functions.contains(n.f0.tokenImage))
+			_ret = (R) AliasTable.IRtoRA.get(var);
+		else
+			_ret = (R) n.f0.tokenImage;
 
 		if (label) {
 			labelledInstruction = true;
@@ -473,7 +475,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		}
 		if (!label)
 			label = true;
-		n.f0.accept(this);
+		// n.f0.accept(this);
 
 		return _ret;
 	}

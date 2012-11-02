@@ -24,11 +24,12 @@ class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			Node root = new microIRParser(new FileInputStream(
-					"../../Tests/microIR/Factorial.microIR")).Goal();
+					"../../Tests/microIR/LinearSearch.microIR")).Goal();
 
 			// Node root = new microIRParser(System.in).Goal();
+			root.accept(new ExtractFunctions(), null);
 			root.accept(new ChangeLocalsToGlobal(), null);
-			// Debugger.printAliases();
+			//Debugger.printAliases();
 			root.accept(new GJNoArguDepthFirst());
 
 			SymbolTable.connectLabels();
@@ -42,10 +43,10 @@ class Main {
 			root.accept(new MiniRAPrint());
 
 			// Debugger.printVariableRegisterMap();
-			// Debugger.printLiveRangesSorted();
-			// Debugger.printRegisters();
+			//Debugger.printLiveRangesSorted();
+			//Debugger.printRegisters();
 			// Debugger.printStack();
-
+			System.out.println(Debugger.clashingAllocation());
 		} catch (ParseException e) {
 			System.out.println(e.toString());
 		}
