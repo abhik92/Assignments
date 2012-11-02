@@ -459,12 +459,12 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(Label n) {
 		R _ret = null;
 
+		String var = n.f0.tokenImage + "#" + currentFunction;
 		if (functionName) {
 			functionName = false;
 			currentFunction = n.f0.tokenImage;
 		}
 
-		String var = n.f0.tokenImage + "#" + currentFunction;
 		_ret = (R) AliasTable.IRtoRA.get(var);
 
 		if (label) {
