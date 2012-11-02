@@ -14,6 +14,17 @@ public class Debugger {
 		System.out.println("End -- Aliases --");
 	}
 
+	public static void printVariableRegisterMap() {
+		System.out.println("Begin -- VariableRegisterMap --");
+		Set<java.util.Map.Entry<String, String>> e = SymbolTable.variableRegister
+				.entrySet();
+		for (java.util.Map.Entry<String, String> t : e) {
+			System.out.println(t.getKey() + " " + t.getValue());
+		}
+
+		System.out.println("End -- VariableRegisterMap --");
+	}
+
 	public static void printLiveRanges() {
 		System.out.println("Begin -- liveranges --");
 		Set<java.util.Map.Entry<String, LiveRange>> e = SymbolTable.liveRanges

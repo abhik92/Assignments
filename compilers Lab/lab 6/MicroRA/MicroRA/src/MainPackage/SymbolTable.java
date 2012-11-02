@@ -17,7 +17,8 @@ public class SymbolTable {
 	public static HashMap<String, LiveRange> liveRanges = new HashMap<String, LiveRange>();
 	public static HashMap<PairLiveRange, String> registers = new HashMap<PairLiveRange, String>();
 	public static HashMap<PairLiveRange, Integer> location = new HashMap<PairLiveRange, Integer>();
-
+	
+	public static HashMap<String, String> variableRegister = new HashMap<String, String>();
 	public static int stackPointer = 0;
 
 	public static Vector<Pair> nodeList = new Vector<Pair>();
@@ -88,6 +89,20 @@ public class SymbolTable {
 		}
 
 	}
+	
+	//Populate the variable register map
+	public static void populateRegisterMap()
+	{
+		Set<java.util.Map.Entry<PairLiveRange, String>> e1 = SymbolTable.registers
+				.entrySet();
+
+		for (java.util.Map.Entry<PairLiveRange, String> t : e1) {
+			variableRegister.put(t.getKey().first, t.getValue());
+		}
+		
+	}
+	
+	
 
 	// Performs Set difference A - B
 	public static Vector<String> setDifference(Vector<String> A,

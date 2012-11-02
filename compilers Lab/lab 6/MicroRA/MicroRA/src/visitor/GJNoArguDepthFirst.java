@@ -308,7 +308,8 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "print";
-		N.used.add((String) simExp);
+		if (isTemp((String) simExp))
+			N.used.add((String) simExp);
 
 		flow.push("" + nodeNumber);
 		symt.insert(N, nodeNumber++);
@@ -323,7 +324,8 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		_ret = n.f0.accept(this);
 		if (n.f0.which == 3) {
 			Vector<String> used = new Vector<String>();
-			used.add((String) _ret);
+			if (isTemp((String) _ret))
+				used.add((String) _ret);
 			return (R) used;
 
 		}
@@ -346,7 +348,8 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "return";
-		N.used.add((String) simExp);
+		if (isTemp((String) simExp))
+			N.used.add((String) simExp);
 
 		flow.push("" + nodeNumber);
 		symt.insert(N, nodeNumber++);
@@ -423,8 +426,8 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(SimpleExp n) {
 		R _ret = null;
 		_ret = n.f0.accept(this);
-		if (n.f0.which >= 1)
-			return (R) "";
+		// if (n.f0.which >= 1)
+		// return (R) "";
 		return _ret;
 	}
 

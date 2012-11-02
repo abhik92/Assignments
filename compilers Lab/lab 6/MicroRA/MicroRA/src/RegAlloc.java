@@ -28,9 +28,8 @@ class Main {
 
 			// Node root = new microIRParser(System.in).Goal();
 			root.accept(new ChangeLocalsToGlobal(), null);
-			Debugger.printAliases();
-			root.accept(new GJNoArguDepthFirst()); // Your assignment part is
-			// invoked here.
+			// Debugger.printAliases();
+			root.accept(new GJNoArguDepthFirst());
 
 			SymbolTable.connectLabels();
 			SymbolTable.getSuccessors();
@@ -38,12 +37,14 @@ class Main {
 			SymbolTable.livenessAnalysis();
 			SymbolTable.getLiveRanges();
 			SymbolTable.linearScan();
+			SymbolTable.populateRegisterMap();
 
-			// System.out.println("Program parsed successfully");
+			root.accept(new MiniRAPrint());
 
-			Debugger.printLiveRangesSorted();
-			Debugger.printRegisters();
-			Debugger.printStack();
+			// Debugger.printVariableRegisterMap();
+			// Debugger.printLiveRangesSorted();
+			// Debugger.printRegisters();
+			// Debugger.printStack();
 
 		} catch (ParseException e) {
 			System.out.println(e.toString());
