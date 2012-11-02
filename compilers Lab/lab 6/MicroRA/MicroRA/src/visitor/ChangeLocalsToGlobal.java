@@ -20,6 +20,7 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 	static String currentFunction = "";
 	static int labelNumber = 1;
 	static int tempNumber = 1;
+	static int paraNumber = -1; // parameter temps will be named as negative
 	static boolean functionName = false;
 
 	public R visit(NodeList n, A argu) {
@@ -290,6 +291,9 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 		if (!AliasTable.IRtoRA.containsKey(var) && number >= 20) {
 			AliasTable.insert(var, "TEMP " + tempNumber++);
 		}
+		if (!AliasTable.IRtoRA.containsKey(var) && number < 20) {
+			AliasTable.insert(var, "TEMP " + paraNumber--);
+		}
 		return _ret;
 	}
 
@@ -318,7 +322,7 @@ public class ChangeLocalsToGlobal<R, A> implements GJVisitor<R, A> {
 				AliasTable.insert(var, "Label" + labelNumber++);
 			}
 		}
-		//n.f0.accept(this, argu);
+		// n.f0.accept(this, argu);
 
 		return _ret;
 	}

@@ -7,6 +7,7 @@ package visitor;
 import syntaxtree.*;
 import java.util.*;
 
+import MainPackage.AliasTable;
 import MainPackage.ControlFlowNode;
 import MainPackage.LiveRange;
 import MainPackage.SymbolTable;
@@ -19,6 +20,9 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	//
 	// Auto class visitors--probably don't need to be overridden.
 	//
+	// Regarding the temps and label renaming
+	static String currentFunction = "";
+	static boolean functionName = false;
 
 	static SymbolTable symt = new SymbolTable();
 	static public int nodeNumber = 0; // Node number starts from zero
@@ -131,11 +135,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(Procedure n) {
 		R _ret = null;
 		label = false;
+		functionName = true;
 		n.f0.accept(this);
 		n.f1.accept(this);
 		n.f2.accept(this);
 		n.f3.accept(this);
 		n.f4.accept(this);
+		functionName = true;
 		return _ret;
 	}
 
@@ -428,7 +434,8 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(Temp n) {
 		n.f0.accept(this);
 		R intl = n.f1.accept(this);
-		String var = "TEMP " + intl;
+		String hash = "TEMP " + intl + "#" + currentFunction;
+		String var = AliasTable.IRtoRA.get(hash);
 		if (!SymbolTable.liveRanges.containsKey(var))
 			SymbolTable.liveRanges.put(var, new LiveRange());
 		return (R) var;
@@ -448,6 +455,15 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(Label n) {
 		R _ret = null;
+
+		if (functionName) {
+			functionName = false;
+			currentFunction = n.f0.tokenImage;
+		}
+
+		String var = n.f0.tokenImage + "#" + currentFunction;
+		_ret = (R) AliasTable.IRtoRA.get(var);
+
 		if (label) {
 			labelledInstruction = true;
 			curLabel = n.f0.tokenImage;
@@ -456,7 +472,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 			label = true;
 		n.f0.accept(this);
 
-		return (R) n.f0.tokenImage;
+		return _ret;
 	}
 
 }

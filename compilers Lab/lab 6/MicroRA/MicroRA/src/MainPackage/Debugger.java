@@ -3,6 +3,16 @@ package MainPackage;
 import java.util.Set;
 
 public class Debugger {
+	public static void printAliases() {
+		System.out.println("Begin -- Aliases --");
+		Set<java.util.Map.Entry<String, String>> e = AliasTable.IRtoRA
+				.entrySet();
+		for (java.util.Map.Entry<String, String> t : e) {
+			System.out.println(t.getKey() + " " + t.getValue());
+		}
+
+		System.out.println("End -- Aliases --");
+	}
 
 	public static void printLiveRanges() {
 		System.out.println("Begin -- liveranges --");

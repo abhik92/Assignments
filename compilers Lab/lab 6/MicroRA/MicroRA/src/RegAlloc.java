@@ -24,10 +24,11 @@ class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			Node root = new microIRParser(new FileInputStream(
-					"../../Tests/microIR/BinaryTree.microIR")).Goal();
+					"../../Tests/microIR/Factorial.microIR")).Goal();
 
 			// Node root = new microIRParser(System.in).Goal();
-			// root.accept(new ChangeLocalsToGlobal(), null);
+			root.accept(new ChangeLocalsToGlobal(), null);
+			Debugger.printAliases();
 			root.accept(new GJNoArguDepthFirst()); // Your assignment part is
 			// invoked here.
 
