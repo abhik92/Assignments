@@ -8,7 +8,7 @@
 {\sf CS6014 : Advanced Theory of Computation  \hfill Author: Karthik Abinav(CS10B057)}
 \vspace{3mm}\\
 \noindent 
-{\sf Problem Set \#5 }
+{\sf Problem Set \#5 \hfill Collaborators:Saikrishna}
 \vspace{3mm}
 \hrule
 
@@ -16,6 +16,32 @@
 
 \question
 Let $A$ be an $\NP$-complete language and $B$ be in $\P$. Prove that if $A \cap B = \phi$, then  $A \cup B$ is $\NP$-complete. What can you say about the complexity of $A \cup B$ if $A$ and $B$ are not known to be disjoint?
+\begin{solution}
+ 
+ $A \cup B$ belongs to $\NP$. Because given an $x$ we have to check if $x \in B$ or $x \in A$. And to check if $x \in A$ takes $\NP$ time. \newline
+ $A \cup B$ is $\NP$-hard \newline
+ 
+ To show this we have to show that $\forall L \in \NP$ $L \leq_{m}^{p}$  $A \cup B$.
+ i.e.
+ $x \in L$ $\Leftrightarrow$ $\sigma(x) \in A \cup B$.
+ If we construct such a $\sigma$ computable in polynomial time we are done. \newline
+ 
+ Since $A$ is $\NP$ complete, there exists a $\sigma_{1}$ computable in polynomial time such that,\newline
+ $x \in L$ $\Leftrightarrow$ $\sigma_{1}(x) \in A$. \newline
+ 
+ Construct the $\sigma$ such that, $\sigma(x) = \sigma_{1}(x)$ if $\sigma_{1}(x) \notin B$.\newline
+ $\sigma(x) = fixed~string~w$ such that $w \notin A$ and $w \notin B$.\newline
+ 
+ Since, $A \cap B = \varnothing$. Hence, $\sigma(x) \in B \Leftrightarrow \sigma(x) \notin A$.
+ 
+ Therefore, $\sigma(x)$ satisfies the reduction for $L$ to $A \cup B$.\newline
+
+ Suppose, it is not known about $A \cap B$, then the above reduction wont work. We can just conclude that $A \cup B \in \NP$ and cant
+ comment about the hardness. (Unless $A \cap B = A$ or $A \cap B = B$ , in which cases $A \cup B$ will be  $\NP$-complete and $\P$ respectively).
+ 
+ 
+\end{solution}
+
 
 \question
 Show that a {\sc DNF} formula can be converted in polynomial time to a {\sc CNF} formula, with possibly more number of variables , preserving satisfiability. Show that if $\P \ne \NP$, there cannot be a polynomial time algorithm that switches a {\sc CNF} formula to an {\sc DNF} formula preserving satisfiability.
@@ -53,6 +79,22 @@ Every problem in $\NP$ can be decided in polynomial time. And hence $\P = \NP$.
 \question
 Give a polynomial time algorithm for 2-$\SAT$ problem that we stated in class. Given a CNF formula $\phi$, where each clause has atmost two literals, test satisfiability. Is 2-$\SAT$ in $\NL$? Argue.
 
+\begin{solution}
+  Consider any formula $\phi$ in the $2-\SAT$ form. \newline
+  It will be of the form $(x_{1} \vee x_{2}) \wedge (x_{3} \vee x_{4})..$. \newline
+  Like the previous question, the technique will be to reduce formulas of the form $(x_{1} \vee x_{2}) \wedge (\overline{x_{1}} \vee x_{3})$ to
+  $(x_{2} \vee x_{3})$ . The consistency in satisfiability follows from distributing the $\vee$ over the $\wedge$ and using the claim in question 2.\newline
+  
+  Now, the algorithm will scan through the formula for pairs of clauses having $x_{i}$ in one and $\overline{x_{i}}$ in the other and reduce them.
+  There can be atmost O($n^2$) such pairs for each variable. Next replace all clauses having $(x_{i} \vee \overline{x_{i}})$ with a 0. 
+  Now , initial formula is satisfiable, if the new obtained formula is not a fallacy(i.e. 0). \newline
+  
+  The running time of the algorithm takes polynomial time in the number of variables times the number of clauses.
+  
+  
+\end{solution}
+
+
 \question
 Consider the complexity class $\DP$ ({\sc D} stands for \textit{difference}) as the set of problems $L$ such that $L = A \cap B$ where $A$ and $B$ are two languages in $\NP$ and $\co\NP$ respectively. Argue that $\DP \subseteq \P^{\NP}$. Argue that {\sc Exact-Clique} is $\DP$-complete.
 
@@ -70,22 +112,22 @@ Consider the complexity class $\DP$ ({\sc D} stands for \textit{difference}) as 
   Since, the reductions are poly time, this OT machine also runs in polynomial time. Hence, $L \in \DP \implies L \in \P^{\NP}$.
   Therefore, $\DP \subseteq \P^{\NP}$. \newline
 \textbf{Part b} \newline  
-  To check $L \in $ {\sc Exact-Clique} we have to check two parts - $(G,k) \in$ {\sc Clique} and $(G,k+1) \notin$ {\sc Clique} 
-  Define ${\sc clique_{k}}$ as set of all graphs with a clique of size k. and similarly, ${\sc clique_{k+1}}$ as set of all graphs with a clique
-  of size k+1.
-  {\sc exact-clique} $\in \DP$ . The set $A = {\sc clique_{k}}$ and the set $B = {\sc clique_{k+1}}$. And $A$ is $\NP$ complete and $B$ is $\co\NP$ complete.
-  \newline
-  $\forall L \in \DP$
-  There exists a $\sigma_{1}$ computable in poly time(via machine $M_{1}$) such that, $x \in L \Leftrightarrow \sigma_{1}(x) \in A$ and
-  a poly time computable(via machine $M_{2}$) $\sigma_{2}$ such that , $x \in L \Leftrightarrow \sigma_{2}(x) \in B$. (Because $A$ and $B$ are $\NP$ complete and $\co\NP$ complete
-  respectively). \newline
-  
-  Construct a machine $N$ which simulates $M_{1}$ and $M_{2}$.
-  Given an input $y$, it computes $\sigma_{1}$ by simulating $M_{1}$ and checks if $\sigma_{1}(y) \in A$. \newline
-  Then computes $\sigma_{2}$ by simulating $M_{2}$ ad checks if $\sigma_{2}(y) \in B$.\newline
-  If both are true accepts, else rejects.\newline
-  Since both these machines run in poly time the machine $N$ also runs in poly time.Also, the language accepted by $N$ is {\sc Exact-Clique} .
-  This shows that {\sc Exact-clique} is $\DP$ complete.
+   To check $L \in $ {\sc Exact-Clique} we have to check two parts - $(G,k) \in$ {\sc Clique} and $(G,k+1) \notin$ {\sc Clique} 
+   Define ${\sc clique_{k}}$ as set of all graphs with a clique of size k. and similarly, ${\sc clique_{k+1}}$ as set of all graphs with a clique
+   of size k+1.
+   {\sc exact-clique} $\in \DP$ . The set $A = {\sc clique_{k}}$ and the set $B = {\sc clique_{k+1}}$. And $A$ is $\NP$ complete and $B$ is $\co\NP$ complete.
+   \newline
+   $\forall L \in \DP$
+   There exists a $\sigma_{1}$ computable in poly time(via machine $M_{1}$) such that, $x \in L \Leftrightarrow \sigma_{1}(x) \in A$ and
+   a poly time computable(via machine $M_{2}$) $\sigma_{2}$ such that , $x \in L \Leftrightarrow \sigma_{2}(x) \in B$. (Because $A$ and $B$ are $\NP$ complete and $\co\NP$ complete
+   respectively). \newline
+ 
+   Construct a machine $N$ which simulates $M_{1}$ and $M_{2}$.
+   Given an input $y$, it computes $\sigma_{1}$ by simulating $M_{1}$ and checks if $\sigma_{1}(y) \in A$. \newline
+   Then computes $\sigma_{2}$ by simulating $M_{2}$ ad checks if $\sigma_{2}(y) \in B$.\newline
+   If both are true accepts, else rejects.\newline
+   Since both these machines run in poly time the machine $N$ also runs in poly time.Also, the language accepted by $N$ is {\sc Exact-Clique} .
+   This shows that {\sc Exact-clique} is $\DP$ complete.
   
   
   
@@ -96,6 +138,21 @@ Consider the complexity class $\DP$ ({\sc D} stands for \textit{difference}) as 
 Cook-Levin Theorem is proved by reducing any $L \in \NP$ to $\SAT$. Is there any relation between the number of accepting paths of the non-deterministic machine (deciding $L$) and the number of satisfying assignments of the formula produced by the reduction? Check the same for the $\NP$-completeness proof for {\sc Independent Set Problem} that we did in class.
 
 \end{questions}
+
+\begin{solution}
+\newline
+ In the proof we did in class, we constructed the clause in $\SAT$ by considering every bit in the configuration from start to end as a variable,
+ and constructed a clause whose truth value will be 1 exactly when the sequence of configurations will be accepting one. Hence, the number of accepting
+ configurations is precisely the number of satisfying assignments to the constructed $\SAT$ clause. \newline
+ 
+ In case of the {\sc Independent Set Problem}, we choose a subset($S$) of vertices such that, \newline
+ $x_{i} \in S$ if $x_{i} = 0$ in the assignment to $3-\SAT$.And all the clauses which evaluate to 1 were also added into $S$. \newline
+ Hence, the number of sets $S$ is precisely the number of sets i's for which $x_{i} = 0$. This is the number of satisfiable assignments for $3-\SAT$.
+ This is twice the number of satisfiable assignments for $\SAT$. Because, suppose the clause in $\SAT$ was of the form, $x_{1} \vee x_{2} \vee x_{3}$,
+ then it is converted to $3-\SAT$ as $(x_{1} \vee x_{2} \vee y_{1}) \wedge (\overline{y_{1}} \vee x_{3} \vee y_{2})$. And for a fixed values of $x_{i}$ s, there
+ is a choice on the last variable $y_{n}$ to be either 0 or 1(in the above example $y_{2}$). Hence, the number of independent sets is twice the
+ number of accepting paths in the non deterministic machine.
+\end{solution}
 
 %Add your answer like this.
 %\begin{solution}

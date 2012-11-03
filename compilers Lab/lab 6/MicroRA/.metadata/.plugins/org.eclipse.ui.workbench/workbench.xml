@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="19" version="2.0">
+<workbench progressCount="21" version="2.0">
 <workbenchAdvisor/>
 <window height="719" maximized="true" width="1018" x="0" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -44,9 +44,9 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RegAlloc.java" partName="RegAlloc.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/RegAlloc.java" title="RegAlloc.java" tooltip="MicroRA/src/RegAlloc.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RegAlloc.java" partName="RegAlloc.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/RegAlloc.java" title="RegAlloc.java" tooltip="MicroRA/src/RegAlloc.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/RegAlloc.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1264" selectionTopPixel="114"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1264" selectionTopPixel="153"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst.java" partName="GJNoArguDepthFirst.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/visitor/GJNoArguDepthFirst.java" title="GJNoArguDepthFirst.java" tooltip="MicroRA/src/visitor/GJNoArguDepthFirst.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/visitor/GJNoArguDepthFirst.java"/>
@@ -56,7 +56,7 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/MainPackage/ControlFlowNode.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="201" selectionTopPixel="0"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SymbolTable.java" partName="SymbolTable.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/MainPackage/SymbolTable.java" title="SymbolTable.java" tooltip="MicroRA/src/MainPackage/SymbolTable.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SymbolTable.java" partName="SymbolTable.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/MainPackage/SymbolTable.java" title="SymbolTable.java" tooltip="MicroRA/src/MainPackage/SymbolTable.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/MainPackage/SymbolTable.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4081" selectionTopPixel="1991"/>
 </editor>
@@ -94,9 +94,6 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings"/>
-</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="997"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -325,7 +322,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@4bc9fd9" ratio="0.93718165" ratioLeft="552" ratioRight="37" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@4bc9fd9" ratio="0.46859083" ratioLeft="276" ratioRight="313" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
@@ -468,13 +465,8 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/Pair.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/LiveRange.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/RegAlloc.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/RegAlloc.java"/>
 </editors>
-<item historyLabel="SymbolTable.java" index="0">
-<position info="not_deleted" x="7719" y="0"/>
-</item>
-<item historyLabel="PairLiveRange.java" index="4">
-<position info="not_deleted" x="81" y="0"/>
-</item>
 <item historyLabel="SymbolTable.java" index="0">
 <position info="not_deleted" x="6777" y="0"/>
 </item>
@@ -616,8 +608,14 @@
 <item historyLabel="RegAlloc.java" index="11">
 <position info="not_deleted" x="1264" y="0"/>
 </item>
-<item active="true" historyLabel="SymbolTable.java" index="0">
+<item historyLabel="SymbolTable.java" index="0">
 <position info="not_deleted" x="4081" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="12">
+<position info="not_deleted" x="3" y="0"/>
+</item>
+<item active="true" historyLabel="RegAlloc.java" index="12">
+<position info="not_deleted" x="1264" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
