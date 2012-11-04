@@ -28,6 +28,8 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	static boolean functionName = false;
 	static boolean label = true;
 
+	static boolean v0 = false;
+	static boolean v1 = false;
 	static int fSP = 0;
 
 	public boolean isTemp(String str) {
@@ -198,13 +200,27 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	public R visit(CJumpStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		System.out.print(" CJUMP ");
 		R temp = n.f1.accept(this);
 		label = false;
 		R lab = n.f2.accept(this);
-		System.out.print(SymbolTable.variableRegister.get(temp));
-		System.out.println(" " + lab + " ");
+		if (SymbolTable.variableRegister.get(temp) != null) {
+			System.out.print(" CJUMP ");
+			System.out.print(SymbolTable.variableRegister.get(temp));
+			System.out.println(" " + lab + " ");
+		} else {
+			String reg;
+			if (!v1)
+				reg = "v1";
+			else
+				reg = "v0";
 
+			System.out.println("ALOAD " + reg + " SPILLEDARG "
+					+ SymbolTable.variableLocation.get(temp));
+
+			System.out.print(" CJUMP " + reg + " ");
+			System.out.println(" " + lab + " ");
+
+		}
 		return _ret;
 	}
 
@@ -227,13 +243,44 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	public R visit(HStoreStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		System.out.print(" HSTORE ");
+
 		R temp1 = n.f1.accept(this);
 		R intl = n.f2.accept(this);
 		R temp2 = n.f3.accept(this);
+		String reg1 = SymbolTable.variableRegister.get(temp1);
+		String reg2 = SymbolTable.variableRegister.get(temp2);
 
-		System.out.println(SymbolTable.variableRegister.get(temp1) + " " + intl
-				+ " " + SymbolTable.variableRegister.get(temp2));
+		if (SymbolTable.variableRegister.get(temp1) == null) {
+			String reg;
+			if (!v1) {
+				reg = "v1";
+				v1 = true;
+			} else {
+				reg = "v0";
+				v0 = true;
+
+			}
+			System.out.println("ALOAD " + reg + " SPILLEDARG "
+					+ SymbolTable.variableLocation.get(temp1));
+			reg1 = reg;
+		}
+		if (SymbolTable.variableRegister.get(temp2) == null) {
+			String reg;
+			if (!v1) {
+				reg = "v1";
+				v1 = true;
+			} else {
+				reg = "v0";
+				v0 = true;
+
+			}
+			System.out.println("ALOAD " + reg + " SPILLEDARG "
+					+ SymbolTable.variableLocation.get(temp2));
+			reg2 = reg;
+
+		}
+		System.out.print(" HSTORE ");
+		System.out.println(reg1 + " " + intl + " " + reg2);
 
 		return _ret;
 	}
@@ -244,13 +291,48 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	public R visit(HLoadStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		System.out.print(" HLOAD ");
 		R temp1 = n.f1.accept(this);
 		R temp2 = n.f2.accept(this);
 		R intl = n.f3.accept(this);
 
-		System.out.println(SymbolTable.variableRegister.get(temp1) + " "
-				+ SymbolTable.variableRegister.get(temp2) + " " + intl);
+		String reg1 = SymbolTable.variableRegister.get(temp1);
+		String reg2 = SymbolTable.variableRegister.get(temp2);
+		String reg = "";
+		boolean sp = false;
+		if (SymbolTable.variableRegister.get(temp1) == null) {
+
+			if (!v1) {
+				reg = "v1";
+				v1 = true;
+			} else {
+				reg = "v0";
+				v0 = true;
+
+			}
+			sp = true;
+			reg1 = reg;
+		}
+		if (SymbolTable.variableRegister.get(temp2) == null) {
+			if (!v1) {
+				reg = "v1";
+				v1 = true;
+			} else {
+				reg = "v0";
+				v0 = true;
+
+			}
+			System.out.println("ALOAD " + reg + " SPILLEDARG "
+					+ SymbolTable.variableLocation.get(temp2));
+			reg2 = reg;
+
+		}
+		System.out.print(" HLOAD ");
+		System.out.println(reg1 + " " + reg2 + " " + intl);
+		if (sp)
+			System.out.println("ASTORE SPILLEDARG "
+					+ SymbolTable.variableLocation.get(temp1) + " " + reg);
+		v0 = false;
+		v1 = false;
 		return _ret;
 	}
 
@@ -260,21 +342,76 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	public R visit(MoveStmt n) {
 		R _ret = null;
 		boolean c = true;
+		boolean e = true;
+		boolean sp = false;
 		n.f0.accept(this);
 
 		R temp = n.f1.accept(this);
-		if (n.f2.f0.which != 0) {
-			System.out.print("MOVE " + SymbolTable.variableRegister.get(temp)
-					+ " ");
+		String reg = "";
+		if (n.f2.f0.which != 0 && n.f2.f0.which != 2) {
+
+			if (SymbolTable.variableRegister.get(temp) != null) {
+				System.out.print(" MOVE ");
+				System.out.print(SymbolTable.variableRegister.get(temp));
+			} else {
+
+				if (!v1)
+					reg = "v1";
+				else
+					reg = "v0";
+
+				System.out.print(" MOVE " + reg + " ");
+				sp = true;
+			}
+
 			c = true;
+			e = true;
 
-		} else
-			c = false;
-		n.f2.accept(this);
+		} else {
+			if (n.f2.f0.which != 2)
+				c = false;
+			else
+				e = false;
+		}
+		R exp = n.f2.accept(this);
+		if (sp)
+			System.out.println("ASTORE " + " SPILLEDARG "
+					+ SymbolTable.variableLocation.get(temp) + " " + reg);
+		if (!e) {
 
-		if (!c)
-			System.out.println(" MOVE "
-					+ SymbolTable.variableRegister.get(temp) + " v0");
+			if (SymbolTable.variableRegister.get(temp) != null) {
+				System.out.print(" MOVE ");
+				System.out.print(SymbolTable.variableRegister.get(temp));
+				System.out.println(" " + exp + " ");
+			} else {
+				if (!v1)
+					reg = "v1";
+				else
+					reg = "v0";
+
+				System.out.print(" MOVE " + reg + " ");
+				System.out.println(" " + exp + " ");
+				System.out.println("ASTORE " + " SPILLEDARG "
+						+ SymbolTable.variableLocation.get(temp) + " " + reg);
+			}
+
+		}
+		if (!c) {
+			if (SymbolTable.variableRegister.get(temp) != null) {
+				System.out.print(" MOVE ");
+				System.out.print(SymbolTable.variableRegister.get(temp));
+				System.out.println(" v0 ");
+			} else {
+				reg = "v1";
+
+				System.out.print(" MOVE " + reg + " ");
+				System.out.println(" v0 ");
+				System.out.println("ASTORE " + " SPILLEDARG "
+						+ SymbolTable.variableLocation.get(temp) + " " + reg);
+
+			}
+
+		}
 		System.out.println();
 		return _ret;
 	}
@@ -285,12 +422,27 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	public R visit(PrintStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		System.out.print(" PRINT ");
 		R simExp = n.f1.accept(this);
-		if (isTemp((String) simExp))
-			System.out.println(SymbolTable.variableRegister.get(simExp));
-		else
-			System.out.println(simExp);
+		if (isTemp((String) simExp)) {
+
+			if (SymbolTable.variableRegister.get(simExp) != null) {
+				System.out.print(" PRINT ");
+				System.out.println(SymbolTable.variableRegister.get(simExp));
+			} else {
+				String reg;
+				if (!v1)
+					reg = "v1";
+				else
+					reg = "v0";
+
+				System.out.println("ALOAD " + reg + " SPILLEDARG "
+						+ SymbolTable.variableLocation.get(simExp));
+
+				System.out.println(" PRINT " + reg + " ");
+
+			}
+		} else
+			System.out.println("PRINT " + simExp);
 
 		return _ret;
 	}
@@ -303,10 +455,12 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 
 		_ret = n.f0.accept(this);
 		if (n.f0.which == 3) {
-			if (isTemp((String) _ret))
+			if (isTemp((String) _ret)) {
+
 				System.out.print(" " + SymbolTable.variableRegister.get(_ret)
 						+ " ");
-			else
+
+			} else
 				System.out.print(" " + _ret + " ");
 		}
 		return _ret;
@@ -417,20 +571,53 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(BinOp n) {
 		R _ret = null;
-		n.f1.accept(this);
 		R op = n.f0.accept(this);
-		System.out.print(op);
 		R temp = n.f1.accept(this);
-		System.out.print(" " + SymbolTable.variableRegister.get(temp) + " ");
 		R simExp = n.f2.accept(this);
-		if (isTemp((String) simExp))
-			System.out.print(" " + SymbolTable.variableRegister.get(simExp)
-					+ " ");
-		else
-			System.out.print(" " + simExp + " ");
 
-		System.out.println();
-		return _ret;
+		String reg1 = SymbolTable.variableRegister.get(temp);
+		String reg2;
+		if (isTemp((String) simExp))
+			reg2 = SymbolTable.variableRegister.get(simExp);
+		else
+			reg2 = (String) simExp;
+
+		if (SymbolTable.variableRegister.get(temp) == null) {
+			String reg;
+			if (!v1) {
+				reg = "v1";
+				v1 = true;
+			} else {
+				reg = "v0";
+				v0 = true;
+
+			}
+			System.out.println("ALOAD " + reg + " SPILLEDARG "
+					+ SymbolTable.variableLocation.get(temp));
+			reg1 = reg;
+		}
+		if (isTemp((String) simExp)) {
+			if (SymbolTable.variableRegister.get(simExp) == null) {
+				String reg;
+				if (!v1) {
+					reg = "v1";
+					v1 = true;
+				} else {
+					reg = "v0";
+					v0 = true;
+
+				}
+				System.out.println("ALOAD " + reg + " SPILLEDARG "
+						+ SymbolTable.variableLocation.get(simExp));
+				reg2 = reg;
+			}
+		}
+		System.out.print(" MOVE v0 ");
+		System.out.println(op + " " + reg1 + " " + reg2);
+		v0 = false;
+		v1 = false;
+
+		return (R) "v0";
 	}
 
 	/**

@@ -85,10 +85,15 @@ public class Debugger {
 			for (PairLiveRange P2 : SymbolTable.LinearRange) {
 				if (P1.second.start <= P2.second.end) {
 					if (P1.second.start >= P2.second.start) {
-						boolean var = (!(P1.equals(P2)) && SymbolTable.registers
-								.get(P1).equals(SymbolTable.registers.get(P2)));
-						if (var)
-							return true;
+						if (SymbolTable.registers.get(P1) != null) {
+							boolean var = (!(P1.equals(P2)) && SymbolTable.registers
+									.get(P1).equals(
+											SymbolTable.registers.get(P2)));
+							if (var) {
+								System.out.println(P1.first + " " + P2.first);
+								return true;
+							}
+						}
 					}
 				}
 			}

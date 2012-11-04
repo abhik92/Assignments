@@ -21,8 +21,9 @@ public class SymbolTable {
 	public static Vector<String> functions = new Vector<String>();
 
 	public static HashMap<String, String> variableRegister = new HashMap<String, String>();
-	public static int stackPointer = 18;// 0-17 reserved for storing the
-										// variables
+	public static HashMap<String, Integer> variableLocation = new HashMap<String, Integer>();
+	public static int stackPointer = 100;// Start from a random place on the
+											// stack
 
 	public static Vector<Pair> nodeList = new Vector<Pair>();
 	public static Vector<PairLiveRange> LinearRange = new Vector<PairLiveRange>();
@@ -108,6 +109,13 @@ public class SymbolTable {
 
 		for (java.util.Map.Entry<PairLiveRange, String> t : e1) {
 			variableRegister.put(t.getKey().first, t.getValue());
+		}
+
+		Set<java.util.Map.Entry<PairLiveRange, Integer>> e2 = SymbolTable.location
+				.entrySet();
+
+		for (java.util.Map.Entry<PairLiveRange, Integer> t : e2) {
+			variableLocation.put(t.getKey().first, t.getValue());
 		}
 
 	}
@@ -308,7 +316,7 @@ public class SymbolTable {
 		active.clear();
 		for (PairLiveRange i : LinearRange) {
 			ExpireOldIntervals(i);
-			if (active.size() == 18)
+			if (active.size() >= 18)
 				SpillAtInterval(i);
 			else {
 
