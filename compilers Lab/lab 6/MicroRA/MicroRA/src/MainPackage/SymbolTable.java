@@ -141,7 +141,7 @@ public class SymbolTable {
 	public static boolean noChange() {
 		for (Pair N : nodeList) {
 			ControlFlowNode n = N.first;
-			if (!n.liveIn.equals(n.inPrime) && !n.liveOut.equals(n.outPrime))
+			if (!n.liveIn.equals(n.inPrime) || !n.liveOut.equals(n.outPrime))
 				return false;
 		}
 		return true;
