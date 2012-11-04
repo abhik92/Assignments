@@ -417,6 +417,7 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(BinOp n) {
 		R _ret = null;
+		n.f1.accept(this);
 		R op = n.f0.accept(this);
 		System.out.print(op);
 		R temp = n.f1.accept(this);
