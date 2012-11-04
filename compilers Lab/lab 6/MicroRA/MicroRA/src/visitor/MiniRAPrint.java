@@ -152,6 +152,8 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 		n.f1.accept(this);
 		R intl = n.f2.accept(this);
 		numberOfParams = Integer.parseInt((String) intl);
+		if (numberOfParams >= 4)
+			fSP += (numberOfParams - 3);
 		System.out.println(lab + " [" + intl + "]["
 				+ (SymbolTable.LinearRange.size() + 18) + "][100]");
 		n.f3.accept(this);
@@ -327,6 +329,17 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 			if (var != null)
 				System.out.println("MOVE "
 						+ SymbolTable.variableRegister.get(var) + " a" + i);
+		}
+		for (i = 4; i < numberOfParams; i++) {
+			String var = "TEMP " + i + "#" + currentFunction;
+			// System.out.println(var);
+			var = AliasTable.getRAFromIR(var);
+			if (var != null) {
+				System.out.println("ALOAD v1 SPILLEDARG " + (i - 4));
+				System.out.println("MOVE "
+						+ SymbolTable.variableRegister.get(var) + " v1");
+			}
+
 		}
 		n.f0.accept(this);
 		n.f1.accept(this);

@@ -24,7 +24,7 @@ class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			Node root = new microIRParser(new FileInputStream(
-					"../../Tests/microIR/LinkedList.microIR")).Goal();
+					"../../Tests/microIR/TreeVisitor.microIR")).Goal();
 
 			// Node root = new microIRParser(System.in).Goal();
 			root.accept(new ExtractFunctions(), null);
