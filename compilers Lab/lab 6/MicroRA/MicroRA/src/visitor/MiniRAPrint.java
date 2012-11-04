@@ -322,10 +322,11 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 		int i;
 		for (i = 0; i < Math.min(4, numberOfParams); i++) {
 			String var = "TEMP " + i + "#" + currentFunction;
-			var = AliasTable.getRAFromIR(var);
 			// System.out.println(var);
-			System.out.println("MOVE " + SymbolTable.variableRegister.get(var)
-					+ " a" + i);
+			var = AliasTable.getRAFromIR(var);
+			if (var != null)
+				System.out.println("MOVE "
+						+ SymbolTable.variableRegister.get(var) + " a" + i);
 		}
 		n.f0.accept(this);
 		n.f1.accept(this);
