@@ -14,6 +14,16 @@ public class Debugger {
 		System.out.println("End -- Aliases --");
 	}
 
+	public static void printFlowGraph() {
+		System.out.println(" Begin -- Flow Graph ");
+		for (Pair t : SymbolTable.nodeList) {
+			System.out.println("P - " + t.first.pre + " S - " + t.first.succ
+					+ "Ins - " + t.first.typeOfInstruction + t.second);
+		}
+
+		System.out.println(" End -- Flow Graph ");
+	}
+
 	public static void printVariableRegisterMap() {
 		System.out.println("Begin -- VariableRegisterMap --");
 		Set<java.util.Map.Entry<String, String>> e = SymbolTable.variableRegister

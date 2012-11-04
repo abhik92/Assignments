@@ -52,6 +52,11 @@ public class SymbolTable {
 		for (java.util.Map.Entry<ControlFlowNode, Integer> i : e) {
 			nodeList.add(new Pair(i.getKey(), i.getValue()));
 		}
+		Collections.sort(nodeList, new Comparator<Pair>() {
+			public int compare(Pair o1, Pair o2) {
+				return o2.second - o1.second;
+			}
+		});
 	}
 
 	// Connects the edges between jump statements
@@ -64,10 +69,13 @@ public class SymbolTable {
 		for (java.util.Map.Entry<ControlFlowNode, Integer> i : i1) {
 			if (!i.getKey().toLabel.equals("")) {
 				String lab = i.getKey().toLabel;
+
 				for (java.util.Map.Entry<ControlFlowNode, Integer> j : i2) {
-					if (j.getKey().currentLabel.equals(lab)) {
-						// i.getKey().succ.add(j.getValue());
-						j.getKey().pre.add(i.getValue());
+					if (j.getKey().currentLabel != null) {
+						if (j.getKey().currentLabel.equals(lab)) {
+							// i.getKey().succ.add(j.getValue());
+							j.getKey().pre.add(i.getValue());
+						}
 					}
 				}
 			}
@@ -133,7 +141,7 @@ public class SymbolTable {
 	public static boolean noChange() {
 		for (Pair N : nodeList) {
 			ControlFlowNode n = N.first;
-			if (!n.liveIn.equals(n.inPrime) || !n.liveOut.equals(n.outPrime))
+			if (!n.liveIn.equals(n.inPrime) && !n.liveOut.equals(n.outPrime))
 				return false;
 		}
 		return true;
@@ -142,7 +150,7 @@ public class SymbolTable {
 	public static void livenessAnalysis() {
 		for (Pair N : nodeList) {
 			if (N.second == 0)
-				N.first.liveOut.addAll(N.first.defined);
+				N.first.liveOut.addAll(N.first.used);
 		}
 		do {
 

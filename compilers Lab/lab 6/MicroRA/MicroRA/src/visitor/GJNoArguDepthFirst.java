@@ -36,18 +36,19 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 
 	}
 
-	public void connectEdges(ControlFlowNode N, Integer I) {
+	public ControlFlowNode connectEdges(ControlFlowNode N, Integer I) {
 
 		if (labelledInstruction) {
 			N.currentLabel = curLabel;
 			labelledInstruction = false;
-
 		}
 		while (!flow.empty()) {
 			String top = flow.pop();
 			N.pre.add(Integer.parseInt(top));
 
 		}
+		return N;
+
 	}
 
 	public R visit(NodeList n) {
@@ -162,7 +163,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R _ret = null;
 		n.f0.accept(this);
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "noop";
 
@@ -179,7 +180,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "error";
 
@@ -199,7 +200,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R label = n.f2.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "cjump";
 		N.used.add((String) used);
@@ -220,11 +221,11 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R label = n.f1.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "jump";
 		N.toLabel = (String) label;
-		flow.push("" + nodeNumber);
+		// flow.push("" + nodeNumber);
 		symt.insert(N, nodeNumber++);
 
 		return _ret;
@@ -241,7 +242,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R used = n.f3.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "hstore";
 		N.used.add((String) used);
@@ -263,7 +264,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f3.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "hload";
 		N.used.add((String) used);
@@ -284,7 +285,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R exp = n.f2.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "move";
 		N.used.addAll((Vector<String>) exp);
@@ -305,7 +306,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R simExp = n.f1.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "print";
 		if (isTemp((String) simExp))
@@ -345,7 +346,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R simExp = n.f3.accept(this);
 
 		ControlFlowNode N = new ControlFlowNode();
-		connectEdges(N, nodeNumber);
+		N = connectEdges(N, nodeNumber);
 
 		N.typeOfInstruction = "return";
 		if (isTemp((String) simExp))
@@ -471,7 +472,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 
 		if (label) {
 			labelledInstruction = true;
-			curLabel = n.f0.tokenImage;
+			curLabel = AliasTable.IRtoRA.get(var);
 		}
 		if (!label)
 			label = true;
