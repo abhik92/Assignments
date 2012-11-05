@@ -12,6 +12,6 @@
 <fullyQualifiedTypeName name="MainPackage.PairLiveRange"/>
 <fullyQualifiedTypeName name="MainPackage.Debugger"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
-<fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
 <fullyQualifiedTypeName name="MainPackage.ControlFlowNode"/>
+<fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
 </qualifiedTypeNameHistroy>

@@ -53,11 +53,13 @@ public class SymbolTable {
 		for (java.util.Map.Entry<ControlFlowNode, Integer> i : e) {
 			nodeList.add(new Pair(i.getKey(), i.getValue()));
 		}
+
 		Collections.sort(nodeList, new Comparator<Pair>() {
 			public int compare(Pair o1, Pair o2) {
 				return o2.second - o1.second;
 			}
 		});
+
 	}
 
 	// Connects the edges between jump statements
@@ -149,8 +151,11 @@ public class SymbolTable {
 	public static boolean noChange() {
 		for (Pair N : nodeList) {
 			ControlFlowNode n = N.first;
-			if (!n.liveIn.equals(n.inPrime) || !n.liveOut.equals(n.outPrime))
+			if (!n.liveIn.equals(n.inPrime) || !n.liveOut.equals(n.outPrime)) {
+				// System.out.println(n.liveIn + " " + n.inPrime);
+				// System.out.println(n.liveOut + " " + n.outPrime);
 				return false;
+			}
 		}
 		return true;
 	}
@@ -161,7 +166,7 @@ public class SymbolTable {
 				N.first.liveOut.addAll(N.first.used);
 		}
 		do {
-
+			Vector<Pair> tempNodeList = new Vector<Pair>();
 			for (Pair N : nodeList) {
 
 				ControlFlowNode n = N.first;
@@ -192,8 +197,12 @@ public class SymbolTable {
 					n.liveOut.addAll(setUnion(n.liveOut, successor.liveIn));
 
 				}
-
+				// tempNodeList.add(new Pair(n, N.second));
+				// System.out.println(noChange());
 			}
+			// nodeList.clear();
+			// for (Pair N : tempNodeList)
+			// nodeList.add(N);
 		} while (!noChange());
 
 	}
@@ -280,9 +289,13 @@ public class SymbolTable {
 
 	public static void SpillAtInterval(PairLiveRange i) {
 		PairLiveRange spill = active.lastElement();
+
 		if (spill.second.end >= i.second.end) {
 			registers.put(i, registers.get(spill));
+
+			registers.remove(spill);
 			location.put(spill, stackPointer);
+
 			stackPointer++;
 			active.remove(spill);
 			addSorted(i);
