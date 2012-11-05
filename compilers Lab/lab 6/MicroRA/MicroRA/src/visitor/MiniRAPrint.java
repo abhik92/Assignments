@@ -28,6 +28,10 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	static boolean functionName = false;
 	static boolean label = true;
 
+	static int stackSize = 101 + SymbolTable.variableLocation.size() + 2; // 2
+																			// for
+																			// tambrahmness
+																			// safety
 	static boolean v0 = false;
 	static boolean v1 = false;
 	static int fSP = 0;
@@ -122,8 +126,7 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 	public R visit(Goal n) {
 		R _ret = null;
 		n.f0.accept(this);
-		System.out.println(" MAIN [0]" + "["
-				+ (SymbolTable.LinearRange.size() + 18) + "]" + "[100]");
+		System.out.println(" MAIN [0]" + "[" + stackSize + "]" + "[100]");
 		n.f1.accept(this);
 		n.f2.accept(this);
 		System.out.println(" END ");
@@ -156,8 +159,7 @@ public class MiniRAPrint<R> implements GJNoArguVisitor<R> {
 		numberOfParams = Integer.parseInt((String) intl);
 		if (numberOfParams >= 4)
 			fSP += (numberOfParams - 3);
-		System.out.println(lab + " [" + intl + "]["
-				+ (SymbolTable.LinearRange.size() + 18) + "][100]");
+		System.out.println(lab + " [" + intl + "][" + stackSize + "][100]");
 		n.f3.accept(this);
 		n.f4.accept(this);
 		functionName = true;

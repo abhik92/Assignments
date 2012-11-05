@@ -13,6 +13,6 @@
 <fullyQualifiedTypeName name="MainPackage.ControlFlowNode"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="MainPackage.Pair"/>
-<fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
 </qualifiedTypeNameHistroy>
