@@ -6,9 +6,9 @@ INDEX VERSION 1.126+/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6
 417373247.index
 1159935248.index
 3422508414.index
-2898480234.index
 2683054613.index
+2898480234.index
 1698757907.index
 262802227.index
-3937884183.index
 2586460927.index
+3937884183.index

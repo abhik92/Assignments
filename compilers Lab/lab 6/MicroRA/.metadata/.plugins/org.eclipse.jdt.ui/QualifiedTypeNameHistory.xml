@@ -4,14 +4,15 @@
 <fullyQualifiedTypeName name="java.util.Map.Entry"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="syntaxtree.NodeList"/>
-<fullyQualifiedTypeName name="MainPackage.Pair"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="MainPackage.LiveRange"/>
 <fullyQualifiedTypeName name="MainPackage.PairLiveRange"/>
 <fullyQualifiedTypeName name="MainPackage.Debugger"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="MainPackage.ControlFlowNode"/>
+<fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="MainPackage.Pair"/>
 <fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
 </qualifiedTypeNameHistroy>

@@ -4,13 +4,23 @@
  * References: Liveness Analysis , Linear Scan Algorithm (Class Slides,Wikipedia) 
  */
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Set;
+import java.util.Vector;
+
+import MainPackage.AliasTable;
+import MainPackage.ControlFlowNode;
+import MainPackage.Debugger;
+import MainPackage.LiveRange;
+import MainPackage.Pair;
+import MainPackage.PairLiveRange;
 import MainPackage.SymbolTable;
 
 import syntaxtree.*;
 import visitor.*;
 
-class RegAlloc {
+class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			/*

@@ -4,21 +4,29 @@
  * References: Liveness Analysis , Linear Scan Algorithm (Class Slides,Wikipedia) 
  */
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Set;
+import java.util.Vector;
+
+import MainPackage.AliasTable;
+import MainPackage.ControlFlowNode;
+import MainPackage.Debugger;
+import MainPackage.LiveRange;
+import MainPackage.Pair;
+import MainPackage.PairLiveRange;
 import MainPackage.SymbolTable;
 
 import syntaxtree.*;
 import visitor.*;
 
-class RegAlloc {
+class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
-			/*
-			 * Node root = new microIRParser(new FileInputStream(
-			 * "../../Tests/microIR/QuickSort.microIR")).Goal();
-			 */
+			Node root = new microIRParser(new FileInputStream(
+					"../../Tests/microIR/SLinearSearch.microIR")).Goal();
 
-			Node root = new microIRParser(System.in).Goal();
+			// Node root = new microIRParser(System.in).Goal();
 			root.accept(new ExtractFunctions(), null);
 			root.accept(new ChangeLocalsToGlobal(), null);
 			// Debugger.printAliases();
@@ -30,6 +38,7 @@ class RegAlloc {
 
 			// Debugger.printFlowGraph();
 
+			// Goes into infi loop sometimes. why ?
 			SymbolTable.livenessAnalysis();
 
 			SymbolTable.getLiveRanges();

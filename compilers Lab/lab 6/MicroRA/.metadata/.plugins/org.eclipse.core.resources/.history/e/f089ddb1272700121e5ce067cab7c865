@@ -4,6 +4,7 @@
  * References: Liveness Analysis , Linear Scan Algorithm (Class Slides,Wikipedia) 
  */
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import MainPackage.SymbolTable;
 
@@ -13,12 +14,11 @@ import visitor.*;
 class RegAlloc {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
-			/*
-			 * Node root = new microIRParser(new FileInputStream(
-			 * "../../Tests/microIR/QuickSort.microIR")).Goal();
-			 */
 
-			Node root = new microIRParser(System.in).Goal();
+			Node root = new microIRParser(new FileInputStream(
+					"../../Tests/microIR/QuickSort.microIR")).Goal();
+
+			// Node root = new microIRParser(System.in).Goal();
 			root.accept(new ExtractFunctions(), null);
 			root.accept(new ChangeLocalsToGlobal(), null);
 			// Debugger.printAliases();

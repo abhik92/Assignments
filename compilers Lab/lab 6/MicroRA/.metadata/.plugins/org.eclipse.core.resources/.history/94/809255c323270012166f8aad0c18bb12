@@ -10,7 +10,7 @@ import MainPackage.SymbolTable;
 import syntaxtree.*;
 import visitor.*;
 
-class RegAlloc {
+class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		try {
 			/*
