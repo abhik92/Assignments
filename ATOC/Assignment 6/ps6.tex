@@ -1,0 +1,62 @@
+\documentclass[12pt]{exam}
+\printanswers
+\usepackage{amsmath,amssymb,complexity}
+\begin{document}
+\hrule
+\vspace{3mm}
+\noindent 
+{\sf CS6014 : Advanced Theory of Computation  \hfill Given on: Nov 6, 7pm}
+\vspace{3mm}\\
+\noindent 
+{\sf Problem Set \#6 \hfill Due on : Nov 14, 5pm}
+\vspace{3mm}
+\hrule
+
+\begin{questions}
+
+\question[10] Oracle Queries.
+\begin{parts}
+\part Argue that $\P^\P = \P$. Why does not the same argument work for $\NP$ and give $\NP^{\NP} = \NP$?
+\part If $\NP = \co\NP$, argue that $\PH = \Sigma_1^p$.
+\end{parts}
+
+\question[10]
+\begin{parts}
+\part Reading Assignment : Read the proof (Section 3.4, Theorem 3.21, Page 93)  of the claim : $\DTIME(2^{O(s(n))} \subseteq ASPACE(s(n))$. Determine an upper bound on the number of children for any universal configuration in the alternating Turing machine produced in the construction.
+\part Conclude that $AL = \P$. Show that all $\CFL$s are in $\P$ by giving an alternating Turing machine running in $\log$ space for checking membership. (Assume that the $\CFL$ is given at the input in the $CNF$ form.).
+\end{parts}
+
+\question[10]
+Deﬁne the language:
+\[ \textrm{\sc ShortestPath} = {(G, k, s, t)| \textrm{ the shortest path from $s$ to $t$ in $G$ has length $k$} } \]
+\begin{parts}
+\part[5] Prove that {\sc ShortestPath} is in $\NL$.
+\part[5] Prove that {\sc ShortestPath} is in $\L$ if and only if $\L = \NL$.
+\end{parts}
+
+\question[15]
+An undirected graph is bipartite if its nodes can be divided into two sets such that all edges go from a node in one set to a node in the other set. Show that a graph is bipartite
+if and only if it does not contain a cycle that contains an odd number of nodes. Let 
+\[ \textrm{\sc Bipartite} =
+\{ G \mid G \textrm{ is a bipartite graph } \} \] 
+Show that {\sc Bipartite} is in $\NL$. (Hint : Use Immerman-Szelepsinyi theorem !).
+
+\question[25]
+We define the product of two $n \times n$ Boolean matrices $A$ and $B$ as another $n \times n$ Boolean
+matrix $C$ such that $C_{ij} = \bigvee_{k=1}^n (A_{ik} \land B_{kj})$.
+\begin{parts}
+\part[5] Show that boolean matrix multiplication can be done in logarithmic space.
+\part[5] Using repeated squaring, argue that $A^p$ can be computed in space $O(\log n \log p)$.
+\part[5] Show that if $A$ is the adjacency matrix of a graph, then $(A_{ij}^k = 1$ if and only if there
+is a path of length at most $k$ from the vertex $i$ to vertex $j$ and is $0$ otherwise.
+\part[5] Use the above to give an alternative proof that $\NL \subseteq \DSPACE(\log^2 n)$. We originally proved it using Savitch's theorem.
+\end{parts}
+
+\end{questions}
+
+%Add your answer like this.
+%\begin{solution}
+%
+%\end{solution}
+
+\end{document}

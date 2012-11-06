@@ -33,94 +33,103 @@ section .text
  	jmp 0x8:dword start-code_base; IP = 0x005a
  start:
  ; Initializing Flags
-	 mov dword [0x1ff0], 0x0; IP = 0x006c
-	 mov esp, 0x1f8f; IP = 0x0076
+	 mov dword [0xff], 0x0; IP = 0x006c
+	 mov esp, 0xff; IP = 0x0076
 	 popfd ; IP = 0x007b
 ;------------YOUR CODE START HERE------------------------------------------------
 ; At this point CS points to 0xa000 and all other segment registers  point
 ; to 0xb000 - They are stored in descriptor 0x8 (First one) and 0x10 (second one)
-;--------------------------------------------------------------------------------
+;-------------------------------------------------------------------------------
 
-;======================================
-;	TASK 1 - PRIVELEGE LEVEL 0
-;======================================
-
-;Segment selectors : 	CS : 0x8
-;			DS : 0x28
-;			SS : 0x48
-;tss descriptor	   : 	0x68
-;tss start	   :    0xb000
-
-;======================================
-call 0x71:0x0
-mov dword[ds:0],0xbaba	;memory location 0xc000
+;=============================================
+; TASK 1 : PL0 : 
+; cs : 0x8		tssd : 0x68
+; ds = 0x28		tss : 0xb400
+; ss = 0x48
+;=============================================
+mov eax, 0x1111cafe
+mov dword[ds:20], 0xcafecafe
+jmp 0x71:0x0
+mov dword[ds:24], 0xcafebabe
 jmp chanHappy
 
-align 0x200		;address is 0xa200
-;======================================
-;	TASK 2 - PRIVELEGE LEVEL 1
-;======================================
+;;;;;; Code to execute on call through a call gate ;;;;;;;
+align 0x100
+mov eax , 0xffffffff
+retf
 
-;Segment selectors : 	CS : 0x10
-;			DS : 0x30
-;			SS : 0x50
-;tss descriptor	   :	0x70
-;tss start	   :    0xb100
 
-;======================================
 
-mov dword[ds:0],0xabab	;memory location 0xc100
-;call 0x7a:0x0
-mov dword[ds:1],0xdaba	;memory location 0xc104
-iret
 
+;=============================================-
+; TASK 2 : PL1 : 
+; cs : 0x10		tssd : 0x70
+; ds = 0x30		tss : 0xb500
+; ss = 0x50
+;=============================================
+align 0x200
+mov eax, 0x2222cafe
+mov dword[ds:20], 0xaaaabbbb
+jmp 0x7a:0x0
+mov dword[ds:24], 0x2222dead
+mov ecx,0x2222dead
+jmp 0x68:0x0
+
+
+
+;=============================================
+; TASK 3 : PL2 : 
+; cs : 0x18		tssd : 0x78
+; ds = 0x38		tss : 0xb600
+; ss = 0x58
+;=============================================
 align 0x200		;address is 0xa400
-;======================================
-;	TASK 3 - PRIVELEGE LEVEL 2
-;======================================
+mov eax, 0x3333cafe
+mov dword[ds:20], 0xbbbbcccc
+jmp 0x83:0x0
+mov dword[ds:20], 0x3333dead
+jmp 0x71:0x0
 
-;Segment selectors : 	CS : 0x18
-;			DS : 0x38
-;			SS : 0x58
-;tss descriptor	   :	0x78
-;tss start	   :	0xb200
 
-;======================================
-mov dword[ds:0],0xabab	;memory location 0xc200
-call 0x83:0x0
-mov dword[ds:1],0xbaba	;memory location 0xc204
-iret
 
+;=============================================
+; TASK 4 : PL3 : 
+; cs : 0x20		tssd : 0x80
+; ds = 0x40		tss : 0xb700
+; ss = 0x60
+;=============================================
 align 0x200		;address is 0xa600
-;======================================
-;	TASK 4 - PRIVELEGE LEVEL 3
-;======================================
+mov eax, 0x4444cafe
+;;;;;;; Call Gate Descriptor ;;;;;;;
+call 0xa3:0x0
+mov dword[ds:20], 0x4444dead
+;;;;;;; Creating an exception by accesing a data segment of PL-1 from a Pl-3 code;;;;;
+mov ax , 0xab
+mov es , ax
+mov dword [es:0] , 0xdeaddead
+jmp 0x7a:0x0
 
-;Segment selectors : 	CS : 0x20
-;			DS : 0x40
-;			SS : 0x60
-;tss descriptor    :	0x80
-;tss start	   :	0xb300
-
-;======================================
-
-mov dword[ds:0],0xabab	;memory location 0xc300
-iret
 
 align 0x200		;address is 0xa800
 ;======================================
 ;	EXCEPTION HANDLER - PL0
 ;======================================
+pop ebx
+add ebx, 0x2004
+mov ax, 0x88
+mov es, ax
+bts dword [es:ebx], 14
+mov edx , 0xeeeeeeee
+iret
 
 
 
-
-align 0x200		;address is 0xaa00
+;align 0x200		;address is 0xaa00
 
 ;----------------------------YOUR CODE ENDS here-----------------
- ;Moving 0xbabe at specific location in 3rd data page to indicate successful completion of test
+;Moving 0xbabe at specific location in 3rd data page to indicate successful completion of test
  chanHappy:
-	 mov ax,0x10; IP = 0x087d
+	 mov ax,0x88; IP = 0x087d
 	 mov DS,ax; IP = 0x0881
 	 clts; IP = 0x0890
 ;Comparing Exception counter with actual number of induced eceptions
@@ -134,7 +143,7 @@ align 0x200		;address is 0xaa00
 	mov	al, 0xbb
 	jmp	bulb
  chanSad:
-	 mov ax,0x10; IP = 0x087d
+	 mov ax,0x88; IP = 0x087d
 	 mov DS,ax; IP = 0x0881
 	 clts; IP = 0x0890
 	mov	al, 0xff
@@ -166,9 +175,13 @@ align 0x200		;address is 0xaa00
 ;----------------------------------YOUR DATA -----------------------------------
 ; Two pages
 ;-------------------------------------------------------------------------------
+dd 0xaaaaaaaa
 
+
+
+align 0x400
 ;============================================
-;address 0xb000
+;address 0xb400
 ;TSS FOR TASK 1 - PL 0
 ;============================================
 dd 0x0		;prev task link
@@ -198,10 +211,12 @@ dd 0x0		;gs
 dd 0x90		;ldt seg selector
 dd 0x0		;io map base addr
 
+
+
 align 0x100
 
 ;============================================
-;address 0xb100
+;address 0xb500
 ;TSS FOR TASK2 - PL1
 ;============================================
 dd 0x0		;prev task link
@@ -231,10 +246,13 @@ dd 0x0		;gs
 dd 0x90		;ldt seg selector
 dd 0x0		;io map base addr
 
+
+
+
 align 0x100
 
 ;============================================
-;address 0xb200
+;address 0xb600
 ;TSS FOR TAKS3 - PL2
 ;============================================
 
@@ -266,10 +284,12 @@ dd 0x90		;ldt seg selector
 dd 0x0		;io map base addr
 
 
+
+
 align 0x100
 
 ;===============================================
-;address 0xb300
+;address 0xb700
 ;TSS FOR TASK4 - PL3
 ;===============================================
 
@@ -301,17 +321,43 @@ dd 0x90		;ldt seg selector
 dd 0x0		;io map base addr
 
 align 0x100
+;===============================================
+;address 0xb800
+;TSS FOR EXCEPTION HANDLER - PL0
+;===============================================
+dd 0x0		;prev task link
+dd 0x0100	;esp 0
+dd 0x48		;ss 0
+dd 0x100	;esp 1
+dd 0x51		;ss 1
+dd 0x100	;esp 2
+dd 0x5a		;ss 2
+dd 0x0		;cr3
+dd 0x800	;eip
+dd 0x0		;eflags
+dd 0x0		;eax
+dd 0x0		;ecx
+dd 0x0		;edx
+dd 0x0		;ebx
+dd 0x100	;esp
+dd 0x0		;ebp
+dd 0x0		;esi
+dd 0x0		;edi
+dd 0x0		;es
+dd 0x08		;cs
+dd 0x48		;ss
+dd 0x28		;ds
+dd 0x0		;fs
+dd 0x0		;gs
+dd 0x90		;ldt seg selector
+dd 0x0		;io map base addr
 
-;address 0xb400
-align 0x1000
-dd 0x0
 align 0x1000	;address 0xc000
 dd 0x0
 
 align 0x1000	;address 0xd000
 
-;-------------YOUR  DATA ENDS here------------------------------------ 
-
+;;;;;;;;;;;;;;;;;;;;;;;;; START OF GDT DESCRIPTORS ;;;;;;;;;;;;;;;;;;;;;;
 ;Chanix Control Page
 ;Start of My GDT
 
@@ -320,48 +366,33 @@ gdt_start:
 ;===================================================
 dd 0x00000000,0x00000000	;null  0x00  	   
 ;===================================================
-dd 0xa0000200,0x00409a00	;code  0x08  PL0	;this is different - read/execute accessed??
+dd 0xa000ffff,0x00409b00	;code  0x08  PL0	
 dd 0xa2000200,0x0040ba00	;code  0x10  PL1
 dd 0xa4000200,0x0040da00	;code  0x18  PL2
 dd 0xa6000200,0x0040fa00	;code  0x20  PL3
 ;===================================================
-dd 0xc0000100,0x00409200	;data  0x28  PL0
-dd 0xc1000100,0x0040b200	;data  0x30  PL1
-dd 0xc2000100,0x0040d200	;data  0x38  PL2
-dd 0xc3000100,0x0040f200	;data  0x40  PL3
+dd 0xb0000100,0x00409200	;data  0x28  PL0
+dd 0xb1000100,0x0040b200	;data  0x30  PL1
+dd 0xb2000100,0x0040d200	;data  0x38  PL2
+dd 0xb3000100,0x0040f200	;data  0x40  PL3
 ;===================================================
 dd 0xc4000100,0x00409200	;stack 0x48  PL0 
 dd 0xc5000100,0x0040b200	;stack 0x50  PL1
 dd 0xc6000100,0x0040d200	;stack 0x58  PL2
 dd 0xc7000100,0x0040f200	;stack 0x60  PL3
 ;===================================================
-dd 0xb0000100,0x00009900	;tssd  0x68  PL0	;confirm the granularity bit and sir used 4?
-dd 0xb1000100,0x0000b900	;tssd  0x70  PL1
-dd 0xb2000100,0x0000d900	;tssd  0x78  PL2
-dd 0xb3000100,0x0000e900	;tssd  0x80  PL3
+dd 0xb4000100,0x0000e900	;tssd  0x68  PL0	
+dd 0xb5000100,0x0000e900	;tssd  0x70  PL1
+dd 0xb6000100,0x0000e900	;tssd  0x78  PL2
+dd 0xb7000100,0x0000e900	;tssd  0x80  PL3
 ;===================================================
-dd 0xc8000100,0x00409200	;data  0x88  PL0	;default data segment
-
-;Kama - Moved Descriptor to Second place.
+;default data descriptor
+dd 0xb000f100,0x00409200	;data  0x88  PL0	
+;===================================================
 ;LDT descriptor			;ldt  0x90  
- db 0xff
- db 0x0
- db 0x0
- db 0xd1
- db 0x0
- db 0x82
- db 0x0
- db 0x0
-;TSS Descriptor for default task - starting of the test
- db 0x67
- db 0x0
- db 0x0
- db 0xda
- db 0x0
- db 0x89
- db 0x40
- db 0x0
-;TSS Descriptor for Double fault exception handler
+dd 0xd10000ff, 0x00008200
+; ==================================================
+;TSS Descriptor for Double fault exception handler ;0x98
  db 0x67
  db 0x0
  db 0x68
@@ -370,114 +401,33 @@ dd 0xc8000100,0x00409200	;data  0x88  PL0	;default data segment
  db 0x89
  db 0x40
  db 0x0
-;TSS [0.1] Descriptor
- db 0x67
- db 0x0
- db 0xd0
- db 0xda
- db 0x0
- db 0xa9
- db 0x40
- db 0x0
-;TSS [0.2] Descriptor
- db 0x67
- db 0x0
- db 0x38
- db 0xdb
- db 0x0
- db 0xc9
- db 0x40
- db 0x0
-;TSS [0.3] Descriptor
- db 0x67
- db 0x0
- db 0xa0
- db 0xdb
- db 0x0
- db 0xe9
- db 0x40
- db 0x0
-;TSS [1.0] Descriptor
- db 0x67
- db 0x0
- db 0x8
- db 0xdc
- db 0x0
- db 0xe9
- db 0x40
- db 0x0
-;TSS [1.1] Descriptor
- db 0x67
- db 0x0
- db 0x70
- db 0xdc
- db 0x0
- db 0xe9
- db 0x40
- db 0x0
-;TSS [1.2] Descriptor
- db 0x67
- db 0x0
- db 0xd8
- db 0xdc
- db 0x0
- db 0xe9
- db 0x40
- db 0x0
-;TSS [1.3] Descriptor
- db 0x67
- db 0x0
- db 0x40
- db 0xdd
- db 0x0
- db 0xe9
- db 0x40
- db 0x0
-;Code Descriptor DPL = 1, Non Conforming
- db 0xff
- db 0xff
- db 0x0
- db 0xa0
- db 0x0
- db 0xba
- db 0x40
- db 0x0
-;Code Descriptor DPL = 2, Non Conforming
- db 0xff
- db 0xff
- db 0x0
- db 0xa0
- db 0x0
- db 0xda
- db 0x40
- db 0x0
-;Code Descriptor DPL = 3, Non Conforming
- db 0xff
- db 0xff
- db 0x0
- db 0xa0
- db 0x0
- db 0xfa
- db 0x40
- db 0x0
-;Code Descriptor DPL = 0, Conforming
- db 0xff
- db 0xbf
- db 0x0
- db 0xa0
- db 0x0
- db 0x9e
- db 0x40
- db 0x0
- ;End of My GDT
- dw 0xf3a2
- dw 0x3fda
- dw 0xc866
- dw 0x6a8c
- dw 0x69f9
- dw 0x80c2
- dw 0x8e0a
- dw 0x396d
+;=======================================================
+; Call Gate Descriptor ;0xa0
+dd 0x00080100 , 0x0000ec00
+;=======================================================
+; Data Descriptor of PL-1 for generating exception ;0xa8
+dd 0xc1000100, 0x0040b200 
+;========================================================
+; Stack segment Descriptor for exception handler  ;0xb0
+dd 0xc8000100,0x00409200
+;========================================================
+; TSS Descriptor of exception handler
+dd 0xb8000100, 0x00408900       ;tss-excep 0xb8 PL0
+;========================================================
+
+
+ dw 0xeb0c
+ dw 0x2c00
+ dw 0x5b30
+ dw 0xfc6d
+ dw 0xfcfb
+ dw 0x9431
+ dw 0x7b4
+ dw 0xc993
+ dw 0x8e76
+ dw 0x5f52
+ dw 0x2e8a
+ dw 0x9108
  dw 0x52a
  dw 0x7ad5
  dw 0x8465
@@ -494,10 +444,15 @@ dd 0xc8000100,0x00409200	;data  0x88  PL0	;default data segment
  dw 0x9431
  dw 0x7b4
  dw 0xc993
+
+;RANDOM DATA DESCRIPTOR
  dw 0x8e76
  dw 0x5f52
  dw 0x2e8a
  dw 0x9108
+
+;;;;;;;;;;;;;;;;;;;;;;;; END OF GDT DESCRIPTORS(In total there are 32 in this) ;;;;;;;;;;;;;;;;;;;;
+
  ;Start of My LDT
 ldt_start:
  ;Null Descriptor
@@ -908,12 +863,12 @@ idt_start:
  db 0x0
  db 0x0
 ;Exception gate for type 13
- db 0x7c
- db 0x33
- db 0x8
  db 0x0
  db 0x0
- db 0xef
+ db 0xb8		;TSS Descriptor for Exception Handler;
+ db 0x0
+ db 0x0
+ db 0xe5		;e : P , DPL , Reserved = 1110  5:Reserved for Task Gate
  db 0x0
  db 0x0
 ;Exception gate for type 14
@@ -2332,13 +2287,13 @@ idt_start:
 ; TSS for double exception handler
  dd 0x0
  dd 0x1000
- dd 0x50
+ dd 0x88
  dd 0x1000
- dd 0x4d
+ dd 0x88
  dd 0x1000
- dd 0x56
+ dd 0x88
  dd 0x0
- dd 0x3358
+ dd 0x200
  dd 0x0
  dd 0x0
  dd 0x0
@@ -2348,13 +2303,13 @@ idt_start:
  dd 0x0
  dd 0x0
  dd 0x0
- dd 0x50
+ dd 0x88
  dd 0x8
- dd 0x50
- dd 0x50
- dd 0x50
- dd 0x50
- dd 0x58
+ dd 0x88
+ dd 0x88
+ dd 0x88
+ dd 0x88
+ dd 0x90
  dd 0x0
  tss0.1:
 ; TSS [0.1]

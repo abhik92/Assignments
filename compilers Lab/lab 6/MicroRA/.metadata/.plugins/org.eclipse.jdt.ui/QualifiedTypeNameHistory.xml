@@ -8,11 +8,11 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="MainPackage.LiveRange"/>
 <fullyQualifiedTypeName name="MainPackage.PairLiveRange"/>
-<fullyQualifiedTypeName name="MainPackage.Debugger"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="MainPackage.ControlFlowNode"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="MainPackage.Pair"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="MainPackage.SymbolTable"/>
+<fullyQualifiedTypeName name="MainPackage.Debugger"/>
 </qualifiedTypeNameHistroy>

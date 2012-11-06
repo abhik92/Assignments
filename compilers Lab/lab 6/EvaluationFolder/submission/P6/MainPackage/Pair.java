@@ -1,0 +1,11 @@
+package MainPackage;
+
+public class Pair {
+	public ControlFlowNode first;
+	public Integer second;
+
+	public Pair(ControlFlowNode A, Integer I) {
+		this.first = A;
+		this.second = I;
+	}
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="22" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
 <window height="719" maximized="true" width="1018" x="0" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -48,25 +48,25 @@
 </editorArea>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RegAlloc.java" partName="RegAlloc.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/RegAlloc.java" title="RegAlloc.java" tooltip="MicroRA/src/RegAlloc.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/RegAlloc.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="481" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="531" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst.java" partName="GJNoArguDepthFirst.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/visitor/GJNoArguDepthFirst.java" title="GJNoArguDepthFirst.java" tooltip="MicroRA/src/visitor/GJNoArguDepthFirst.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/visitor/GJNoArguDepthFirst.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="2" selectionOffset="4475" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="3" selectionOffset="4475" selectionTopPixel="3324"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ControlFlowNode.java" partName="ControlFlowNode.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/MainPackage/ControlFlowNode.java" title="ControlFlowNode.java" tooltip="MicroRA/src/MainPackage/ControlFlowNode.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/MainPackage/ControlFlowNode.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="201" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Debugger.java" partName="Debugger.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/MainPackage/Debugger.java" title="Debugger.java" tooltip="MicroRA/src/MainPackage/Debugger.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Debugger.java" partName="Debugger.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/MainPackage/Debugger.java" title="Debugger.java" tooltip="MicroRA/src/MainPackage/Debugger.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/MainPackage/Debugger.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2965" selectionTopPixel="812"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2965" selectionTopPixel="1270"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SymbolTable.java" partName="SymbolTable.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/MainPackage/SymbolTable.java" title="SymbolTable.java" tooltip="MicroRA/src/MainPackage/SymbolTable.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/MainPackage/SymbolTable.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5977" selectionTopPixel="3021"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MiniRAPrint.java" partName="MiniRAPrint.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/visitor/MiniRAPrint.java" title="MiniRAPrint.java" tooltip="MicroRA/src/visitor/MiniRAPrint.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MiniRAPrint.java" partName="MiniRAPrint.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 6/MicroRA/MicroRA/src/visitor/MiniRAPrint.java" title="MiniRAPrint.java" tooltip="MicroRA/src/visitor/MiniRAPrint.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/MicroRA/src/visitor/MiniRAPrint.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3438" selectionTopPixel="11929"/>
 </editor>
@@ -106,6 +106,8 @@
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
 <category IMemento.internal.id="Warnings (100 of 152 items)"/>
+<category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="105" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="997"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -466,165 +468,166 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/RegAlloc.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/SymbolTable.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/visitor/MiniRAPrint.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/ControlFlowNode.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/visitor/GJNoArguDepthFirst.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/RegAlloc.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/Debugger.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/SymbolTable.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/visitor/MiniRAPrint.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/RegAlloc.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/Debugger.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/SymbolTable.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/visitor/GJNoArguDepthFirst.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/MicroRA/src/MainPackage/ControlFlowNode.java"/>
 </editors>
-<item historyLabel="RegAlloc.java" index="0">
-<position/>
-</item>
-<item historyLabel="SymbolTable.java" index="1">
-<position info="not_deleted" x="5898" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position/>
-</item>
-<item historyLabel="ControlFlowNode.java" index="3">
-<position info="not_deleted" x="201" y="0"/>
-</item>
-<item historyLabel="SymbolTable.java" index="1">
-<position info="not_deleted" x="5897" y="1"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position/>
-</item>
-<item historyLabel="SymbolTable.java" index="1">
-<position/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="10200" y="0"/>
-</item>
-<item historyLabel="SymbolTable.java" index="1">
-<position info="not_deleted" x="9155" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="10200" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="12873" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="13019" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="13201" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="13255" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="7345" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="8450" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="8082" y="6"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="7878" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="7878" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="8409" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="8471" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="11577" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="11831" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="11903" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="12582" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position info="not_deleted" x="529" y="0"/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="15598" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position/>
-</item>
-<item historyLabel="MiniRAPrint.java" index="2">
-<position info="not_deleted" x="8641" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position info="not_deleted" x="742" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position info="not_deleted" x="144" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position info="not_deleted" x="182" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="4">
-<position info="not_deleted" x="3" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="4">
-<position info="not_deleted" x="4475" y="2"/>
-</item>
-<item historyLabel="RegAlloc.java" index="0">
-<position info="not_deleted" x="426" y="0"/>
-</item>
-<item historyLabel="GJNoArguDepthFirst.java" index="4">
-<position info="not_deleted" x="4475" y="2"/>
-</item>
-<item historyLabel="ControlFlowNode.java" index="3">
-<position info="not_deleted" x="201" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="5">
-<position info="not_deleted" x="3" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="5">
-<position info="not_deleted" x="426" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="5">
-<position info="not_deleted" x="481" y="0"/>
-</item>
-<item historyLabel="RegAlloc.java" index="5">
+<item historyLabel="RegAlloc.java" index="1">
 <position info="not_deleted" x="865" y="0"/>
 </item>
-<item historyLabel="ControlFlowNode.java" index="3">
+<item historyLabel="ControlFlowNode.java" index="0">
 <position info="not_deleted" x="201" y="0"/>
+</item>
+<item historyLabel="Debugger.java" index="2">
+<position info="not_deleted" x="2965" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="3">
+<position info="not_deleted" x="4590" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="1">
+<position info="not_deleted" x="481" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="3">
+<position info="not_deleted" x="4590" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MiniRAPrint.java" index="4">
+<position info="not_deleted" x="3" y="0"/>
+</item>
+<item historyLabel="MiniRAPrint.java" index="4">
+<position info="not_deleted" x="8743" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="3" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="531" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="1204" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="1223" y="8"/>
+</item>
+<item historyLabel="Debugger.java" index="6">
+<position info="not_deleted" x="2965" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="9217" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="1020" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="9217" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="1095" y="0"/>
 </item>
 <item historyLabel="Debugger.java" index="6">
 <position info="not_deleted" x="2965" y="0"/>
 </item>
 <item historyLabel="SymbolTable.java" index="7">
-<position info="not_deleted" x="4590" y="0"/>
+<position info="not_deleted" x="9217" y="0"/>
 </item>
 <item historyLabel="RegAlloc.java" index="5">
-<position info="not_deleted" x="481" y="0"/>
+<position info="not_deleted" x="682" y="0"/>
 </item>
 <item historyLabel="SymbolTable.java" index="7">
-<position info="not_deleted" x="4590" y="0"/>
+<position info="not_deleted" x="9217" y="0"/>
 </item>
-<item historyLabel="SymbolTable.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="682" y="0"/>
 </item>
-<item historyLabel="MiniRAPrint.java" index="8">
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="981" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="8">
 <position info="not_deleted" x="3" y="0"/>
 </item>
-<item active="true" historyLabel="MiniRAPrint.java" index="8">
-<position info="not_deleted" x="8743" y="0"/>
+<item historyLabel="GJNoArguDepthFirst.java" index="8">
+<position info="not_deleted" x="4475" y="3"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="852" y="1"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="9217" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="8356" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="1102" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="8396" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="1174" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="8396" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="8486" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="681" y="1"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="8313" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="1204" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="8313" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="1203" y="1"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="8313" y="0"/>
+</item>
+<item historyLabel="SymbolTable.java" index="7">
+<position info="not_deleted" x="5977" y="0"/>
+</item>
+<item historyLabel="RegAlloc.java" index="5">
+<position info="not_deleted" x="531" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="8">
+<position info="not_deleted" x="4475" y="3"/>
+</item>
+<item historyLabel="ControlFlowNode.java" index="9">
+<position info="not_deleted" x="201" y="0"/>
+</item>
+<item active="true" historyLabel="Debugger.java" index="6">
+<position info="not_deleted" x="2965" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
