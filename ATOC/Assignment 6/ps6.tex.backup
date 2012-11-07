@@ -21,24 +21,7 @@
 \end{parts}
 \begin{solution}
  $\P^\P \subseteq P $ \newline
- Let $L \in \P^\P$ . There exists an oracle TM $N$ such that, it runs in polynomial time and has access to a language in $P$ as an oracle. This
- can be simulated by deterministic polynomial time machine $M$ without the oracle as follows : \newline
- 
- $M$ runs on the input in the same way as $N$. Except whenever $N$ makes query to the oracle to check if $x \in K$ where $K$ is the oracle, $M$ runs
- the machine corresponding to the oracle language on $x$ and gets the answer. It then proceeds in the similar way as the machine $N$. Since the oracle is a 
- language in $\P$, the simulation of the query to oracle takes deterministic polynomial time. Hence , $M$ runs in polynomial time.
- 
- $\P \subseteq \P^\P$ \newline
- This containment is trivially true, since the machine accepting $\P$ need not use the oracle and hence belongs to $\P^\P$ \newline
- 
- From above two containments, $\P^\P = \P$ \newline
- 
- The above argument wont work for $\NP$ because the machine does a guess and tries to verify the guess in deterministic polynomial time. \newline
- Consider a machine $M$ which has access to a oracle in $\NP$. Using the oracle in $\NP$ it verifies the certificate in polynomial time. To simulate the
- same using a $\NP$ machine without an oracle access, it has to simulate the query access to $\NP$ in $\P$ time. And since, we dont know if this is possible,
- hence we cant conclude the forward containment in above argument.
-  
- 
+ Let $L \in \P^\P$ . There exists an oracle TM $N$ such that, it runs in polynomial time and has access to a language in $P$ as an oracle.
  
 \end{solution}
 
