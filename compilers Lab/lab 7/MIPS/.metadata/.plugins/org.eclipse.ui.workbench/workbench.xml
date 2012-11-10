@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="13" version="2.0">
+<workbench progressCount="23" version="2.0">
 <workbenchAdvisor/>
 <window height="719" maximized="true" width="1024" x="0" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -41,11 +41,11 @@
 </editorArea>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GJNoArguDepthFirst.java" partName="GJNoArguDepthFirst.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 7/MIPS/RAToMIPS/src/visitor/GJNoArguDepthFirst.java" title="GJNoArguDepthFirst.java" tooltip="RAToMIPS/src/visitor/GJNoArguDepthFirst.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RAToMIPS/src/visitor/GJNoArguDepthFirst.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7373" selectionTopPixel="5190"/>
+<editorState selectionHorizontalPixel="0" selectionLength="34" selectionOffset="3424" selectionTopPixel="2305"/>
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Codegen.java" partName="Codegen.java" path="/home/karthikabinav/fifthsem/Assignments/compilers Lab/lab 7/MIPS/RAToMIPS/src/Codegen.java" title="Codegen.java" tooltip="RAToMIPS/src/Codegen.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/RAToMIPS/src/Codegen.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="305" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="303" selectionTopPixel="54"/>
 </editor>
 </editors>
 <views>
@@ -56,8 +56,6 @@
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
 <category IMemento.internal.id="Warnings"/>
-<category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Warnings (100 of 116 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="310" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -283,7 +281,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.2496318" ratioLeft="339" ratioRight="1019" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.2852292" ratioLeft="168" ratioRight="421" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.13582343" ratioLeft="80" ratioRight="509" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -317,6 +315,7 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/RAToMIPS/src/visitor/GJNoArguDepthFirst.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/RAToMIPS/src/Codegen.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/RAToMIPS/src/visitor/GJNoArguDepthFirst.java"/>
 </editors>
 <item historyLabel="GJNoArguDepthFirst.java" index="0">
 <position info="not_deleted" x="3" y="0"/>
@@ -411,8 +410,56 @@
 <item historyLabel="GJNoArguDepthFirst.java" index="0">
 <position info="not_deleted" x="7373" y="0"/>
 </item>
-<item active="true" historyLabel="Codegen.java" index="1">
+<item historyLabel="Codegen.java" index="1">
 <position info="not_deleted" x="305" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position info="not_deleted" x="3" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position info="not_deleted" x="7283" y="0"/>
+</item>
+<item historyLabel="Codegen.java" index="1">
+<position info="not_deleted" x="303" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position info="not_deleted" x="7283" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position info="not_deleted" x="6787" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position info="not_deleted" x="6955" y="0"/>
+</item>
+<item historyLabel="Codegen.java" index="1">
+<position info="not_deleted" x="303" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position info="not_deleted" x="6955" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position/>
+</item>
+<item historyLabel="Codegen.java" index="1">
+<position info="not_deleted" x="303" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position/>
+</item>
+<item historyLabel="Codegen.java" index="1">
+<position info="not_deleted" x="303" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position info="not_deleted" x="3385" y="0"/>
+</item>
+<item historyLabel="Codegen.java" index="1">
+<position info="not_deleted" x="303" y="0"/>
+</item>
+<item historyLabel="GJNoArguDepthFirst.java" index="2">
+<position info="not_deleted" x="3424" y="34"/>
+</item>
+<item active="true" historyLabel="Codegen.java" index="1">
+<position info="not_deleted" x="303" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -420,9 +467,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>

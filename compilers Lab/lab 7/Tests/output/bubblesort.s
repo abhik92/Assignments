@@ -51,7 +51,7 @@ j $ra
 BBS_Start:
 sw $fp, -8($sp)
 move $fp, $sp
-subu $sp, $sp,16
+subu $sp, $sp,28
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -90,15 +90,15 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 8($sp)
-addu $sp, $sp, 16
+lw $fp, 20($sp)
+addu $sp, $sp, 28
 j $ra
 .text
 .globl BBS_Sort
 BBS_Sort:
 sw $fp, -8($sp)
 move $fp, $sp
-subu $sp, $sp,4
+subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 move $s0 $a0
@@ -262,15 +262,15 @@ li $t0 0
 move $v0 $t0
 lw $s0, 0($sp)
 lw $ra, -4($fp)
-lw $fp, -4($sp)
-addu $sp, $sp, 4
+lw $fp, 4($sp)
+addu $sp, $sp, 12
 j $ra
 .text
 .globl BBS_Print
 BBS_Print:
 sw $fp, -8($sp)
 move $fp, $sp
-subu $sp, $sp,4
+subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 move $s0 $a0
@@ -308,15 +308,15 @@ li $t0 0
 move $v0 $t0
 lw $s0, 0($sp)
 lw $ra, -4($fp)
-lw $fp, -4($sp)
-addu $sp, $sp, 4
+lw $fp, 4($sp)
+addu $sp, $sp, 12
 j $ra
 .text
 .globl BBS_Init
 BBS_Init:
 sw $fp, -8($sp)
 move $fp, $sp
-subu $sp, $sp,8
+subu $sp, $sp,20
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -615,8 +615,8 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 0($sp)
-addu $sp, $sp, 8
+lw $fp, 12($sp)
+addu $sp, $sp, 20
 j $ra
 .text 
 .globl _halloc

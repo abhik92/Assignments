@@ -44,7 +44,7 @@ j $ra
 MT4_Start:
 sw $fp, -8($sp)
 move $fp, $sp
-subu $sp, $sp,56
+subu $sp, $sp,88
 sw $ra, -4($fp)
 sw $s0, 12($sp)
 sw $s1, 16($sp)
@@ -60,24 +60,24 @@ move $a0 $s2
 jal _print
 move $a0 $s3
 jal _print
-lw $v1, 0($sp)
+lw $v1, 0($fp)
 move $a0 $v1
 jal _print
-lw $v1, 4($sp)
+lw $v1, 4($fp)
 move $a0 $v1
 jal _print
-lw $v1, 8($sp)
+lw $v1, 8($fp)
 move $a0 $v1
 jal _print
 move $t0 $s0
 lw $t1 0( $t0)
 lw $t2 4( $t1)
 move $a0 $t0
-lw $v1, 8($sp)
+lw $v1, 8($fp)
 move $a1 $v1
-lw $v0, 4($sp)
+lw $v0, 4($fp)
 move $a2 $v0
-lw $v0, 0($sp)
+lw $v0, 0($fp)
 move $a3 $v0
 sw $s3, 0($sp)
 sw $s2, 4($sp)
@@ -91,15 +91,15 @@ lw $s1, 16($sp)
 lw $s2, 20($sp)
 lw $s3, 24($sp)
 lw $ra, -4($fp)
-lw $fp, 48($sp)
-addu $sp, $sp, 56
+lw $fp, 80($sp)
+addu $sp, $sp, 88
 j $ra
 .text
 .globl MT4_Change
 MT4_Change:
 sw $fp, -8($sp)
 move $fp, $sp
-subu $sp, $sp,28
+subu $sp, $sp,60
 sw $ra, -4($fp)
 sw $s0, 12($sp)
 sw $s1, 16($sp)
@@ -115,13 +115,13 @@ move $a0 $s2
 jal _print
 move $a0 $s3
 jal _print
-lw $v1, 0($sp)
+lw $v1, 0($fp)
 move $a0 $v1
 jal _print
-lw $v1, 4($sp)
+lw $v1, 4($fp)
 move $a0 $v1
 jal _print
-lw $v1, 8($sp)
+lw $v1, 8($fp)
 move $a0 $v1
 jal _print
 li $t0 0
@@ -131,8 +131,8 @@ lw $s1, 16($sp)
 lw $s2, 20($sp)
 lw $s3, 24($sp)
 lw $ra, -4($fp)
-lw $fp, 20($sp)
-addu $sp, $sp, 28
+lw $fp, 52($sp)
+addu $sp, $sp, 60
 j $ra
 .text 
 .globl _halloc
