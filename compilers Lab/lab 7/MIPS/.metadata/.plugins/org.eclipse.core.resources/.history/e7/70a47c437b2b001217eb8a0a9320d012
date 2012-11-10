@@ -328,7 +328,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 		R intl = n.f1.accept(this);
 		R reg = n.f2.accept(this);
-		int num = Integer.parseInt((String) intl) - 1;
+		int num = Integer.parseInt((String) intl);
 		num = num * 4;
 		System.out.println("sw " + reg + ", " + num + "($sp)");
 
@@ -362,10 +362,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R _ret = null;
 		n.f0.accept(this);
 		R simexp = n.f1.accept(this);
-		if (((String) simexp).startsWith("$"))
-			System.out.println("move $a0 " + simexp);
-		else
-			System.out.println("li $a0 " + simexp);
+		System.out.println("li $a0 " + simexp);
 		System.out.println("jal _halloc");
 
 		return _ret;

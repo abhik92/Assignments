@@ -328,7 +328,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 		R intl = n.f1.accept(this);
 		R reg = n.f2.accept(this);
-		int num = Integer.parseInt((String) intl) - 1;
+		int num = Integer.parseInt((String) intl)-1;
 		num = num * 4;
 		System.out.println("sw " + reg + ", " + num + "($sp)");
 
