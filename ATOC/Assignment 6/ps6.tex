@@ -33,11 +33,27 @@
  
  From above two containments, $\P^\P = \P$ \newline
  
- The above argument wont work for $\NP$ because the machine does a guess and tries to verify the guess in deterministic polynomial time. \newline
- Consider a machine $M$ which has access to a oracle in $\NP$. Using the oracle in $\NP$ it verifies the certificate in polynomial time. To simulate the
- same using a $\NP$ machine without an oracle access, it has to simulate the query access to $\NP$ in $\P$ time. And since, we dont know if this is possible,
- hence we cant conclude the forward containment in above argument.
-  
+ The above argument wont work for $\NP$ because, when the oracle gives the answer as no, the same thing cannot be determined by simulating a 
+ $\NP$ machine in polynomial time. Since , the time for a non deterministic machine is defined as the length of the shortest accepting path. Hence,the rejecting
+ paths in the non deterministic tree may not be of polynomial length. \newline
+ 
+ This can be shown using induction on $i$ of $\Sigma_{i}^{P}$ .\newline
+ Base case. $i$ = 2. \newline
+ we have to show $\NP^\NP = \NP$.
+ The reverse containment is trivially true. To show the forward containment, we can simulate the queries on the oracle by simulating the two non deterministic
+ machines corresponding to $L$(say $M$) and $\overline{L}$(say $N$) . There exists a non deterministic polynomial time machine for $\overline{L}$ because $\NP$ = $\co\NP$. \newline
+ Whenever the original machine made a query to oracle, simulate both the non deterministic machine in time sharing fashion. If $M$ accepts, interpret as a yes answer by
+ the oracle and continue calculation as the original machine. If $N$ accepts, interpret as a no answer by the oracle and continue calculation as the original machine.
+ Since, both $M$ and $N$ accepts in poylnomial time, this new machine also runs in polynomial time. Hence, $\Sigma_{2}^{P}$ = $\Sigma_{1}^{P}$. \newline
+ 
+ Let for some $k > 2$, $\Sigma_{k}^{P} = \Sigma_{1}^{P}$.\newline
+ $\Sigma_{k+1}^{P}$ is language which can be accepted in $\NP$ time given an oracle to $\Sigma_{k}^{P}$. Since, from induction hypothesis, $\Sigma_{k}^{P}$
+  = $\Sigma_{1}^{P}$, this can be accepted by a machine in $\NP$ time which has oracle access to $\NP$. Similar to the above case, let $M$ be a machine
+  which accepts the language corresponding to $L \in \NP$ and $\overline{L} \in \co\NP$ . Now, the oracle query can be replaced by simulating both the machines
+  in a time sharing manner. If $M$ accepts, interpret as a yes answer from oracle. If $N$ accepts, interpret as a no answer from oracle. Then continue
+  computation normally as the oracle machine from there. Since, both $M$ and $N$ accepts in polynomial time, hence the entire simulation can be done in $\NP$ time.
+  Therefore, $\Sigma_{k+1}^{P}$ = $\Sigma_{1}^{P}$.
+ 
  
  
 \end{solution}

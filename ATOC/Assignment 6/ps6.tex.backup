@@ -21,7 +21,29 @@
 \end{parts}
 \begin{solution}
  $\P^\P \subseteq P $ \newline
- Let $L \in \P^\P$ . There exists an oracle TM $N$ such that, it runs in polynomial time and has access to a language in $P$ as an oracle.
+ Let $L \in \P^\P$ . There exists an oracle TM $N$ such that, it runs in polynomial time and has access to a language in $P$ as an oracle. This
+ can be simulated by deterministic polynomial time machine $M$ without the oracle as follows : \newline
+ 
+ $M$ runs on the input in the same way as $N$. Except whenever $N$ makes query to the oracle to check if $x \in K$ where $K$ is the oracle, $M$ runs
+ the machine corresponding to the oracle language on $x$ and gets the answer. It then proceeds in the similar way as the machine $N$. Since the oracle is a 
+ language in $\P$, the simulation of the query to oracle takes deterministic polynomial time. Hence , $M$ runs in polynomial time.
+ 
+ $\P \subseteq \P^\P$ \newline
+ This containment is trivially true, since the machine accepting $\P$ need not use the oracle and hence belongs to $\P^\P$ \newline
+ 
+ From above two containments, $\P^\P = \P$ \newline
+ 
+ The above argument wont work for $\NP$ because, when the oracle gives the answer as no, the same thing cannot be determined by simulating a 
+ $\NP$ machine in polynomial time. Since , the time for a non deterministic machine is defined as the length of the shortest accepting path. Hence,the rejecting
+ paths in the non deterministic tree may not be of polynomial length. \newline
+ 
+ This can be shown using induction on $i$ of $\Sigma_{i}^{P}$ .\newline
+ Base case. $i$ = 2. \newline
+ we have to show $\NP^\NP = \NP$.
+ The reverse containment is trivially true. To show the forward containment, we can simulate the queries on the oracle by simulating the two non deterministic
+ machines corresponding to $L$ and $\overline{L}$ . There exists a non deterministic polynomial time machine for $\overline{L}$ because $\NP$ = $\co\NP$.
+ 
+ 
  
 \end{solution}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  8 NOV 2012 00:29
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  10 NOV 2012 16:02
 entering extended mode
  %&-line parsing enabled.
 **ps6.tex
@@ -208,29 +208,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 
  []
 
-Missing character: There is no Ô in font cmr12!
-Missing character: There is no ¨ in font cmr12!
-Missing character: There is no Å in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--48
+
+ []
+
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (32.44412pt too wide) in paragraph at lines 72--73
+Missing character: There is no Ô in font cmr12!
+Missing character: There is no ¨ in font cmr12!
+Missing character: There is no Å in font cmr12!
+
+Overfull \hbox (32.44412pt too wide) in paragraph at lines 88--89
 []\OT1/cmr/m/n/12 Using re-peated squar-ing, ar-gue that $\OML/cmm/m/it/12 A[]$
  \OT1/cmr/m/n/12 can be com-puted in space $\OML/cmm/m/it/12 O\OT1/cmr/m/n/12 (
 [] \OML/cmm/m/it/12 n [] p\OT1/cmr/m/n/12 )$. 
  []
 
-[2]
+[2] [3]
 This exam contains 5 questions with 10 parts, 0 subparts, and 0 subsubparts.
 (./ps6.aux) ) 
 Here is how much of TeX's memory you used:
- 2522 strings out of 495061
- 27672 string characters out of 1182622
- 94719 words of memory out of 3000000
- 5723 multiletter control sequences out of 15000+50000
+ 2523 strings out of 495061
+ 27680 string characters out of 1182622
+ 96719 words of memory out of 3000000
+ 5724 multiletter control sequences out of 15000+50000
  11347 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 28i,10n,24p,322b,279s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,9n,24p,322b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pf
 b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-t
@@ -240,9 +251,9 @@ ic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
 cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb
 ></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share
 /texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on ps6.pdf (2 pages, 112677 bytes).
+Output written on ps6.pdf (3 pages, 115751 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
+ 52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
