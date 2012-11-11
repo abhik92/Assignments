@@ -113,7 +113,7 @@ be bipartite.\newline
 
 Graph contains no odd cycles $\implies$ Bipartite graph  . \newline
 
-Divide the set of vertices in the graph into set $A$ and $V\setminusA$. \newline
+Divide the set of vertices in the graph into set $A$ and $V \setminus A$. \newline
 Every vertex $v \in A \Leftrightarrow $ the shortest path from every vertex in $A$ to $v$ is of odd length.
 
 For such a construction of set, if there is no odd cycle, the graph is bipartite. Suppose there is no odd cycle, and let $v_{1}$ and $v_{2}$
@@ -123,18 +123,13 @@ and $v_{2}$ in $A$ such that they are adjacent. Hence graph is bipartite.
 
 \part
 Consider the language $\overline{BIPARTITE}$ which is the complement of $BIPARTITE$. \newline
-We can show that $\overine{BIPARTITE} \in \NL$ from the result in part(a). That is given a graph $G$, if there exists a odd cycle, then $G \in \overline{BIPARTITE}$.
+We can show that $\overline{BIPARTITE} \in \NL$ from the result in part(a). That is given a graph $G$, if there exists a odd cycle, then $G \in \overline{BIPARTITE}$.
 Since, we already know {\sc Reach} $\in \NL$, we have to check if any of (G,$v_{1}$,$v_{1}$) ,(G,$v_{2}$,$v_{2}$) .. (G,$v_{n}$,$v_{n}$) is in {\sc Reach}.
 This can also be done in log space because, we can reuse the same space of (G,$v_{1}$,$v_{1}$) for checking (G,$v_{2}$,$v_{2}$),...(G,$v_{n}$,$v_{n}$). \newline
 Hence, $\overline{BIPARTITE}\in \NL$ and $BIPARTITE \in \co\NL$. \newline
 
 From Immerman-Szelepsinyi Theorem, $\NL = \co\NL$. Hence, $BIPARTITE \in \NL$.
-
-
 \end{parts}
-
-
-
 \end{solution}
 
 
@@ -148,6 +143,52 @@ matrix $C$ such that $C_{ij} = \bigvee_{k=1}^n (A_{ik} \land B_{kj})$.
 is a path of length at most $k$ from the vertex $i$ to vertex $j$ and is $0$ otherwise.
 \part[5] Use the above to give an alternative proof that $\NL \subseteq \DSPACE(\log^2 n)$. We originally proved it using Savitch's theorem.
 \end{parts}
+
+\begin{solution}
+ \begin{parts}
+  \part
+    To do boolean matrix multiplication, we need to store the indices $i$,$j$,$k$ and the current value of $A_{ik} \wedge B_{kj}$ .
+    Since, each of $i$,$j$,$k$ can be atmost $n$, each of them require $\log (n)$ bits to represent. To store the current value we need 1 bit.
+    Hence, to calculate the value of $C_{ij}$ we need $3 \log(n) + 1$ bits. This space can be reused for the calculations of all the entries in the matrix 
+    $C$. Hence, the entire matrix multiplication of boolean values can be done in log space.
+    \part
+    Using the regular repeated squaring algorithm will require us to store the intermidiate matrices $A$,$A^{2}$,$A^{4}$.. But, each of them will require
+    O($n$) and hence the overall space needed will become O($n$ $\log (p)$). Instead a slightly modified approach can be used. In the repeated squaring
+    algorithm, whenever the $i,j$ th entry of $A^{r}$ for 1$\leqslant r \leqslant n$ is needed for the calculation, it is calculated seperately by invoking the 
+    multiplication algorithm on $A^{r/2}$ and calculating the $i,j$ th entry of that matrix. Hence, atmost $\log (p)$ times that call will be made, and 
+    $\log (p)$ bits needs to be stored. And each multiplication will take $\log (n)$ space which can be reused for successive multiplication. Hence, the total
+    space needed will be O($\log (n) \log (p)$).
+    
+    \part
+    This can be shown by using induction on length k. \newline
+    Base: \newline
+    The matrix $A$ contains entries which trivially indicates the existence of a path of length 1 between pair of vertices. i.e. if a edge exists
+    between the vertices, there is a path of length 1. \newline
+    Inductive case: \newline
+    Let, $A^{k}$ ,$2 \leqslant k \leqslant n $ denote the entries such that if a path of length atmost k exists it is 1 , else 0. \newline
+    $A^{k+1}$ = $A^{k} \ast A$ . \newline
+    $A^{k+1}_{ij}$ is 1 if $A^{k}_{ir}$ is 1 and $A_{rj}$ is 1. This can alternatively be interpreted as, if there is a path of atmost length $k$ from vertex
+    $i$ to $r$ and a path of length 1 from vertex $r$ to $j$. And the length of this path from $i$ to $j$ will be atmost $k$ + 1 . Hence, all the 1 entries in $A^{k+1}$
+    indicate the pair of vertices having a atmost $k+1$ path between them.
+    
+    \part 
+    From part (c), $A^{n}$ contains a 1 if there is a path of length atmost $n$. In a graph, if there exists a path between two vertices, then there exists
+    a path of at most $n$ length between those two vertices (Pigeon hole principle). Hence, if $A^{n}_{ij}$ is 1 if and only if  $i$ is reachable from
+    $j$. From part (b) , the matrix $A^{n}$ can be calculated in O($\log (n) \ast \log (n)$) space. \newline
+    For any language in $\NL$, it can be reduced to $REACH$ under log space reductions. And $REACH$ can be solved in $DSPACE(\log^{2} (n))$ using the
+    $n$ th power of the adjancency matrix. Hence, $L \in \NL \implies L \in DSPACE(\log^{2}(n))$. \newline
+    Hence, $\NL \subseteq DSPACE(\log^{2} (n))$.
+    
+    
+    
+ \end{parts}
+
+ 
+ 
+\end{solution}
+
+
+
 
 \end{questions}
 
