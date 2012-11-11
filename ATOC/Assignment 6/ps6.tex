@@ -20,6 +20,9 @@
 \part If $\NP = \co\NP$, argue that $\PH = \Sigma_1^p$.
 \end{parts}
 \begin{solution}
+\begin{parts}
+ 
+\part
  $\P^\P \subseteq P $ \newline
  Let $L \in \P^\P$ . There exists an oracle TM $N$ such that, it runs in polynomial time and has access to a language in $P$ as an oracle. This
  can be simulated by deterministic polynomial time machine $M$ without the oracle as follows : \newline
@@ -36,7 +39,8 @@
  The above argument wont work for $\NP$ because, when the oracle gives the answer as no, the same thing cannot be determined by simulating a 
  $\NP$ machine in polynomial time. Since , the time for a non deterministic machine is defined as the length of the shortest accepting path. Hence,the rejecting
  paths in the non deterministic tree may not be of polynomial length. \newline
- 
+
+ \part
  This can be shown using induction on $i$ of $\Sigma_{i}^{P}$ .\newline
  Base case. $i$ = 2. \newline
  we have to show $\NP^\NP = \NP$.
@@ -53,9 +57,7 @@
   in a time sharing manner. If $M$ accepts, interpret as a yes answer from oracle. If $N$ accepts, interpret as a no answer from oracle. Then continue
   computation normally as the oracle machine from there. Since, both $M$ and $N$ accepts in polynomial time, hence the entire simulation can be done in $\NP$ time.
   Therefore, $\Sigma_{k+1}^{P}$ = $\Sigma_{1}^{P}$.
- 
- 
- 
+ \end{parts}
 \end{solution}
 
 
@@ -72,6 +74,25 @@ Deﬁne the language:
 \part[5] Prove that {\sc ShortestPath} is in $\NL$.
 \part[5] Prove that {\sc ShortestPath} is in $\L$ if and only if $\L = \NL$.
 \end{parts}
+\begin{solution}
+\begin{parts}
+ \part
+ We can show {\sc ShortestPath} $\in \NL$ similar to the way we showed {\sc reach} $\in \NL$. At every vertex, non deterministically choose the next vertex
+ which is the neighbour of the current vertex and the edge between current vertex and the neighbouring vertex is part of some shortest path from $s$ to $t$.
+ Since, the outdegree of a vertex can be as bad as $n$, therefore, in the worst case $log (n) $ bits will be needed to make the non deterministic choice.
+ Hence, {\sc ShortestPath} $\in \NL$
+ 
+ \part
+  $\L = \NL \implies$ {\sc ShortestPath} $\in \L$ \newline
+  
+   This direction is trivial from part a. Since {\sc ShortestPath} $\in \NL$ and $\L = \NL$, hence, {\sc ShortestPath} $\in \L$. \newline
+  
+  {\sc ShortestPath} $\in \L \implies \L = \NL$ \newline
+   % Find a way to show shortestpath is NL-hard 
+  \end{parts}
+\end{solution}
+
+
 
 \question[15]
 An undirected graph is bipartite if its nodes can be divided into two sets such that all edges go from a node in one set to a node in the other set. Show that a graph is bipartite
@@ -79,6 +100,43 @@ if and only if it does not contain a cycle that contains an odd number of nodes.
 \[ \textrm{\sc Bipartite} =
 \{ G \mid G \textrm{ is a bipartite graph } \} \] 
 Show that {\sc Bipartite} is in $\NL$. (Hint : Use Immerman-Szelepsinyi theorem !).
+
+\begin{solution}
+\begin{parts}
+\part
+Bipartite graph $\implies$ graph contains no odd cycles. \newline
+
+This can be shown by considering the contrapositive of the statement. If a graph contains odd cycles, then it is not bipartite. 
+Consider any odd cycle $c_{1},c_{2}...c_{2n+1}$. To form a bipartite graph using these vertices, we have to select vertices in one set such that, no two of
+them are adjacent in the cycle. Selecting set of vertices and forming two such sets, will leave out one vertex, for any combination. Hence such a set of vertices can never
+be bipartite.\newline
+
+Graph contains no odd cycles $\implies$ Bipartite graph  . \newline
+
+Divide the set of vertices in the graph into set $A$ and $V\setminusA$. \newline
+Every vertex $v \in A \Leftrightarrow $ the shortest path from every vertex in $A$ to $v$ is of odd length.
+
+For such a construction of set, if there is no odd cycle, the graph is bipartite. Suppose there is no odd cycle, and let $v_{1}$ and $v_{2}$
+both in $A$ be adjacent. Consider a vertex $v \in A$ . the length of the closed cycle from $v$ will be length of $v ... v_{1}$ + $v_{2} ... v$ + 1.
+From the definition of set, this length is odd . (odd + odd + odd) . BUt our initial assumption was there is no odd cycle. Hence, there cannot be $v_{1}$
+and $v_{2}$ in $A$ such that they are adjacent. Hence graph is bipartite.
+
+\part
+Consider the language $\overline{BIPARTITE}$ which is the complement of $BIPARTITE$. \newline
+We can show that $\overine{BIPARTITE} \in \NL$ from the result in part(a). That is given a graph $G$, if there exists a odd cycle, then $G \in \overline{BIPARTITE}$.
+Since, we already know {\sc Reach} $\in \NL$, we have to check if any of (G,$v_{1}$,$v_{1}$) ,(G,$v_{2}$,$v_{2}$) .. (G,$v_{n}$,$v_{n}$) is in {\sc Reach}.
+This can also be done in log space because, we can reuse the same space of (G,$v_{1}$,$v_{1}$) for checking (G,$v_{2}$,$v_{2}$),...(G,$v_{n}$,$v_{n}$). \newline
+Hence, $\overline{BIPARTITE}\in \NL$ and $BIPARTITE \in \co\NL$. \newline
+
+From Immerman-Szelepsinyi Theorem, $\NL = \co\NL$. Hence, $BIPARTITE \in \NL$.
+
+
+\end{parts}
+
+
+
+\end{solution}
+
 
 \question[25]
 We define the product of two $n \times n$ Boolean matrices $A$ and $B$ as another $n \times n$ Boolean

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  10 NOV 2012 16:02
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  11 NOV 2012 15:07
 entering extended mode
  %&-line parsing enabled.
 **ps6.tex
@@ -169,7 +169,20 @@ Package: complexity 11/24/06  v0.77
     version: 
     author: Chris Bourke (cbourke@cse.unl.edu) 
   +----------------------------------------------+
-(./mycomplexity.sty)) (./ps6.aux)
+(./mycomplexity.sty)) (./ps6.aux
+
+LaTeX Warning: Label `part@1@1' multiply defined.
+
+
+LaTeX Warning: Label `part@1@2' multiply defined.
+
+
+LaTeX Warning: Label `part@3@1' multiply defined.
+
+
+LaTeX Warning: Label `part@3@2' multiply defined.
+
+)
 \openout1 = `ps6.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
@@ -185,8 +198,7 @@ LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
 LaTeX Font Info:    ... okay on input line 4.
 LaTeX Font Info:    Try loading font information for U+msa on input line 19.
-
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+ (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 19.
@@ -194,27 +206,27 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 19.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 23--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--29
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 31--33
+Underfull \hbox (badness 10000) in paragraph at lines 34--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
+Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 36--39
+Underfull \hbox (badness 10000) in paragraph at lines 39--42
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--48
+Underfull \hbox (badness 10000) in paragraph at lines 44--52
 
  []
 
@@ -225,35 +237,100 @@ Missing character: There is no Ô in font cmr12!
 Missing character: There is no ¨ in font cmr12!
 Missing character: There is no Å in font cmr12!
 
-Overfull \hbox (32.44412pt too wide) in paragraph at lines 88--89
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+
+ []
+
+! Undefined control sequence.
+l.116 ...n the graph into set $A$ and $V\setminusA
+                                                  $. \newline
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+<recently read> \overine 
+                         
+l.126 We can show that $\overine
+                                {BIPARTITE} \in \NL$ from the result in part...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (3.5961pt too wide) in paragraph at lines 125--130
+[]\OT1/cmr/m/n/12 Consider the lan-guage $[]$ which is the com-ple-ment of $\OM
+L/cmm/m/it/12 BIPARTITE$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
+
+ []
+
+[3]
+Overfull \hbox (32.44412pt too wide) in paragraph at lines 146--147
 []\OT1/cmr/m/n/12 Using re-peated squar-ing, ar-gue that $\OML/cmm/m/it/12 A[]$
  \OT1/cmr/m/n/12 can be com-puted in space $\OML/cmm/m/it/12 O\OT1/cmr/m/n/12 (
 [] \OML/cmm/m/it/12 n [] p\OT1/cmr/m/n/12 )$. 
  []
 
-[2] [3]
-This exam contains 5 questions with 10 parts, 0 subparts, and 0 subsubparts.
-(./ps6.aux) ) 
+[4]
+This exam contains 5 questions with 16 parts, 0 subparts, and 0 subsubparts.
+(./ps6.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 2523 strings out of 495061
- 27680 string characters out of 1182622
+ 2535 strings out of 495061
+ 27857 string characters out of 1182622
  96719 words of memory out of 3000000
- 5724 multiletter control sequences out of 15000+50000
+ 5736 multiletter control sequences out of 15000+50000
  11347 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 28i,9n,24p,322b,371s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/font
-s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/publ
-ic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share
-/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on ps6.pdf (3 pages, 115751 bytes).
+ 28i,9n,24p,322b,344s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on ps6.pdf (4 pages, 122849 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
+ 55 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
