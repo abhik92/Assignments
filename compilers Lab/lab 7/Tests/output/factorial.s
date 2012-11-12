@@ -31,7 +31,7 @@ j $ra
 .globl Fac_ComputeFac
 Fac_ComputeFac:
 sw $fp, -8($sp)
-move $fp, $sp
+move $fp $sp
 subu $sp, $sp,20
 sw $ra, -4($fp)
 sw $s0, 0($sp)

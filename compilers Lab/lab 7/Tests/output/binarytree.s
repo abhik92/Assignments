@@ -29,8 +29,8 @@ j $ra
 .globl BT_Start
 BT_Start:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,24
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -260,15 +260,15 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 16($sp)
-addu $sp, $sp, 24
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text
 .globl Tree_Init
 Tree_Init:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,20
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -284,15 +284,15 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 12($sp)
-addu $sp, $sp, 20
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text
 .globl Tree_SetRight
 Tree_SetRight:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,20
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -304,15 +304,15 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 12($sp)
-addu $sp, $sp, 20
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text
 .globl Tree_SetLeft
 Tree_SetLeft:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,20
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -324,14 +324,14 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 12($sp)
-addu $sp, $sp, 20
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text
 .globl Tree_GetRight
 Tree_GetRight:
 sw $fp, -8($sp)
-move $fp, $sp
+move $fp $sp
 subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
@@ -347,7 +347,7 @@ j $ra
 .globl Tree_GetLeft
 Tree_GetLeft:
 sw $fp, -8($sp)
-move $fp, $sp
+move $fp $sp
 subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
@@ -363,7 +363,7 @@ j $ra
 .globl Tree_GetKey
 Tree_GetKey:
 sw $fp, -8($sp)
-move $fp, $sp
+move $fp $sp
 subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
@@ -379,8 +379,8 @@ j $ra
 .globl Tree_SetKey
 Tree_SetKey:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,20
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -392,14 +392,14 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 12($sp)
-addu $sp, $sp, 20
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text
 .globl Tree_GetHas_Right
 Tree_GetHas_Right:
 sw $fp, -8($sp)
-move $fp, $sp
+move $fp $sp
 subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
@@ -415,7 +415,7 @@ j $ra
 .globl Tree_GetHas_Left
 Tree_GetHas_Left:
 sw $fp, -8($sp)
-move $fp, $sp
+move $fp $sp
 subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
@@ -431,8 +431,8 @@ j $ra
 .globl Tree_SetHas_Left
 Tree_SetHas_Left:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,20
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -444,15 +444,15 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 12($sp)
-addu $sp, $sp, 20
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text
 .globl Tree_SetHas_Right
 Tree_SetHas_Right:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,20
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -464,15 +464,15 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 12($sp)
-addu $sp, $sp, 20
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text
 .globl Tree_Compare
 Tree_Compare:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,28
+move $fp $sp
+subu $sp, $sp,20
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -506,15 +506,15 @@ lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $s2, 8($sp)
 lw $ra, -4($fp)
-lw $fp, 20($sp)
-addu $sp, $sp, 28
+lw $fp, 12($sp)
+addu $sp, $sp, 20
 j $ra
 .text
 .globl Tree_Insert
 Tree_Insert:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,40
+move $fp $sp
+subu $sp, $sp,28
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -691,15 +691,15 @@ lw $s2, 8($sp)
 lw $s3, 12($sp)
 lw $s4, 16($sp)
 lw $ra, -4($fp)
-lw $fp, 32($sp)
-addu $sp, $sp, 40
+lw $fp, 20($sp)
+addu $sp, $sp, 28
 j $ra
 .text
 .globl Tree_Delete
 Tree_Delete:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,64
+move $fp $sp
+subu $sp, $sp,48
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -829,7 +829,7 @@ jalr $t2
 move $t1 $v0
 L29: 
 nop
-lw $v1, 20($fp)
+lw $v1, 20($sp)
 li $v1 1
 sw $v1, 36($sp)
 li $s4 0
@@ -841,7 +841,7 @@ li $s6 0
 b L18
 L19: 
 nop
-lw $v1, 36($fp)
+lw $v1, 36($sp)
 move $v0 $v1
 lw $s0, 0($sp)
 lw $s1, 4($sp)
@@ -852,15 +852,15 @@ lw $s5, 32($sp)
 lw $s6, 24($sp)
 lw $s7, 28($sp)
 lw $ra, -4($fp)
-lw $fp, 56($sp)
-addu $sp, $sp, 64
+lw $fp, 40($sp)
+addu $sp, $sp, 48
 j $ra
 .text
 .globl Tree_Remove
 Tree_Remove:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,44
+move $fp $sp
+subu $sp, $sp,24
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -982,15 +982,15 @@ lw $s1, 4($sp)
 lw $s2, 8($sp)
 lw $s3, 12($sp)
 lw $ra, -4($fp)
-lw $fp, 36($sp)
-addu $sp, $sp, 44
+lw $fp, 16($sp)
+addu $sp, $sp, 24
 j $ra
 .text
 .globl Tree_RemoveRight
 Tree_RemoveRight:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,44
+move $fp $sp
+subu $sp, $sp,28
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -1063,15 +1063,15 @@ lw $s2, 8($sp)
 lw $s3, 12($sp)
 lw $s4, 16($sp)
 lw $ra, -4($fp)
-lw $fp, 36($sp)
-addu $sp, $sp, 44
+lw $fp, 20($sp)
+addu $sp, $sp, 28
 j $ra
 .text
 .globl Tree_RemoveLeft
 Tree_RemoveLeft:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,44
+move $fp $sp
+subu $sp, $sp,28
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -1144,15 +1144,15 @@ lw $s2, 8($sp)
 lw $s3, 12($sp)
 lw $s4, 16($sp)
 lw $ra, -4($fp)
-lw $fp, 36($sp)
-addu $sp, $sp, 44
+lw $fp, 20($sp)
+addu $sp, $sp, 28
 j $ra
 .text
 .globl Tree_Search
 Tree_Search:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,40
+move $fp $sp
+subu $sp, $sp,32
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -1242,15 +1242,15 @@ lw $s3, 12($sp)
 lw $s4, 16($sp)
 lw $s5, 20($sp)
 lw $ra, -4($fp)
-lw $fp, 32($sp)
-addu $sp, $sp, 40
+lw $fp, 24($sp)
+addu $sp, $sp, 32
 j $ra
 .text
 .globl Tree_Print
 Tree_Print:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,20
+move $fp $sp
+subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 move $s0 $a0
@@ -1266,15 +1266,15 @@ li $t0 1
 move $v0 $t0
 lw $s0, 0($sp)
 lw $ra, -4($fp)
-lw $fp, 12($sp)
-addu $sp, $sp, 20
+lw $fp, 4($sp)
+addu $sp, $sp, 12
 j $ra
 .text
 .globl Tree_RecPrint
 Tree_RecPrint:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,36
+move $fp $sp
+subu $sp, $sp,24
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -1347,8 +1347,8 @@ lw $s1, 4($sp)
 lw $s2, 8($sp)
 lw $s3, 12($sp)
 lw $ra, -4($fp)
-lw $fp, 28($sp)
-addu $sp, $sp, 36
+lw $fp, 16($sp)
+addu $sp, $sp, 24
 j $ra
 .text 
 .globl _halloc

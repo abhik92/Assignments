@@ -147,10 +147,10 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R third = n.f8.accept(this);
 		n.f9.accept(this);
 		System.out.println("sw $fp, -8($sp)");
-		System.out.println("move $fp, $sp");
-		int num = Integer.parseInt((String) first)
-				+ Integer.parseInt((String) second)
-				+ Integer.parseInt((String) third) + 1;
+		System.out.println("move $fp $sp");
+		int num = Integer.parseInt((String) second) + 2;
+		if (Integer.parseInt((String) third) > 4)
+			num = num + Integer.parseInt((String) third) - 4;
 		num = num * 4;
 		System.out.println("subu $sp, $sp," + num);
 		System.out.println("sw $ra, -4($fp)");

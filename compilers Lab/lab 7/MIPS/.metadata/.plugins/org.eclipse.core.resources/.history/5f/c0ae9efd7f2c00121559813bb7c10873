@@ -30,9 +30,9 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	}
 
 	public R visit(NodeListOptional n) {
+		label = true;
 		if (n.present()) {
 			R _ret = null;
-			label = true;
 			int _count = 0;
 			for (Enumeration<Node> e = n.elements(); e.hasMoreElements();) {
 				e.nextElement().accept(this);
@@ -105,12 +105,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f9.accept(this);
 		n.f10.accept(this);
 		n.f11.accept(this);
-		n.f12.accept(this);
-		n.f13.accept(this);
-
 		System.out.println("lw $ra,-4($fp)");
 		System.out.println("addu $sp,$sp," + num);
 		System.out.println("j $ra");
+		n.f12.accept(this);
+
+		n.f13.accept(this);
+
 		return _ret;
 	}
 
@@ -146,13 +147,21 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R third = n.f8.accept(this);
 		n.f9.accept(this);
 		System.out.println("sw $fp, -8($sp)");
-		System.out.println("move $fp, $sp");
-		int num = Integer.parseInt((String) second)
-				+ Integer.parseInt((String) third);
+		System.out.println("move $fp $sp");
+		int num = Integer.parseInt((String) second) + 2;
+		if (Integer.parseInt((String) third) > 4)
+			num = num + Integer.parseInt((String) third) - 4;
 		num = num * 4;
 		System.out.println("subu $sp, $sp," + num);
 		System.out.println("sw $ra, -4($fp)");
 		n.f10.accept(this);
+		int ni = num - 8;
+		System.out.println("lw $ra, -4($fp)");
+
+		System.out.println("lw $fp, " + ni + "($sp)");
+		System.out.println("addu $sp, $sp, " + num);
+		System.out.println("j $ra");
+
 		n.f11.accept(this);
 		return _ret;
 	}
@@ -184,7 +193,9 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	public R visit(ErrorStmt n) {
 		R _ret = null;
 		n.f0.accept(this);
-		System.out.println("error");
+		System.out.println("la $a0, str_er");
+		System.out.println("syscall");
+
 		return _ret;
 	}
 
@@ -252,10 +263,20 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		if (n.f2.f0.which == 0)
 			System.out.println("move " + reg1 + " $v0");
 		else if (n.f2.f0.which == 1)
-			System.out.println("s" + ((String) reg2).split(";")[0] + " " + reg1
+			System.out.println(((String) reg2).split(";")[0] + " " + reg1
 					+ ", " + ((String) reg2).split(";")[1]);
-		else
-			System.out.println("move " + reg1 + " " + reg2);
+		else {
+			if (((String) reg2).startsWith("$"))
+				System.out.println("move " + reg1 + " " + reg2);
+			else {
+				try {
+					Integer.parseInt((String) reg2);
+					System.out.println("li " + reg1 + " " + reg2);
+				} catch (Exception e) {
+					System.out.println("la " + reg1 + " " + reg2);
+				}
+			}
+		}
 		return _ret;
 	}
 
@@ -281,7 +302,10 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R spld = n.f2.accept(this);
 		int num = Integer.parseInt((String) spld);
 		num = num * 4;
-		System.out.println("lw " + reg + ", " + num + "($sp)");
+		if (((String) reg).equals("$v0") || ((String) reg).equals("$v1"))
+			System.out.println("lw " + reg + ", " + num + "($fp)");
+		else
+			System.out.println("lw " + reg + ", " + num + "($sp)");
 		return _ret;
 	}
 
@@ -308,7 +332,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 		R intl = n.f1.accept(this);
 		R reg = n.f2.accept(this);
-		int num = Integer.parseInt((String) intl);
+		int num = Integer.parseInt((String) intl) - 1;
 		num = num * 4;
 		System.out.println("sw " + reg + ", " + num + "($sp)");
 
@@ -342,7 +366,10 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R _ret = null;
 		n.f0.accept(this);
 		R simexp = n.f1.accept(this);
-		System.out.println("li $a0 " + simexp);
+		if (((String) simexp).startsWith("$"))
+			System.out.println("move $a0 " + simexp);
+		else
+			System.out.println("li $a0 " + simexp);
 		System.out.println("jal _halloc");
 
 		return _ret;
@@ -368,13 +395,13 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		n.f0.accept(this);
 		switch (n.f0.which) {
 		case 0:
-			return (R) "lt";
+			return (R) "slt";
 		case 1:
-			return (R) "plus";
+			return (R) "add";
 		case 2:
-			return (R) "minus";
+			return (R) "sub";
 		case 3:
-			return (R) "times";
+			return (R) "mul";
 
 		}
 		return _ret;
@@ -395,6 +422,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	 */
 	public R visit(SimpleExp n) {
 		R _ret = null;
+		label = false;
 		_ret = n.f0.accept(this);
 		return _ret;
 	}
@@ -477,6 +505,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		if (label) {
 			System.out.println(n.f0.tokenImage + ": ");
 		}
+		label = true;
 		n.f0.accept(this);
 		return (R) n.f0.tokenImage;
 	}
