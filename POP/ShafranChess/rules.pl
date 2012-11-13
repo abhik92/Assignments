@@ -1,4 +1,4 @@
-initialize(Game,Position,Player):- initial_position(Position),isReach([5,6,1],[8,7,7],[h,w],Position).
+initialize(Game,Position,Player):- initial_position(Position),isReach([6,2,6],[8,6,8],[b,w],Position).
 
 /* a =1,b=2,c=3 ....i=9*/
 /*[letter,left,right]*/
@@ -43,6 +43,9 @@ emptyOldPosition(CurrentPosition,Piece,[Z|Rest],[Z|Positionint]):- emptyOldPosit
 checkCellExists(Cell,Board):- Board = [Cell|Rest].
 checkCellExists(Cell,[Y|Rest]):-checkCellExists(Cell,Rest).
 
+/*Checks if a particular cell is currently free*/
+isFree(Position,Board):-getPiece(Position,Piece,Board),Piece=[nil,nil].
+
 /*Returns Y as the absolute value of X*/
 abs(X,Y):-X>0,!,Y=X.
 abs(X,Y):-Z is -1 * X,Y=Z.
@@ -50,31 +53,68 @@ abs(X,Y):-Z is -1 * X,Y=Z.
 mOD(X,Y):-abs(X,Z),Z > 4,Y is X mod 10.
 mOD(X,Y):-Y=X.
 
+/*Does x= (y+r)mod 10*/
+modIndex(X,R,Y):-T1 is X+R,T1>10,!,Y is T1 mod 10.
+modIndex(X,R,Y):-Y is X+R.
+
+/*Returns the distance from the nearest 10*/
+mod5(X,Y):-T is X mod 10,T>5,Y is 10-T .
+mod5(X,Y):-T is X mod 10,Y is T.
+
 test(Y):-Z is 1-3,Y is Z mod 10.
 
-kingReach(D1,D2,D3):-D1=\=0,D1<3,D1> -3,
-                     D2=\=0,D2<2,D2> -2,
-                     D3 =:= 0.
-kingReach(D1,D2,D3):-D2=\=0,D2<3,D2> -3,
-                     D1=\=0,D1<2,D1> -2,
-                     D3 =:= 0.
-                 
-kingReach(D1,D2,D3):-D1=\=0,D1<3,D1> -3,
-                     D3=\=0,D3<2,D3> -2,
-                     D2 =:= 0.
-kingReach(D1,D2,D3):-D1=\=0,D1<2,D1> -2,
-                     D3=\=0,D3<3,D3> -3,
-                     D2 =:= 0.
-
-kingReach(D1,D2,D3):-D3=\=0,D3<3,D3> -3,
-                     D2=\=0,D2<2,D2> -2,
-                     D1 =:= 0.
-
-kingReach(D1,D2,D3):-D3=\=0,D3<2,D3> -2,
-                     D2=\=0,D2<3,D2> -3,
-                     D1 =:= 0.
+kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=1,R2=:=1,R3=:=2.
+kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=1,R2=:=2,R3=:=1.
+kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=2,R2=:=1,R3=:=1.
+kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=1,R2=:=1,R3=:=0.
+kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=1,R2=:=0,R3=:=1.
+kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=0,R2=:=1,R3=:=1.
+   
 
 horseReach(D1,D2,D3):- abs(D1,A1),abs(D2,A2),abs(D3,A3),A1=\=0,A2=\=0,A3=\=0,A1=\=A2,A2=\=A3,T1 is A1 + A2,Sum is T1 + A3 , Sum =:= 6.
+
+/*Checks if the triplet of sum mod 10 form a diagonal*/
+isDiagonal(S1,S2,S3):-S1=:=S2,S3=:=2*S2.
+isDiagonal(S1,S2,S3):-S1=:=S3,S2=:=2*S3.
+isDiagonal(S1,S2,S3):-S3=:=S2,S1=:=2*S2.
+
+/*Checks if position to position1 alopng a diagonal is free to be reached on the current board*/
+diagonalReach(Position,Position1,Board):-topRight(Position,Position1,Board).
+diagonalReach(Position,Position1,Board):-topLeft(Position,Position1,Board).
+diagonalReach(Position,Position1,Board):-right(Position,Position1,Board).
+diagonalReach(Position,Position1,Board):-left(Position,Position1,Board).
+diagonalReach(Position,Position1,Board):-bottomRight(Position,Position1,Board).
+diagonalReach(Position,Position1,Board):-bottomLeft(Position,Position1,Board).
+
+/*Checks for the top right diagonal*/
+topRight(Position,Position1,Board):-Position=Position1.
+topRight(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y+2,modIndex(Z,1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
+                                    topRight([X1,Y1,Z1],Position1,Board).
+
+/*Checks for the top left diagonal*/
+topLeft(Position,Position1,Board):-Position=Position1.
+topLeft(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y+1,modIndex(Z,2,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
+                                    topLeft([X1,Y1,Z1],Position1,Board).
+
+/*Checks for the left diagonal*/
+left(Position,Position1,Board):-Position=Position1.
+left(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-2,Y1 is Y-1,modIndex(Z,1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
+                                    left([X1,Y1,Z1],Position1,Board).
+
+/*Checks for the right diagonal*/
+right(Position,Position1,Board):-Position=Position1.
+right(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+2,Y1 is Y+1,modIndex(Z,-1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
+                                    right([X1,Y1,Z1],Position1,Board).
+
+/*Checks for the bottomleft diagonal*/
+bottomLeft(Position,Position1,Board):-Position=Position1.
+bottomLeft(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y-2,modIndex(Z,-1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
+                                    bottomLeft([X1,Y1,Z1],Position1,Board).
+
+/*Checks for the bottomright diagonal*/
+bottomRight(Position,Position1,Board):-Position=Position1.
+bottomRight(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y-1,modIndex(Z,-2,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
+                                    bottomLeft([X1,Y1,Z1],Position1,Board).
 
 
 /*Predicate for the King*/
@@ -101,7 +141,13 @@ isReach(Position,Position1,Piece,Board):- Piece=[h|Color],
                                                 mOD(R3,D3),
                                                 horseReach(D1,D2,D3).
                                                                         
-                                   
+ /*Predicate for reachability of bishop */
+isReach(Position,Position1,Piece,Board):- Piece=[b|Color],
+                                                Color=[COL|_],
+                                                not_Color(COL,ColorBar),
+                                                Position=[X,Y,Z],
+                                                Position1=[X1,Y1,Z1],
+                                                diagonalReach(Position,Position1,Board).
                                                                                                      
                                     
                                     
