@@ -1,4 +1,4 @@
-initialize(Game,Position,Player):- initial_position(Position),isReach([5,6,1],[5,5,10],[k,w],Position).
+initialize(Game,Position,Player):- initial_position(Position),isReach([5,6,1],[8,7,7],[h,w],Position).
 
 /* a =1,b=2,c=3 ....i=9*/
 /*[letter,left,right]*/
@@ -43,7 +43,14 @@ emptyOldPosition(CurrentPosition,Piece,[Z|Rest],[Z|Positionint]):- emptyOldPosit
 checkCellExists(Cell,Board):- Board = [Cell|Rest].
 checkCellExists(Cell,[Y|Rest]):-checkCellExists(Cell,Rest).
 
-test(Y):-Z is -9,Z > -1.
+/*Returns Y as the absolute value of X*/
+abs(X,Y):-X>0,!,Y=X.
+abs(X,Y):-Z is -1 * X,Y=Z.
+
+mOD(X,Y):-abs(X,Z),Z > 4,Y is X mod 10.
+mOD(X,Y):-Y=X.
+
+test(Y):-Z is 1-3,Y is Z mod 10.
 
 kingReach(D1,D2,D3):-D1=\=0,D1<3,D1> -3,
                      D2=\=0,D2<2,D2> -2,
@@ -53,23 +60,21 @@ kingReach(D1,D2,D3):-D2=\=0,D2<3,D2> -3,
                      D3 =:= 0.
                  
 kingReach(D1,D2,D3):-D1=\=0,D1<3,D1> -3,
-                     D3=\=0,R3 is D3 mod 10,
-                     R3<2,R3> -2,
+                     D3=\=0,D3<2,D3> -2,
                      D2 =:= 0.
 kingReach(D1,D2,D3):-D1=\=0,D1<2,D1> -2,
-                     D3=\=0,R3 is D3 mod 10,
-                     R3<3,R3> -3,
+                     D3=\=0,D3<3,D3> -3,
                      D2 =:= 0.
 
-kingReach(D1,D2,D3):-D3=\=0,R3 is D3 mod 10,
-                     R3<3,R3> -3,
+kingReach(D1,D2,D3):-D3=\=0,D3<3,D3> -3,
                      D2=\=0,D2<2,D2> -2,
                      D1 =:= 0.
 
-kingReach(D1,D2,D3):-D3=\=0,R3 is D3 mod 10,
-                     R3<2,R3> -2,
+kingReach(D1,D2,D3):-D3=\=0,D3<2,D3> -2,
                      D2=\=0,D2<3,D2> -3,
                      D1 =:= 0.
+
+horseReach(D1,D2,D3):- abs(D1,A1),abs(D2,A2),abs(D3,A3),A1=\=0,A2=\=0,A3=\=0,A1=\=A2,A2=\=A3,T1 is A1 + A2,Sum is T1 + A3 , Sum =:= 6.
 
 
 /*Predicate for the King*/
@@ -80,9 +85,21 @@ isReach(Position,Position1,Piece,Board):- Piece=[k|Color],
                                                 Position1=[X1,Y1,Z1],
                                                 D1 is X - X1,
                                                 D2 is Y-Y1,
-                                                D3 is Z-Z1,
+                                                R3 is Z-Z1,
+                                                mOD(R3,D3),
                                                 kingReach(D1,D2,D3).
-                                    
+
+/*Predicate for reachability of horse */
+isReach(Position,Position1,Piece,Board):- Piece=[h|Color],
+                                                Color=[COL|_],
+                                                not_Color(COL,ColorBar),
+                                                Position=[X,Y,Z],
+                                                Position1=[X1,Y1,Z1],
+                                                D1 is X - X1,
+                                                D2 is Y-Y1,
+                                                R3 is Z-Z1,
+                                                mOD(R3,D3),
+                                                horseReach(D1,D2,D3).
                                                                         
                                    
                                                                                                      
