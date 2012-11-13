@@ -1,6 +1,3 @@
-
-
-
 /*This is the main driver which plays*/
 play(Position,Player,Result):- choose_move(Position,Player,Move),move(Move,Position,Position1),display_game(Position1,player),next_player(Player,Player1),!,play(Position1,Player1,Result).
 
