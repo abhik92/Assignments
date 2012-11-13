@@ -50,8 +50,8 @@ j $ra
 .globl QS_Start
 QS_Start:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,32
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -100,15 +100,15 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 24($sp)
-addu $sp, $sp, 32
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text
 .globl QS_Sort
 QS_Sort:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,48
+move $fp $sp
+subu $sp, $sp,28
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -462,14 +462,14 @@ lw $s2, 8($sp)
 lw $s3, 12($sp)
 lw $s4, 16($sp)
 lw $ra, -4($fp)
-lw $fp, 40($sp)
-addu $sp, $sp, 48
+lw $fp, 20($sp)
+addu $sp, $sp, 28
 j $ra
 .text
 .globl QS_Print
 QS_Print:
 sw $fp, -8($sp)
-move $fp, $sp
+move $fp $sp
 subu $sp, $sp,12
 sw $ra, -4($fp)
 sw $s0, 0($sp)
@@ -515,8 +515,8 @@ j $ra
 .globl QS_Init
 QS_Init:
 sw $fp, -8($sp)
-move $fp, $sp
-subu $sp, $sp,20
+move $fp $sp
+subu $sp, $sp,16
 sw $ra, -4($fp)
 sw $s0, 0($sp)
 sw $s1, 4($sp)
@@ -815,8 +815,8 @@ move $v0 $t0
 lw $s0, 0($sp)
 lw $s1, 4($sp)
 lw $ra, -4($fp)
-lw $fp, 12($sp)
-addu $sp, $sp, 20
+lw $fp, 8($sp)
+addu $sp, $sp, 16
 j $ra
 .text 
 .globl _halloc

@@ -1,4 +1,3 @@
-
 .text
 .globl  main
 main:
@@ -45,10 +44,10 @@ sw $s2,8($s0)
 sw $s3,12($s0)
 li $t0 1
 move $v0 $t0
-lw $s0, 0($fp)
-lw $s1, 4($fp)
-lw $s2, 8($fp)
-lw $s3, 12($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
+lw $s2, 8($sp)
+lw $s3, 12($sp)
 lw $ra, -4($fp)
 lw $fp, 16($sp)
 addu $sp, $sp, 24
@@ -64,7 +63,7 @@ sw $s0, 0($sp)
 move $s0 $a0
 lw $t0 4( $s0)
 move $v0 $t0
-lw $s0, 0($fp)
+lw $s0, 0($sp)
 lw $ra, -4($fp)
 lw $fp, 4($sp)
 addu $sp, $sp, 12
@@ -80,7 +79,7 @@ sw $s0, 0($sp)
 move $s0 $a0
 lw $t0 8( $s0)
 move $v0 $t0
-lw $s0, 0($fp)
+lw $s0, 0($sp)
 lw $ra, -4($fp)
 lw $fp, 4($sp)
 addu $sp, $sp, 12
@@ -96,7 +95,7 @@ sw $s0, 0($sp)
 move $s0 $a0
 lw $t0 12( $s0)
 move $v0 $t0
-lw $s0, 0($fp)
+lw $s0, 0($sp)
 lw $ra, -4($fp)
 lw $fp, 4($sp)
 addu $sp, $sp, 12
@@ -203,10 +202,10 @@ nop
 L3: 
 nop
 move $v0 $s2
-lw $s0, 0($fp)
-lw $s1, 4($fp)
-lw $s2, 8($fp)
-lw $s3, 12($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
+lw $s2, 8($sp)
+lw $s3, 12($sp)
 lw $ra, -4($fp)
 lw $fp, 16($sp)
 addu $sp, $sp, 24
@@ -246,9 +245,9 @@ nop
 L13: 
 nop
 move $v0 $t1
-lw $s0, 0($fp)
-lw $s1, 4($fp)
-lw $s2, 8($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
+lw $s2, 8($sp)
 lw $ra, -4($fp)
 lw $fp, 12($sp)
 addu $sp, $sp, 20
@@ -266,7 +265,7 @@ li $t0 1
 sw $t0,12($s0)
 li $t0 1
 move $v0 $t0
-lw $s0, 0($fp)
+lw $s0, 0($sp)
 lw $ra, -4($fp)
 lw $fp, 4($sp)
 addu $sp, $sp, 12
@@ -291,10 +290,10 @@ sw $s1,4($s0)
 sw $s2,8($s0)
 li $t0 1
 move $v0 $t0
-lw $s0, 0($fp)
-lw $s1, 4($fp)
-lw $s2, 8($fp)
-lw $s3, 12($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
+lw $s2, 8($sp)
+lw $s3, 12($sp)
 lw $ra, -4($fp)
 lw $fp, 16($sp)
 addu $sp, $sp, 24
@@ -365,9 +364,9 @@ jalr $t2
 move $t0 $v0
 move $v0 $t0
 move $v0 $s2
-lw $s0, 0($fp)
-lw $s1, 4($fp)
-lw $s2, 8($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
+lw $s2, 8($sp)
 lw $ra, -4($fp)
 lw $fp, 12($sp)
 addu $sp, $sp, 20
@@ -386,8 +385,8 @@ move $s1 $a1
 sw $s1,8($s0)
 li $t0 1
 move $v0 $t0
-lw $s0, 0($fp)
-lw $s1, 4($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
 lw $ra, -4($fp)
 lw $fp, 8($sp)
 addu $sp, $sp, 16
@@ -426,7 +425,7 @@ L18:
 nop
 li $t0 0
 li $t1 1
-lw $v1, 8($fp)
+lw $v1, 8($sp)
 sub $t1,  $t1 , $v1
 beqz $t1 L20
 li $t1 1
@@ -440,7 +439,7 @@ move $t0 $s1
 lw $t1 0( $t0)
 lw $t1 16( $t1)
 move $a0 $t0
-lw $a1, 4($fp)
+lw $a1, 4($sp)
 jalr $t1
 move $t0 $v0
 beqz $t0 L21
@@ -528,16 +527,16 @@ nop
 b L18
 L19: 
 nop
-lw $v1, 0($fp)
+lw $v1, 0($sp)
 move $v0 $v1
-lw $s0, 12($fp)
-lw $s1, 16($fp)
-lw $s2, 20($fp)
-lw $s3, 24($fp)
-lw $s4, 28($fp)
-lw $s5, 32($fp)
-lw $s6, 36($fp)
-lw $s7, 40($fp)
+lw $s0, 12($sp)
+lw $s1, 16($sp)
+lw $s2, 20($sp)
+lw $s3, 24($sp)
+lw $s4, 28($sp)
+lw $s5, 32($sp)
+lw $s6, 36($sp)
+lw $s7, 40($sp)
 lw $ra, -4($fp)
 lw $fp, 44($sp)
 addu $sp, $sp, 52
@@ -608,12 +607,12 @@ b L27
 L28: 
 nop
 move $v0 $s2
-lw $s0, 0($fp)
-lw $s1, 4($fp)
-lw $s2, 8($fp)
-lw $s3, 12($fp)
-lw $s4, 16($fp)
-lw $s5, 20($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
+lw $s2, 8($sp)
+lw $s3, 12($sp)
+lw $s4, 16($sp)
+lw $s5, 20($sp)
 lw $ra, -4($fp)
 lw $fp, 24($sp)
 addu $sp, $sp, 32
@@ -629,7 +628,7 @@ sw $s0, 0($sp)
 move $s0 $a0
 lw $t0 12( $s0)
 move $v0 $t0
-lw $s0, 0($fp)
+lw $s0, 0($sp)
 lw $ra, -4($fp)
 lw $fp, 4($sp)
 addu $sp, $sp, 12
@@ -645,7 +644,7 @@ sw $s0, 0($sp)
 move $s0 $a0
 lw $t0 4( $s0)
 move $v0 $t0
-lw $s0, 0($fp)
+lw $s0, 0($sp)
 lw $ra, -4($fp)
 lw $fp, 4($sp)
 addu $sp, $sp, 12
@@ -661,7 +660,7 @@ sw $s0, 0($sp)
 move $s0 $a0
 lw $t0 8( $s0)
 move $v0 $t0
-lw $s0, 0($fp)
+lw $s0, 0($sp)
 lw $ra, -4($fp)
 lw $fp, 4($sp)
 addu $sp, $sp, 12
@@ -722,10 +721,10 @@ L32:
 nop
 li $t0 1
 move $v0 $t0
-lw $s0, 0($fp)
-lw $s1, 4($fp)
-lw $s2, 8($fp)
-lw $s3, 12($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
+lw $s2, 8($sp)
+lw $s3, 12($sp)
 lw $ra, -4($fp)
 lw $fp, 16($sp)
 addu $sp, $sp, 24
@@ -1165,11 +1164,11 @@ move $a0 $t0
 jal _print
 li $t0 0
 move $v0 $t0
-lw $s0, 0($fp)
-lw $s1, 4($fp)
-lw $s2, 8($fp)
-lw $s3, 12($fp)
-lw $s4, 16($fp)
+lw $s0, 0($sp)
+lw $s1, 4($sp)
+lw $s2, 8($sp)
+lw $s3, 12($sp)
+lw $s4, 16($sp)
 lw $ra, -4($fp)
 lw $fp, 20($sp)
 addu $sp, $sp, 28

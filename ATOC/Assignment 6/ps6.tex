@@ -1,6 +1,7 @@
 \documentclass[12pt]{exam}
 \printanswers
 \usepackage{amsmath,amssymb,complexity}
+
 \begin{document}
 \hrule
 \vspace{3mm}
@@ -8,7 +9,7 @@
 {\sf CS6014 : Advanced Theory of Computation  \hfill Karthik Abinav S}
 \vspace{3mm}\\
 \noindent 
-{\sf Problem Set \#6 }
+{\sf Problem Set \#6 \hfill Collaborators : Saikrishna}
 \vspace{3mm}
 \hrule
 
@@ -19,7 +20,7 @@
 \part Argue that $\P^\P = \P$. Why does not the same argument work for $\NP$ and give $\NP^{\NP} = \NP$?
 \part If $\NP = \co\NP$, argue that $\PH = \Sigma_1^p$.
 \end{parts}
-\begin{solution}
+\begin{solution}	
 \begin{parts}
  
 \part
@@ -66,6 +67,26 @@
 \part Reading Assignment : Read the proof (Section 3.4, Theorem 3.21, Page 93)  of the claim : $\DTIME(2^{O(s(n))} \subseteq ASPACE(s(n))$. Determine an upper bound on the number of children for any universal configuration in the alternating Turing machine produced in the construction.
 \part Conclude that $AL = \P$. Show that all $\CFL$s are in $\P$ by giving an alternating Turing machine running in $\log$ space for checking membership. (Assume that the $\CFL$ is given at the input in the $CNF$ form.).
 \end{parts}
+\begin{solution}
+ \begin{parts}
+  \part
+      From the construction in the proof a universal configuration node has atmost 3 existential children nodes and a existential node has atmost
+      $| \Gamma ^{3} |$ universal children nodes. where $\Gamma$ is the tape alphabet after tape reduction.
+  \part
+  From the theorem, $\DTIME(2^{O(s(n))}) = ASPACE(s(n))$. \newline
+  $AL = \bigcup ASPACE(\log (n))) = \bigcup DTIME(2^{O(\log (n))}) = \bigcup DTIME(2^{c\log (n)}) = \bigcup DTIME(n^c) = \P$ \newline
+  
+  
+      
+ \end{parts}
+
+ 
+ 
+\end{solution}
+
+
+
+
 
 \question[10]
 Deﬁne the language:
@@ -77,10 +98,18 @@ Deﬁne the language:
 \begin{solution}
 \begin{parts}
  \part
- We can show {\sc ShortestPath} $\in \NL$ similar to the way we showed {\sc reach} $\in \NL$. At every vertex, non deterministically choose the next vertex
- which is the neighbour of the current vertex and the edge between current vertex and the neighbouring vertex is part of some shortest path from $s$ to $t$.
- Since, the outdegree of a vertex can be as bad as $n$, therefore, in the worst case $log (n) $ bits will be needed to make the non deterministic choice.
- Hence, {\sc ShortestPath} $\in \NL$
+ We can show {\sc ShortestPath} $\in \NL$ by showing tow things. First, there exists a path from $s$ to $t$ of length exactly $k$. Second, there doesnt
+ exist of path from $s$ to $t$ of length 1,2,...$k$-1 . \newline
+ 
+ To show the first part we will use the {\sc Reach} algorithm with a slight modifications. We will use an extra $\log (n)$ bits to keep a ounter of the length
+ of the path visited so far. Since , the length of the path can atmost be $n$(Otherwise, there will be a loop from Pigeon Hole principle and the loop can
+ be eliminated) hence $\log (n)$ bits will suffice. \newline
+ 
+ Let us call this modified version of {\sc Reach} as {\sc KReach}. Clearly {\sc KReach} $\in \NL$ . From Immerman-Szelepsinyi Theorem, $\NL = \co\NL$.
+ Hence, there exists a $\NL$ algorithm for $\overline{\text{\sc KReach}}$.
+ 
+ We will use this algorithm as a sub routine and call it with (G,s,t,1) , (G,s,t,2) ... (G,s,t,k-1) , reusing the same space across the calls. Hence, the 
+ second part can also be done in $\NL$. Therefore, {\sc ShortestPath} $\in \NL$.
  
  \part
   $\L = \NL \implies$ {\sc ShortestPath} $\in \L$ \newline
@@ -88,7 +117,14 @@ Deﬁne the language:
    This direction is trivial from part a. Since {\sc ShortestPath} $\in \NL$ and $\L = \NL$, hence, {\sc ShortestPath} $\in \L$. \newline
   
   {\sc ShortestPath} $\in \L \implies \L = \NL$ \newline
-   % Find a way to show shortestpath is NL-hard 
+   Let {\sc ShortestPath} $\in \L$. Then there exists a deterministic log space algorithm. We can use this a subroutine and solve {\sc Reach} in $\L$ as follows.\newline
+   Call the {\sc ShortestPath} algorithm with (G,s,t,1) , (G,s,t,2) ... (G,s,t,n) . From the same argument as above, if there exits a path from $s$ to $t$,
+   then there exists a path of length atmost $n$ from $s$ to $t$. The number of bits required to represent the number 1,2..n will be atmost $\log (n)$ and
+   the algorithm takes another $\log (n)$ sapce which can be reused across calls. Hence,{\sc Reach} can be computed in deterministic logspace. Since, {\sc Reach}
+   is $\NL$-Complete, hence, every language in $\NL$ can be reduced to $\L$ . Hence, $\L = \NL$.
+   
+   
+   
   \end{parts}
 \end{solution}
 
@@ -151,13 +187,30 @@ is a path of length at most $k$ from the vertex $i$ to vertex $j$ and is $0$ oth
     Since, each of $i$,$j$,$k$ can be atmost $n$, each of them require $\log (n)$ bits to represent. To store the current value we need 1 bit.
     Hence, to calculate the value of $C_{ij}$ we need $3 \log(n) + 1$ bits. This space can be reused for the calculations of all the entries in the matrix 
     $C$. Hence, the entire matrix multiplication of boolean values can be done in log space.
+    
     \part
-    Using the regular repeated squaring algorithm will require us to store the intermidiate matrices $A$,$A^{2}$,$A^{4}$.. But, each of them will require
-    O($n$) and hence the overall space needed will become O($n$ $\log (p)$). Instead a slightly modified approach can be used. In the repeated squaring
-    algorithm, whenever the $i,j$ th entry of $A^{r}$ for 1$\leqslant r \leqslant n$ is needed for the calculation, it is calculated seperately by invoking the 
-    multiplication algorithm on $A^{r/2}$ and calculating the $i,j$ th entry of that matrix. Hence, atmost $\log (p)$ times that call will be made, and 
-    $\log (p)$ bits needs to be stored. And each multiplication will take $\log (n)$ space which can be reused for successive multiplication. Hence, the total
-    space needed will be O($\log (n) \log (p)$).
+    The repeated squaring technique uses the following algorithm \newline
+    \begin{verbatim}
+            
+	power(A,n):
+	  if(n=0):
+	    return I
+	  else if(n=1):
+	    return A
+	  else if(n\%2==0)
+	    B = power(A,n/2)
+	    return B * B
+	  else
+	    B = power(A,n/2)
+	    return B*B*A
+	  
+    \end{verbatim}
+
+    From the above code , the space requirement for every recursive call is O($\log (n)$) for the boolean matrix multiplication. Hence, the recurrence for space can be written as: \newline
+    $S(p,n)=S(p/2,n) + O(\log (n))$. \newline
+    
+    This gives $S(p,n)$ = O($\log (n) \log (p)$).
+    
     
     \part
     This can be shown by using induction on length k. \newline

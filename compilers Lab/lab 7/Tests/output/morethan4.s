@@ -86,10 +86,10 @@ jalr $t2
 move $t1 $v0
 move $t0 $t1
 move $v0 $t0
-lw $s0, 12($fp)
-lw $s1, 16($fp)
-lw $s2, 20($fp)
-lw $s3, 24($fp)
+lw $s0, 12($sp)
+lw $s1, 16($sp)
+lw $s2, 20($sp)
+lw $s3, 24($sp)
 lw $ra, -4($fp)
 lw $fp, 40($sp)
 addu $sp, $sp, 48
@@ -126,10 +126,10 @@ move $a0 $v1
 jal _print
 li $t0 0
 move $v0 $t0
-lw $s0, 12($fp)
-lw $s1, 16($fp)
-lw $s2, 20($fp)
-lw $s3, 24($fp)
+lw $s0, 12($sp)
+lw $s1, 16($sp)
+lw $s2, 20($sp)
+lw $s3, 24($sp)
 lw $ra, -4($fp)
 lw $fp, 28($sp)
 addu $sp, $sp, 36

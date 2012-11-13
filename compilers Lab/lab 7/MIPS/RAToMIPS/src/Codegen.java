@@ -8,11 +8,13 @@ public class Codegen {
 	public static void main(String[] args) {
 		try {
 			// use the following line only in IDE
-			Node root = new MiniRAParser(new FileInputStream(
-					"../../Tests/miniRA/LinkedList.miniRA")).Goal();
+			/*
+			 * Node root = new MiniRAParser(new FileInputStream(
+			 * "../../Tests/miniRA/BinaryTree.miniRA")).Goal();
+			 */
 
 			// Final submission file should take input from command line
-			// Node root = new MiniRAParser(System.in).Goal();
+			Node root = new MiniRAParser(System.in).Goal();
 
 			root.accept(new GJNoArguDepthFirst()); // Your assignment part is
 													// invoked here.

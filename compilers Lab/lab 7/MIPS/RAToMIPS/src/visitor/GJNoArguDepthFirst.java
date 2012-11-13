@@ -17,6 +17,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 	//
 
 	static boolean label = true;
+	static int extra = 0;
 
 	public R visit(NodeList n) {
 		R _ret = null;
@@ -133,6 +134,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R _ret = null;
 
 		label = false;
+		extra = 0;
 		R lab = n.f0.accept(this);
 		System.out.println(".text");
 		System.out.println(".globl " + lab);
@@ -149,8 +151,11 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		System.out.println("sw $fp, -8($sp)");
 		System.out.println("move $fp $sp");
 		int num = Integer.parseInt((String) second) + 2;
-		if (Integer.parseInt((String) third) > 4)
+		if (Integer.parseInt((String) third) > 4) {
 			num = num + Integer.parseInt((String) third) - 4;
+		}
+		if (Integer.parseInt((String) first) > 4)
+			extra = Integer.parseInt((String) first) - 4;
 		num = num * 4;
 		System.out.println("subu $sp, $sp," + num);
 		System.out.println("sw $ra, -4($fp)");
@@ -302,7 +307,7 @@ public class GJNoArguDepthFirst<R> implements GJNoArguVisitor<R> {
 		R spld = n.f2.accept(this);
 		int num = Integer.parseInt((String) spld);
 		num = num * 4;
-		if (((String) reg).equals("$v0") || ((String) reg).equals("$v1"))
+		if ((num / 4) < extra)
 			System.out.println("lw " + reg + ", " + num + "($fp)");
 		else
 			System.out.println("lw " + reg + ", " + num + "($sp)");
