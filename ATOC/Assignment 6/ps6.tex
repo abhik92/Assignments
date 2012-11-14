@@ -189,27 +189,11 @@ is a path of length at most $k$ from the vertex $i$ to vertex $j$ and is $0$ oth
     $C$. Hence, the entire matrix multiplication of boolean values can be done in log space.
     
     \part
-    The repeated squaring technique uses the following algorithm \newline
-    \begin{verbatim}
-            
-	power(A,n):
-	  if(n=0):
-	    return I
-	  else if(n=1):
-	    return A
-	  else if(n\%2==0)
-	    B = power(A,n/2)
-	    return B * B
-	  else
-	    B = power(A,n/2)
-	    return B*B*A
-	  
-    \end{verbatim}
-
-    From the above code , the space requirement for every recursive call is O($\log (n)$) for the boolean matrix multiplication. Hence, the recurrence for space can be written as: \newline
-    $S(p,n)=S(p/2,n) + O(\log (n))$. \newline
-    
-    This gives $S(p,n)$ = O($\log (n) \log (p)$).
+    The usual repeated squaring technique requires us to store the intermidiate matrices which will need O($n$) space. Instead, we can slightly modify
+    the algorithm so that, whenever we are calculating $A_{ij}^p$, we need to do a logical or over all k's which will need, $A_{ik}^{p/2}$ and $B_{ik}^{p/2}$.
+    This can be calculated on the fly, by storing just the $A_{ik}^{p/2}$ and the $B_{ik}^{p/2}$ . This will need a space of O($\log (p) \ast \log (n)$) space
+    for finding the $A_{ik}^{p/2}$(Because to further find this entry we have to go all the way till $A$). This space can be reused for the other 
+    entries in $A^{p}$.
     
     
     \part

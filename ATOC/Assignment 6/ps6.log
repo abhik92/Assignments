@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  13 NOV 2012 15:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  14 NOV 2012 09:28
 entering extended mode
  %&-line parsing enabled.
 **ps6.tex
@@ -311,17 +311,7 @@ Overfull \hbox (32.44412pt too wide) in paragraph at lines 177--178
 [] \OML/cmm/m/it/12 n [] p\OT1/cmr/m/n/12 )$. 
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--211
-
- []
-
-[5] [6]
+[4] [5] [6]
 This exam contains 5 questions with 22 parts, 0 subparts, and 0 subsubparts.
 (./ps6.aux)
 
@@ -329,13 +319,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2544 strings out of 495061
- 28007 string characters out of 1182622
- 97719 words of memory out of 3000000
- 5744 multiletter control sequences out of 15000+50000
- 11516 words of font info for 44 fonts, out of 3000000 for 9000
+ 2541 strings out of 495061
+ 27978 string characters out of 1182622
+ 96719 words of memory out of 3000000
+ 5742 multiletter control sequences out of 15000+50000
+ 11347 words of font info for 43 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 28i,10n,24p,322b,383s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 28i,10n,24p,322b,365s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-t
 exlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/font
@@ -345,11 +335,10 @@ lic/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
 ></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
 e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texmf-texl
 ive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/symbols/msam10.pfb>
-Output written on ps6.pdf (6 pages, 147368 bytes).
+ype1/public/amsfonts/symbols/msam10.pfb>
+Output written on ps6.pdf (6 pages, 140807 bytes).
 PDF statistics:
- 69 PDF objects out of 1000 (max. 8388607)
+ 65 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
