@@ -1,11 +1,13 @@
+:-use_module(library(random)).
+
 play(Board,Player):- game_over(Board,Player).
-play(Board,Player):- notgameover(Board,Player),getinputmove(Move),legal(Board,Move,Player),move(Move,Board,Board1),display_game(Board1),next_player(Player,Player1),!,play(Board1,Player1).
+play(Board,Player):- notgameover(Board,Player),choose_move(Board,Player,Move),legal(Board,Move,Player),move(Move,Board,Board1),display_game(Board1),next_player(Player,Player1),!,play(Board1,Player1).
 play(Board,Player):- print('illegal move'),play(Board,Player).
 play(Game):-initialize(Game,Board,Player),display_game(Board),play(Board,Player).
 
 initialize(Game,Board,Player):- initial_position(Board),
                                 Player=w.
-                                %isReach([6,8,2],[6,4,8],[q,b],Board).
+%                                isReach([2,7,5],[1,2,1],[b,b],Board).
                                 /*move([[1,1,10]|[2,1,9]],Position,Player)*/
                                 %legal(Board,[[5,2,7],[5,3,8]],Player).
                                 %getPiece([5,2,7],Player,Board).
@@ -15,7 +17,7 @@ initialize(Game,Board,Player):- initial_position(Board),
 initial_position(Position):- Position = [[1,1,10],[r,w],[2,1,9],[h,w],[3,1,8],[b,w],[4,1,7],[q,w],[5,1,6],[k,w],[6,2,6],[b,w],[7,3,6],[h,w],[8,4,6],[b,w],[9,5,6],[r,w],
                                          [1,2,1],[p,w],[2,2,10],[p,w],[3,2,9],[p,w],[4,2,8],[p,w],[5,2,7],[p,w],[6,3,7],[p,w],[7,4,7],[p,w],[8,5,7],[p,w],[9,6,7],[p,w],
                                          [1,3,2],[n,n],[2,3,1],[n,n],[3,3,10],[n,n],[4,3,9],[n,n],[5,3,8],[n,n],[6,4,8],[n,n],[7,5,8],[n,n],[8,6,8],[n,n],[9,7,8],[n,n],
-                                         [1,4,3],[n,n],[2,4,2],[n,n],[3,4,1],[n,n],[4,4,10],[n,n],[5,4,9],[n,n],[6,5,9],[n,n],[7,6,9],[n,n],[8,6,9],[n,n],[8,6,9],[n,n],
+                                         [1,4,3],[n,n],[2,4,2],[n,n],[3,4,1],[n,n],[4,4,10],[n,n],[5,4,9],[n,n],[6,5,9],[n,n],[7,6,9],[n,n],[8,7,9],[n,n],[9,8,9],[n,n],
                                          [1,5,4],[p,b],[2,5,3],[n,n],[3,5,2],[n,n],[4,5,1],[n,n],[5,5,10],[n,n],[6,6,10],[n,n],[7,7,10],[n,n],[8,8,10],[n,n],[9,9,10],[p,b],
                                          [1,6,5],[r,b],[2,6,4],[p,b],[3,6,3],[n,n],[4,6,2],[n,n],[5,6,1],[n,n],[6,7,1],[n,n],[7,8,1],[n,n],[8,9,1],[p,b],[9,10,1],[r,b],
                                          [2,7,5],[b,b],[3,7,4],[p,b],[4,7,3],[n,n],[5,7,2],[n,n],[6,8,2],[n,n],[7,9,2],[p,b],[8,10,2],[r,b],
@@ -36,8 +38,41 @@ initialize_board_coordinates(Coordinates):-Coordinates=[[a,1],[1,1,10],[a,2],[1,
 
 
 
+nthInList(List,N,Counter,Result):-List=[Front|Rest],Counter=:=N,Result=Front.
+nthInList(List,N,Counter,Result):-List=[Front|Rest],Counter1 is Counter +1,nthInList(Rest,N,Counter1,Result).
 
-display_game(Board):-print(Board).
+
+/* The AI Part */
+choose_move(Board,w,Move):-getinputmove(Move).
+choose_move(Board,b,Move):-chooseRandomMove(Board,Move,b,Board),nl(current_output),nl(current_output),Move=[Start,End],initialize_board_coordinates(Coordinates),
+                            get3DFrom2D(TwoStart,Start,Coordinates),get3DFrom2D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).
+/* For now it chooses a random move*/
+
+chooseRandomMove(Board,Move,Player,List):-random(1,70,R),R1 is 2*R,T is R1-1,nthInList(List,T,1,Front),
+                                          getPiece(Front,Piece,Board),Piece=[_,Player],someMove(Piece,Front,Board,Player,Move).
+
+someMove(Piece,Position,Board,Player,Move):-Board=[Front|Rest],Front=[A,B,C],someReach(Piece,Position,Board,Player,Board,Move).
+someMove(Piece,Position,[Front|Rest],Player,Move):-someMove(Piece,Position,Rest,Player,Move).
+
+someReach(Piece,Position,Board,Player,List,Move):-List=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),Move=[Position,Front].
+someReach(Piece,Position,Board,Player,[Front|Rest],Move):-someReach(Piece,Position,Board,Player,Rest,Move).
+
+
+
+display_game(Board):-initialize_board_coordinates(Coordinates),nl(current_output),nl(current_output),printBoard(Coordinates,Board,0).
+
+printBoard(Coordinates,[],Newline).
+printBoard(Coordinates,Board,NewLine):-Board=[Front|Rest],Front=[A,B,C],get2DFrom3D(TwoPosition,Front,Coordinates),
+                                        TwoPosition=[Rank,_],NewLine1=Rank,print(TwoPosition),
+                                        printBoard(Coordinates,Rest,NewLine1).
+printBoard(Coordinates,Board,NewLine):-Board=[Front|Rest],Front=[A,B],print(Front),printNewline(NewLine),print('  '),printBoard(Coordinates,Rest,NewLine).
+
+printNewline(i):-nl(current_output),nl(current_output).
+printNewline(A).
+
+get2DFrom3D(TwoPosition,ThreePosition,Coordinates):-Coordinates=[A,ThreePosition|Rest],TwoPosition=A.
+get2DFrom3D(TwoPosition,ThreePosition,[Y|Rest]):-get2DFrom3D(TwoPosition,ThreePosition,Rest).
+
 
 get3DFrom2D(TwoPosition,ThreePosition,Coordinates):-Coordinates=[TwoPosition|Rest],Rest=[ThreePosition|Y].
 get3DFrom2D(TwoPosition,ThreePosition,[Y|Rest]):-get3DFrom2D(TwoPosition,ThreePosition,Rest).
@@ -50,10 +85,10 @@ notgameover(Board,Player):-game_over(Board,Player),!,fail.
 notgameover(Board,Player).
 
 /*Check for check mate*/
-game_over(Board,Player):-kingCheck(Board,Player),checkMate(Board,Player,Board,Result),Result=:=0,print('gameOver.'),print(Player),print(' Player Wins').
+game_over(Board,Player):-kingCheck(Board,Player),checkMate(Board,Player,Board,Result),Result=:=0,nl(current_output),nl(current_output),print('gameOver.'),print(Player),print(' Player Wins').
 
 checkMate(Board,Player,[],Result):-Result=1.
-checkMate(Board,Player,List,Result):-List=[Front|Rest],Front=[A,B,C],getPiece(Front,Piece,Board),allMoves(Piece,Front,Board,Player),checkMate(Board,Player,Rest,Result).
+checkMate(Board,Player,List,Result):-List=[Front|Rest],Front=[A,B,C],getPiece(Front,Piece,Board),!,allMoves(Piece,Front,Board,Player),!,checkMate(Board,Player,Rest,Result).
 checkMate(Board,Player,List,Result):-List=[Front|Rest],Front=[A,B],checkMate(Board,Player,Rest,Result).
 checkMate(Board,Player,[Front|Rest],Result):-Result=0.
 
@@ -178,10 +213,10 @@ bottomLeft(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y-2,modIn
 /*Checks for the bottomright diagonal*/
 bottomRight(Position,Position1,Board):-Position=Position1.
 bottomRight(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y-1,modIndex(Z,-2,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    bottomLeft([X1,Y1,Z1],Position1,Board).
+                                    bottomRight([X1,Y1,Z1],Position1,Board).
 
 bottomRight(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y-1,modIndex(Z,-2,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    bottomLeft([X1,Y1,Z1],Position1,Board).
+                                    bottomRight([X1,Y1,Z1],Position1,Board).
 
 
 /*Checks if position to position1 along a straight is free to be reached on the current board*/
@@ -378,6 +413,8 @@ isReach(Position,Position1,Piece,Board):- Piece=[p,Color],
 
 /*Check for legality of a move*/
 legal(Board, Move,Player):- Move=[FirstPosition,LastPosition],
+                            checkCellExists(FirstPosition,Board),
+                            checkCellExists(LastPosition,Board),
                             getPiece(FirstPosition,Piece,Board),
                             Piece=[FirstPiece,FirstColor],
                             FirstColor=Player,
