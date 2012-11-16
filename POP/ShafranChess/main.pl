@@ -7,7 +7,7 @@ Play(Game):-initialize(Game,Position,Player),display_game(Position,Player),play(
 
 /*The function which chooses the move among the available ones*/
 
-choose_move(Position,Self,Move):-read_input_from_screen(Move),legal(Position,Move).
+choose_move(Position,Player,Move):-read_input_from_screen(Move),legal(Position,Move,Player),move(Move,Position,Position1).
 
 choose_move(Position,Computer,Move):-set_of(M,move(Position,M),Moves),evaluate_and_choose(Moves,Position,10,1,nil,Bestmove).
 
