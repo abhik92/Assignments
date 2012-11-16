@@ -1,0 +1,11 @@
+Query Asked by TA during evaluation
+
+List of event coordinators whose events have more than average number of visitors
+create view counttable(event,number) as
+(
+   select count(visitor) from attending_events group by events
+)
+select name ,phone from coordinator where event in (select event from counttable where count>(select avg(count) from counttable))
+
+
+

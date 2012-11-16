@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 10, 2012 at 01:23 AM
+-- Generation Time: Nov 16, 2012 at 09:18 PM
 -- Server version: 5.5.24
 -- PHP Version: 5.3.10-1ubuntu3.4
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `coordinator` (
 --
 
 INSERT INTO `coordinator` (`coord_id`, `phone`, `email`, `name`, `event`) VALUES
-(1, '6867636106', 'ajay@shaastra.org', 'Ajay Kumar Bilare', 'Aerobotics'),
+(1, '9789943719', 'ajay@shaastra.org', 'Ajay Kumar Bilare', 'Aerobotics'),
 (2, '6641045805', 'akhil@shaastra.org', 'Akhil Ramesh', 'Air Show'),
 (3, '1716111303', 'antony@shaastra.org', 'Antony Thomas', 'Ambience'),
 (4, '7312817169', 'arjun@shaastra.org', 'Arjun C', 'Case Study'),
@@ -261,6 +261,27 @@ INSERT INTO `equipment` (`name`, `cost`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `event_equipment`
+--
+
+CREATE TABLE IF NOT EXISTS `event_equipment` (
+  `event` varchar(30) NOT NULL,
+  `quantity` float NOT NULL,
+  KEY `event` (`event`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `event_equipment`
+--
+
+INSERT INTO `event_equipment` (`event`, `quantity`) VALUES
+('Contraptions', 5),
+('Equipment', 12),
+('Air Show', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rooms`
 --
 
@@ -391,6 +412,7 @@ CREATE TABLE IF NOT EXISTS `subdepartment` (
   `money` float DEFAULT NULL,
   `equipment_id` varchar(30) DEFAULT NULL,
   `department` int(11) NOT NULL,
+  `equipment_quantity` float NOT NULL DEFAULT '5',
   PRIMARY KEY (`event_name`),
   KEY `event_ibfk_4` (`department`),
   KEY `event_ibfk_3` (`equipment_id`)
@@ -400,69 +422,69 @@ CREATE TABLE IF NOT EXISTS `subdepartment` (
 -- Dumping data for table `subdepartment`
 --
 
-INSERT INTO `subdepartment` (`event_name`, `time`, `venue`, `money`, `equipment_id`, `department`) VALUES
-('Aerobotics', '0000-00-00 00:00:00', 'Venue 6', 573, 'carpets', 6),
-('Air Show', '0000-00-00 00:00:00', 'Venue 8', 992, 'chair', 6),
-('Ambience', '0000-00-00 00:00:00', 'Venue 8', 625, 'laptop', 5),
-('Case Study', '0000-00-00 00:00:00', 'Venue 5', 467, 'marker', 6),
-('Catering', '0000-00-00 00:00:00', 'Venue 5', 296, 'microphone', 8),
-('Computer Literacy For All', '0000-00-00 00:00:00', 'Venue 4', 554, 'pen', 6),
-('Contraptions', '0000-00-00 00:00:00', 'Venue 5', 893, 'pendrive', 6),
-('Creative Design', '0000-00-00 00:00:00', 'Venue 9', 234, 'projector', 5),
-('Desmod', '0000-00-00 00:00:00', 'Venue 8', 866, 'speakers', 6),
-('Equipment', '0000-00-00 00:00:00', 'Venue 3', 801, 'whiteboard', 7),
-('Exhibitions', '0000-00-00 00:00:00', 'Venue 6', 785, 'carpets', 6),
-('Face Off', '0000-00-00 00:00:00', 'Venue 3', 318, 'pen', 6),
-('Fire n Ice', '0000-00-00 00:00:00', 'Venue 6', 715, 'speakers', 6),
-('Fox Hunt', '0000-00-00 00:00:00', 'Venue 3', 129, 'pendrive', 6),
-('GA PA Materials', '0000-00-00 00:00:00', 'Venue 4', 955, 'pendrive', 7),
-('Gamedrome', '0000-00-00 00:00:00', 'Venue 6', 580, 'projector', 6),
-('Graphic Design', '0000-00-00 00:00:00', 'Venue 2', 575, 'projector', 5),
-('Hackfest', '0000-00-00 00:00:00', 'Venue 6', 324, 'carpets', 6),
-('Hospitality', '0000-00-00 00:00:00', 'Venue 2', 166, 'projector', 3),
-('Hovercraft', '0000-00-00 00:00:00', 'Venue 3', 244, 'whiteboard', 6),
-('IDP', '0000-00-00 00:00:00', 'Venue 4', 162, 'marker', 6),
-('IITM Ideas Challenge', '0000-00-00 00:00:00', 'Venue 1', 376, 'pendrive', 6),
-('Junkyard Wars', '0000-00-00 00:00:00', 'Venue 6', 996, 'speakers', 6),
-('Lectures and VCs', '0000-00-00 00:00:00', 'Venue 9', 987, 'chair', 6),
-('Magic Materials', '0000-00-00 00:00:00', 'Venue 2', 216, 'laptop', 6),
-('Math Modelling', '0000-00-00 00:00:00', 'Venue 6', 360, 'marker', 6),
-('MobOps', '0000-00-00 00:00:00', 'Venue 5', 355, 'speakers', 2),
-('Newsletter and PR', '0000-00-00 00:00:00', 'Venue 9', 674, 'carpets', 10),
-('Online Events', '0000-00-00 00:00:00', 'Venue 6', 154, 'chair', 6),
-('OPC', '0000-00-00 00:00:00', 'Venue 2', 360, 'pen', 6),
-('Paper Plane', '0000-00-00 00:00:00', 'Venue 2', 847, 'pen', 6),
-('Photography', '0000-00-00 00:00:00', 'Venue 6', 882, 'marker', 5),
-('Pilot Training', '0000-00-00 00:00:00', 'Venue 5', 493, 'microphone', 6),
-('Prize and Prize Money', '0000-00-00 00:00:00', 'Venue 4', 660, 'carpets', 9),
-('Production', '0000-00-00 00:00:00', 'Venue 3', 854, 'chair', 7),
-('Project X', '0000-00-00 00:00:00', 'Venue 7', 185, 'laptop', 6),
-('Publicity', '0000-00-00 00:00:00', 'Venue 7', 454, 'speakers', 4),
-('Puzzle Champ', '0000-00-00 00:00:00', 'Venue 9', 328, 'speakers', 6),
-('QMS', '0000-00-00 00:00:00', 'Venue 9', 982, 'microphone', 1),
-('Reverse Coding', '0000-00-00 00:00:00', 'Venue 1', 140, 'laptop', 6),
-('Robo-Oceana', '0000-00-00 00:00:00', 'Venue 5', 284, 'whiteboard', 6),
-('Robotics', '0000-00-00 00:00:00', 'Venue 9', 497, 'chair', 6),
-('Robowars', '0000-00-00 00:00:00', 'Venue 4', 752, 'marker', 6),
-('Sales and Distribution', '0000-00-00 00:00:00', 'Venue 9', 520, 'pen', 9),
-('SCDC', '0000-00-00 00:00:00', 'Venue 3', 856, 'projector', 6),
-('Shaastra Cube Open', '0000-00-00 00:00:00', 'Venue 6', 774, 'speakers', 6),
-('Shaastra Junior', '0000-00-00 00:00:00', 'Venue 5', 421, 'whiteboard', 6),
-('Shaastra Main Quiz', '0000-00-00 00:00:00', 'Venue 2', 777, 'chair', 6),
-('Shaastra Nights', '0000-00-00 00:00:00', 'Venue 7', 340, 'microphone', 6),
-('Sketch It', '0000-00-00 00:00:00', 'Venue 6', 773, 'whiteboard', 6),
-('Spons Creative', '0000-00-00 00:00:00', 'Venue 5', 325, 'chair', 10),
-('Spons Publicity', '0000-00-00 00:00:00', 'Venue 2', 106, 'pendrive', 10),
-('Sponsorship and PR', '0000-00-00 00:00:00', 'Venue 9', 148, 'projector', 10),
-('Sustainable Cityscape', '0000-00-00 00:00:00', 'Venue 4', 856, 'carpets', 6),
-('Symposium', '0000-00-00 00:00:00', 'Venue 3', 980, 'microphone', 6),
-('Triathlon', '0000-00-00 00:00:00', 'Venue 8', 667, 'projector', 6),
-('Ultimate Engineer', '0000-00-00 00:00:00', 'Venue 1', 753, 'chair', 6),
-('Videography', '0000-00-00 00:00:00', 'Venue 5', 440, 'projector', 5),
-('VIP Care', '0000-00-00 00:00:00', 'Venue 9', 956, 'carpets', 8),
-('Vishesh', '0000-00-00 00:00:00', 'Venue 5', 499, 'whiteboard', 10),
-('WebOps', '0000-00-00 00:00:00', 'Venue 3', 230, 'microphone', 2),
-('Wright Design', '0000-00-00 00:00:00', 'Venue 8', 476, 'carpets', 6);
+INSERT INTO `subdepartment` (`event_name`, `time`, `venue`, `money`, `equipment_id`, `department`, `equipment_quantity`) VALUES
+('Aerobotics', '2012-11-03 11:38:00', 'Venue 6', 573, 'carpets', 6, 7),
+('Air Show', '2012-11-14 15:00:00', 'Venue 8', 992, 'chair', 6, 7),
+('Ambience', '2012-11-17 10:00:00', 'Venue 8', 625, 'laptop', 5, 7),
+('Case Study', '0000-00-00 00:00:00', 'Venue 5', 467, 'marker', 6, 1),
+('Catering', '2012-11-30 15:00:00', 'Venue 5', 296, 'microphone', 8, 1),
+('Computer Literacy For All', '2012-11-03 16:00:00', 'Venue 4', 554, 'pen', 6, 1),
+('Contraptions', '0000-00-00 00:00:00', 'Venue 5', 893, 'pendrive', 6, 1),
+('Creative Design', '0000-00-00 00:00:00', 'Venue 9', 234, 'projector', 5, 1),
+('Desmod', '0000-00-00 00:00:00', 'Venue 8', 866, 'speakers', 6, 5),
+('Equipment', '2012-11-03 19:00:00', 'Venue 3', 801, 'whiteboard', 7, 5),
+('Exhibitions', '0000-00-00 00:00:00', 'Venue 6', 785, 'carpets', 6, 5),
+('Face Off', '0000-00-00 00:00:00', 'Venue 3', 318, 'pen', 6, 5),
+('Fire n Ice', '0000-00-00 00:00:00', 'Venue 6', 715, 'speakers', 6, 5),
+('Fox Hunt', '2012-11-01 17:00:00', 'Venue 3', 129, 'pendrive', 6, 5),
+('GA PA Materials', '0000-00-00 00:00:00', 'Venue 4', 955, 'pendrive', 7, 3),
+('Gamedrome', '0000-00-00 00:00:00', 'Venue 6', 580, 'projector', 6, 3),
+('Graphic Design', '0000-00-00 00:00:00', 'Venue 2', 575, 'projector', 5, 3),
+('Hackfest', '2012-11-30 12:13:00', 'Venue 6', 324, 'carpets', 6, 5),
+('Hospitality', '0000-00-00 00:00:00', 'Venue 2', 166, 'projector', 3, 5),
+('Hovercraft', '0000-00-00 00:00:00', 'Venue 3', 244, 'whiteboard', 6, 5),
+('IDP', '2012-11-27 12:30:00', 'Venue 4', 162, 'marker', 6, 5),
+('IITM Ideas Challenge', '0000-00-00 00:00:00', 'Venue 1', 376, 'pendrive', 6, 5),
+('Junkyard Wars', '0000-00-00 00:00:00', 'Venue 6', 996, 'speakers', 6, 5),
+('Lectures and VCs', '0000-00-00 00:00:00', 'Venue 9', 987, 'chair', 6, 5),
+('Magic Materials', '0000-00-00 00:00:00', 'Venue 2', 216, 'laptop', 6, 5),
+('Math Modelling', '2012-11-03 19:00:00', 'Venue 6', 360, 'marker', 6, 5),
+('MobOps', '0000-00-00 00:00:00', 'Venue 5', 355, 'speakers', 2, 5),
+('Newsletter and PR', '0000-00-00 00:00:00', 'Venue 9', 674, 'carpets', 10, 5),
+('Online Events', '2012-11-25 11:00:00', 'Venue 6', 154, 'chair', 6, 5),
+('OPC', '2012-11-10 13:00:00', 'Venue 2', 360, 'pen', 6, 5),
+('Paper Plane', '0000-00-00 00:00:00', 'Venue 2', 847, 'pen', 6, 5),
+('Photography', '0000-00-00 00:00:00', 'Venue 6', 882, 'marker', 5, 5),
+('Pilot Training', '0000-00-00 00:00:00', 'Venue 5', 493, 'microphone', 6, 5),
+('Prize and Prize Money', '0000-00-00 00:00:00', 'Venue 4', 660, 'carpets', 9, 5),
+('Production', '0000-00-00 00:00:00', 'Venue 3', 854, 'chair', 7, 5),
+('Project X', '0000-00-00 00:00:00', 'Venue 7', 185, 'laptop', 6, 5),
+('Publicity', '0000-00-00 00:00:00', 'Venue 7', 454, 'speakers', 4, 5),
+('Puzzle Champ', '0000-00-00 00:00:00', 'Venue 9', 328, 'speakers', 6, 5),
+('QMS', '0000-00-00 00:00:00', 'Venue 9', 982, 'microphone', 1, 5),
+('Reverse Coding', '0000-00-00 00:00:00', 'Venue 1', 140, 'laptop', 6, 5),
+('Robo-Oceana', '0000-00-00 00:00:00', 'Venue 5', 284, 'whiteboard', 6, 5),
+('Robotics', '2012-11-17 11:00:00', 'Venue 9', 497, 'chair', 6, 5),
+('Robowars', '0000-00-00 00:00:00', 'Venue 4', 752, 'marker', 6, 5),
+('Sales and Distribution', '0000-00-00 00:00:00', 'Venue 9', 520, 'pen', 9, 5),
+('SCDC', '0000-00-00 00:00:00', 'Venue 3', 856, 'projector', 6, 5),
+('Shaastra Cube Open', '0000-00-00 00:00:00', 'Venue 6', 774, 'speakers', 6, 5),
+('Shaastra Junior', '0000-00-00 00:00:00', 'Venue 5', 421, 'whiteboard', 6, 5),
+('Shaastra Main Quiz', '0000-00-00 00:00:00', 'Venue 2', 777, 'chair', 6, 5),
+('Shaastra Nights', '0000-00-00 00:00:00', 'Venue 7', 340, 'microphone', 6, 5),
+('Sketch It', '2012-11-10 10:34:00', 'Venue 6', 773, 'whiteboard', 6, 5),
+('Spons Creative', '0000-00-00 00:00:00', 'Venue 5', 325, 'chair', 10, 5),
+('Spons Publicity', '0000-00-00 00:00:00', 'Venue 2', 106, 'pendrive', 10, 5),
+('Sponsorship and PR', '0000-00-00 00:00:00', 'Venue 9', 148, 'projector', 10, 5),
+('Sustainable Cityscape', '0000-00-00 00:00:00', 'Venue 4', 856, 'carpets', 6, 5),
+('Symposium', '0000-00-00 00:00:00', 'Venue 3', 980, 'microphone', 6, 5),
+('Triathlon', '0000-00-00 00:00:00', 'Venue 8', 667, 'projector', 6, 8),
+('Ultimate Engineer', '0000-00-00 00:00:00', 'Venue 1', 753, 'chair', 6, 5),
+('Videography', '0000-00-00 00:00:00', 'Venue 5', 440, 'projector', 5, 5),
+('VIP Care', '2012-11-26 10:00:00', 'Venue 9', 956, 'carpets', 8, 5),
+('Vishesh', '0000-00-00 00:00:00', 'Venue 5', 499, 'whiteboard', 10, 5),
+('WebOps', '0000-00-00 00:00:00', 'Venue 3', 230, 'microphone', 2, 5),
+('Wright Design', '0000-00-00 00:00:00', 'Venue 8', 476, 'carpets', 6, 5);
 
 -- --------------------------------------------------------
 
@@ -713,22 +735,28 @@ INSERT INTO `visitors` (`visitor_id`, `name`, `phone`, `email`, `college`) VALUE
 -- Constraints for table `attending_events`
 --
 ALTER TABLE `attending_events`
-  ADD CONSTRAINT `attending_events_ibfk_5` FOREIGN KEY (`event`) REFERENCES `subdepartment` (`event_name`),
   ADD CONSTRAINT `attending_events_ibfk_2` FOREIGN KEY (`event`) REFERENCES `subdepartment` (`event_name`),
-  ADD CONSTRAINT `attending_events_ibfk_4` FOREIGN KEY (`visitor`) REFERENCES `visitors` (`visitor_id`);
+  ADD CONSTRAINT `attending_events_ibfk_4` FOREIGN KEY (`visitor`) REFERENCES `visitors` (`visitor_id`),
+  ADD CONSTRAINT `attending_events_ibfk_5` FOREIGN KEY (`event`) REFERENCES `subdepartment` (`event_name`);
 
 --
 -- Constraints for table `coordinator`
 --
 ALTER TABLE `coordinator`
-  ADD CONSTRAINT `coordinator_ibfk_2` FOREIGN KEY (`event`) REFERENCES `subdepartment` (`event_name`),
-  ADD CONSTRAINT `coordinator_ibfk_1` FOREIGN KEY (`event`) REFERENCES `subdepartment` (`event_name`);
+  ADD CONSTRAINT `coordinator_ibfk_1` FOREIGN KEY (`event`) REFERENCES `subdepartment` (`event_name`),
+  ADD CONSTRAINT `coordinator_ibfk_2` FOREIGN KEY (`event`) REFERENCES `subdepartment` (`event_name`);
 
 --
 -- Constraints for table `department`
 --
 ALTER TABLE `department`
   ADD CONSTRAINT `department_ibfk_2` FOREIGN KEY (`head`) REFERENCES `core` (`core_id`);
+
+--
+-- Constraints for table `event_equipment`
+--
+ALTER TABLE `event_equipment`
+  ADD CONSTRAINT `event_equipment_ibfk_1` FOREIGN KEY (`event`) REFERENCES `subdepartment` (`event_name`);
 
 --
 -- Constraints for table `rooms`
