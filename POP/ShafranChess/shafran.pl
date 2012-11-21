@@ -45,6 +45,12 @@ nthInList(List,N,Counter,Result):-List=[Front|Rest],Counter1 is Counter +1,nthIn
 
 /* The AI Part */
 choose_move(Board,w,Move):-getinputmove(Move).
+%choose_move(Board,b,Move):-getinputmove(Move).
+% Just to heat up the game
+choose_move(Board,b,Move):-getBoardScore(Board,0,Score),Score=0,chooseRandomMove(Board,Move,b,Board),nl(current_output),nl(current_output),
+                            initialize_board_coordinates(Coordinates),Move=[Start,End],get2DFrom3D(TwoStart,Start,Coordinates),
+                            get2DFrom3D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).                
+
 choose_move(Board,b,Move):-chooseCompMove(Board,Move,b),nl(current_output),nl(current_output),
                             initialize_board_coordinates(Coordinates),Move=[Start,End],get2DFrom3D(TwoStart,Start,Coordinates),
                             get2DFrom3D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).                
@@ -85,17 +91,15 @@ bestMove(S1,S2,BestScore):-S1<S2,BestScore is S1.
 bestMove(S1,S2,BestScore):-BestScore is S2.
 
 
-/* For now it chooses a random move*/
-/*
+/* Choose a random move when the game is even */
+
 chooseRandomMove(Board,Move,Player,List):-random(1,70,R),R1 is 2*R,T is R1-1,nthInList(List,T,1,Front),
-                                  getPiece(Front,Piece,Board),Piece=[_,Player],someMove(Piece,Front,Board,Player,Move).
+                                  getPiece(Front,Piece,Board),Piece=[_,Player],someMove(Front,Board,Player,Move).
 
-someMove(Piece,Position,Board,Player,Move):-Board=[Front|Rest],Front=[A,B,C],someReach(Piece,Position,Board,Player,Board,Move).
-someMove(Piece,Position,[Front|Rest],Player,Move):-someMove(Piece,Position,Rest,Player,Move).
+someMove(Position,Board,Player,Move):-Board=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),Move=[Position,Front].
+someMove(Position,[Front|Rest],Player,Move):-someMove(Position,Rest,Player,Move).
 
-someReach(Piece,Position,Board,Player,List,Move):-List=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),Move=[Position,Front].
-someReach(Piece,Position,Board,Player,[Front|Rest],Move):-someReach(Piece,Position,Board,Player,Rest,Move).
-*/
+
 
 /* End of random move */
 
