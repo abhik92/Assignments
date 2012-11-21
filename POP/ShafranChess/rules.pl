@@ -45,9 +45,9 @@ nthInList(List,N,Counter,Result):-List=[Front|Rest],Counter1 is Counter +1,nthIn
 
 /* The AI Part */
 choose_move(Board,w,Move):-getinputmove(Move).
-choose_move(Board,b,Move):-chooseCompMove(Board,Move,b),nl(current_output),nl(current_output),print(Move).
-
-
+choose_move(Board,b,Move):-chooseCompMove(Board,Move,b),nl(current_output),nl(current_output),
+                            initialize_board_coordinates(Coordinates),Move=[Start,End],get2DFrom3D(TwoStart,Start,Coordinates),
+                            get2DFrom3D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).                
 
 
 getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=w,CS1 is CS+1,getBoardScore(Rest,CS1,Score).
@@ -75,7 +75,10 @@ evaluate(Board,Player,[Front|Rest],CS,BestScore):-evaluate(Board,Player,Rest,CS,
 
 eAllMoves(Board,Position,[],Player,CS,BestScore):-BestScore=CS.
 eAllMoves(Board,Position,List,Player,CS,BestScore):-List=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),move([Position,Front],Board,Board1),
-                                                   getBoardScore(Board1,0,T),bestMove(T,CS,Best),eAllMoves(Board,Position,Rest,Player,Best,BestScore).  
+                                                   next_player(Player,Player1),
+                                                   getBoardScore(Board1,0,T),
+                                                   %evaluate(Board1,Player1,Board1,T,B),
+                                                   bestMove(T,CS,Best),eAllMoves(Board,Position,Rest,Player,Best,BestScore).  
 eAllMoves(Board,Position,[Front|Rest],Player,CS,BestScore):-eAllMoves(Board,Position,Rest,Player,CS,BestScore).
 
 bestMove(S1,S2,BestScore):-S1<S2,BestScore is S1.
