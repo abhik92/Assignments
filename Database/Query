@@ -8,4 +8,8 @@ create view counttable(event,number) as
 select name ,phone from coordinator where event in (select event from counttable where count>(select avg(count) from counttable))
 
 
+select name,email from coordinator where coord_id in (select coordinator from tasks group by coordinator having count(coordinator)>2)
 
+select c.coord_id, c.name, c.phone from coordinator as c, subdepartment as s where (c.event = s.event_name and s.money > 900);
+
+select distinct r.hostel from rooms as r, visitors as v where (v.visitor_id = r.residents and v.college = 'College 49');

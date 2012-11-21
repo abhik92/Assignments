@@ -6,6 +6,7 @@ play(Board,Player):- print('illegal move'),play(Board,Player).
 play(Game):-initialize(Game,Board,Player),display_game(Board),play(Board,Player).
 
 initialize(Game,Board,Player):- initial_position(Board),
+%                               chooseCompMove(Board,Move,b,Board).
                                 Player=w.
 %                                isReach([2,7,5],[1,2,1],[b,b],Board).
                                 /*move([[1,1,10]|[2,1,9]],Position,Player)*/
@@ -44,27 +45,64 @@ nthInList(List,N,Counter,Result):-List=[Front|Rest],Counter1 is Counter +1,nthIn
 
 /* The AI Part */
 choose_move(Board,w,Move):-getinputmove(Move).
-choose_move(Board,b,Move):-chooseRandomMove(Board,Move,b,Board),nl(current_output),nl(current_output),Move=[Start,End],initialize_board_coordinates(Coordinates),
-                            get3DFrom2D(TwoStart,Start,Coordinates),get3DFrom2D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).
-/* For now it chooses a random move*/
+choose_move(Board,b,Move):-chooseCompMove(Board,Move,b),nl(current_output),nl(current_output),print(Move).
 
+
+
+
+getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=w,CS1 is CS+1,getBoardScore(Rest,CS1,Score).
+getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=b,CS1 is CS-1,getBoardScore(Rest,CS1,Score).
+getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=n,CS1 is CS,getBoardScore(Rest,CS1,Score).
+getBoardScore([],CS,Score):-Score=CS.
+
+
+getBestScoreMove(Board,Player,List,BestScore,Move):-List=[Front|Rest],Front=[A,B,C],getPiece(Front,Piece,Board),Piece=[_,Player],
+                                                  getMoves(Board,Front,Board,Player,BestScore,Move).
+getBestScoreMove(Board,Player,List,BestScore,Move):-List=[Front|Rest],Front=[A,B],getBestScoreMove(Board,Player,Rest,BestScore,Move).
+getBestScoreMove(Board,Player,[Front|Rest],BestScore,Move):-getBestScoreMove(Board,Player,Rest,BestScore,Move).
+
+getMoves(List,Position,Board,Player,BestScore,Move):-Board=[Front|Rest],Front=[A,B,C],legal(List,[Position,Front],Player),move([Position,Front],List,Board1),
+                                               getBoardScore(Board1,0,T),T=BestScore,Move=[Position,Front].  
+getMoves(List,Position,[Front|Rest],Player,BestScore,Move):-getMoves(List,Position,Rest,Player,BestScore,Move).
+
+
+chooseCompMove(Board,Move,Player):-getBoardScore(Board,0,Score),evaluate(Board,Player,Board,Score,BestScore),getBestScoreMove(Board,Player,Board,BestScore,Move).
+
+evaluate(Board,Player,[],CS,BestScore):-BestScore=CS.
+evaluate(Board,Player,List,CS,BestScore):-List=[Front|Rest],Front=[A,B,C],getPiece(Front,Piece,Board),Piece=[_,Player],
+                                          eAllMoves(Board,Front,Board,Player,CS,Best),evaluate(Board,Player,Rest,Best,BestScore).
+evaluate(Board,Player,[Front|Rest],CS,BestScore):-evaluate(Board,Player,Rest,CS,BestScore).
+
+eAllMoves(Board,Position,[],Player,CS,BestScore):-BestScore=CS.
+eAllMoves(Board,Position,List,Player,CS,BestScore):-List=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),move([Position,Front],Board,Board1),
+                                                   getBoardScore(Board1,0,T),bestMove(T,CS,Best),eAllMoves(Board,Position,Rest,Player,Best,BestScore).  
+eAllMoves(Board,Position,[Front|Rest],Player,CS,BestScore):-eAllMoves(Board,Position,Rest,Player,CS,BestScore).
+
+bestMove(S1,S2,BestScore):-S1<S2,BestScore is S1.
+bestMove(S1,S2,BestScore):-BestScore is S2.
+
+
+/* For now it chooses a random move*/
+/*
 chooseRandomMove(Board,Move,Player,List):-random(1,70,R),R1 is 2*R,T is R1-1,nthInList(List,T,1,Front),
-                                          getPiece(Front,Piece,Board),Piece=[_,Player],someMove(Piece,Front,Board,Player,Move).
+                                  getPiece(Front,Piece,Board),Piece=[_,Player],someMove(Piece,Front,Board,Player,Move).
 
 someMove(Piece,Position,Board,Player,Move):-Board=[Front|Rest],Front=[A,B,C],someReach(Piece,Position,Board,Player,Board,Move).
 someMove(Piece,Position,[Front|Rest],Player,Move):-someMove(Piece,Position,Rest,Player,Move).
 
 someReach(Piece,Position,Board,Player,List,Move):-List=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),Move=[Position,Front].
 someReach(Piece,Position,Board,Player,[Front|Rest],Move):-someReach(Piece,Position,Board,Player,Rest,Move).
+*/
 
+/* End of random move */
 
 
 display_game(Board):-initialize_board_coordinates(Coordinates),nl(current_output),nl(current_output),printBoard(Coordinates,Board,0).
 
 printBoard(Coordinates,[],Newline).
 printBoard(Coordinates,Board,NewLine):-Board=[Front|Rest],Front=[A,B,C],get2DFrom3D(TwoPosition,Front,Coordinates),
-                                        TwoPosition=[Rank,_],NewLine1=Rank,print(TwoPosition),
-                                        printBoard(Coordinates,Rest,NewLine1).
+                                TwoPosition=[Rank,_],NewLine1=Rank,print(TwoPosition),
+                                printBoard(Coordinates,Rest,NewLine1).
 printBoard(Coordinates,Board,NewLine):-Board=[Front|Rest],Front=[A,B],print(Front),printNewline(NewLine),print('  '),printBoard(Coordinates,Rest,NewLine).
 
 printNewline(i):-nl(current_output),nl(current_output).
@@ -79,27 +117,23 @@ get3DFrom2D(TwoPosition,ThreePosition,[Y|Rest]):-get3DFrom2D(TwoPosition,ThreePo
 
 getinputmove(Move):-initialize_board_coordinates(Coordinates),read(From2D),read(To2D),!,interpret(From2D,To2D,Coordinates,Move).
 interpret(From2D,To2D,Coordinates,Move):-  get3DFrom2D(From2D,FromPosition,Coordinates),get3DFrom2D(To2D,ToPosition,Coordinates),
-                                           Move=[FromPosition,ToPosition].
+                                   Move=[FromPosition,ToPosition].
 
 notgameover(Board,Player):-game_over(Board,Player),!,fail.
 notgameover(Board,Player).
 
 /*Check for check mate*/
-game_over(Board,Player):-kingCheck(Board,Player),checkMate(Board,Player,Board,Result),Result=:=0,nl(current_output),nl(current_output),print('gameOver.'),print(Player),print(' Player Wins').
+game_over(Board,Player):-kingCheck(Board,Player),checkMate(Board,Player,Board),nl(current_output),nl(current_output),print('gameOver.'),print(Player),print(' Player Wins').
 
-checkMate(Board,Player,[],Result):-Result=1.
-checkMate(Board,Player,List,Result):-List=[Front|Rest],Front=[A,B,C],getPiece(Front,Piece,Board),!,allMoves(Piece,Front,Board,Player),!,checkMate(Board,Player,Rest,Result).
-checkMate(Board,Player,List,Result):-List=[Front|Rest],Front=[A,B],checkMate(Board,Player,Rest,Result).
-checkMate(Board,Player,[Front|Rest],Result):-Result=0.
+checkMate(Board,Player,Board):-notCheckMate(Board,Player,Board),!,fail.
+checkMate(_,_,_).
 
-allMoves(Piece,Position,[],Player).
-allMoves(Piece,Position,Board,Player):-Board=[Front|Rest],Front=[A,B,C],allReach(Piece,Position,Board,Player,Board,Result),Result=:=0.
-allMoves(Piece,Position,[Front|Rest],Player):-allMoves(Piece,Position,Rest,Player).
+notCheckMate(Board,Player,List):-List=[Front|Rest],Front=[A,B,C],getPiece(Front,Piece,Board),Piece = [_,Player],
+                                     canMove(Front,Board,Board,Player).
+notCheckMate(Board,Player,List):-List=[Front|Rest],notCheckMate(Board,Player,Rest).
 
-allReach(Piece,Position,Board,Player,[],Result):-Result=1.
-allReach(Piece,Position,Board,Player,List,Result):-List=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),Result=0.
-allReach(Piece,Position,Board,Player,[Front|Rest],Result):-allReach(Piece,Position,Board,Player,Rest,Result).
-
+canMove(Position,Board,List,Player):-List=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player).
+canMove(Position,Board,[Front|Rest],Player):-canMove(Position,Board,Rest,Player).
 
 /* Gets the next player given the other player */
 next_player(w,Player1):- Player1 = b.
@@ -158,7 +192,7 @@ kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=2,R2=:=1,R3=:=1.
 kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=1,R2=:=1,R3=:=0.
 kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=1,R2=:=0,R3=:=1.
 kingReach(D1,D2,D3):-abs(D1,R1),abs(D2,R2),abs(D3,R3),R1=:=0,R2=:=1,R3=:=1.
-   
+
 
 horseReach(D1,D2,D3):- abs(D1,A1),abs(D2,A2),abs(D3,A3),A1=\=0,A2=\=0,A3=\=0,A1=\=A2,A2=\=A3,T1 is A1 + A2,Sum is T1 + A3 , Sum =:= 6.
 
@@ -173,50 +207,50 @@ diagonalReach(Position,Position1,Board):-bottomLeft(Position,Position1,Board).
 /*Checks for the top right diagonal*/
 topRight(Position,Position1,Board):-Position=Position1.
 topRight(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y+2,modIndex(Z,1,Z1),Position2=[X1,Y1,Z1],checkCellExists(Position2,Board),Position2=Position1,
-                                    topRight(Position2,Position1,Board).
+                            topRight(Position2,Position1,Board).
 topRight(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y+2,modIndex(Z,1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    topRight([X1,Y1,Z1],Position1,Board).
+                            topRight([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the top left diagonal*/
 topLeft(Position,Position1,Board):-Position=Position1.
 topLeft(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y+1,modIndex(Z,2,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    topLeft([X1,Y1,Z1],Position1,Board).
+                            topLeft([X1,Y1,Z1],Position1,Board).
 
 topLeft(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y+1,modIndex(Z,2,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    topLeft([X1,Y1,Z1],Position1,Board).
+                            topLeft([X1,Y1,Z1],Position1,Board).
 
 
 
 /*Checks for the left diagonal*/
 left(Position,Position1,Board):-Position=Position1.
 left(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-2,Y1 is Y-1,modIndex(Z,1,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    left([X1,Y1,Z1],Position1,Board).
+                            left([X1,Y1,Z1],Position1,Board).
 
 left(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-2,Y1 is Y-1,modIndex(Z,1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    left([X1,Y1,Z1],Position1,Board).
+                            left([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the right diagonal*/
 right(Position,Position1,Board):-Position=Position1.
 right(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+2,Y1 is Y+1,modIndex(Z,-1,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    right([X1,Y1,Z1],Position1,Board).
+                            right([X1,Y1,Z1],Position1,Board).
 
 right(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+2,Y1 is Y+1,modIndex(Z,-1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    right([X1,Y1,Z1],Position1,Board).
+                            right([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the bottomleft diagonal*/
 bottomLeft(Position,Position1,Board):-Position=Position1.
 bottomLeft(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y-2,modIndex(Z,-1,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    bottomLeft([X1,Y1,Z1],Position1,Board).
+                            bottomLeft([X1,Y1,Z1],Position1,Board).
 bottomLeft(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y-2,modIndex(Z,-1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    bottomLeft([X1,Y1,Z1],Position1,Board).
+                            bottomLeft([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the bottomright diagonal*/
 bottomRight(Position,Position1,Board):-Position=Position1.
 bottomRight(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y-1,modIndex(Z,-2,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    bottomRight([X1,Y1,Z1],Position1,Board).
+                            bottomRight([X1,Y1,Z1],Position1,Board).
 
 bottomRight(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y-1,modIndex(Z,-2,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    bottomRight([X1,Y1,Z1],Position1,Board).
+                            bottomRight([X1,Y1,Z1],Position1,Board).
 
 
 /*Checks if position to position1 along a straight is free to be reached on the current board*/
@@ -230,65 +264,65 @@ straightReach(Position,Position1,Board):-secondIndexDown(Position,Position1,Boar
 /*Checks for the top straight*/
 top(Position,Position1,Board):-Position=Position1.
 top(Position,Position1,Board):-Position=[X,Y,Z],X1 is X,Y1 is Y+1,modIndex(Z,1,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    top([X1,Y1,Z1],Position1,Board).
+                            top([X1,Y1,Z1],Position1,Board).
 top(Position,Position1,Board):-Position=[X,Y,Z],X1 is X,Y1 is Y+1,modIndex(Z,1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    top([X1,Y1,Z1],Position1,Board).
+                            top([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the bottom straight*/
 down(Position,Position1,Board):-Position=Position1.
 down(Position,Position1,Board):-Position=[X,Y,Z],X1 is X,Y1 is Y-1,modIndex(Z,-1,Z1),Position2=[X1,Y1,Z1],checkCellExists(Position2,Board),Position2=Position1.
 down(Position,Position1,Board):-Position=[X,Y,Z],X1 is X,Y1 is Y-1,modIndex(Z,-1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    down([X1,Y1,Z1],Position1,Board).
+                            down([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the first index top striaght*/
 firstIndexTop(Position,Position1,Board):-Position=Position1.
 firstIndexTop(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y,modIndex(Z,1,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    firstIndexTop([X1,Y1,Z1],Position1,Board).
+                            firstIndexTop([X1,Y1,Z1],Position1,Board).
 
 firstIndexTop(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y,modIndex(Z,1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    firstIndexTop([X1,Y1,Z1],Position1,Board).
+                            firstIndexTop([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the first index bottom straight*/
 firstIndexDown(Position,Position1,Board):-Position=Position1.
 firstIndexDown(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y,modIndex(Z,-1,Z1),Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    firstIndexDown([X1,Y1,Z1],Position1,Board).
+                            firstIndexDown([X1,Y1,Z1],Position1,Board).
 
 firstIndexDown(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y,modIndex(Z,-1,Z1),checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    firstIndexDown([X1,Y1,Z1],Position1,Board).
+                            firstIndexDown([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the second index top straight*/
 secondIndexTop(Position,Position1,Board):-Position=Position1.
 secondIndexTop(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y+1,Z1 is Z,Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    secondIndexTop([X1,Y1,Z1],Position1,Board).
+                            secondIndexTop([X1,Y1,Z1],Position1,Board).
 
 secondIndexTop(Position,Position1,Board):-Position=[X,Y,Z],X1 is X+1,Y1 is Y+1,Z1 is Z,checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    secondIndexTop([X1,Y1,Z1],Position1,Board).
+                            secondIndexTop([X1,Y1,Z1],Position1,Board).
 
 /*Checks for the second index down straight*/
 secondIndexDown(Position,Position1,Board):-Position=Position1.
 secondIndexDown(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y-1,Z1 is Z,Position2=[X1,Y1,Z1],checkCellExists([X1,Y1,Z1],Board),Position2=Position1,
-                                    secondIndexDown([X1,Y1,Z1],Position1,Board).
+                            secondIndexDown([X1,Y1,Z1],Position1,Board).
 
 secondIndexDown(Position,Position1,Board):-Position=[X,Y,Z],X1 is X-1,Y1 is Y-1,Z1 is Z,checkCellExists([X1,Y1,Z1],Board),isFree([X1,Y1,Z1],Board),
-                                    secondIndexDown([X1,Y1,Z1],Position1,Board).
+                            secondIndexDown([X1,Y1,Z1],Position1,Board).
 
 
 /* Check the Pawn move. The trickiest part. Have to check for base case moves*/
 
 /* Entirely from white s perspective */
 pawnReach(Position,Position1,Board,w):-Position=[X,Y,Z],Position1=[X1,Y1,Z1],X1=:=X,Y=:=Y1-1,modIndex(Z1,-1,R),R=:=Z,getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=n.
+                               Piece=[_,Color],Color=n.
 pawnReach(Position,Position1,Board,w):-Position=[X,Y,Z],Position1=[X1,Y1,Z1],X1=:=X-1,Y1=:=Y,modIndex(Z1,-1,R),R=:=Z,
-                                       getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=n.
+                               getPiece(Position1,Piece,Board),
+                               Piece=[_,Color],Color=n.
 pawnReach(Position,Position1,Board,w):-Position=[X,Y,Z],Position1=[X1,Y1,Z1],X1-1=:=X,Y1-1=:=Y,Z1=:=Z,
-                                       getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=n.
+                               getPiece(Position1,Piece,Board),
+                               Piece=[_,Color],Color=n.
 pawnReach(Position,Position1,Board,w):-Position=[X,Y,Z],Position1=[X1,Y1,Z1],X1=:=X-1,Y1-1=:=Y,modIndex(Z1,-2,R),R=:=Z,getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=b.
+                               Piece=[_,Color],Color=b.
 pawnReach(Position,Position1,Board,w):-Position=[X,Y,Z],Position1=[X1,Y1,Z1],X1-1=:=X,Y1-2=:=Y,modIndex(Z1,-1,R),R=:=Z,
-                                       getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=b.
+                               getPiece(Position1,Piece,Board),
+                               Piece=[_,Color],Color=b.
 
 /* Hard code the base cases for white */
 pawnReach([2,2,10],[2,4,2],Board,w):-isFree([2,3,1],Board),isFree([2,4,2],Board).
@@ -305,18 +339,18 @@ pawnReach([5,2,7],[5,5,10],Board,w):-isFree([5,3,8],Board),isFree([5,4,9],Board)
 /* Entirely from Black s perspective */
 /*The directions of movements are reversed for the black pawn*/
 pawnReach(Position,Position1,Board,b):-Position=[X,Y,Z],Position1=[X1,Y1,Z1],X1=:=X,Y=:=Y1+1,modIndex(Z1,1,R),R=:=Z,getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=n.
+                               Piece=[_,Color],Color=n.
 pawnReach(Position,Position1,Board,b):-Position=[X1,Y1,Z1],Position1=[X,Y,Z],X1=:=X-1,Y1=:=Y,modIndex(Z1,-1,R),R=:=Z,
-                                       getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=n.
+                               getPiece(Position1,Piece,Board),
+                               Piece=[_,Color],Color=n.
 pawnReach(Position,Position1,Board,b):-Position=[X1,Y1,Z1],Position1=[X,Y,Z],X1-1=:=X,Y1-1=:=Y,Z1=:=Z,
-                                       getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=n.
+                               getPiece(Position1,Piece,Board),
+                               Piece=[_,Color],Color=n.
 pawnReach(Position,Position1,Board,b):-Position=[X1,Y1,Z1],Position1=[X,Y,Z],X1=:=X-1,Y1-1=:=Y,modIndex(Z1,-2,R),R=:=Z,getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=w.
+                               Piece=[_,Color],Color=w.
 pawnReach(Position,Position1,Board,b):-Position=[X1,Y1,Z1],Position1=[X,Y,Z],X1-1=:=X,Y1-2=:=Y,modIndex(Z1,-1,R),R=:=Z,
-                                       getPiece(Position1,Piece,Board),
-                                       Piece=[_,Color],Color=w.
+                               getPiece(Position1,Piece,Board),
+                               Piece=[_,Color],Color=w.
 
 /* Hard code the base cases for Black */
 pawnReach([2,6,4],[2,4,2],Board,b):-isFree([2,5,3],Board),isFree([2,4,2],Board).
@@ -343,31 +377,31 @@ notIsReach(Position,Position1,Piece,Board).
 
 /*Predicate for the King*/
 isReach(Position,Position1,Piece,Board):- Piece=[k,Color],
-                                                getPiece(Position1,P,Board),
-                                                P=[_,C],
-                                                notSameColor(Color , C),
-                                                Position=[X,Y,Z],
-                                                Position1=[X1,Y1,Z1],
-                                                D1 is X - X1,
-                                                D2 is Y-Y1,
-                                                R3 is Z-Z1,
-                                                mOD(R3,D3),
-                                                kingReach(D1,D2,D3).
+                                        getPiece(Position1,P,Board),
+                                        P=[_,C],
+                                        notSameColor(Color , C),
+                                        Position=[X,Y,Z],
+                                        Position1=[X1,Y1,Z1],
+                                        D1 is X - X1,
+                                        D2 is Y-Y1,
+                                        R3 is Z-Z1,
+                                        mOD(R3,D3),
+                                        kingReach(D1,D2,D3).
 
 /*Predicate for reachability of horse */
 isReach(Position,Position1,Piece,Board):- Piece=[h,Color],
-                                                getPiece(Position1,P,Board),
-                                                P=[_,C],
-                                                notSameColor(Color ,C),
-                                                Position=[X,Y,Z],
-                                                Position1=[X1,Y1,Z1],
-                                                D1 is X - X1,
-                                                D2 is Y-Y1,
-                                                R3 is Z-Z1,
-                                                mOD(R3,D3),
-                                                horseReach(D1,D2,D3).
-                                                                        
- /*Predicate for reachability of bishop */
+                                        getPiece(Position1,P,Board),
+                                        P=[_,C],
+                                        notSameColor(Color ,C),
+                                        Position=[X,Y,Z],
+                                        Position1=[X1,Y1,Z1],
+                                        D1 is X - X1,
+                                        D2 is Y-Y1,
+                                        R3 is Z-Z1,
+                                        mOD(R3,D3),
+                                        horseReach(D1,D2,D3).
+                                                                
+/*Predicate for reachability of bishop */
 isReach(Position,Position1,Piece,Board):- Piece=[b,Color],
                                                 getPiece(Position1,P,Board),
                                                 P=[_,C],
