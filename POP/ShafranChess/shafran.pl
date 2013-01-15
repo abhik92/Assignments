@@ -2,16 +2,11 @@
 
 play(Board,Player):- game_over(Board,Player).
 play(Board,Player):- notgameover(Board,Player),choose_move(Board,Player,Move),legal(Board,Move,Player),move(Move,Board,Board1),display_game(Board1),next_player(Player,Player1),!,play(Board1,Player1).
-play(Board,Player):- print('illegal move'),play(Board,Player).
+play(Board,Player):-write('illegal move'),play(Board,Player).
 play(Game):-initialize(Game,Board,Player),display_game(Board),play(Board,Player).
 
 initialize(Game,Board,Player):- initial_position(Board),
-%                               chooseCompMove(Board,Move,b,Board).
                                 Player=w.
-%                                isReach([2,7,5],[1,2,1],[b,b],Board).
-                                /*move([[1,1,10]|[2,1,9]],Position,Player)*/
-                                %legal(Board,[[5,2,7],[5,3,8]],Player).
-                                %getPiece([5,2,7],Player,Board).
 
 /* a =1,b=2,c=3 ....i=9*/
 /*[letter,left,right]*/
@@ -42,24 +37,34 @@ initialize_board_coordinates(Coordinates):-Coordinates=[[a,1],[1,1,10],[a,2],[1,
 nthInList(List,N,Counter,Result):-List=[Front|Rest],Counter=:=N,Result=Front.
 nthInList(List,N,Counter,Result):-List=[Front|Rest],Counter1 is Counter +1,nthInList(Rest,N,Counter1,Result).
 
+weights(p,W):-W is 1.
+weights(r,W):-W is 5.
+weights(b,W):-W is 3.
+weights(q,W):-W is 10.
+weights(h,W):-W is 3.
+weights(k,W):-W is 20.
+weights(n,W):-W is 0.
+
+
 
 /* The AI Part */
 choose_move(Board,w,Move):-getinputmove(Move).
-%choose_move(Board,b,Move):-getinputmove(Move).
+
 % Just to heat up the game
-choose_move(Board,b,Move):-getBoardScore(Board,0,Score),Score=0,chooseRandomMove(Board,Move,b,Board),nl(current_output),nl(current_output),
-                            initialize_board_coordinates(Coordinates),Move=[Start,End],get2DFrom3D(TwoStart,Start,Coordinates),
-                            get2DFrom3D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).                
+choose_move(Board,b,Move):-getBoardScore(Board,0,Score),write(Score),
+                           Score=0,chooseRandomMove(Board,Move,b,Board),nl(user_output),nl(user_output),
+                           initialize_board_coordinates(Coordinates),Move=[Start,End],get2DFrom3D(TwoStart,Start,Coordinates),
+                           get2DFrom3D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).                
 
-choose_move(Board,b,Move):-chooseCompMove(Board,Move,b),nl(current_output),nl(current_output),
-                            initialize_board_coordinates(Coordinates),Move=[Start,End],get2DFrom3D(TwoStart,Start,Coordinates),
-                            get2DFrom3D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).                
+choose_move(Board,b,Move):-chooseCompMove(Board,Move,b),Score=\=0,write("Boss"),nl(user_output),nl(user_output),
+                        initialize_board_coordinates(Coordinates),Move=[Start,End],get2DFrom3D(TwoStart,Start,Coordinates),
+                        get2DFrom3D(TwoEnd,End,Coordinates),print([TwoStart,TwoEnd]).                
 
 
-getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=w,CS1 is CS+1,getBoardScore(Rest,CS1,Score).
-getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=b,CS1 is CS-1,getBoardScore(Rest,CS1,Score).
+getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=w,weights(H,W),CS1 is CS+W,getBoardScore(Rest,CS1,Score).
+getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=b,weights(H,W),CS1 is CS-W,getBoardScore(Rest,CS1,Score).
 getBoardScore(Board,CS,Score):-Board=[Pos,Piece|Rest],Piece=[H,T],T=n,CS1 is CS,getBoardScore(Rest,CS1,Score).
-getBoardScore([],CS,Score):-Score=CS.
+getBoardScore([],CS,Score):-Score is CS+2.
 
 
 getBestScoreMove(Board,Player,List,BestScore,Move):-List=[Front|Rest],Front=[A,B,C],getPiece(Front,Piece,Board),Piece=[_,Player],
@@ -83,7 +88,6 @@ eAllMoves(Board,Position,[],Player,CS,BestScore):-BestScore=CS.
 eAllMoves(Board,Position,List,Player,CS,BestScore):-List=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),move([Position,Front],Board,Board1),
                                                    next_player(Player,Player1),
                                                    getBoardScore(Board1,0,T),
-                                                   %evaluate(Board1,Player1,Board1,T,B),
                                                    bestMove(T,CS,Best),eAllMoves(Board,Position,Rest,Player,Best,BestScore).  
 eAllMoves(Board,Position,[Front|Rest],Player,CS,BestScore):-eAllMoves(Board,Position,Rest,Player,CS,BestScore).
 
@@ -94,7 +98,7 @@ bestMove(S1,S2,BestScore):-BestScore is S2.
 /* Choose a random move when the game is even */
 
 chooseRandomMove(Board,Move,Player,List):-random(1,70,R),R1 is 2*R,T is R1-1,nthInList(List,T,1,Front),
-                                  getPiece(Front,Piece,Board),Piece=[_,Player],someMove(Front,Board,Player,Move).
+                                  getPiece(Front,Piece,Board),Piece=[p,Player],someMove(Front,Board,Player,Move).
 
 someMove(Position,Board,Player,Move):-Board=[Front|Rest],Front=[A,B,C],legal(Board,[Position,Front],Player),Move=[Position,Front].
 someMove(Position,[Front|Rest],Player,Move):-someMove(Position,Rest,Player,Move).
@@ -104,7 +108,7 @@ someMove(Position,[Front|Rest],Player,Move):-someMove(Position,Rest,Player,Move)
 /* End of random move */
 
 
-display_game(Board):-initialize_board_coordinates(Coordinates),nl(current_output),nl(current_output),printBoard(Coordinates,Board,0).
+display_game(Board):-initialize_board_coordinates(Coordinates),nl(user_output),nl(user_output),printBoard(Coordinates,Board,0).
 
 printBoard(Coordinates,[],Newline).
 printBoard(Coordinates,Board,NewLine):-Board=[Front|Rest],Front=[A,B,C],get2DFrom3D(TwoPosition,Front,Coordinates),
@@ -112,7 +116,7 @@ printBoard(Coordinates,Board,NewLine):-Board=[Front|Rest],Front=[A,B,C],get2DFro
                                 printBoard(Coordinates,Rest,NewLine1).
 printBoard(Coordinates,Board,NewLine):-Board=[Front|Rest],Front=[A,B],print(Front),printNewline(NewLine),print('  '),printBoard(Coordinates,Rest,NewLine).
 
-printNewline(i):-nl(current_output),nl(current_output).
+printNewline(i):-nl(user_output),nl(user_output).
 printNewline(A).
 
 get2DFrom3D(TwoPosition,ThreePosition,Coordinates):-Coordinates=[A,ThreePosition|Rest],TwoPosition=A.
@@ -130,7 +134,7 @@ notgameover(Board,Player):-game_over(Board,Player),!,fail.
 notgameover(Board,Player).
 
 /*Check for check mate*/
-game_over(Board,Player):-kingCheck(Board,Player),checkMate(Board,Player,Board),nl(current_output),nl(current_output),print('gameOver.'),print(Player),print(' Player Wins').
+game_over(Board,Player):-kingCheck(Board,Player),checkMate(Board,Player,Board),nl(user_output),nl(user_output),print('gameOver.'),print(Player),print(' Player Wins').
 
 checkMate(Board,Player,Board):-notCheckMate(Board,Player,Board),!,fail.
 checkMate(_,_,_).
